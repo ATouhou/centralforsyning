@@ -1,0 +1,37 @@
+@media (min-width: 1200px) {
+	body{
+		min-width: inherit;
+		width: inherit;
+	}
+	.wrap{
+		width: 1170px;
+		padding: 0 30px;
+	}
+	#logo h5{
+		display: block;
+	}
+	.sidebar{
+		padding-left: 30px;
+	}
+	.post.portfolio{
+		margin-bottom: 30px;
+	}
+	.page-template-template-portfolio-2-s-php #container .span6{
+		width: 48.65%;
+	}
+	.page-template-template-portfolio-3-s-php #container .span4{
+		width: 31.60%;
+	}
+	.page-template-template-portfolio-4-s-php #container .span3{
+		width: 23%;
+	}
+	.sidebar-template .effect-thumb-2 .icon{
+	    left: 45%;
+	}
+	.sidebar-template .effect-thumb-2 .icon2{
+	    left: 55%;
+	}
+	#front-header.full-width{
+		width: 1230px;
+	}
+}

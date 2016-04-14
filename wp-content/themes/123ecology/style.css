@@ -1,0 +1,30 @@
+/*
+==================================================
+
+	Theme Name: We Are Crunch
+	Theme URI: http://www.lpd-themes.com
+	Description: 123Ecology Twitter Bootstrap Premium Wordpress Theme
+	Author: lpd-themes
+	Author URI: http://www.lpd-themes.com
+	License: GNU General Public License version 3.0
+	License URI: http://www.gnu.org/licenses/gpl-3.0.html
+	Version: 1.1
+
+
+================================================== */
+
+@import "assets/css/bootstrap.css";
+@import "assets/js/google-code-prettify/prettify.css";
+@import "assets/css/application.css";
+@import "assets/css/123ecology-bootstrap.css";
+@import "assets/css/social-media.css";
+@import "assets/css/bulleted-list.css";
+@import "assets/css/button-icons.css";
+
+@import "assets/isotope/css/style.css";
+@import "assets/prettyPhoto/prettyPhoto.css";
+@import "assets/js/google-code-prettify/prettify.css";
+@import "assets/etalage/css/etalage.css";
+@import "assets/etalage/demo_files/_fancybox_plugin/jquery.fancybox-1.3.4.css";
+
+

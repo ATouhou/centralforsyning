@@ -1,0 +1,25 @@
+a.btn.icon span{
+	display: none;
+    background-repeat: no-repeat;
+}
+a.btn-small.icon span,
+a.btn-mini.icon span,
+a.btn-normal.icon span{
+	display: block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-right: 7px;
+	margin-top: 2px;
+}
+a.btn-large.icon span{
+	display: block;
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin-right: 10px;
+}
+a.btn-large.icon{
+	padding: 5px 19px 5px 9px;
+	line-height: 32px;
+}

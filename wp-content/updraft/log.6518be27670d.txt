@@ -1,0 +1,637 @@
+0000.002 (0) Opened log file at time: Tue, 14 Apr 2015 08:20:32 +0000 on http://centralforsyning.dk
+0000.097 (0) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 37M | 37.8M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+0000.104 (0) Free space on disk containing Updraft's temporary directory: 7219506.9 Mb
+0000.167 (0) Tasks: Backup files: 1 (schedule: unset) Backup DB: 1 (schedule: unset)
+0000.200 (0) Requesting semaphore lock (fd)
+0000.212 (0) Set semaphore last lock (fd) time to 2015-04-14 08:20:32
+0000.214 (0) Semaphore lock (fd) complete
+0000.251 (0) Backup run: resumption=0, nonce=6518be27670d, begun at=1428999632 (0s ago), job type=backup
+0000.259 (0) Scheduling a resumption (1) after 300 seconds (1428999932) in case this run gets aborted
+0000.300 (0) Checking if we have a zip executable available
+0000.304 (0) Creation of backups of directories: beginning
+0000.321 (0) Beginning creation of dump of plugins (split every: 500 Mb)
+0018.942 (0) Total entities for the zip file: 526 directories, 3310 files (0 skipped as non-modified), 42.9 Mb
+0018.957 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 Mb, 1 (1) files added so far); re-opening (prior size: 0 Kb)
+0019.260 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 100 files added (on-disk size: 90.8 Kb)
+0019.565 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 200 files added (on-disk size: 90.8 Kb)
+0019.860 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 300 files added (on-disk size: 90.8 Kb)
+0020.119 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 400 files added (on-disk size: 90.8 Kb)
+0020.272 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 500 files added (on-disk size: 90.8 Kb)
+0020.276 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (7.4 Mb, 3310 files batched, 501 (502) added so far); re-opening (prior size: 90.8 Kb)
+0026.178 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 600 files added (on-disk size: 3283.4 Kb)
+0026.373 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 700 files added (on-disk size: 3283.4 Kb)
+0026.529 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 800 files added (on-disk size: 3283.4 Kb)
+0026.643 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 900 files added (on-disk size: 3283.4 Kb)
+0026.771 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1000 files added (on-disk size: 3283.4 Kb)
+0026.775 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (10.8 Mb, 3310 files batched, 501 (1003) added so far); re-opening (prior size: 3283.4 Kb)
+0033.171 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1100 files added (on-disk size: 11560.5 Kb)
+0033.534 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1200 files added (on-disk size: 11560.5 Kb)
+0033.720 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1300 files added (on-disk size: 11560.5 Kb)
+0033.922 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1400 files added (on-disk size: 11560.5 Kb)
+0034.152 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1500 files added (on-disk size: 11560.5 Kb)
+0034.168 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (6 Mb, 3310 files batched, 501 (1504) added so far); re-opening (prior size: 11560.5 Kb)
+0040.612 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1600 files added (on-disk size: 13154.6 Kb)
+0040.893 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1700 files added (on-disk size: 13154.6 Kb)
+0041.172 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1800 files added (on-disk size: 13154.6 Kb)
+0041.376 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 1900 files added (on-disk size: 13154.6 Kb)
+0041.593 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2000 files added (on-disk size: 13154.6 Kb)
+0041.602 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (2.2 Mb, 3310 files batched, 501 (2005) added so far); re-opening (prior size: 13154.6 Kb)
+0045.833 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2100 files added (on-disk size: 13899.3 Kb)
+0046.140 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2200 files added (on-disk size: 13899.3 Kb)
+0046.389 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2300 files added (on-disk size: 13899.3 Kb)
+0046.659 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2400 files added (on-disk size: 13899.3 Kb)
+0046.941 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2500 files added (on-disk size: 13899.3 Kb)
+0046.952 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (11.7 Mb, 3310 files batched, 501 (2506) added so far); re-opening (prior size: 13899.3 Kb)
+0050.243 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2600 files added (on-disk size: 17788.1 Kb)
+0050.817 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2700 files added (on-disk size: 17788.1 Kb)
+0051.131 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2800 files added (on-disk size: 17788.1 Kb)
+0051.799 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 2900 files added (on-disk size: 17788.1 Kb)
+0052.228 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 3000 files added (on-disk size: 17788.1 Kb)
+0052.250 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (1.8 Mb, 3310 files batched, 501 (3007) added so far); re-opening (prior size: 17788.1 Kb)
+0053.445 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 3100 files added (on-disk size: 18556.7 Kb)
+0053.593 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 3200 files added (on-disk size: 18556.7 Kb)
+0053.755 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip.tmp: 3300 files added (on-disk size: 18556.7 Kb)
+0056.568 (0) Created plugins zip (0) - 19545.4 Kb in 56.2 s (347.6 Kb/s) (SHA1 checksum: ce881d0dfaaedfa833eb9a4cda7c4b8384d7ef68)
+0056.603 (0) Beginning creation of dump of themes (split every: 500 Mb)
+0076.383 (0) Total entities for the zip file: 115 directories, 3519 files (0 skipped as non-modified), 18.7 Mb
+0076.389 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 Mb, 1 (1) files added so far); re-opening (prior size: 0 Kb)
+0076.940 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 100 files added (on-disk size: 18.8 Kb)
+0077.582 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 200 files added (on-disk size: 18.8 Kb)
+0078.086 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 300 files added (on-disk size: 18.8 Kb)
+0078.566 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 400 files added (on-disk size: 18.8 Kb)
+0078.872 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0.7 Mb, 494 (495) files added so far); re-opening (prior size: 18.8 Kb)
+0083.513 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 500 files added (on-disk size: 642.4 Kb)
+0084.143 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 600 files added (on-disk size: 642.4 Kb)
+0085.185 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 700 files added (on-disk size: 642.4 Kb)
+0085.872 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0.3 Mb, 301 (796) files added so far); re-opening (prior size: 642.4 Kb)
+0088.532 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 800 files added (on-disk size: 961.4 Kb)
+0088.861 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 900 files added (on-disk size: 961.4 Kb)
+0089.112 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1000 files added (on-disk size: 961.4 Kb)
+0089.349 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1100 files added (on-disk size: 961.4 Kb)
+0089.730 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1200 files added (on-disk size: 961.4 Kb)
+0090.089 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (0.8 Mb, 3519 files batched, 501 (1297) added so far); re-opening (prior size: 961.4 Kb)
+0094.550 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1300 files added (on-disk size: 1738.7 Kb)
+0094.743 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1400 files added (on-disk size: 1738.7 Kb)
+0094.985 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1500 files added (on-disk size: 1738.7 Kb)
+0095.489 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1600 files added (on-disk size: 1738.7 Kb)
+0096.057 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1700 files added (on-disk size: 1738.7 Kb)
+0096.547 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (0.8 Mb, 3519 files batched, 501 (1798) added so far); re-opening (prior size: 1738.7 Kb)
+0101.932 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1800 files added (on-disk size: 2496.4 Kb)
+0102.194 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 1900 files added (on-disk size: 2496.4 Kb)
+0102.539 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2000 files added (on-disk size: 2496.4 Kb)
+0102.897 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2100 files added (on-disk size: 2496.4 Kb)
+0103.390 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2200 files added (on-disk size: 2496.4 Kb)
+0103.752 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (1 Mb, 3519 files batched, 501 (2299) added so far); re-opening (prior size: 2496.4 Kb)
+0111.565 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2300 files added (on-disk size: 3424.3 Kb)
+0112.124 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2400 files added (on-disk size: 3424.3 Kb)
+0112.544 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2500 files added (on-disk size: 3424.3 Kb)
+0112.857 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2600 files added (on-disk size: 3424.3 Kb)
+0113.162 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2700 files added (on-disk size: 3424.3 Kb)
+0113.593 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (1.6 Mb, 3519 files batched, 501 (2800) added so far); re-opening (prior size: 3424.3 Kb)
+0118.364 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2800 files added (on-disk size: 4266.7 Kb)
+0118.820 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 2900 files added (on-disk size: 4266.7 Kb)
+0119.026 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 3000 files added (on-disk size: 4266.7 Kb)
+0119.335 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 3100 files added (on-disk size: 4266.7 Kb)
+0119.784 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 3200 files added (on-disk size: 4266.7 Kb)
+0120.252 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 3300 files added (on-disk size: 4266.7 Kb)
+0120.268 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (10.8 Mb, 3519 files batched, 501 (3301) added so far); re-opening (prior size: 4266.7 Kb)
+0126.815 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 3400 files added (on-disk size: 13159.1 Kb)
+0127.020 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip.tmp: 3500 files added (on-disk size: 13159.1 Kb)
+0129.879 (0) Created themes zip (0) - 15081.6 Kb in 73.2 s (205.9 Kb/s) (SHA1 checksum: 6da3121235b7800e6172931c3bdbece7994af609)
+0129.883 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+0129.885 (0) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+0129.917 (0) finding files: 2013: adding to list (1)
+0129.919 (0) finding files: 2014: adding to list (2)
+0129.919 (0) finding files: 2015: adding to list (3)
+0129.920 (0) finding files: 2016: adding to list (4)
+0129.921 (0) finding files: et_temp: adding to list (5)
+0129.922 (0) finding files: redux: adding to list (6)
+0129.923 (0) finding files: woocommerce_uploads: adding to list (7)
+0129.923 (0) finding files: wpallimport_history: adding to list (8)
+0129.924 (0) finding files: wpallimport: adding to list (9)
+0129.925 (0) finding files: wpallimport_logs: adding to list (10)
+0129.926 (0) Beginning creation of dump of uploads (split every: 500 Mb)
+0156.874 (0) Total entities for the zip file: 64 directories, 7015 files (0 skipped as non-modified), 2691.1 Mb
+0156.879 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 Mb, 1 (1) files added so far); re-opening (prior size: 0 Kb)
+0157.072 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 100 files added (on-disk size: 9 Kb)
+0157.261 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 200 files added (on-disk size: 9 Kb)
+0157.341 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 Mb added on this batch (25.4 Mb, 7015 files batched, 255 (256) added so far); re-opening (prior size: 9 Kb)
+0165.700 (0) A useful amount of data was added after this amount of zip processing: 8.8 s (normalised: 8.7 s, rate: 2946.6 Kb/s)
+0165.869 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 300 files added (on-disk size: 25780.1 Kb)
+0166.119 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 400 files added (on-disk size: 25780.1 Kb)
+0166.557 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 Mb added on this batch (25.2 Mb, 7015 files batched, 160 (416) added so far); re-opening (prior size: 25780.1 Kb)
+0173.573 (0) A useful amount of data was added after this amount of zip processing: 8.7 s (normalised: 8.7 s, rate: 2957.4 Kb/s)
+0173.773 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 500 files added (on-disk size: 51343.6 Kb)
+0174.470 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 600 files added (on-disk size: 51343.6 Kb)
+0175.295 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 Mb added on this batch (25 Mb, 7015 files batched, 214 (630) added so far); re-opening (prior size: 51343.6 Kb)
+0182.400 (0) A useful amount of data was added after this amount of zip processing: 9.5 s (normalised: 9.5 s, rate: 2685.2 Kb/s)
+0182.522 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 700 files added (on-disk size: 76591.9 Kb)
+0182.659 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 800 files added (on-disk size: 76591.9 Kb)
+0182.811 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 900 files added (on-disk size: 76591.9 Kb)
+0182.835 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 Mb added on this batch (25 Mb, 7015 files batched, 285 (915) added so far); re-opening (prior size: 76591.9 Kb)
+0191.720 (0) A useful amount of data was added after this amount of zip processing: 9.9 s (normalised: 9.8 s, rate: 2599.3 Kb/s)
+0191.956 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1000 files added (on-disk size: 102005.7 Kb)
+0192.289 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1100 files added (on-disk size: 102005.7 Kb)
+0192.389 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 Mb added on this batch (25.5 Mb, 7015 files batched, 228 (1143) added so far); re-opening (prior size: 102005.7 Kb)
+0203.112 (0) A useful amount of data was added after this amount of zip processing: 12.2 s (normalised: 12 s, rate: 2135.8 Kb/s)
+0203.236 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1200 files added (on-disk size: 127555.8 Kb)
+0203.385 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1300 files added (on-disk size: 127555.8 Kb)
+0203.563 (0) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1400 files added (on-disk size: 127555.8 Kb)
+0203.659 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 Mb added on this batch (25.7 Mb, 7015 files batched, 314 (1457) added so far); re-opening (prior size: 127555.8 Kb)
+0307.285 (1) Opened log file at time: Tue, 14 Apr 2015 08:25:39 +0000 on http://centralforsyning.dk
+0307.289 (1) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 30.6M | 31.5M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+0307.293 (1) Free space on disk containing Updraft's temporary directory: 7218431.1 Mb
+0307.295 (1) Backup run: resumption=1, nonce=6518be27670d, begun at=1428999632 (307s ago), job type=backup, previous check-in=203.1s
+0307.297 (1) Scheduling a resumption (2) after 300 seconds (1429000239) in case this run gets aborted
+0307.315 (1) Checking if we have a zip executable available
+0307.316 (1) Creation of backups of directories: had begun; will resume
+0307.321 (1) Beginning creation of dump of plugins (split every: 500 Mb)
+0307.322 (1) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 251 s)
+0307.331 (1) Beginning creation of dump of themes (split every: 500 Mb)
+0307.332 (1) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 178 s)
+0307.341 (1) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+0307.342 (1) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+0307.343 (1) finding files: 2013: adding to list (1)
+0307.344 (1) finding files: 2014: adding to list (2)
+0307.345 (1) finding files: 2015: adding to list (3)
+0307.345 (1) finding files: 2016: adding to list (4)
+0307.346 (1) finding files: et_temp: adding to list (5)
+0307.346 (1) finding files: redux: adding to list (6)
+0307.347 (1) finding files: woocommerce_uploads: adding to list (7)
+0307.349 (1) finding files: wpallimport_history: adding to list (8)
+0307.350 (1) finding files: wpallimport: adding to list (9)
+0307.351 (1) finding files: wpallimport_logs: adding to list (10)
+0307.352 (1) Beginning creation of dump of uploads (split every: 500 Mb)
+0307.356 (1) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1428999835, time_now=1428999939, diff=104)
+0307.365 (1) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: Zip file already exists, with 1207 files
+0318.515 (1) Total entities for the zip file: 64 directories, 7015 files (0 skipped as non-modified), 2691.1 Mb
+0318.583 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 100 files added (on-disk size: 127555.8 Kb)
+0318.623 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 200 files added (on-disk size: 127555.8 Kb)
+0318.653 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 300 files added (on-disk size: 127555.8 Kb)
+0318.687 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 400 files added (on-disk size: 127555.8 Kb)
+0318.722 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 500 files added (on-disk size: 127555.8 Kb)
+0318.756 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 600 files added (on-disk size: 127555.8 Kb)
+0318.790 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 700 files added (on-disk size: 127555.8 Kb)
+0318.826 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 800 files added (on-disk size: 127555.8 Kb)
+0318.863 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 900 files added (on-disk size: 127555.8 Kb)
+0318.915 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1000 files added (on-disk size: 127555.8 Kb)
+0318.968 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1100 files added (on-disk size: 127555.8 Kb)
+0319.100 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1200 files added (on-disk size: 127555.8 Kb)
+0319.270 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1300 files added (on-disk size: 127555.8 Kb)
+0319.445 (1) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1400 files added (on-disk size: 127555.8 Kb)
+0319.694 (1) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 Mb added on this batch (25.3 Mb, 7015 files batched, 329 (329) added so far); re-opening (prior size: 127555.8 Kb)
+0611.830 (2) Opened log file at time: Tue, 14 Apr 2015 08:30:43 +0000 on http://centralforsyning.dk
+0611.833 (2) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 30.7M | 31.8M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+0611.834 (2) Free space on disk containing Updraft's temporary directory: 7215266.8 Mb
+0611.836 (2) Backup run: resumption=2, nonce=6518be27670d, begun at=1428999632 (611s ago), job type=backup
+0611.838 (2) Scheduling a resumption (3) after 300 seconds (1429000543) in case this run gets aborted
+0611.847 (2) Checking if we have a zip executable available
+0611.848 (2) Creation of backups of directories: had begun; will resume
+0611.850 (2) No check-in was detected on the previous run - as a result, we are reducing the batch amount (old=26214400, new=20971520)
+0611.857 (2) Beginning creation of dump of plugins (split every: 500 Mb)
+0611.858 (2) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 555 s)
+0611.869 (2) Beginning creation of dump of themes (split every: 500 Mb)
+0611.871 (2) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 483 s)
+0611.881 (2) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+0611.883 (2) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+0611.884 (2) finding files: 2013: adding to list (1)
+0611.885 (2) finding files: 2014: adding to list (2)
+0611.885 (2) finding files: 2015: adding to list (3)
+0611.886 (2) finding files: 2016: adding to list (4)
+0611.887 (2) finding files: et_temp: adding to list (5)
+0611.887 (2) finding files: redux: adding to list (6)
+0611.888 (2) finding files: woocommerce_uploads: adding to list (7)
+0611.889 (2) finding files: wpallimport_history: adding to list (8)
+0611.890 (2) finding files: wpallimport: adding to list (9)
+0611.890 (2) finding files: wpallimport_logs: adding to list (10)
+0611.891 (2) Beginning creation of dump of uploads (split every: 500 Mb)
+0611.896 (2) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1428999951, time_now=1429000244, diff=293)
+0611.909 (2) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: Zip file already exists, with 1207 files
+0623.972 (2) Total entities for the zip file: 64 directories, 7015 files (0 skipped as non-modified), 2691.1 Mb
+0624.023 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 100 files added (on-disk size: 127555.8 Kb)
+0624.057 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 200 files added (on-disk size: 127555.8 Kb)
+0624.090 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 300 files added (on-disk size: 127555.8 Kb)
+0624.158 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 400 files added (on-disk size: 127555.8 Kb)
+0624.210 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 500 files added (on-disk size: 127555.8 Kb)
+0624.265 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 600 files added (on-disk size: 127555.8 Kb)
+0624.306 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 700 files added (on-disk size: 127555.8 Kb)
+0624.339 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 800 files added (on-disk size: 127555.8 Kb)
+0624.374 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 900 files added (on-disk size: 127555.8 Kb)
+0624.422 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1000 files added (on-disk size: 127555.8 Kb)
+0624.472 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1100 files added (on-disk size: 127555.8 Kb)
+0624.760 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1200 files added (on-disk size: 127555.8 Kb)
+0625.022 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1300 files added (on-disk size: 127555.8 Kb)
+0625.302 (2) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: 1400 files added (on-disk size: 127555.8 Kb)
+0625.352 (2) Adding batch to zip file (UpdraftPlus_ZipArchive): over 20 Mb added on this batch (20 Mb, 7015 files batched, 283 (283) added so far); re-opening (prior size: 127555.8 Kb)
+0943.276 (3) Opened log file at time: Tue, 14 Apr 2015 08:36:15 +0000 on http://centralforsyning.dk
+0943.279 (3) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 30.6M | 31.5M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+0943.280 (3) Free space on disk containing Updraft's temporary directory: 7217419.3 Mb
+0943.282 (3) Backup run: resumption=3, nonce=6518be27670d, begun at=1428999632 (943s ago), job type=backup
+0943.283 (3) Scheduling a resumption (4) after 300 seconds (1429000875) in case this run gets aborted
+0943.298 (3) Checking if we have a zip executable available
+0943.299 (3) Creation of backups of directories: had begun; will resume
+0943.305 (3) Beginning creation of dump of plugins (split every: 500 Mb)
+0943.306 (3) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 887 s)
+0943.325 (3) Beginning creation of dump of themes (split every: 500 Mb)
+0943.326 (3) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 814 s)
+0943.335 (3) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+0943.337 (3) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+0943.338 (3) finding files: 2013: adding to list (1)
+0943.338 (3) finding files: 2014: adding to list (2)
+0943.339 (3) finding files: 2015: adding to list (3)
+0943.340 (3) finding files: 2016: adding to list (4)
+0943.341 (3) finding files: et_temp: adding to list (5)
+0943.342 (3) finding files: redux: adding to list (6)
+0943.343 (3) finding files: woocommerce_uploads: adding to list (7)
+0943.344 (3) finding files: wpallimport_history: adding to list (8)
+0943.348 (3) finding files: wpallimport: adding to list (9)
+0943.349 (3) finding files: wpallimport_logs: adding to list (10)
+0943.350 (3) Beginning creation of dump of uploads (split every: 500 Mb)
+0943.352 (3) Deleting old temporary file: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp.kOe6lX
+0943.391 (3) Deleting old temporary file: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp.s1jRiJ
+0943.424 (3) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1429000257, time_now=1429000575, diff=318)
+0943.432 (3) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp: Zip file already exists, with 1207 files
+0943.433 (3) No check-in on last two runs; bumping index and reducing zip split for this job to: 250 Mb
+0944.054 (3) Created uploads zip (0) - 127555.8 Kb in 0 s (20573262 Kb/s) (SHA1 checksum: 862713727fe5ad69dcbc3d0f0db0ed9e958e4be6)
+0959.957 (3) Total entities for the zip file: 64 directories, 7015 files (0 skipped as non-modified), 2691.1 Mb
+0960.013 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0960.060 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0960.094 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 300 files added (on-disk size: 0 Kb)
+0960.138 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 400 files added (on-disk size: 0 Kb)
+0960.194 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 500 files added (on-disk size: 0 Kb)
+0960.242 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 600 files added (on-disk size: 0 Kb)
+0960.276 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 700 files added (on-disk size: 0 Kb)
+0960.312 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 800 files added (on-disk size: 0 Kb)
+0960.350 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 900 files added (on-disk size: 0 Kb)
+0960.388 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1000 files added (on-disk size: 0 Kb)
+0960.434 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1100 files added (on-disk size: 0 Kb)
+0960.748 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1200 files added (on-disk size: 0 Kb)
+0960.922 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1300 files added (on-disk size: 0 Kb)
+0961.047 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1400 files added (on-disk size: 0 Kb)
+0961.061 (3) Adding batch to zip file (UpdraftPlus_ZipArchive): over 20 Mb added on this batch (20 Mb, 7015 files batched, 283 (283) added so far); re-opening (prior size: 0 Kb)
+0965.945 (3) A useful amount of data was added after this amount of zip processing: 6.1 s (normalised: 6.1 s, rate: 3368.4 Kb/s)
+0965.947 (3) Performance is good - will increase the amount of data we attempt to batch (time=6.0817499160767, normalised_time=6.0800657700511, max_time=203, data points known=1, old_max_bytes=20971520, new_max_bytes=209715200)
+0966.132 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1500 files added (on-disk size: 19985.9 Kb)
+0966.328 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1600 files added (on-disk size: 19985.9 Kb)
+0966.484 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1700 files added (on-disk size: 19985.9 Kb)
+0966.646 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1800 files added (on-disk size: 19985.9 Kb)
+0966.842 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1900 files added (on-disk size: 19985.9 Kb)
+0966.861 (3) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (31.9 Mb, 7015 files batched, 501 (784) added so far); re-opening (prior size: 19985.9 Kb)
+0978.460 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2000 files added (on-disk size: 51591.4 Kb)
+0978.625 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2100 files added (on-disk size: 51591.4 Kb)
+0978.792 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2200 files added (on-disk size: 51591.4 Kb)
+0978.928 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2300 files added (on-disk size: 51591.4 Kb)
+0979.030 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2400 files added (on-disk size: 51591.4 Kb)
+0979.045 (3) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (44.1 Mb, 7015 files batched, 501 (1285) added so far); re-opening (prior size: 51591.4 Kb)
+0993.702 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2500 files added (on-disk size: 92380.6 Kb)
+0993.949 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2600 files added (on-disk size: 92380.6 Kb)
+0994.062 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2700 files added (on-disk size: 92380.6 Kb)
+0994.245 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2800 files added (on-disk size: 92380.6 Kb)
+0994.458 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2900 files added (on-disk size: 92380.6 Kb)
+0994.481 (3) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (20.8 Mb, 7015 files batched, 501 (1786) added so far); re-opening (prior size: 92380.6 Kb)
+1005.768 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3000 files added (on-disk size: 112482.3 Kb)
+1006.499 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3100 files added (on-disk size: 112482.3 Kb)
+1007.402 (3) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3200 files added (on-disk size: 112482.3 Kb)
+1007.884 (3) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (54 Mb, 345 (2131) files added so far); re-opening (prior size: 112482.3 Kb)
+1376.381 (4) Opened log file at time: Tue, 14 Apr 2015 08:43:28 +0000 on http://centralforsyning.dk
+1376.397 (4) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 30.6M | 31.5M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+1376.408 (4) Free space on disk containing Updraft's temporary directory: 7213543.2 Mb
+1376.410 (4) Backup run: resumption=4, nonce=6518be27670d, begun at=1428999632 (1376s ago), job type=backup, previous check-in=62s
+1376.412 (4) Scheduling a resumption (5) after 300 seconds (1429001308) in case this run gets aborted
+1376.452 (4) Checking if we have a zip executable available
+1376.456 (4) Creation of backups of directories: had begun; will resume
+1376.487 (4) Beginning creation of dump of plugins (split every: 500 Mb)
+1376.492 (4) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 1320 s)
+1376.531 (4) Beginning creation of dump of themes (split every: 500 Mb)
+1376.536 (4) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 1247 s)
+1376.575 (4) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+1376.578 (4) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+1376.580 (4) finding files: 2013: adding to list (1)
+1376.581 (4) finding files: 2014: adding to list (2)
+1376.582 (4) finding files: 2015: adding to list (3)
+1376.587 (4) finding files: 2016: adding to list (4)
+1376.588 (4) finding files: et_temp: adding to list (5)
+1376.592 (4) finding files: redux: adding to list (6)
+1376.593 (4) finding files: woocommerce_uploads: adding to list (7)
+1376.594 (4) finding files: wpallimport_history: adding to list (8)
+1376.602 (4) finding files: wpallimport: adding to list (9)
+1376.603 (4) finding files: wpallimport_logs: adding to list (10)
+1376.603 (4) Beginning creation of dump of uploads (split every: 500 Mb)
+1376.613 (4) Deleting old temporary file: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip.tmp.rkxaRd
+1376.661 (4) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1429000640, time_now=1429001008, diff=368)
+1376.758 (4) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip: Zip file already exists, with 1207 files
+1376.773 (4) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: Zip file already exists, with 2977 files
+1377.213 (4) Opened log file at time: Tue, 14 Apr 2015 08:43:29 +0000 on http://centralforsyning.dk
+1377.239 (4) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 37M | 37.5M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+1377.240 (4) Free space on disk containing Updraft's temporary directory: 7213301.4 Mb
+1377.245 (4) Backup run: resumption=4, nonce=6518be27670d, begun at=1428999632 (1377s ago), job type=backup, previous check-in=62s
+1377.251 (4) Scheduling a resumption (5) after 300 seconds (1429001309) in case this run gets aborted
+1377.265 (4) Checking if we have a zip executable available
+1377.266 (4) Creation of backups of directories: had begun; will resume
+1377.274 (4) Beginning creation of dump of plugins (split every: 500 Mb)
+1377.276 (4) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 1321 s)
+1377.285 (4) Beginning creation of dump of themes (split every: 500 Mb)
+1377.286 (4) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 1248 s)
+1377.298 (4) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+1377.300 (4) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+1377.301 (4) finding files: 2013: adding to list (1)
+1377.302 (4) finding files: 2014: adding to list (2)
+1377.303 (4) finding files: 2015: adding to list (3)
+1377.304 (4) finding files: 2016: adding to list (4)
+1377.310 (4) finding files: et_temp: adding to list (5)
+1377.311 (4) finding files: redux: adding to list (6)
+1377.312 (4) finding files: woocommerce_uploads: adding to list (7)
+1377.312 (4) finding files: wpallimport_history: adding to list (8)
+1377.313 (4) finding files: wpallimport: adding to list (9)
+1377.314 (4) finding files: wpallimport_logs: adding to list (10)
+1377.315 (4) Beginning creation of dump of uploads (split every: 500 Mb)
+1377.318 (4) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1429000640, time_now=1429001009, diff=369)
+1377.351 (4) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip: Zip file already exists, with 1207 files
+1377.381 (4) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: Zip file already exists, with 2977 files
+1393.871 (4) Total entities for the zip file: 64 directories, 7015 files (0 skipped as non-modified), 2691.1 Mb
+1394.056 (4) Terminate: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp exists with activity within the last 30 seconds (time_mod=1429001026, time_now=1429001026, diff=0, size=112482.3Kb). This likely means that another UpdraftPlus run is at work; so we will exit.
+1394.062 (4) Rescheduling resumption 5: moving to 420 seconds from now (1429001446)
+1394.065 (4) To decrease the likelihood of overlaps, increasing resumption interval to: 300 + 120 = 420
+1394.074 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 100 files added (on-disk size: 112482.3 Kb)
+1394.164 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 200 files added (on-disk size: 112482.3 Kb)
+1394.219 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 300 files added (on-disk size: 112482.3 Kb)
+1394.317 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 400 files added (on-disk size: 112482.3 Kb)
+1394.409 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 500 files added (on-disk size: 112482.3 Kb)
+1394.498 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 600 files added (on-disk size: 112482.3 Kb)
+1394.593 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 700 files added (on-disk size: 112482.3 Kb)
+1394.678 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 800 files added (on-disk size: 112482.3 Kb)
+1394.744 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 900 files added (on-disk size: 112482.3 Kb)
+1394.800 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1000 files added (on-disk size: 112482.3 Kb)
+1394.851 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1100 files added (on-disk size: 112482.3 Kb)
+1394.902 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1200 files added (on-disk size: 112482.3 Kb)
+1394.953 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1300 files added (on-disk size: 112482.3 Kb)
+1395.005 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1400 files added (on-disk size: 112482.3 Kb)
+1395.060 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1500 files added (on-disk size: 112482.3 Kb)
+1395.126 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1600 files added (on-disk size: 112482.3 Kb)
+1395.219 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1700 files added (on-disk size: 112482.3 Kb)
+1395.275 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1800 files added (on-disk size: 112482.3 Kb)
+1395.327 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1900 files added (on-disk size: 112482.3 Kb)
+1395.427 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2000 files added (on-disk size: 112482.3 Kb)
+1395.485 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2100 files added (on-disk size: 112482.3 Kb)
+1395.544 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2200 files added (on-disk size: 112482.3 Kb)
+1395.604 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2300 files added (on-disk size: 112482.3 Kb)
+1395.676 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2400 files added (on-disk size: 112482.3 Kb)
+1395.733 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2500 files added (on-disk size: 112482.3 Kb)
+1395.795 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2600 files added (on-disk size: 112482.3 Kb)
+1395.847 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2700 files added (on-disk size: 112482.3 Kb)
+1396.012 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2800 files added (on-disk size: 112482.3 Kb)
+1396.075 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2900 files added (on-disk size: 112482.3 Kb)
+1396.544 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3000 files added (on-disk size: 112482.3 Kb)
+1396.871 (4) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (18.2 Mb, 227 (227) files added so far); re-opening (prior size: 112482.3 Kb)
+1399.350 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3100 files added (on-disk size: 131008.6 Kb)
+1399.569 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3200 files added (on-disk size: 131008.6 Kb)
+1399.721 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3300 files added (on-disk size: 131008.6 Kb)
+1399.933 (4) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3400 files added (on-disk size: 131008.6 Kb)
+1399.970 (4) Adding batch to zip file (UpdraftPlus_ZipArchive): over 200 Mb added on this batch (200.3 Mb, 7015 files batched, 319 (546) added so far); re-opening (prior size: 131008.6 Kb)
+1871.966 (5) Opened log file at time: Tue, 14 Apr 2015 08:51:44 +0000 on http://centralforsyning.dk
+1871.970 (5) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 30.7M | 31.8M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+1871.973 (5) Free space on disk containing Updraft's temporary directory: 7214636.5 Mb
+1871.975 (5) Backup run: resumption=5, nonce=6518be27670d, begun at=1428999632 (1872s ago), job type=backup, previous check-in=23s
+1871.981 (5) Scheduling a resumption (6) after 300 seconds (1429001804) in case this run gets aborted
+1871.998 (5) Checking if we have a zip executable available
+1871.999 (5) Creation of backups of directories: had begun; will resume
+1872.005 (5) Beginning creation of dump of plugins (split every: 500 Mb)
+1872.007 (5) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 1816 s)
+1872.020 (5) Beginning creation of dump of themes (split every: 500 Mb)
+1872.021 (5) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 1743 s)
+1872.034 (5) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+1872.036 (5) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+1872.037 (5) finding files: 2013: adding to list (1)
+1872.038 (5) finding files: 2014: adding to list (2)
+1872.038 (5) finding files: 2015: adding to list (3)
+1872.039 (5) finding files: 2016: adding to list (4)
+1872.040 (5) finding files: et_temp: adding to list (5)
+1872.040 (5) finding files: redux: adding to list (6)
+1872.041 (5) finding files: woocommerce_uploads: adding to list (7)
+1872.042 (5) finding files: wpallimport_history: adding to list (8)
+1872.043 (5) finding files: wpallimport: adding to list (9)
+1872.043 (5) finding files: wpallimport_logs: adding to list (10)
+1872.044 (5) Beginning creation of dump of uploads (split every: 500 Mb)
+1872.046 (5) Deleting old temporary file: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp.gzSUbV
+1872.098 (5) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1429001032, time_now=1429001504, diff=472)
+1872.113 (5) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip: Zip file already exists, with 1207 files
+1872.127 (5) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: Zip file already exists, with 3164 files
+1898.801 (5) Total entities for the zip file: 64 directories, 7015 files (0 skipped as non-modified), 2691.1 Mb
+1898.863 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 100 files added (on-disk size: 131008.6 Kb)
+1898.911 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 200 files added (on-disk size: 131008.6 Kb)
+1898.959 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 300 files added (on-disk size: 131008.6 Kb)
+1898.995 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 400 files added (on-disk size: 131008.6 Kb)
+1899.039 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 500 files added (on-disk size: 131008.6 Kb)
+1899.086 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 600 files added (on-disk size: 131008.6 Kb)
+1899.145 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 700 files added (on-disk size: 131008.6 Kb)
+1899.213 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 800 files added (on-disk size: 131008.6 Kb)
+1899.274 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 900 files added (on-disk size: 131008.6 Kb)
+1899.330 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1000 files added (on-disk size: 131008.6 Kb)
+1899.384 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1100 files added (on-disk size: 131008.6 Kb)
+1899.439 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1200 files added (on-disk size: 131008.6 Kb)
+1899.554 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1300 files added (on-disk size: 131008.6 Kb)
+1899.625 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1400 files added (on-disk size: 131008.6 Kb)
+1899.685 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1500 files added (on-disk size: 131008.6 Kb)
+1899.734 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1600 files added (on-disk size: 131008.6 Kb)
+1899.788 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1700 files added (on-disk size: 131008.6 Kb)
+1899.845 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1800 files added (on-disk size: 131008.6 Kb)
+1899.913 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1900 files added (on-disk size: 131008.6 Kb)
+1899.999 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2000 files added (on-disk size: 131008.6 Kb)
+1900.064 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2100 files added (on-disk size: 131008.6 Kb)
+1900.118 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2200 files added (on-disk size: 131008.6 Kb)
+1900.169 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2300 files added (on-disk size: 131008.6 Kb)
+1900.216 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2400 files added (on-disk size: 131008.6 Kb)
+1900.265 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2500 files added (on-disk size: 131008.6 Kb)
+1900.356 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2600 files added (on-disk size: 131008.6 Kb)
+1900.459 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2700 files added (on-disk size: 131008.6 Kb)
+1900.532 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2800 files added (on-disk size: 131008.6 Kb)
+1900.660 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2900 files added (on-disk size: 131008.6 Kb)
+1900.770 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3000 files added (on-disk size: 131008.6 Kb)
+1900.841 (5) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3100 files added (on-disk size: 131008.6 Kb)
+1900.869 (5) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0.9 Mb, 53 (53) files added so far); re-opening (prior size: 131008.6 Kb)
+2286.626 (6) Opened log file at time: Tue, 14 Apr 2015 08:58:38 +0000 on http://centralforsyning.dk
+2286.643 (6) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 30.6M | 31.5M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+2286.647 (6) Free space on disk containing Updraft's temporary directory: 7212744.2 Mb
+2286.656 (6) Backup run: resumption=6, nonce=6518be27670d, begun at=1428999632 (2286s ago), job type=backup
+2286.660 (6) Scheduling a resumption (7) after 300 seconds (1429002218) in case this run gets aborted
+2286.698 (6) Checking if we have a zip executable available
+2286.699 (6) Creation of backups of directories: had begun; will resume
+2286.702 (6) No check-in was detected on the previous run - as a result, we are reducing the batch amount (old=209715200, new=157286400)
+2286.739 (6) Beginning creation of dump of plugins (split every: 500 Mb)
+2286.742 (6) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 2230 s)
+2286.757 (6) Beginning creation of dump of themes (split every: 500 Mb)
+2286.759 (6) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 2157 s)
+2286.776 (6) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+2286.784 (6) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+2286.787 (6) finding files: 2013: adding to list (1)
+2286.789 (6) finding files: 2014: adding to list (2)
+2286.793 (6) finding files: 2015: adding to list (3)
+2286.794 (6) finding files: 2016: adding to list (4)
+2286.795 (6) finding files: et_temp: adding to list (5)
+2286.799 (6) finding files: redux: adding to list (6)
+2286.802 (6) finding files: woocommerce_uploads: adding to list (7)
+2286.804 (6) finding files: wpallimport_history: adding to list (8)
+2286.804 (6) finding files: wpallimport: adding to list (9)
+2286.806 (6) finding files: wpallimport_logs: adding to list (10)
+2286.807 (6) Beginning creation of dump of uploads (split every: 500 Mb)
+2286.810 (6) Deleting old temporary file: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp.iAtyZj
+2286.874 (6) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1429001533, time_now=1429001918, diff=385)
+2286.899 (6) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip: Zip file already exists, with 1207 files
+2286.922 (6) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: Zip file already exists, with 3164 files
+2287.004 (6) Opened log file at time: Tue, 14 Apr 2015 08:58:39 +0000 on http://centralforsyning.dk
+2287.007 (6) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 37M | 37.5M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+2287.008 (6) Free space on disk containing Updraft's temporary directory: 7213274.1 Mb
+2287.011 (6) Backup run: resumption=6, nonce=6518be27670d, begun at=1428999632 (2287s ago), job type=backup
+2287.014 (6) Scheduling a resumption (7) after 300 seconds (1429002219) in case this run gets aborted
+2287.048 (6) Checking if we have a zip executable available
+2287.049 (6) Creation of backups of directories: had begun; will resume
+2287.057 (6) No check-in was detected on the previous run - as a result, we are reducing the batch amount (old=209715200, new=157286400)
+2287.095 (6) Beginning creation of dump of plugins (split every: 500 Mb)
+2287.100 (6) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 2231 s)
+2287.123 (6) Beginning creation of dump of themes (split every: 500 Mb)
+2287.125 (6) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 2158 s)
+2287.147 (6) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+2287.152 (6) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+2287.160 (6) finding files: 2013: adding to list (1)
+2287.167 (6) finding files: 2014: adding to list (2)
+2287.171 (6) finding files: 2015: adding to list (3)
+2287.175 (6) finding files: 2016: adding to list (4)
+2287.179 (6) finding files: et_temp: adding to list (5)
+2287.183 (6) finding files: redux: adding to list (6)
+2287.187 (6) finding files: woocommerce_uploads: adding to list (7)
+2287.191 (6) finding files: wpallimport_history: adding to list (8)
+2287.195 (6) finding files: wpallimport: adding to list (9)
+2287.199 (6) finding files: wpallimport_logs: adding to list (10)
+2287.203 (6) Beginning creation of dump of uploads (split every: 500 Mb)
+2287.210 (6) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1429001533, time_now=1429001919, diff=386)
+2287.235 (6) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip: Zip file already exists, with 1207 files
+2287.264 (6) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: Zip file already exists, with 3164 files
+2303.293 (6) Total entities for the zip file: 64 directories, 7015 files (0 skipped as non-modified), 2691.1 Mb
+2303.419 (6) Terminate: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp exists with activity within the last 30 seconds (time_mod=1429001935, time_now=1429001935, diff=0, size=131008.6Kb). This likely means that another UpdraftPlus run is at work; so we will exit.
+2303.421 (6) Rescheduling resumption 7: moving to 420 seconds from now (1429002355)
+2303.424 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 100 files added (on-disk size: 131008.6 Kb)
+2303.424 (6) To decrease the likelihood of overlaps, increasing resumption interval to: 300 + 120 = 420
+2303.466 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 200 files added (on-disk size: 131008.6 Kb)
+2303.496 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 300 files added (on-disk size: 131008.6 Kb)
+2303.533 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 400 files added (on-disk size: 131008.6 Kb)
+2303.565 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 500 files added (on-disk size: 131008.6 Kb)
+2303.597 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 600 files added (on-disk size: 131008.6 Kb)
+2303.634 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 700 files added (on-disk size: 131008.6 Kb)
+2303.666 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 800 files added (on-disk size: 131008.6 Kb)
+2303.699 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 900 files added (on-disk size: 131008.6 Kb)
+2303.731 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1000 files added (on-disk size: 131008.6 Kb)
+2303.771 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1100 files added (on-disk size: 131008.6 Kb)
+2303.823 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1200 files added (on-disk size: 131008.6 Kb)
+2303.872 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1300 files added (on-disk size: 131008.6 Kb)
+2303.920 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1400 files added (on-disk size: 131008.6 Kb)
+2303.968 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1500 files added (on-disk size: 131008.6 Kb)
+2304.015 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1600 files added (on-disk size: 131008.6 Kb)
+2304.067 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1700 files added (on-disk size: 131008.6 Kb)
+2304.115 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1800 files added (on-disk size: 131008.6 Kb)
+2304.165 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1900 files added (on-disk size: 131008.6 Kb)
+2304.228 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2000 files added (on-disk size: 131008.6 Kb)
+2304.263 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2100 files added (on-disk size: 131008.6 Kb)
+2304.297 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2200 files added (on-disk size: 131008.6 Kb)
+2304.329 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2300 files added (on-disk size: 131008.6 Kb)
+2304.360 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2400 files added (on-disk size: 131008.6 Kb)
+2304.397 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2500 files added (on-disk size: 131008.6 Kb)
+2304.441 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2600 files added (on-disk size: 131008.6 Kb)
+2304.482 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2700 files added (on-disk size: 131008.6 Kb)
+2304.573 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2800 files added (on-disk size: 131008.6 Kb)
+2304.624 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2900 files added (on-disk size: 131008.6 Kb)
+2304.681 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3000 files added (on-disk size: 131008.6 Kb)
+2304.735 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3100 files added (on-disk size: 131008.6 Kb)
+2304.870 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3200 files added (on-disk size: 131008.6 Kb)
+2305.070 (6) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3300 files added (on-disk size: 131008.6 Kb)
+2305.216 (6) Adding batch to zip file (UpdraftPlus_ZipArchive): over 150 Mb added on this batch (150.5 Mb, 7015 files batched, 311 (311) added so far); re-opening (prior size: 131008.6 Kb)
+2832.724 (7) Opened log file at time: Tue, 14 Apr 2015 09:07:44 +0000 on http://centralforsyning.dk
+2832.736 (7) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 30.6M | 31.5M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+2832.743 (7) Free space on disk containing Updraft's temporary directory: 7214542.6 Mb
+2832.746 (7) Backup run: resumption=7, nonce=6518be27670d, begun at=1428999632 (2832s ago), job type=backup, previous check-in=16.8s
+2832.749 (7) Scheduling a resumption (8) after 420 seconds (1429002884) in case this run gets aborted
+2832.776 (7) Checking if we have a zip executable available
+2832.777 (7) Creation of backups of directories: had begun; will resume
+2832.787 (7) Beginning creation of dump of plugins (split every: 500 Mb)
+2832.789 (7) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 2776 s)
+2832.804 (7) Beginning creation of dump of themes (split every: 500 Mb)
+2832.806 (7) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 2703 s)
+2832.819 (7) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+2832.820 (7) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+2832.822 (7) finding files: 2013: adding to list (1)
+2832.823 (7) finding files: 2014: adding to list (2)
+2832.824 (7) finding files: 2015: adding to list (3)
+2832.825 (7) finding files: 2016: adding to list (4)
+2832.827 (7) finding files: et_temp: adding to list (5)
+2832.827 (7) finding files: redux: adding to list (6)
+2832.828 (7) finding files: woocommerce_uploads: adding to list (7)
+2832.829 (7) finding files: wpallimport_history: adding to list (8)
+2832.830 (7) finding files: wpallimport: adding to list (9)
+2832.831 (7) finding files: wpallimport_logs: adding to list (10)
+2832.833 (7) Beginning creation of dump of uploads (split every: 500 Mb)
+2832.836 (7) Deleting old temporary file: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp.mNlcAr
+2832.879 (7) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1429001937, time_now=1429002464, diff=527)
+2832.889 (7) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip: Zip file already exists, with 1207 files
+2832.896 (7) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: Zip file already exists, with 3164 files
+2832.969 (7) Opened log file at time: Tue, 14 Apr 2015 09:07:45 +0000 on http://centralforsyning.dk
+2832.972 (7) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.63 WP: 4.1 PHP: 5.6.7 (Linux web39 3.10.54-20140916-1425-05f4076 #1 SMP Tue Sep 16 14:26:20 UTC 2014 x86_64) MySQL:  Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 37M | 37.5M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+2832.973 (7) Free space on disk containing Updraft's temporary directory: 7214521 Mb
+2832.975 (7) Backup run: resumption=7, nonce=6518be27670d, begun at=1428999632 (2833s ago), job type=backup, previous check-in=16.8s
+2832.977 (7) Scheduling a resumption (8) after 420 seconds (1429002885) in case this run gets aborted
+2832.990 (7) Checking if we have a zip executable available
+2832.992 (7) Creation of backups of directories: had begun; will resume
+2832.999 (7) Beginning creation of dump of plugins (split every: 500 Mb)
+2833.001 (7) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-plugins.zip: this file has already been created (age: 2777 s)
+2833.009 (7) Beginning creation of dump of themes (split every: 500 Mb)
+2833.011 (7) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-themes.zip: this file has already been created (age: 2704 s)
+2833.022 (7) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+2833.023 (7) Looking for candidates to back up in: /customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/uploads
+2833.025 (7) finding files: 2013: adding to list (1)
+2833.027 (7) finding files: 2014: adding to list (2)
+2833.028 (7) finding files: 2015: adding to list (3)
+2833.030 (7) finding files: 2016: adding to list (4)
+2833.032 (7) finding files: et_temp: adding to list (5)
+2833.034 (7) finding files: redux: adding to list (6)
+2833.036 (7) finding files: woocommerce_uploads: adding to list (7)
+2833.037 (7) finding files: wpallimport_history: adding to list (8)
+2833.037 (7) finding files: wpallimport: adding to list (9)
+2833.039 (7) finding files: wpallimport_logs: adding to list (10)
+2833.040 (7) Beginning creation of dump of uploads (split every: 500 Mb)
+2833.043 (7) File exists (/customers/9/9/5/centralforsyning.dk/httpd.www/wp-content/updraft/backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp), but was apparently not modified within the last 30 seconds, so we assume that any previous run has now terminated (time_mod=1429001937, time_now=1429002465, diff=528)
+2833.058 (7) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads.zip: Zip file already exists, with 1207 files
+2833.069 (7) backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: Zip file already exists, with 3164 files
+2865.578 (7) Total entities for the zip file: 64 directories, 7015 files (0 skipped as non-modified), 2691.1 Mb
+2865.586 (7) Terminate: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp exists with activity within the last 30 seconds (time_mod=1429002497, time_now=1429002497, diff=0, size=131008.6Kb). This likely means that another UpdraftPlus run is at work; so we will exit.
+2865.593 (7) Rescheduling resumption 8: moving to 540 seconds from now (1429003037)
+2865.600 (7) To decrease the likelihood of overlaps, increasing resumption interval to: 420 + 120 = 540
+2865.708 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 100 files added (on-disk size: 131008.6 Kb)
+2865.797 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 200 files added (on-disk size: 131008.6 Kb)
+2865.931 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 300 files added (on-disk size: 131008.6 Kb)
+2866.006 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 400 files added (on-disk size: 131008.6 Kb)
+2866.104 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 500 files added (on-disk size: 131008.6 Kb)
+2866.156 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 600 files added (on-disk size: 131008.6 Kb)
+2866.211 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 700 files added (on-disk size: 131008.6 Kb)
+2866.268 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 800 files added (on-disk size: 131008.6 Kb)
+2866.331 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 900 files added (on-disk size: 131008.6 Kb)
+2866.385 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1000 files added (on-disk size: 131008.6 Kb)
+2866.470 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1100 files added (on-disk size: 131008.6 Kb)
+2866.540 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1200 files added (on-disk size: 131008.6 Kb)
+2866.664 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1300 files added (on-disk size: 131008.6 Kb)
+2866.737 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1400 files added (on-disk size: 131008.6 Kb)
+2866.802 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1500 files added (on-disk size: 131008.6 Kb)
+2866.897 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1600 files added (on-disk size: 131008.6 Kb)
+2866.967 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1700 files added (on-disk size: 131008.6 Kb)
+2867.022 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1800 files added (on-disk size: 131008.6 Kb)
+2867.077 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 1900 files added (on-disk size: 131008.6 Kb)
+2867.143 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2000 files added (on-disk size: 131008.6 Kb)
+2867.183 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2100 files added (on-disk size: 131008.6 Kb)
+2867.226 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2200 files added (on-disk size: 131008.6 Kb)
+2867.278 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2300 files added (on-disk size: 131008.6 Kb)
+2867.327 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2400 files added (on-disk size: 131008.6 Kb)
+2867.387 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2500 files added (on-disk size: 131008.6 Kb)
+2867.473 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2600 files added (on-disk size: 131008.6 Kb)
+2867.520 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2700 files added (on-disk size: 131008.6 Kb)
+2867.602 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2800 files added (on-disk size: 131008.6 Kb)
+2867.649 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 2900 files added (on-disk size: 131008.6 Kb)
+2867.695 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3000 files added (on-disk size: 131008.6 Kb)
+2867.738 (7) Zip: backup_2015-04-14-0920_Hndvrkernes_Centralforsyning_6518be27670d-uploads2.zip.tmp: 3100 files added (on-disk size: 131008.6 Kb)
+2867.868 (7) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (1.8 Mb, 128 (128) files added so far); re-opening (prior size: 131008.6 Kb)

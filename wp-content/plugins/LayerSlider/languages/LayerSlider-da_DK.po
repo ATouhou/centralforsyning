@@ -1,0 +1,2750 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LayerSlider WP v4.6.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-02-05 13:33:13+0000\n"
+"Last-Translator: admin <kontakt@coldcity.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: add.php:49
+#: add.php:1016
+#: edit.php:53
+#: edit.php:1033
+#@ LayerSlider
+msgid "Slide Options"
+msgstr ""
+
+#: add.php:50
+#: add.php:1017
+#: edit.php:54
+#: edit.php:1034
+#@ LayerSlider
+msgid "Duplicate this slide"
+msgstr ""
+
+#: add.php:61
+#: add.php:1028
+#: edit.php:65
+#: edit.php:1045
+#@ LayerSlider
+msgid "Slide options"
+msgstr ""
+
+#: add.php:62
+#: add.php:285
+#: add.php:1029
+#: add.php:1252
+#: edit.php:66
+#: edit.php:289
+#: edit.php:1046
+#: edit.php:1274
+#@ LayerSlider
+msgid "Image"
+msgstr ""
+
+#: add.php:65
+#: add.php:1032
+#: edit.php:69
+#: edit.php:1049
+#@ LayerSlider
+msgid "The slide image/background. Click into the field to open the WordPress Media Library to choose or upload an image."
+msgstr ""
+
+#: add.php:69
+#: add.php:1036
+#: edit.php:73
+#: edit.php:1053
+#@ LayerSlider
+msgid "Thumbnail"
+msgstr ""
+
+#: add.php:72
+#: add.php:1039
+#: edit.php:76
+#: edit.php:1056
+#@ LayerSlider
+msgid "The thumbnail image of this slide. Click into the field to open the WordPress Media Library to choose or upload an image. If you leave this field empty, the slide image will be used."
+msgstr ""
+
+#: add.php:76
+#: add.php:1043
+#: edit.php:80
+#: edit.php:1060
+#@ LayerSlider
+msgid "Slide delay"
+msgstr ""
+
+#: add.php:77
+#: add.php:1044
+#: edit.php:81
+#: edit.php:1061
+#@ LayerSlider
+msgid "Here you can set the time interval between slide changes, this slide will stay visible for the time specified here. This value is in millisecs, so the value 1000 means 1 second. Please don't use 0 or very low values."
+msgstr ""
+
+#: add.php:80
+#: add.php:1047
+#: edit.php:84
+#: edit.php:1064
+#@ LayerSlider
+msgid "Slide transition"
+msgstr ""
+
+#: add.php:83
+#: add.php:1050
+#: edit.php:87
+#: edit.php:1067
+#@ LayerSlider
+msgid "You can choose between the old and the new 3D/2D slide transitions introduced in version 4.0.0."
+msgstr ""
+
+#: add.php:87
+#: add.php:1054
+#: edit.php:91
+#: edit.php:1071
+#@ LayerSlider
+msgid "Transitions"
+msgstr ""
+
+#: add.php:88
+#: add.php:1055
+#: builder.php:262
+#: builder.php:484
+#: builder.php:783
+#: builder.php:1038
+#: edit.php:92
+#: edit.php:1072
+#@ LayerSlider
+msgid "Direction"
+msgstr ""
+
+#: add.php:91
+#: add.php:1058
+#: edit.php:95
+#: edit.php:1075
+#@ LayerSlider
+msgid "The slide will slide in from this direction."
+msgstr ""
+
+#: add.php:92
+#: add.php:1059
+#: edit.php:96
+#: edit.php:1076
+#@ LayerSlider
+msgid "top"
+msgstr ""
+
+#: add.php:93
+#: add.php:1060
+#: edit.php:97
+#: edit.php:1077
+#@ LayerSlider
+msgid "right"
+msgstr ""
+
+#: add.php:94
+#: add.php:1061
+#: edit.php:98
+#: edit.php:1078
+#@ LayerSlider
+msgid "bottom"
+msgstr ""
+
+#: add.php:95
+#: add.php:1062
+#: edit.php:99
+#: edit.php:1079
+#@ LayerSlider
+msgid "left"
+msgstr ""
+
+#: add.php:97
+#: add.php:1064
+#: edit.php:101
+#: edit.php:1081
+#@ LayerSlider
+msgid "You can select your desired slide transitions by clicking on this button."
+msgstr ""
+
+#: add.php:99
+#: add.php:1066
+#: edit.php:103
+#: edit.php:1083
+#@ LayerSlider
+msgid "Time shift"
+msgstr ""
+
+#: add.php:100
+#@ LayerSlider
+msgid "You can control here the timing of the layer animations  when the slider changes to this slider with a 3D/2D transition. Zero means that the layers of this slide will animate in when the slide transition ends. You can time-shift the starting time of the layer animations with positive or negative values."
+msgstr ""
+
+#: add.php:103
+#: add.php:1070
+#: edit.php:107
+#: edit.php:1087
+#@ LayerSlider
+msgid "Slide in"
+msgstr ""
+
+#: add.php:104
+#: add.php:148
+#: add.php:363
+#: add.php:429
+#: add.php:1071
+#: add.php:1115
+#: add.php:1330
+#: add.php:1397
+#: builder.php:169
+#: builder.php:226
+#: builder.php:305
+#: builder.php:435
+#: builder.php:677
+#: builder.php:747
+#: builder.php:835
+#: builder.php:989
+#: edit.php:108
+#: edit.php:152
+#: edit.php:367
+#: edit.php:434
+#: edit.php:1088
+#: edit.php:1132
+#: edit.php:1353
+#: edit.php:1420
+#@ LayerSlider
+msgid "Duration"
+msgstr ""
+
+#: add.php:105
+#: add.php:1072
+#: edit.php:109
+#: edit.php:1089
+#@ LayerSlider
+msgid "The duration of the slide in animation. This value is in millisecs, so the value 1000 means 1 second."
+msgstr ""
+
+#: add.php:106
+#: add.php:150
+#: add.php:365
+#: add.php:431
+#: add.php:1073
+#: add.php:1117
+#: add.php:1332
+#: add.php:1399
+#: builder.php:171
+#: builder.php:228
+#: builder.php:307
+#: builder.php:437
+#: builder.php:679
+#: builder.php:749
+#: builder.php:837
+#: builder.php:991
+#: edit.php:110
+#: edit.php:154
+#: edit.php:369
+#: edit.php:436
+#: edit.php:1090
+#: edit.php:1134
+#: edit.php:1355
+#: edit.php:1422
+#@ LayerSlider
+msgid "Easing"
+msgstr ""
+
+#: add.php:108
+#: add.php:152
+#: add.php:1075
+#: add.php:1119
+#: edit.php:112
+#: edit.php:156
+#: edit.php:1092
+#: edit.php:1136
+#@ LayerSlider
+msgid "The timing function of the animation, with it you can manipualte the slide movement. Please click on the link next to this select field to open easings.net for more information and real-time examples."
+msgstr ""
+
+#: add.php:143
+#: add.php:1110
+#: edit.php:147
+#: edit.php:1127
+#@ LayerSlider
+msgid "Delay in"
+msgstr ""
+
+#: add.php:144
+#: add.php:1111
+#: edit.php:148
+#: edit.php:1128
+#@ LayerSlider
+msgid "Delay before the animation start when the slide slides in. This value is in millisecs, so the value 1000 means 1 second."
+msgstr ""
+
+#: add.php:147
+#: add.php:1114
+#: edit.php:151
+#: edit.php:1131
+#@ LayerSlider
+msgid "Slide out"
+msgstr ""
+
+#: add.php:149
+#: add.php:1116
+#: edit.php:153
+#: edit.php:1133
+#@ LayerSlider
+msgid "The duration of the slide out animation. This value is in millisecs, so the value 1000 means 1 second."
+msgstr ""
+
+#: add.php:187
+#: add.php:1154
+#: edit.php:191
+#: edit.php:1171
+#@ LayerSlider
+msgid "Delay out"
+msgstr ""
+
+#: add.php:188
+#: add.php:1155
+#: edit.php:192
+#: edit.php:1172
+#@ LayerSlider
+msgid "Delay before the animation start when the slide slides out. This value is in millisecs, so the value 1000 means 1 second."
+msgstr ""
+
+#: add.php:191
+#: add.php:1158
+#: edit.php:195
+#@ LayerSlider
+msgid "Link this slide"
+msgstr ""
+
+#: add.php:192
+#: add.php:1159
+#: edit.php:196
+#: edit.php:1176
+#@ LayerSlider
+msgid "Link URL"
+msgstr ""
+
+#: add.php:193
+#: add.php:1160
+#: edit.php:197
+#: edit.php:1177
+#@ LayerSlider
+msgid "If you want to link the whole slide, enter the URL of your link here."
+msgstr ""
+
+#: add.php:194
+#: add.php:1161
+#: edit.php:198
+#: edit.php:1178
+#@ LayerSlider
+msgid "Link target"
+msgstr ""
+
+#: add.php:196
+#: add.php:1163
+#: edit.php:200
+#: edit.php:1181
+#@ LayerSlider
+msgid "You can control here the link behaviour: _self means the linked page will open in the current tab/window, _blank will create a new tab/window."
+msgstr ""
+
+#: add.php:207
+#: add.php:562
+#: add.php:917
+#: add.php:1174
+#: add.php:1530
+#: edit.php:211
+#: edit.php:567
+#: edit.php:927
+#: edit.php:1192
+#: edit.php:1554
+#@ LayerSlider
+msgid "Misc"
+msgstr ""
+
+#: add.php:208
+#: add.php:1175
+#: edit.php:212
+#: edit.php:1193
+#@ LayerSlider
+msgid "#ID"
+msgstr ""
+
+#: add.php:209
+#: add.php:1176
+#: edit.php:213
+#: edit.php:1194
+#@ LayerSlider
+msgid "You can apply an ID attribute on the HTML element of this slide to work with it in your custom CSS or Javascript code."
+msgstr ""
+
+#: add.php:210
+#: add.php:1177
+#: edit.php:214
+#: edit.php:1195
+#@ LayerSlider
+msgid "Deeplink"
+msgstr ""
+
+#: add.php:211
+#: add.php:1178
+#: edit.php:215
+#: edit.php:1196
+#@ LayerSlider
+msgid "You can specify a slide alias name which you can use in your URLs with a hash mark, so LayerSlider will start with the correspondig slide."
+msgstr ""
+
+#: add.php:212
+#: add.php:489
+#: add.php:1179
+#: add.php:1457
+#: edit.php:216
+#: edit.php:494
+#: edit.php:1197
+#: edit.php:1480
+#@ LayerSlider
+msgid "Hidden"
+msgstr ""
+
+#: add.php:213
+#: add.php:1180
+#: edit.php:217
+#: edit.php:1198
+#@ LayerSlider
+msgid "If you don't want to use this slide in your front-page, but you want to keep it, you can hide it with this switch."
+msgstr ""
+
+#: add.php:222
+#: add.php:1189
+#: builder.php:93
+#: builder.php:375
+#: builder.php:595
+#: builder.php:927
+#: edit.php:226
+#: edit.php:1207
+#@ LayerSlider
+msgid "Preview"
+msgstr ""
+
+#: add.php:234
+#: add.php:1201
+#: edit.php:238
+#: edit.php:1219
+#@ LayerSlider
+msgid "Enter Preview"
+msgstr ""
+
+#: add.php:245
+#: add.php:1212
+#: edit.php:249
+#: edit.php:1230
+#@ LayerSlider
+msgid "Layers"
+msgstr ""
+
+#: add.php:260
+#: add.php:650
+#: add.php:1227
+#: edit.php:264
+#: edit.php:655
+#: edit.php:1249
+#@ LayerSlider
+msgid "Basic"
+msgstr ""
+
+#: add.php:261
+#: add.php:1228
+#: edit.php:265
+#: edit.php:1250
+#@ LayerSlider
+msgid "Options"
+msgstr ""
+
+#: add.php:262
+#: add.php:1229
+#: edit.php:266
+#: edit.php:1251
+#@ LayerSlider
+msgid "Link"
+msgstr ""
+
+#: add.php:263
+#: add.php:1230
+#: edit.php:267
+#: edit.php:1252
+#@ LayerSlider
+msgid "Style"
+msgstr ""
+
+#: add.php:264
+#: add.php:582
+#: add.php:1231
+#: add.php:1550
+#: edit.php:268
+#: edit.php:587
+#: edit.php:1253
+#: edit.php:1574
+#@ LayerSlider
+msgid "Attributes"
+msgstr ""
+
+#: add.php:265
+#: add.php:1232
+#: edit.php:269
+#@ LayerSlider
+msgid "Remove this layer"
+msgstr ""
+
+#: add.php:290
+#: add.php:1257
+#: edit.php:294
+#: edit.php:1279
+#@ LayerSlider
+msgid "Div / Video"
+msgstr ""
+
+#: add.php:295
+#: add.php:1262
+#: edit.php:299
+#: edit.php:1284
+#@ LayerSlider
+msgid "Paragraph"
+msgstr ""
+
+#: add.php:300
+#: add.php:1267
+#: edit.php:304
+#: edit.php:1289
+#@ LayerSlider
+msgid "Span"
+msgstr ""
+
+#: add.php:305
+#: add.php:1272
+#: edit.php:309
+#: edit.php:1294
+#@ LayerSlider
+msgid "H1"
+msgstr ""
+
+#: add.php:310
+#: add.php:1277
+#: edit.php:314
+#: edit.php:1299
+#@ LayerSlider
+msgid "H2"
+msgstr ""
+
+#: add.php:315
+#: add.php:1282
+#: edit.php:319
+#: edit.php:1304
+#@ LayerSlider
+msgid "H3"
+msgstr ""
+
+#: add.php:320
+#: add.php:1287
+#: edit.php:324
+#: edit.php:1309
+#@ LayerSlider
+msgid "H4"
+msgstr ""
+
+#: add.php:325
+#: add.php:1292
+#: edit.php:329
+#: edit.php:1314
+#@ LayerSlider
+msgid "H5"
+msgstr ""
+
+#: add.php:330
+#: add.php:1297
+#: edit.php:334
+#: edit.php:1319
+#@ LayerSlider
+msgid "H6"
+msgstr ""
+
+#: add.php:338
+#: add.php:1305
+#: edit.php:342
+#: edit.php:1328
+#@ LayerSlider
+msgid "Click into this text field to open WordPress Media Library where you can upload new images or select previously used ones."
+msgstr ""
+
+#: add.php:343
+#: add.php:1310
+#: edit.php:347
+#: edit.php:1333
+#@ LayerSlider
+msgid "Custom HTML content"
+msgstr ""
+
+#: add.php:344
+#: add.php:1311
+#: edit.php:348
+#: edit.php:1334
+#@ LayerSlider
+msgid "Type here the contents of your layer. You can use any HTML codes in this field to insert other contents then text. This field is also shortcode-aware, so you can insert content from other plugins as well as video embed codes."
+msgstr ""
+
+#: add.php:351
+#: add.php:1318
+#: edit.php:355
+#: edit.php:1341
+#@ LayerSlider
+msgid "Transition in"
+msgstr ""
+
+#: add.php:352
+#: add.php:418
+#: add.php:1319
+#: add.php:1386
+#: builder.php:476
+#: builder.php:1030
+#: edit.php:356
+#: edit.php:423
+#: edit.php:1342
+#: edit.php:1409
+#@ LayerSlider
+msgid "Type"
+msgstr ""
+
+#: add.php:354
+#: add.php:420
+#: add.php:1321
+#: add.php:1388
+#: edit.php:358
+#: edit.php:425
+#: edit.php:1344
+#: edit.php:1411
+#@ LayerSlider
+msgid "The type of the transition."
+msgstr ""
+
+#: add.php:355
+#: add.php:421
+#: add.php:1322
+#: add.php:1389
+#: builder.php:480
+#: builder.php:1034
+#: edit.php:359
+#: edit.php:426
+#: edit.php:1345
+#: edit.php:1412
+#@ LayerSlider
+msgid "Fade"
+msgstr ""
+
+#: add.php:356
+#: add.php:1323
+#: edit.php:360
+#: edit.php:1346
+#@ LayerSlider
+msgid "Auto (Slide from auto direction)"
+msgstr ""
+
+#: add.php:357
+#: add.php:1324
+#: edit.php:361
+#: edit.php:1347
+#@ LayerSlider
+msgid "Top (Slide from top)"
+msgstr ""
+
+#: add.php:358
+#: add.php:1325
+#: edit.php:362
+#: edit.php:1348
+#@ LayerSlider
+msgid "Right (Slide from right)"
+msgstr ""
+
+#: add.php:359
+#: add.php:1326
+#: edit.php:363
+#: edit.php:1349
+#@ LayerSlider
+msgid "Bottom (Slide from bottom)"
+msgstr ""
+
+#: add.php:360
+#: add.php:1327
+#: edit.php:364
+#: edit.php:1350
+#@ LayerSlider
+msgid "Left (Slide from left)"
+msgstr ""
+
+#: add.php:364
+#: add.php:1331
+#: edit.php:368
+#: edit.php:1354
+#@ LayerSlider
+msgid "The duration of the slide in animation. This value is in millisecs, so the value 1000 means 1 second. Lower values results faster animations."
+msgstr ""
+
+#: add.php:367
+#: add.php:433
+#: add.php:1334
+#: add.php:1401
+#: edit.php:371
+#: edit.php:438
+#: edit.php:1357
+#: edit.php:1424
+#@ LayerSlider
+msgid "The timing function of the animation, with it you can manipualte the layer movement. Please click on the link next to this select field to open easings.net for more information and real-time examples."
+msgstr ""
+
+#: add.php:402
+#: add.php:468
+#: add.php:1369
+#: add.php:1436
+#: builder.php:132
+#: builder.php:211
+#: builder.php:287
+#: builder.php:347
+#: builder.php:414
+#: builder.php:636
+#: builder.php:732
+#: builder.php:813
+#: builder.php:890
+#: builder.php:968
+#: edit.php:406
+#: edit.php:473
+#: edit.php:1392
+#: edit.php:1459
+#@ LayerSlider
+msgid "Delay"
+msgstr ""
+
+#: add.php:403
+#: add.php:1370
+#: edit.php:407
+#: edit.php:1393
+#@ LayerSlider
+msgid "Delay before the animation start when the layer slides in. This value is in millisecs, so the value 1000 means 1 second."
+msgstr ""
+
+#: add.php:406
+#: add.php:473
+#: add.php:1374
+#: add.php:1441
+#: edit.php:411
+#: edit.php:478
+#: edit.php:1397
+#: edit.php:1464
+#@ LayerSlider
+msgid "Rotation"
+msgstr ""
+
+#: add.php:408
+#: add.php:475
+#: add.php:1376
+#: add.php:1443
+#: builder.php:508
+#: builder.php:1062
+#: edit.php:413
+#: edit.php:480
+#: edit.php:1399
+#: edit.php:1466
+#@ LayerSlider
+msgid "Scale"
+msgstr ""
+
+#: add.php:417
+#: add.php:1385
+#: edit.php:422
+#: edit.php:1408
+#@ LayerSlider
+msgid "Transition out"
+msgstr ""
+
+#: add.php:422
+#: add.php:1390
+#: edit.php:427
+#: edit.php:1413
+#@ LayerSlider
+msgid "Auto (Slide to auto direction)"
+msgstr ""
+
+#: add.php:423
+#: add.php:1391
+#: edit.php:428
+#: edit.php:1414
+#@ LayerSlider
+msgid "Top (Slide to top)"
+msgstr ""
+
+#: add.php:424
+#: add.php:1392
+#: edit.php:429
+#: edit.php:1415
+#@ LayerSlider
+msgid "Right (Slide to right)"
+msgstr ""
+
+#: add.php:425
+#: add.php:1393
+#: edit.php:430
+#: edit.php:1416
+#@ LayerSlider
+msgid "Bottom (Slide to bottom)"
+msgstr ""
+
+#: add.php:426
+#: add.php:1394
+#: edit.php:431
+#: edit.php:1417
+#@ LayerSlider
+msgid "Left (Slide to left)"
+msgstr ""
+
+#: add.php:430
+#: add.php:1398
+#: edit.php:435
+#: edit.php:1421
+#@ LayerSlider
+msgid "The duration of the slide out animation. This value is in millisecs, so the value 1000 means 1 second. Lower values results faster animations."
+msgstr ""
+
+#: add.php:469
+#: add.php:1437
+#: edit.php:474
+#: edit.php:1460
+#@ LayerSlider
+msgid "Delay before the animation start when the layer slides out. This value is in millisecs, so the value 1000 means 1 second."
+msgstr ""
+
+#: add.php:484
+#: add.php:1452
+#: edit.php:489
+#: edit.php:1475
+#@ LayerSlider
+msgid "Other options"
+msgstr ""
+
+#: add.php:485
+#: add.php:1453
+#: edit.php:490
+#: edit.php:1476
+#@ LayerSlider
+msgid "Distance"
+msgstr ""
+
+#: add.php:486
+#: add.php:1454
+#: edit.php:491
+#: edit.php:1477
+#@ LayerSlider
+msgid "The default value is -1 which means that the layer will be positioned exactly outside of the slide container. You can use the default setting in most of the cases. If you need to set the start or end position of the layer from further of the edges of the slide container, you can use 2, 3 or higher values."
+msgstr ""
+
+#: add.php:487
+#: add.php:1455
+#: edit.php:492
+#: edit.php:1478
+#@ LayerSlider
+msgid "Show until"
+msgstr ""
+
+#: add.php:488
+#: add.php:1456
+#: edit.php:493
+#: edit.php:1479
+#@ LayerSlider
+msgid "The layer will be visible for the time you specify here, then it will slide out. You can use this setting for layers to leave the slide before the slide itself animates out, or for example before other layers will slide in. This value in millisecs, so the value 1000 means 1 second."
+msgstr ""
+
+#: add.php:490
+#: add.php:1458
+#: edit.php:495
+#: edit.php:1481
+#@ LayerSlider
+msgid "If you don't want to use this layer, but you want to keep it, you can hide it with this switch."
+msgstr ""
+
+#: add.php:491
+#: add.php:1459
+#: edit.php:496
+#: edit.php:1482
+#@ LayerSlider
+msgid "If you will use similar settings for other layers or you want to experiment on a copy, you can duplicate this layer."
+msgstr ""
+
+#: add.php:491
+#: add.php:1459
+#: edit.php:496
+#: edit.php:1482
+#@ LayerSlider
+msgid "Duplicate this layer"
+msgstr ""
+
+#: add.php:499
+#: add.php:1467
+#: edit.php:504
+#: edit.php:1490
+#@ LayerSlider
+msgid "URL"
+msgstr ""
+
+#: add.php:500
+#: add.php:1468
+#: edit.php:505
+#: edit.php:1491
+#@ LayerSlider
+msgid "If you want to link your layer, type here the URL. You can use a hash mark followed by a number to link this layer to another slide. Example: #3 - this will switch to the third slide."
+msgstr ""
+
+#: add.php:502
+#: add.php:1470
+#: edit.php:507
+#: edit.php:1493
+#@ LayerSlider
+msgid "You can control here the link behaviour: _self means the linked page will open in the current tab/window, _blank will open it in a new tab/window."
+msgstr ""
+
+#: add.php:518
+#: add.php:1486
+#: edit.php:523
+#: edit.php:1510
+#@ LayerSlider
+msgid "Layout & Positions"
+msgstr ""
+
+#: add.php:519
+#: add.php:656
+#: add.php:1487
+#: edit.php:524
+#: edit.php:1511
+#@ LayerSlider
+msgid "Width"
+msgstr ""
+
+#: add.php:520
+#: add.php:1488
+#: edit.php:525
+#: edit.php:1512
+#@ LayerSlider
+msgid "You can set the width of your layer. You can use pixels, percents, or the default value 'auto'. Examples: 100px, 50% or auto"
+msgstr ""
+
+#: add.php:521
+#: add.php:661
+#: add.php:1489
+#: edit.php:526
+#: edit.php:1513
+#@ LayerSlider
+msgid "Height"
+msgstr ""
+
+#: add.php:522
+#: add.php:1490
+#: edit.php:527
+#: edit.php:1514
+#@ LayerSlider
+msgid "You can set the height of your layer. You can use pixels, percents, or the default value 'auto'. Examples: 100px, 50% or auto"
+msgstr ""
+
+#: add.php:523
+#: add.php:530
+#: add.php:541
+#: add.php:1491
+#: add.php:1498
+#: add.php:1509
+#: builder.php:487
+#: builder.php:1041
+#: edit.php:528
+#: edit.php:535
+#: edit.php:546
+#: edit.php:1515
+#: edit.php:1522
+#: edit.php:1533
+#@ LayerSlider
+msgid "Top"
+msgstr ""
+
+#: add.php:524
+#: add.php:1492
+#: edit.php:529
+#: edit.php:1516
+#@ LayerSlider
+msgid "The layer position from the top of the slide. You can use pixels and percents. Examples: 100px or 50%. You can move your layers in the preview above with a drag n' drop, or set the exact values here."
+msgstr ""
+
+#: add.php:525
+#: add.php:536
+#: add.php:547
+#: add.php:1493
+#: add.php:1504
+#: add.php:1515
+#: builder.php:490
+#: builder.php:1044
+#: edit.php:530
+#: edit.php:541
+#: edit.php:552
+#: edit.php:1517
+#: edit.php:1528
+#: edit.php:1539
+#@ LayerSlider
+msgid "Left"
+msgstr ""
+
+#: add.php:526
+#: add.php:1494
+#: edit.php:531
+#: edit.php:1518
+#@ LayerSlider
+msgid "The layer position from the left side of the slide. You can use pixels and percents. Examples: 100px or 50%. You can move your layers in the preview above with a drag n' drop, or set the exact values here."
+msgstr ""
+
+#: add.php:529
+#: add.php:1497
+#: edit.php:534
+#: edit.php:1521
+#@ LayerSlider
+msgid "Padding"
+msgstr ""
+
+#: add.php:531
+#: add.php:1499
+#: edit.php:536
+#: edit.php:1523
+#@ LayerSlider
+msgid "Padding on the top of the layer. Example: 10px"
+msgstr ""
+
+#: add.php:532
+#: add.php:543
+#: add.php:1500
+#: add.php:1511
+#: builder.php:488
+#: builder.php:1042
+#: edit.php:537
+#: edit.php:548
+#: edit.php:1524
+#: edit.php:1535
+#@ LayerSlider
+msgid "Right"
+msgstr ""
+
+#: add.php:533
+#: add.php:1501
+#: edit.php:538
+#: edit.php:1525
+#@ LayerSlider
+msgid "Padding on the right side of the layer. Example: 10px"
+msgstr ""
+
+#: add.php:534
+#: add.php:545
+#: add.php:1502
+#: add.php:1513
+#: builder.php:489
+#: builder.php:1043
+#: edit.php:539
+#: edit.php:550
+#: edit.php:1526
+#: edit.php:1537
+#@ LayerSlider
+msgid "Bottom"
+msgstr ""
+
+#: add.php:535
+#: add.php:1503
+#: edit.php:540
+#: edit.php:1527
+#@ LayerSlider
+msgid "Padding on the bottom of the layer. Example: 10px"
+msgstr ""
+
+#: add.php:537
+#: add.php:1505
+#: edit.php:542
+#: edit.php:1529
+#@ LayerSlider
+msgid "Padding on the left side of the layer. Example: 10px"
+msgstr ""
+
+#: add.php:540
+#: add.php:1508
+#: edit.php:545
+#: edit.php:1532
+#@ LayerSlider
+msgid "Border"
+msgstr ""
+
+#: add.php:542
+#: add.php:1510
+#: edit.php:547
+#: edit.php:1534
+#@ LayerSlider
+msgid "Border on the top of the layer. Example: 5px solid #000"
+msgstr ""
+
+#: add.php:544
+#: add.php:1512
+#: edit.php:549
+#: edit.php:1536
+#@ LayerSlider
+msgid "Border on the right side of the layer. Example: 5px solid #000"
+msgstr ""
+
+#: add.php:546
+#: add.php:1514
+#: edit.php:551
+#: edit.php:1538
+#@ LayerSlider
+msgid "Border on the bottom of the layer. Example: 5px solid #000"
+msgstr ""
+
+#: add.php:548
+#: add.php:1516
+#: edit.php:553
+#: edit.php:1540
+#@ LayerSlider
+msgid "Border on the left side of the layer. Example: 5px solid #000"
+msgstr ""
+
+#: add.php:551
+#: add.php:1519
+#: edit.php:556
+#: edit.php:1543
+#@ LayerSlider
+msgid "Font"
+msgstr ""
+
+#: add.php:552
+#: add.php:1520
+#: edit.php:557
+#: edit.php:1544
+#@ LayerSlider
+msgid "Family"
+msgstr ""
+
+#: add.php:553
+#: add.php:1521
+#: edit.php:558
+#: edit.php:1545
+#@ LayerSlider
+msgid "List of your chosen fonts separated with a comma. Please use apostrophes if your font names contains white spaces. Example: Helvetica, Arial, sans-serif"
+msgstr ""
+
+#: add.php:554
+#: add.php:1522
+#: edit.php:559
+#: edit.php:1546
+#@ LayerSlider
+msgid "Size"
+msgstr ""
+
+#: add.php:555
+#: add.php:1523
+#: edit.php:560
+#: edit.php:1547
+#@ LayerSlider
+msgid "The font size in pixels. Example: 16px."
+msgstr ""
+
+#: add.php:556
+#: add.php:1524
+#: edit.php:561
+#: edit.php:1548
+#@ LayerSlider
+msgid "Line-height"
+msgstr ""
+
+#: add.php:557
+#: add.php:1525
+#: edit.php:562
+#: edit.php:1549
+#@ LayerSlider
+msgid "The line height of your text. The default setting is 'normal'. Example: 22px"
+msgstr ""
+
+#: add.php:558
+#: add.php:1526
+#: edit.php:563
+#: edit.php:1550
+#@ LayerSlider
+msgid "Color"
+msgstr ""
+
+#: add.php:559
+#: add.php:1527
+#: edit.php:564
+#: edit.php:1551
+#@ LayerSlider
+msgid "The color of your text. You can use color names, hexadecimal, RGB or RGBA values. Example: #333"
+msgstr ""
+
+#: add.php:563
+#: add.php:1531
+#: edit.php:568
+#: edit.php:1555
+#@ LayerSlider
+msgid "Background"
+msgstr ""
+
+#: add.php:564
+#: add.php:1532
+#: edit.php:569
+#: edit.php:1556
+#@ LayerSlider
+msgid "The background color of your layer. You can use color names, hexadecimal, RGB or RGBA values as well as the 'transparent' keyword. Example: #FFF"
+msgstr ""
+
+#: add.php:565
+#: add.php:1533
+#: edit.php:570
+#: edit.php:1557
+#@ LayerSlider
+msgid "Rounded corners"
+msgstr ""
+
+#: add.php:566
+#: add.php:1534
+#: edit.php:571
+#: edit.php:1558
+#@ LayerSlider
+msgid "If you want rounded corners, you can set here its radius. Example: 5px"
+msgstr ""
+
+#: add.php:567
+#: add.php:1535
+#: edit.php:572
+#: edit.php:1559
+#@ LayerSlider
+msgid "Word-wrap"
+msgstr ""
+
+#: add.php:568
+#: add.php:1536
+#: edit.php:573
+#: edit.php:1560
+#@ LayerSlider
+msgid "If you use custom sized layers, you have to enable this setting to wrap your text."
+msgstr ""
+
+#: add.php:571
+#: add.php:1539
+#: edit.php:576
+#: edit.php:1563
+#@ LayerSlider
+msgid "Custom style settings"
+msgstr ""
+
+#: add.php:572
+#: add.php:1540
+#: edit.php:577
+#: edit.php:1564
+#@ LayerSlider
+msgid "Custom styles"
+msgstr ""
+
+#: add.php:573
+#: add.php:1541
+#: edit.php:578
+#: edit.php:1565
+#@ LayerSlider
+msgid "If you want to set style settings other then above, you can use here any CSS codes. Please make sure to write valid markup."
+msgstr ""
+
+#: add.php:583
+#: add.php:1551
+#: edit.php:588
+#: edit.php:1575
+#@ LayerSlider
+msgid "ID"
+msgstr ""
+
+#: add.php:584
+#: add.php:1552
+#: edit.php:589
+#: edit.php:1576
+#@ LayerSlider
+msgid "You can apply an ID attribute on the HTML element of this layer to work with it in your custom CSS or Javascript code."
+msgstr ""
+
+#: add.php:585
+#: add.php:1553
+#: edit.php:590
+#: edit.php:1577
+#@ LayerSlider
+msgid "Classes"
+msgstr ""
+
+#: add.php:586
+#: add.php:1554
+#: edit.php:591
+#: edit.php:1578
+#@ LayerSlider
+msgid "You can apply classes on the HTML element of this layer to work with it in your custom CSS or Javascript code."
+msgstr ""
+
+#: add.php:587
+#: add.php:1555
+#: edit.php:592
+#: edit.php:1579
+#@ LayerSlider
+msgid "Title"
+msgstr ""
+
+#: add.php:588
+#: add.php:1556
+#: edit.php:593
+#: edit.php:1580
+#@ LayerSlider
+msgid "You can add a title to this layer which will display as a tooltip if someone holds his mouse cursor over the layer."
+msgstr ""
+
+#: add.php:589
+#: add.php:1557
+#: edit.php:594
+#: edit.php:1581
+#@ LayerSlider
+msgid "Alt"
+msgstr ""
+
+#: add.php:590
+#: add.php:1558
+#: edit.php:595
+#: edit.php:1582
+#@ LayerSlider
+msgid "You can add an alternative text to your layer which is indexed by search engine robots and it helps people with certain disabilities."
+msgstr ""
+
+#: add.php:591
+#: add.php:1559
+#: edit.php:596
+#: edit.php:1583
+#@ LayerSlider
+msgid "Rel"
+msgstr ""
+
+#: add.php:592
+#: add.php:1560
+#: edit.php:597
+#: edit.php:1584
+#@ LayerSlider
+msgid "Some plugin may use the rel attribute of a linked content, here you can specify it to make interaction with these plugins."
+msgstr ""
+
+#: add.php:603
+#: add.php:1571
+#: edit.php:608
+#: edit.php:1597
+#@ LayerSlider
+msgid "Add new layer"
+msgstr ""
+
+#: add.php:614
+#@ LayerSlider
+msgid "Add new LayerSlider"
+msgstr ""
+
+#: add.php:615
+#: builder.php:535
+#: edit.php:620
+#: editor.php:56
+#: style_editor.php:44
+#@ LayerSlider
+msgid "Back to the list"
+msgstr ""
+
+#: add.php:620
+#: add.php:644
+#: edit.php:625
+#: edit.php:649
+#@ LayerSlider
+msgid "Global Settings"
+msgstr ""
+
+#: add.php:621
+#: edit.php:626
+#@ LayerSlider
+msgid "Slides"
+msgstr ""
+
+#: add.php:622
+#: edit.php:627
+#@ LayerSlider
+msgid "Event Callbacks"
+msgstr ""
+
+#: add.php:623
+#: edit.php:628
+#@ LayerSlider
+msgid "FAQ"
+msgstr ""
+
+#: add.php:624
+#: edit.php:629
+#@ LayerSlider
+msgid "Documentation"
+msgstr ""
+
+#: add.php:638
+#: edit.php:643
+#@ LayerSlider
+msgid "Type your slider name here"
+msgstr ""
+
+#: add.php:658
+#: edit.php:663
+#@ LayerSlider
+msgid "The slider width in pixels. For compatibility reasons, we still support percentage values, but for responsive layout, you should use pixels."
+msgstr ""
+
+#: add.php:663
+#: edit.php:668
+#@ LayerSlider
+msgid "The slider height in pixels."
+msgstr ""
+
+#: add.php:666
+#: edit.php:671
+#@ LayerSlider
+msgid "Responsive"
+msgstr ""
+
+#: add.php:668
+#: edit.php:673
+#@ LayerSlider
+msgid "Enable this option to turn LayerSlider into a responsive slider."
+msgstr ""
+
+#: add.php:671
+#: edit.php:676
+#@ LayerSlider
+msgid "Full-width slider"
+msgstr ""
+
+#: add.php:673
+#: edit.php:678
+#@ LayerSlider
+msgid "When you are using a responsiveness or percentage dimensions for the slider, it will respond the parent element size changes. With this option you can bypass this behaviour and LayerSlider will be a full-width slider."
+msgstr ""
+
+#: add.php:676
+#: edit.php:681
+#@ LayerSlider
+msgid "Responsive under"
+msgstr ""
+
+#: add.php:678
+#: edit.php:683
+#@ LayerSlider
+msgid "You can force the slider to change automatically into responsive mode but only if the slider width is smaller than responsiveUnder pixels. It can be used if you need a full-width slider with fixed height but you also need it to be responsive if the browser is smaller... Important! If you enter a value higher than 0, the normal responsive mode will be switched off automatically!"
+msgstr ""
+
+#: add.php:681
+#: edit.php:686
+#@ LayerSlider
+msgid "Layers Container"
+msgstr ""
+
+#: add.php:683
+#: edit.php:688
+#@ LayerSlider
+msgid "This feature is useful if you are using a full-width slider and you want to avoid stretching your layers across the full viewport horizontally. Just specify a custom width in pixels, and the slider will create a centered inner area to place your content into that. Note that this feature is working only with pixel-positioned layers, but you can still use the value '50%' if you want centered positions."
+msgstr ""
+
+#: add.php:690
+#: edit.php:695
+#@ LayerSlider
+msgid "Slideshow"
+msgstr ""
+
+#: add.php:696
+#: edit.php:701
+#@ LayerSlider
+msgid "Automatically start slideshow"
+msgstr ""
+
+#: add.php:698
+#: edit.php:703
+#@ LayerSlider
+msgid "If enabled, slideshow will automatically start after loading the page."
+msgstr ""
+
+#: add.php:701
+#: edit.php:706
+#@ LayerSlider
+msgid "Pause on hover"
+msgstr ""
+
+#: add.php:703
+#: edit.php:708
+#@ LayerSlider
+msgid "Slideshow will pause when mouse pointer is over LayerSlider."
+msgstr ""
+
+#: add.php:706
+#: edit.php:711
+#@ LayerSlider
+msgid "First slide"
+msgstr ""
+
+#: add.php:708
+#: edit.php:713
+#@ LayerSlider
+msgid "LayerSlider will start with this slide (you can type the word <i>random</i> if you want the slider to start with a random slide)."
+msgstr ""
+
+#: add.php:711
+#: edit.php:716
+#@ LayerSlider
+msgid "Animate first slide"
+msgstr ""
+
+#: add.php:713
+#: edit.php:718
+#@ LayerSlider
+msgid "If enabled, the layers of the first slide will animate (slide in) instead of fading in with the slide."
+msgstr ""
+
+#: add.php:716
+#: edit.php:721
+#@ LayerSlider
+msgid "Random slideshow"
+msgstr ""
+
+#: add.php:718
+#: edit.php:723
+#@ LayerSlider
+msgid "LayerSlider will change to a random slide instead of changing to the next / prev slide. Note that 'loops' feature won't work with this option."
+msgstr ""
+
+#: add.php:721
+#: edit.php:726
+#@ LayerSlider
+msgid "Two way slideshow"
+msgstr ""
+
+#: add.php:723
+#: edit.php:728
+#@ LayerSlider
+msgid "If enabled, slideshow will go backwards if you click the prev button."
+msgstr ""
+
+#: add.php:726
+#: edit.php:731
+#@ LayerSlider
+msgid "Loops"
+msgstr ""
+
+#: add.php:734
+#: edit.php:743
+#@ LayerSlider
+msgid "Number of loops if automatically start slideshow is enabled (0 means infinite!)"
+msgstr ""
+
+#: add.php:737
+#: edit.php:746
+#@ LayerSlider
+msgid "Force the number of loops"
+msgstr ""
+
+#: add.php:739
+#: edit.php:748
+#@ LayerSlider
+msgid "If enabled, the slider will always stop at the given number of loops even if the user restarts the slideshow."
+msgstr ""
+
+#: add.php:742
+#: edit.php:751
+#@ LayerSlider
+msgid "Automatically play videos"
+msgstr ""
+
+#: add.php:744
+#: edit.php:753
+#@ LayerSlider
+msgid "If enabled, the slider will automatically play youtube and vimeo videos."
+msgstr ""
+
+#: add.php:747
+#: edit.php:756
+#@ LayerSlider
+msgid "Automatically pause slideshow"
+msgstr ""
+
+#: add.php:750
+#@ LayerSlider
+msgid "auto"
+msgstr ""
+
+#: add.php:751
+#@ LayerSlider
+msgid "enabled"
+msgstr ""
+
+#: add.php:752
+#: add.php:880
+#@ LayerSlider
+msgid "disabled"
+msgstr ""
+
+#: add.php:755
+#: edit.php:764
+#@ LayerSlider
+msgid "If you enabled the 'automatically play videos' option, the 'auto' value means that the slideshow will pause UNTIL the video is finished playing and after that it will continue. The 'enabled' value means that the slideshow will stop and will not resume after the video has been played."
+msgstr ""
+
+#: add.php:758
+#: edit.php:767
+#@ LayerSlider
+msgid "Youtube preview"
+msgstr ""
+
+#: add.php:761
+#: edit.php:770
+#@ LayerSlider
+msgid "Maximum quality"
+msgstr ""
+
+#: add.php:762
+#: edit.php:771
+#@ LayerSlider
+msgid "High quality"
+msgstr ""
+
+#: add.php:763
+#: edit.php:772
+#@ LayerSlider
+msgid "Medium quality"
+msgstr ""
+
+#: add.php:764
+#: edit.php:773
+#@ LayerSlider
+msgid "Default quality"
+msgstr ""
+
+#: add.php:767
+#: edit.php:776
+#@ LayerSlider
+msgid "Default thumbnail picture of YouTube videos. Note, that Maximum quaility is not available to all (not HD) videos."
+msgstr ""
+
+#: add.php:770
+#: edit.php:779
+#@ LayerSlider
+msgid "Keyboard navigation"
+msgstr ""
+
+#: add.php:772
+#: edit.php:781
+#@ LayerSlider
+msgid "You can navigate with the left and right arrow keys."
+msgstr ""
+
+#: add.php:775
+#: edit.php:784
+#@ LayerSlider
+msgid "Touch navigation"
+msgstr ""
+
+#: add.php:777
+#: edit.php:786
+#@ LayerSlider
+msgid "Touch-control (on mobile devices)."
+msgstr ""
+
+#: add.php:784
+#: edit.php:793
+#@ LayerSlider
+msgid "Appearance"
+msgstr ""
+
+#: add.php:790
+#: edit.php:799
+#@ LayerSlider
+msgid "Skin"
+msgstr ""
+
+#: add.php:800
+#: edit.php:809
+#@ LayerSlider
+msgid "You can change the skin of the slider. The 'noskin' skin is a border- and buttonless skin. Your custom skins will appear in the list when you create their folders as well."
+msgstr ""
+
+#: add.php:803
+#: edit.php:812
+#@ LayerSlider
+msgid "Background color"
+msgstr ""
+
+#: add.php:809
+#: edit.php:818
+#@ LayerSlider
+msgid "Background color of LayerSlider. You can use all CSS methods, like hexa colors, rgb(r,g,b) method, color names, etc. Note, that slides with background will cover up the global background image."
+msgstr ""
+
+#: add.php:812
+#: edit.php:821
+#@ LayerSlider
+msgid "Background image"
+msgstr ""
+
+#: add.php:819
+#: edit.php:828
+#@ LayerSlider
+msgid "Background image of LayerSlider. This will be a fixed background image of LayerSlider by default. Note, that slides with background will cover up the global background image."
+msgstr ""
+
+#: add.php:822
+#: edit.php:831
+#@ LayerSlider
+msgid "Slider style"
+msgstr ""
+
+#: add.php:829
+#: edit.php:838
+#@ LayerSlider
+msgid "Here you can apply your custom CSS style settings to the slider."
+msgstr ""
+
+#: add.php:836
+#: edit.php:845
+#@ LayerSlider
+msgid "Navigation"
+msgstr ""
+
+#: add.php:842
+#: edit.php:851
+#@ LayerSlider
+msgid "Prev and Next buttons"
+msgstr ""
+
+#: add.php:844
+#: edit.php:853
+#@ LayerSlider
+msgid "If disabled, Prev and Next buttons will be invisible."
+msgstr ""
+
+#: add.php:847
+#: edit.php:856
+#@ LayerSlider
+msgid "Start and Stop buttons"
+msgstr ""
+
+#: add.php:849
+#: edit.php:858
+#@ LayerSlider
+msgid "If disabled, Start and Stop buttons will be invisible."
+msgstr ""
+
+#: add.php:852
+#: edit.php:861
+#@ LayerSlider
+msgid "Navigation buttons"
+msgstr ""
+
+#: add.php:854
+#: edit.php:863
+#@ LayerSlider
+msgid "If disabled, slide buttons will be invisible."
+msgstr ""
+
+#: add.php:857
+#: edit.php:866
+#@ LayerSlider
+msgid "Prev and next buttons on hover"
+msgstr ""
+
+#: add.php:859
+#: edit.php:868
+#@ LayerSlider
+msgid "If enabled, the prev and next buttons will be shown only if you move your mouse cursor over the slider."
+msgstr ""
+
+#: add.php:862
+#: edit.php:871
+#@ LayerSlider
+msgid "Bottom navigation on hover"
+msgstr ""
+
+#: add.php:864
+#: edit.php:873
+#@ LayerSlider
+msgid "The bottom navigation controls (with also thumbnails) will be shown only if you move your mouse cursor over the slider."
+msgstr ""
+
+#: add.php:867
+#: edit.php:876
+#@ LayerSlider
+msgid "Show bar timer"
+msgstr ""
+
+#: add.php:869
+#: edit.php:878
+#@ LayerSlider
+msgid "You can hide or show the bar timer with this option."
+msgstr ""
+
+#: add.php:872
+#: edit.php:881
+#@ LayerSlider
+msgid "Show circle timer"
+msgstr ""
+
+#: add.php:874
+#: edit.php:883
+#@ LayerSlider
+msgid "You can hide or show the circle timer with this option."
+msgstr ""
+
+#: add.php:877
+#: edit.php:886
+#@ LayerSlider
+msgid "Thumbnail navigation"
+msgstr ""
+
+#: add.php:881
+#@ LayerSlider
+msgid "hover"
+msgstr ""
+
+#: add.php:882
+#@ LayerSlider
+msgid "always"
+msgstr ""
+
+#: add.php:888
+#: edit.php:898
+#@ LayerSlider
+msgid "Thumbnail width"
+msgstr ""
+
+#: add.php:890
+#: edit.php:900
+#@ LayerSlider
+msgid "The width of the thumbnails in the navigation area."
+msgstr ""
+
+#: add.php:893
+#: edit.php:903
+#@ LayerSlider
+msgid "Thumbnail height"
+msgstr ""
+
+#: add.php:895
+#: edit.php:905
+#@ LayerSlider
+msgid "The height of the thumbnails in the navigation area."
+msgstr ""
+
+#: add.php:898
+#: edit.php:908
+#@ LayerSlider
+msgid "Thumbnail container width"
+msgstr ""
+
+#: add.php:900
+#: edit.php:910
+#@ LayerSlider
+msgid "The width of the thumbnail navigation area."
+msgstr ""
+
+#: add.php:903
+#: edit.php:913
+#@ LayerSlider
+msgid "Thumbnail active opacity"
+msgstr ""
+
+#: add.php:905
+#: edit.php:915
+#@ LayerSlider
+msgid "The selected thumbnail opacity (0-100)."
+msgstr ""
+
+#: add.php:908
+#: edit.php:918
+#@ LayerSlider
+msgid "Thumbnail inactive opacity"
+msgstr ""
+
+#: add.php:910
+#: edit.php:920
+#@ LayerSlider
+msgid "The opacity of inactive thumbnails (0-100)."
+msgstr ""
+
+#: add.php:923
+#: edit.php:933
+#@ LayerSlider
+msgid "Image preload"
+msgstr ""
+
+#: add.php:925
+#: edit.php:935
+#@ LayerSlider
+msgid "Preloads all images and background-images of the next slide."
+msgstr ""
+
+#: add.php:928
+#: edit.php:938
+#@ LayerSlider
+msgid "Use relative URLs"
+msgstr ""
+
+#: add.php:930
+#: edit.php:940
+#@ LayerSlider
+msgid "If enabled, LayerSlider WP will use relative URLs for images."
+msgstr ""
+
+#: add.php:937
+#: edit.php:947
+#@ LayerSlider
+msgid "Troubleshooting"
+msgstr ""
+
+#: add.php:943
+#: edit.php:953
+#@ LayerSlider
+msgid "Put JS includes to body"
+msgstr ""
+
+#: add.php:945
+#: edit.php:955
+#@ LayerSlider
+msgid "If the slider doesn't showing up on your front-end page, you probably have a jQuery conflict when multiple libraries loaded to the document and causes a Javascript error. Enabling this option may solve your problem. Please don't enable this option if you don't experiencing any issues."
+msgstr ""
+
+#: add.php:952
+#: add.php:958
+#: edit.php:962
+#: edit.php:968
+#@ LayerSlider
+msgid "YourLogo"
+msgstr ""
+
+#: add.php:965
+#: edit.php:975
+#@ LayerSlider
+msgid "This is a fixed layer that will be shown above of LayerSlider container. For example if you want to display your own logo, etc., you can upload an image or choose one from the Media Library."
+msgstr ""
+
+#: add.php:968
+#: edit.php:978
+#@ LayerSlider
+msgid "YourLogo style"
+msgstr ""
+
+#: add.php:970
+#: edit.php:980
+#@ LayerSlider
+msgid "You can style your logo. You can use any CSS properties, for example you can add left and top properties to place the image inside the LayerSlider container anywhere you want."
+msgstr ""
+
+#: add.php:973
+#: edit.php:983
+#@ LayerSlider
+msgid "YourLogo link"
+msgstr ""
+
+#: add.php:980
+#: edit.php:990
+#@ LayerSlider
+msgid "You can add a link to your logo. Set false is you want to display only an image without a link."
+msgstr ""
+
+#: add.php:983
+#: edit.php:993
+#@ LayerSlider
+msgid "YourLogo link target"
+msgstr ""
+
+#: add.php:992
+#: edit.php:1003
+#@ LayerSlider
+msgid "If '_blank', the clicked url will open in a new window."
+msgstr ""
+
+#: add.php:1004
+#: edit.php:1018
+#@ LayerSlider
+msgid "Add new slide"
+msgstr ""
+
+#: add.php:1067
+#: edit.php:104
+#: edit.php:1084
+#@ LayerSlider
+msgid "You can control here the timing of the layer animations when the slider changes to this slide with a 3D/2D transition. Zero means that the layers of this slide will animate in when the slide transition ends. You can time-shift the starting time of the layer animations with positive or negative values."
+msgstr ""
+
+#: add.php:1638
+#: builder.php:1092
+#: edit.php:1666
+#@ LayerSlider
+msgid "Publish"
+msgstr ""
+
+#: add.php:1640
+#: builder.php:1095
+#: edit.php:1668
+#: editor.php:90
+#: list.php:127
+#: style_editor.php:61
+#@ LayerSlider
+msgid "Save changes"
+msgstr ""
+
+#: builder.php:110
+#: builder.php:392
+#: builder.php:612
+#: builder.php:944
+#@ LayerSlider
+msgid "Basic properties"
+msgstr ""
+
+#: builder.php:115
+#: builder.php:397
+#: builder.php:617
+#: builder.php:949
+#@ LayerSlider
+msgid "Transition name"
+msgstr ""
+
+#: builder.php:116
+#: builder.php:398
+#: builder.php:618
+#: builder.php:950
+#@ LayerSlider
+msgid "The name of your custom transition. When you will edit a slider, it will appear with this name, so you can easily identify the individual transitions."
+msgstr ""
+
+#: builder.php:119
+#: builder.php:401
+#: builder.php:623
+#: builder.php:955
+#@ LayerSlider
+msgid "Rows"
+msgstr ""
+
+#: builder.php:120
+#: builder.php:402
+#: builder.php:624
+#: builder.php:956
+#@ LayerSlider
+msgid "<number> or <min_number>,<max_number> If you specify a value greater than 1, LayerSlider will cut your slide into tiles. You can specify here how many rows of your transition should have. If you specify two numbers separated with a comma, LayerSlider will use that as a range and pick a random number between your values."
+msgstr ""
+
+#: builder.php:121
+#: builder.php:403
+#: builder.php:625
+#: builder.php:957
+#@ LayerSlider
+msgid "Cols"
+msgstr ""
+
+#: builder.php:122
+#: builder.php:404
+#: builder.php:626
+#: builder.php:958
+#@ LayerSlider
+msgid "<number> or <min_number>,<max_number> If you specify a value greater than 1, LayerSlider will cut your slide into tiles. You can specify here how many columns of your transition should have. If you specify two numbers separated with a comma, LayerSlider will use that as a range and pick a random number between your values."
+msgstr ""
+
+#: builder.php:127
+#: builder.php:409
+#: builder.php:631
+#: builder.php:963
+#@ LayerSlider
+msgid "Tiles"
+msgstr ""
+
+#: builder.php:133
+#: builder.php:415
+#: builder.php:637
+#: builder.php:969
+#@ LayerSlider
+msgid "You can apply a delay between the tiles and postpone their animation relative to each other."
+msgstr ""
+
+#: builder.php:134
+#: builder.php:416
+#: builder.php:638
+#: builder.php:970
+#@ LayerSlider
+msgid "Sequence"
+msgstr ""
+
+#: builder.php:136
+#: builder.php:418
+#: builder.php:640
+#: builder.php:972
+#@ LayerSlider
+msgid "You can control the animation order of the tiles here."
+msgstr ""
+
+#: builder.php:137
+#: builder.php:419
+#: builder.php:641
+#: builder.php:973
+#@ LayerSlider
+msgid "Forward"
+msgstr ""
+
+#: builder.php:138
+#: builder.php:420
+#: builder.php:642
+#: builder.php:974
+#@ LayerSlider
+msgid "Reverse"
+msgstr ""
+
+#: builder.php:139
+#: builder.php:421
+#: builder.php:643
+#: builder.php:975
+#@ LayerSlider
+msgid "Col-forward"
+msgstr ""
+
+#: builder.php:140
+#: builder.php:422
+#: builder.php:644
+#: builder.php:976
+#@ LayerSlider
+msgid "Col-reverse"
+msgstr ""
+
+#: builder.php:141
+#: builder.php:423
+#: builder.php:491
+#: builder.php:645
+#: builder.php:977
+#: builder.php:1045
+#@ LayerSlider
+msgid "Random"
+msgstr ""
+
+#: builder.php:148
+#: builder.php:652
+#@ LayerSlider
+msgid "Depth"
+msgstr ""
+
+#: builder.php:150
+#: builder.php:654
+#@ LayerSlider
+msgid "The script will try to identify the optimal depth for your rotated objects (tiles). With this option, you can force your objects to have large depth when performing 180 degree (and its multiplies) rotation."
+msgstr ""
+
+#: builder.php:160
+#: builder.php:668
+#@ LayerSlider
+msgid "Before animation"
+msgstr ""
+
+#: builder.php:170
+#: builder.php:227
+#: builder.php:306
+#: builder.php:678
+#: builder.php:748
+#: builder.php:836
+#@ LayerSlider
+msgid "The duration of your animation. This value is in millisecs, so the value 1000 means 1 second."
+msgstr ""
+
+#: builder.php:173
+#: builder.php:230
+#: builder.php:309
+#: builder.php:439
+#: builder.php:682
+#: builder.php:751
+#: builder.php:840
+#: builder.php:993
+#@ LayerSlider
+msgid "The timing function of the animation, with it you can manipualte the movement of the animated object. Please click on the link next to this select field to open easings.net for more information and real-time examples."
+msgstr ""
+
+#: builder.php:206
+#: builder.php:282
+#: builder.php:342
+#: builder.php:562
+#: builder.php:581
+#: builder.php:727
+#: builder.php:808
+#: builder.php:885
+#@ LayerSlider
+msgid "Add new"
+msgstr ""
+
+#: builder.php:208
+#: builder.php:284
+#: builder.php:344
+#: builder.php:729
+#: builder.php:810
+#: builder.php:887
+#@ LayerSlider
+msgid "Scale3D"
+msgstr ""
+
+#: builder.php:209
+#: builder.php:275
+#: builder.php:285
+#: builder.php:345
+#: builder.php:500
+#: builder.php:730
+#: builder.php:811
+#: builder.php:888
+#: builder.php:1054
+#@ LayerSlider
+msgid "RotateX"
+msgstr ""
+
+#: builder.php:210
+#: builder.php:286
+#: builder.php:346
+#: builder.php:502
+#: builder.php:731
+#: builder.php:812
+#: builder.php:889
+#: builder.php:1056
+#@ LayerSlider
+msgid "RotateY"
+msgstr ""
+
+#: builder.php:220
+#: builder.php:741
+#@ LayerSlider
+msgid "Animation"
+msgstr ""
+
+#: builder.php:264
+#: builder.php:785
+#@ LayerSlider
+msgid "The direction of rotation."
+msgstr ""
+
+#: builder.php:265
+#: builder.php:786
+#@ LayerSlider
+msgid "Vertical"
+msgstr ""
+
+#: builder.php:266
+#: builder.php:787
+#@ LayerSlider
+msgid "Horizontal"
+msgstr ""
+
+#: builder.php:296
+#: builder.php:826
+#@ LayerSlider
+msgid "After animation"
+msgstr ""
+
+#: builder.php:355
+#: builder.php:514
+#: builder.php:898
+#: builder.php:1068
+#@ LayerSlider
+msgid "Transition options"
+msgstr ""
+
+#: builder.php:361
+#: builder.php:520
+#: builder.php:904
+#: builder.php:1074
+#@ LayerSlider
+msgid "Remove transition"
+msgstr ""
+
+#: builder.php:430
+#: builder.php:984
+#@ LayerSlider
+msgid "Transition"
+msgstr ""
+
+#: builder.php:436
+#: builder.php:990
+#@ LayerSlider
+msgid "The duration of the animation. This value is in millisecs, so the value 1000 measn 1 second."
+msgstr ""
+
+#: builder.php:478
+#: builder.php:1032
+#@ LayerSlider
+msgid "The type of the animation, either slide, fade or both (mixed)."
+msgstr ""
+
+#: builder.php:479
+#: builder.php:1033
+#@ LayerSlider
+msgid "Slide"
+msgstr ""
+
+#: builder.php:481
+#: builder.php:1035
+#@ LayerSlider
+msgid "Mixed"
+msgstr ""
+
+#: builder.php:486
+#: builder.php:1040
+#@ LayerSlider
+msgid "The direction of the slide or mixed animation if you chose these type in the previous setting."
+msgstr ""
+
+#: builder.php:492
+#: builder.php:1046
+#@ LayerSlider
+msgid "Top left"
+msgstr ""
+
+#: builder.php:493
+#: builder.php:1047
+#@ LayerSlider
+msgid "Top right"
+msgstr ""
+
+#: builder.php:494
+#: builder.php:1048
+#@ LayerSlider
+msgid "Bottom left"
+msgstr ""
+
+#: builder.php:495
+#: builder.php:1049
+#@ LayerSlider
+msgid "Bottom right"
+msgstr ""
+
+#: builder.php:506
+#: builder.php:1060
+#@ LayerSlider
+msgid "RotateZ"
+msgstr ""
+
+#: builder.php:534
+#@ LayerSlider
+msgid "LayerSlider Transition Builder"
+msgstr ""
+
+#: builder.php:539
+#: editor.php:60
+#: style_editor.php:48
+#@ LayerSlider
+msgid "Your changes has been saved!"
+msgstr ""
+
+#: builder.php:549
+#@ LayerSlider
+msgid "3D transitions"
+msgstr ""
+
+#: builder.php:551
+#: builder.php:570
+#@ LayerSlider
+msgid "Choose:"
+msgstr ""
+
+#: builder.php:561
+#: builder.php:580
+#@ LayerSlider
+msgid "or"
+msgstr ""
+
+#: builder.php:568
+#@ LayerSlider
+msgid "2D transitions"
+msgstr ""
+
+#: builder.php:1099
+#@ LayerSlider
+msgid "Before you can save your changes, you need to make writeable your \"/wp-content/uploads\" folder. See the <a href=\"http://codex.wordpress.org/Changing_File_Permissions\" target=\"_blank\">Codex</a>"
+msgstr ""
+
+#: builder.php:1125
+#@ LayerSlider
+msgid "Transition Builder documentation"
+msgstr ""
+
+#: builder.php:1125
+#@ LayerSlider
+msgid "To get started with the LayerSlider WP Transition Builder, please read our documentation by clicking on this \"Help\" menu item."
+msgstr ""
+
+#: edit.php:619
+#@ LayerSlider
+msgid "Edit this LayerSlider"
+msgstr ""
+
+#: edit.php:661
+#@ LayerSlider
+msgid "Slider width"
+msgstr ""
+
+#: edit.php:666
+#@ LayerSlider
+msgid "Slider height"
+msgstr ""
+
+#: edit.php:1175
+#@ LayerSlider
+msgid "Link this slide "
+msgstr ""
+
+#: editor.php:55
+#@ LayerSlider
+msgid "LayerSlider Skin Editor"
+msgstr ""
+
+#: editor.php:66
+#: layerslider.php:603
+#@ LayerSlider
+msgid "Skin Editor"
+msgstr ""
+
+#: editor.php:68
+#@ LayerSlider
+msgid "Choose a skin:"
+msgstr ""
+
+#: editor.php:88
+#@ LayerSlider
+msgid "You need to make this file writable before you can save your changes. See the <a href=\"http://codex.wordpress.org/Changing_File_Permissions\" target=\"_blank\">Codex</a> for more information."
+msgstr ""
+
+#: editor.php:91
+#@ LayerSlider
+msgid "Modifying a skin could be dangerous, these changes will be permanent, you can't revert it."
+msgstr ""
+
+#: layerslider.php:228
+#@ LayerSlider
+msgid "Your settings were successfully saved."
+msgstr ""
+
+#: layerslider.php:244
+#: list.php:131
+#@ LayerSlider
+msgid "Thank you for purchasing LayerSlider WP. You successfully validated your purchase code for auto-updates."
+msgstr ""
+
+#: layerslider.php:249
+#: list.php:133
+#@ LayerSlider
+msgid "Your purchase code doesn't appear to be valid. Please make sure that you entered your purchase code correctly."
+msgstr ""
+
+#: layerslider.php:601
+#@ LayerSlider
+msgid "All Sliders"
+msgstr ""
+
+#: layerslider.php:602
+#: list.php:63
+#@ LayerSlider
+msgid "Add New"
+msgstr ""
+
+#: layerslider.php:604
+#@ LayerSlider
+msgid "Transition Builder"
+msgstr ""
+
+#: layerslider.php:605
+#@ LayerSlider
+msgid "Custom Styles Editor"
+msgstr ""
+
+#: layerslider.php:661
+#@ LayerSlider
+msgid "Your account does not have the necessary permission you chose, and your settings have not been saved to prevent locking yourself out of the plugin."
+msgstr ""
+
+#: layerslider.php:662
+#@ LayerSlider
+msgid "Permission changes have been saved successfully."
+msgstr ""
+
+#: layerslider.php:921
+#: layerslider.php:1025
+#@ LayerSlider
+msgid "It looks like your files isn't writable, so PHP couldn't make any changes (CHMOD)."
+msgstr ""
+
+#: layerslider.php:921
+#: layerslider.php:1025
+#@ LayerSlider
+msgid "Cannot write to file"
+msgstr ""
+
+#: layerslider.php:1174
+#@ LayerSlider
+msgid "Invalid shortcode"
+msgstr ""
+
+#: layerslider.php:1194
+#@ LayerSlider
+msgid "Slider not found"
+msgstr ""
+
+#: layerslider.php:1226
+#@ LayerSlider
+msgid "The new version of LayerSlider WP is almost ready!"
+msgstr ""
+
+#: layerslider.php:1228
+#@ LayerSlider
+msgid "For a faster and more reliable solution, LayerSlider WP needs to convert your data associated with the plugin. Your sliders and settings will remain still, and it only takes a click on this button."
+msgstr ""
+
+#: layerslider.php:1230
+#@ LayerSlider
+msgid "Convert Data"
+msgstr ""
+
+#: layerslider.php:1249
+#@ LayerSlider
+msgid "Update available for LayerSlider WP!"
+msgstr ""
+
+#: layerslider.php:1251
+#, php-format
+#@ LayerSlider
+msgid "You have version %1$s. Update to version %2$s."
+msgstr ""
+
+#: layerslider.php:1254
+#@ LayerSlider
+msgid "Review changes & Install"
+msgstr ""
+
+#: layerslider.php:1517
+#@ LayerSlider
+msgid "Insert a slider with LayerSlider WP Widget"
+msgstr ""
+
+#: layerslider.php:1519
+#@ LayerSlider
+msgid "LayerSlider WP Widget"
+msgstr ""
+
+#: layerslider.php:1551
+#@ LayerSlider
+msgid "LayerSlider"
+msgstr ""
+
+#: layerslider.php:1567
+#@ LayerSlider
+msgid "Choose a slider:"
+msgstr ""
+
+#: layerslider.php:1580
+#@ LayerSlider
+msgid "You didn't create any slider yet."
+msgstr ""
+
+#: layerslider.php:1585
+#@ LayerSlider
+msgid "Title:"
+msgstr ""
+
+#: list.php:62
+#@ LayerSlider
+msgid "LayerSlider sliders"
+msgstr ""
+
+#: list.php:64
+#@ LayerSlider
+msgid "Import sample sliders"
+msgstr ""
+
+#: list.php:72
+#@ LayerSlider
+msgid "Name"
+msgstr ""
+
+#: list.php:73
+#@ LayerSlider
+msgid "Shortcode"
+msgstr ""
+
+#: list.php:74
+#@ LayerSlider
+msgid "Actions"
+msgstr ""
+
+#: list.php:75
+#@ LayerSlider
+msgid "Created"
+msgstr ""
+
+#: list.php:76
+#@ LayerSlider
+msgid "Modified"
+msgstr ""
+
+#: list.php:88
+#@ LayerSlider
+msgid "Edit"
+msgstr ""
+
+#: list.php:89
+#@ LayerSlider
+msgid "Duplicate"
+msgstr ""
+
+#: list.php:90
+#@ LayerSlider
+msgid "Remove"
+msgstr ""
+
+#: list.php:99
+#@ LayerSlider
+msgid "You didn't create a slider yet."
+msgstr ""
+
+#: list.php:109
+#@ LayerSlider
+msgid "Auto-updates"
+msgstr ""
+
+#: list.php:114
+#@ LayerSlider
+msgid "Purchase code:"
+msgstr ""
+
+#: list.php:115
+#@ LayerSlider
+msgid "To receive auto-updates, you need to enter your item purchase code. You can find it on your CodeCanyon downloads page, just click on the Download button and choose the \"Licence Certificate\" option. This will download a text file that contains your purchase code."
+msgstr ""
+
+#: list.php:116
+#@ LayerSlider
+msgid "Release channel:"
+msgstr ""
+
+#: list.php:117
+#@ LayerSlider
+msgid "Stable"
+msgstr ""
+
+#: list.php:118
+#@ LayerSlider
+msgid "Although pre-release versions should be fine, they might contain unknown issues, and are not recommended for sites in production."
+msgstr ""
+
+#: list.php:119
+#@ LayerSlider
+msgid "Beta"
+msgstr ""
+
+#: list.php:147
+#@ LayerSlider
+msgid "Import & Export Sliders"
+msgstr ""
+
+#: list.php:150
+#@ LayerSlider
+msgid "Choose a LayerSlider export file downloaded previously to import your sliders. To import from older versions, you need to create a file and paste the export code into it. Only the file contents matters, its name does not."
+msgstr ""
+
+#: list.php:153
+#@ LayerSlider
+msgid "Import Sliders"
+msgstr ""
+
+#: list.php:155
+#@ LayerSlider
+msgid "Import"
+msgstr ""
+
+#: list.php:162
+#@ LayerSlider
+msgid "Downloads an export file that contains your selected sliders to import on your new site."
+msgstr ""
+
+#: list.php:165
+#@ LayerSlider
+msgid "Export Sliders"
+msgstr ""
+
+#: list.php:177
+#@ LayerSlider
+msgid "Export"
+msgstr ""
+
+#: list.php:188
+#@ LayerSlider
+msgid "Allow LayerSlider access to users with ..."
+msgstr ""
+
+#: list.php:192
+#@ LayerSlider
+msgid "Role"
+msgstr ""
+
+#: list.php:205
+#@ LayerSlider
+msgid "Update"
+msgstr ""
+
+#: list.php:206
+#@ LayerSlider
+msgid "If you want to give access for other users than admins to this page, you can specify a custom capability. You can find all the available capabilities on"
+msgstr ""
+
+#: list.php:206
+#@ LayerSlider
+msgid "this page"
+msgstr ""
+
+#: list.php:209
+#@ LayerSlider
+msgid "Capability"
+msgstr ""
+
+#: list.php:241
+#@ LayerSlider
+msgid "The documentation is here"
+msgstr ""
+
+#: list.php:241
+#@ LayerSlider
+msgid "This is a WordPress contextual help menu, we use it to give you fast access to our documentation. Please keep in mind that because this menu is contextual, it only shows the relevant information to the page that you are currently viewing. So if you search something, you should visit the corresponding page first and then open this help menu."
+msgstr ""
+
+#: style_editor.php:43
+#@ LayerSlider
+msgid "LayerSlider Custom Styles Editor"
+msgstr ""
+
+#: style_editor.php:53
+#@ LayerSlider
+msgid "Contents of your custom CSS file"
+msgstr ""
+
+#: style_editor.php:59
+#@ LayerSlider
+msgid "You need to make your uploads folder writable before you can save your changes. See the <a href=\"http://codex.wordpress.org/Changing_File_Permissions\" target=\"_blank\">Codex</a> for more information."
+msgstr ""
+
