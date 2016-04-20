@@ -73,9 +73,8 @@ RpCheckoutAutocomplete.method = {
         }
         this.component_form =
         {
-           
+            'street_number': ['billing_address_1', 'short_name'],
             'route': ['billing_address_1', 'long_name'],
-			'street_number': ['billing_address_1', 'short_name'],
             'locality': ['billing_city', 'long_name'],
             'administrative_area_level_1': ['billing_state', 'short_name'],
             'country': ['billing_country', 'long_name'],
@@ -136,13 +135,8 @@ RpCheckoutAutocomplete.method = {
     {
         if(this.streetNumber != '')
         {
-            //this.formFieldsValue['billing_address_1'] =  this.streetNumber + ' '
-            //+ this.formFieldsValue['billing_address_1'];
-			
-			//changed street number after street name //
-			
-			 this.formFieldsValue['billing_address_1'] =  this.formFieldsValue['billing_address_1']  + ' '
-           + this.streetNumber; 
+            this.formFieldsValue['billing_address_1'] =  this.formFieldsValue['billing_address_1'] + ' '
+            + this.streetNumber;
         }
     },
     fillForm : function()
@@ -270,9 +264,8 @@ RpCheckoutAutocomplete_shipping.method = {
         }
         this.component_form =
         {
-            
+            'street_number': ['shipping_address_1', 'short_name'],
             'route': ['shipping_address_1', 'long_name'],
-			'street_number': ['shipping_address_1', 'short_name'],
             'locality': ['shipping_city', 'long_name'],
             'administrative_area_level_1': ['shipping_state', 'short_name'],
             'country': ['shipping_country', 'long_name'],
@@ -335,12 +328,7 @@ RpCheckoutAutocomplete_shipping.method = {
     {
         if(this.streetNumber != '')
         {
-            //this.formFieldsValue['shipping_address_1'] =  this.streetNumber + ' '
-           // + this.formFieldsValue['shipping_address_1'];
-		   
-		   //changed street number after street name /// 
-		   
-		   this.formFieldsValue['shipping_address_1'] =  this.formFieldsValue['shipping_address_1']  + ' '
+            this.formFieldsValue['shipping_address_1'] = this.formFieldsValue['shipping_address_1'] + ' '
             + this.streetNumber;
         }
     },
