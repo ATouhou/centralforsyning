@@ -135,8 +135,13 @@ RpCheckoutAutocomplete.method = {
     {
         if(this.streetNumber != '')
         {
-            this.formFieldsValue['billing_address_1'] =  this.formFieldsValue['billing_address_1'] + ' '
-            + this.streetNumber;
+            //this.formFieldsValue['billing_address_1'] =  this.formFieldsValue['billing_address_1'] + ' '
+            //+ this.streetNumber;
+			
+			 //changed street number after street name in billing field /// 
+			
+			 this.formFieldsValue['billing_address_1'] =  this.formFieldsValue['billing_address_1']  + ' '
+           + this.streetNumber; 
         }
     },
     fillForm : function()
@@ -328,7 +333,12 @@ RpCheckoutAutocomplete_shipping.method = {
     {
         if(this.streetNumber != '')
         {
-            this.formFieldsValue['shipping_address_1'] = this.formFieldsValue['shipping_address_1'] + ' '
+           // this.formFieldsValue['shipping_address_1'] = this.formFieldsValue['shipping_address_1'] + ' '
+            //+ this.streetNumber;
+			
+			 //changed street number after street name in shipping field /// 
+		   
+		   this.formFieldsValue['shipping_address_1'] =  this.formFieldsValue['shipping_address_1']  + ' '
             + this.streetNumber;
         }
     },
