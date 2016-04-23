@@ -1,0 +1,1124 @@
+.style2 ul,
+.advanced ul,
+ul.advanced{
+    margin-left: 0;
+}
+.advanced ol li,
+.advanced ul li,
+ul.advanced li{
+	padding: 5px 0;
+    list-style: none;
+    margin-left: 0;
+}
+.style2 ul li{
+    list-style: none;
+    background-position: 0 2px !important;	
+}
+.style2.lists-ordered ul li,
+.style2.lists-disc ul li,
+.style2.lists-square ul li,
+.style2.lists-circle ul li,
+.advanced.lists-ordered ul li,
+.advanced.lists-disc ul li,
+.advanced.lists-square ul li,
+.advanced.lists-circle ul li,
+ul.advanced.lists-ordered li,
+ul.advanced.lists-disc li,
+ul.advanced.lists-square li,
+ul.advanced.lists-circle li{
+	margin-left: 25px;
+}
+.lists-circle ul li,
+.advanced.circle ul li{
+	list-style: circle;
+}
+.lists-square ul li,
+.advanced.square ul li{
+	list-style: square;
+}
+.lists-disc ul li,
+.advanced.disc ul li{
+	list-style: disc;
+}
+.lists-ordered ul li,
+.advanced.ordered ul li{
+	list-style: decimal;
+}
+.lists-none ul li{
+    background: none;
+    padding-left: 0 !important;
+}
+.lists-Add-plus ul li{
+    background-image: url('../Minicons_Pack_1/Add-plus.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Add-To-Cart ul li{
+    background-image: url('../Minicons_Pack_1/Add-To-Cart.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Archive-empty ul li{
+    background-image: url('../Minicons_Pack_1/Archive-empty.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Archive-Full ul li{
+    background-image: url('../Minicons_Pack_1/Archive-Full.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Arrow-1 ul li{
+    background-image: url('../Minicons_Pack_1/Arrow-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Arrow-2 ul li{
+    background-image: url('../Minicons_Pack_1/Arrow-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Back ul li{
+    background-image: url('../Minicons_Pack_1/Back.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Baloons ul li{
+    background-image: url('../Minicons_Pack_1/Baloons.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Barcode ul li{
+    background-image: url('../Minicons_Pack_1/Barcode.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Battery-0 ul li{
+    background-image: url('../Minicons_Pack_1/Battery-0.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Battery-1 ul li{
+    background-image: url('../Minicons_Pack_1/Battery-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Battery-2 ul li{
+    background-image: url('../Minicons_Pack_1/Battery-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Battery-3 ul li{
+    background-image: url('../Minicons_Pack_1/Battery-3.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Bird ul li{
+    background-image: url('../Minicons_Pack_1/Bird.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Bluetooth ul li{
+    background-image: url('../Minicons_Pack_1/Bluetooth.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Books ul li{
+    background-image: url('../Minicons_Pack_1/Books.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Bowtie ul li{
+    background-image: url('../Minicons_Pack_1/Bowtie.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Brightness ul li{
+    background-image: url('../Minicons_Pack_1/Brightness.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Brush ul li{
+    background-image: url('../Minicons_Pack_1/Brush.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Bus ul li{
+    background-image: url('../Minicons_Pack_1/Bus.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Calculator ul li{
+    background-image: url('../Minicons_Pack_1/Calculator.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Calendar-1 ul li{
+    background-image: url('../Minicons_Pack_1/Calendar-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Calendar-2 ul li{
+    background-image: url('../Minicons_Pack_1/Calendar-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Camera ul li{
+    background-image: url('../Minicons_Pack_1/Camera.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Car-1 ul li{
+    background-image: url('../Minicons_Pack_1/Car-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Car-2 ul li{
+    background-image: url('../Minicons_Pack_1/Car-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cassette ul li{
+    background-image: url('../Minicons_Pack_1/Cassette.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Chat-bubbles ul li{
+    background-image: url('../Minicons_Pack_1/Chat-bubbles.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Checklist ul li{
+    background-image: url('../Minicons_Pack_1/Checklist.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Chip ul li{
+    background-image: url('../Minicons_Pack_1/Chip.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Claw ul li{
+    background-image: url('../Minicons_Pack_1/Claw.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Clock-1 ul li{
+    background-image: url('../Minicons_Pack_1/Clock-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Clock-2 ul li{
+    background-image: url('../Minicons_Pack_1/Clock-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cloud-offline ul li{
+    background-image: url('../Minicons_Pack_1/Cloud-offline.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cloud-online ul li{
+    background-image: url('../Minicons_Pack_1/Cloud-online.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cloud-sync ul li{
+    background-image: url('../Minicons_Pack_1/Cloud-sync.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cloud ul li{
+    background-image: url('../Minicons_Pack_1/Cloud.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cloverleaf ul li{
+    background-image: url('../Minicons_Pack_1/Cloverleaf.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cog-1 ul li{
+    background-image: url('../Minicons_Pack_1/Cog-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cog-2 ul li{
+    background-image: url('../Minicons_Pack_1/Cog-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cog-3 ul li{
+    background-image: url('../Minicons_Pack_1/Cog-3.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cogs ul li{
+    background-image: url('../Minicons_Pack_1/Cogs.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Command ul li{
+    background-image: url('../Minicons_Pack_1/Command.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Comments ul li{
+    background-image: url('../Minicons_Pack_1/Comments.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Compass ul li{
+    background-image: url('../Minicons_Pack_1/Compass.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Console ul li{
+    background-image: url('../Minicons_Pack_1/Console.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Cookie ul li{
+    background-image: url('../Minicons_Pack_1/Cookie.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Credit-Card ul li{
+    background-image: url('../Minicons_Pack_1/Credit-Card.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Delete-minus ul li{
+    background-image: url('../Minicons_Pack_1/Delete-minus.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Delicous ul li{
+    background-image: url('../Minicons_Pack_1/Delicous.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-deviantart ul li{
+    background-image: url('../Minicons_Pack_1/deviantart.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Diamond ul li{
+    background-image: url('../Minicons_Pack_1/Diamond.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-digg ul li{
+    background-image: url('../Minicons_Pack_1/digg.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Disk ul li{
+    background-image: url('../Minicons_Pack_1/Disk.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Dislike ul li{
+    background-image: url('../Minicons_Pack_1/Dislike.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Documents-1 ul li{
+    background-image: url('../Minicons_Pack_1/Documents-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Documents-2 ul li{
+    background-image: url('../Minicons_Pack_1/Documents-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Dreieck ul li{
+    background-image: url('../Minicons_Pack_1/Dreieck.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Dribbble-2 ul li{
+    background-image: url('../Minicons_Pack_1/Dribbble-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Dribbble ul li{
+    background-image: url('../Minicons_Pack_1/Dribbble.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Drop ul li{
+    background-image: url('../Minicons_Pack_1/Drop.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Egg ul li{
+    background-image: url('../Minicons_Pack_1/Egg.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Eject ul li{
+    background-image: url('../Minicons_Pack_1/Eject.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Facebook ul li{
+    background-image: url('../Minicons_Pack_1/Facebook.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Fast-Forward ul li{
+    background-image: url('../Minicons_Pack_1/Fast-Forward.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Feather ul li{
+    background-image: url('../Minicons_Pack_1/Feather.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Filmstrip ul li{
+    background-image: url('../Minicons_Pack_1/Filmstrip.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Flask ul li{
+    background-image: url('../Minicons_Pack_1/Flask.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Flickr ul li{
+    background-image: url('../Minicons_Pack_1/Flickr.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Folder ul li{
+    background-image: url('../Minicons_Pack_1/Folder.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Foot ul li{
+    background-image: url('../Minicons_Pack_1/Foot.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Forrst ul li{
+    background-image: url('../Minicons_Pack_1/Forrst.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Forward ul li{
+    background-image: url('../Minicons_Pack_1/Forward.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Full-screen ul li{
+    background-image: url('../Minicons_Pack_1/Full-screen.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Game-controller ul li{
+    background-image: url('../Minicons_Pack_1/Game-controller.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Genius ul li{
+    background-image: url('../Minicons_Pack_1/Genius.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Google-plus ul li{
+    background-image: url('../Minicons_Pack_1/Google-plus.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Graph ul li{
+    background-image: url('../Minicons_Pack_1/Graph.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Hand ul li{
+    background-image: url('../Minicons_Pack_1/Hand.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Headphones ul li{
+    background-image: url('../Minicons_Pack_1/Headphones.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Hearts ul li{
+    background-image: url('../Minicons_Pack_1/Hearts.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Help ul li{
+    background-image: url('../Minicons_Pack_1/Help.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-High-Heel ul li{
+    background-image: url('../Minicons_Pack_1/High-Heel.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Home ul li{
+    background-image: url('../Minicons_Pack_1/Home.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Info ul li{
+    background-image: url('../Minicons_Pack_1/Info.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Internet ul li{
+    background-image: url('../Minicons_Pack_1/Internet.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Kanye-Glasses ul li{
+    background-image: url('../Minicons_Pack_1/Kanye-Glasses.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Key ul li{
+    background-image: url('../Minicons_Pack_1/Key.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-last-fm ul li{
+    background-image: url('../Minicons_Pack_1/last.fm.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Like ul li{
+    background-image: url('../Minicons_Pack_1/Like.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Link ul li{
+    background-image: url('../Minicons_Pack_1/Link.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-linkin ul li{
+    background-image: url('../Minicons_Pack_1/linkin.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-List ul li{
+    background-image: url('../Minicons_Pack_1/List.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Lock ul li{
+    background-image: url('../Minicons_Pack_1/Lock.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Magnet ul li{
+    background-image: url('../Minicons_Pack_1/Magnet.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Mail-Plane ul li{
+    background-image: url('../Minicons_Pack_1/Mail-Plane.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Mail ul li{
+    background-image: url('../Minicons_Pack_1/Mail.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Marker-1 ul li{
+    background-image: url('../Minicons_Pack_1/Marker-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Marker-2 ul li{
+    background-image: url('../Minicons_Pack_1/Marker-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Minus ul li{
+    background-image: url('../Minicons_Pack_1/Minus.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Monitor ul li{
+    background-image: url('../Minicons_Pack_1/Monitor.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Monster ul li{
+    background-image: url('../Minicons_Pack_1/Monster.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Mouse ul li{
+    background-image: url('../Minicons_Pack_1/Mouse.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Moustache ul li{
+    background-image: url('../Minicons_Pack_1/Moustache.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Next ul li{
+    background-image: url('../Minicons_Pack_1/Next.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Pacman ul li{
+    background-image: url('../Minicons_Pack_1/Pacman.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Paint-document ul li{
+    background-image: url('../Minicons_Pack_1/Paint-document.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Paperclip ul li{
+    background-image: url('../Minicons_Pack_1/Paperclip.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Pause ul li{
+    background-image: url('../Minicons_Pack_1/Pause.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Paypal ul li{
+    background-image: url('../Minicons_Pack_1/Paypal.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Pen ul li{
+    background-image: url('../Minicons_Pack_1/Pen.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Pencil-and-Brush ul li{
+    background-image: url('../Minicons_Pack_1/Pencil-and-Brush.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Pencil ul li{
+    background-image: url('../Minicons_Pack_1/Pencil.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-People-1 ul li{
+    background-image: url('../Minicons_Pack_1/People-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-People-2 ul li{
+    background-image: url('../Minicons_Pack_1/People-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Play-1 ul li{
+    background-image: url('../Minicons_Pack_1/Play-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Play-2 ul li{
+    background-image: url('../Minicons_Pack_1/Play-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Plus ul li{
+    background-image: url('../Minicons_Pack_1/Plus.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Pokeball ul li{
+    background-image: url('../Minicons_Pack_1/Pokéball.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Previous ul li{
+    background-image: url('../Minicons_Pack_1/Previous.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Puzzle ul li{
+    background-image: url('../Minicons_Pack_1/Puzzle.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Rating-minus ul li{
+    background-image: url('../Minicons_Pack_1/Rating-minus.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Rating-plus ul li{
+    background-image: url('../Minicons_Pack_1/Rating-plus.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Recycling ul li{
+    background-image: url('../Minicons_Pack_1/Recycling.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Rewind ul li{
+    background-image: url('../Minicons_Pack_1/Rewind.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-RSS ul li{
+    background-image: url('../Minicons_Pack_1/RSS.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Scaling ul li{
+    background-image: url('../Minicons_Pack_1/Scaling.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Scissors ul li{
+    background-image: url('../Minicons_Pack_1/Scissors.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Screenshot ul li{
+    background-image: url('../Minicons_Pack_1/Screenshot.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Search ul li{
+    background-image: url('../Minicons_Pack_1/Search.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Searching ul li{
+    background-image: url('../Minicons_Pack_1/Searching.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Shield ul li{
+    background-image: url('../Minicons_Pack_1/Shield.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Shit ul li{
+    background-image: url('../Minicons_Pack_1/Shit.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Shoe ul li{
+    background-image: url('../Minicons_Pack_1/Shoe.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Shopping-Basket ul li{
+    background-image: url('../Minicons_Pack_1/Shopping-Basket.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Shopping-cart-1 ul li{
+    background-image: url('../Minicons_Pack_1/Shopping-cart-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Shopping-Cart-2 ul li{
+    background-image: url('../Minicons_Pack_1/Shopping-Cart-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Shuffle ul li{
+    background-image: url('../Minicons_Pack_1/Shuffle.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Shut-down ul li{
+    background-image: url('../Minicons_Pack_1/Shut-down.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Skype-absent ul li{
+    background-image: url('../Minicons_Pack_1/Skype-absent.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Skype-offline ul li{
+    background-image: url('../Minicons_Pack_1/Skype-offline.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Skype-online ul li{
+    background-image: url('../Minicons_Pack_1/Skype-online.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Skype ul li{
+    background-image: url('../Minicons_Pack_1/Skype.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Sound-note ul li{
+    background-image: url('../Minicons_Pack_1/Sound-note.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Spinner ul li{
+    background-image: url('../Minicons_Pack_1/Spinner.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Star ul li{
+    background-image: url('../Minicons_Pack_1/Star.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Stop ul li{
+    background-image: url('../Minicons_Pack_1/Stop.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Sync ul li{
+    background-image: url('../Minicons_Pack_1/Sync.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Tags ul li{
+    background-image: url('../Minicons_Pack_1/Tags.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Target ul li{
+    background-image: url('../Minicons_Pack_1/Target.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Telephone ul li{
+    background-image: url('../Minicons_Pack_1/Telephone.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Television ul li{
+    background-image: url('../Minicons_Pack_1/Television.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Thunder-1 ul li{
+    background-image: url('../Minicons_Pack_1/Thunder-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Thunder-2 ul li{
+    background-image: url('../Minicons_Pack_1/Thunder-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Tools ul li{
+    background-image: url('../Minicons_Pack_1/Tools.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Trash ul li{
+    background-image: url('../Minicons_Pack_1/Trash.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Truck ul li{
+    background-image: url('../Minicons_Pack_1/Truck.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Tumblr ul li{
+    background-image: url('../Minicons_Pack_1/Tumblr.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Twitter-1 ul li{
+    background-image: url('../Minicons_Pack_1/Twitter-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Twitter-2 ul li{
+    background-image: url('../Minicons_Pack_1/Twitter-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Umbrella-1 ul li{
+    background-image: url('../Minicons_Pack_1/Umbrella-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Umbrella-2 ul li{
+    background-image: url('../Minicons_Pack_1/Umbrella-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Under-Construction ul li{
+    background-image: url('../Minicons_Pack_1/Under-Construction.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Unlock ul li{
+    background-image: url('../Minicons_Pack_1/Unlock.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Upload_Download ul li{
+    background-image: url('../Minicons_Pack_1/Upload_Download.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Video ul li{
+    background-image: url('../Minicons_Pack_1/Video.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-View ul li{
+    background-image: url('../Minicons_Pack_1/View.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Vimeo ul li{
+    background-image: url('../Minicons_Pack_1/Vimeo.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Volumen-0 ul li{
+    background-image: url('../Minicons_Pack_1/Volumen-0.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Volumen-1 ul li{
+    background-image: url('../Minicons_Pack_1/Volumen-1.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Volumen-2 ul li{
+    background-image: url('../Minicons_Pack_1/Volumen-2.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Wallpaper ul li{
+    background-image: url('../Minicons_Pack_1/Wallpaper.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Warning ul li{
+    background-image: url('../Minicons_Pack_1/Warning.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Yahoo ul li{
+    background-image: url('../Minicons_Pack_1/Yahoo.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Yin-and-Yang ul li{
+    background-image: url('../Minicons_Pack_1/Yin-and-Yang.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Youtube ul li{
+    background-image: url('../Minicons_Pack_1/Youtube.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Zip ul li{
+    background-image: url('../Minicons_Pack_1/Zip.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Zoom-in ul li{
+    background-image: url('../Minicons_Pack_1/Zoom-in.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
+.lists-Zoom-out ul li{
+    background-image: url('../Minicons_Pack_1/Zoom-out.png');
+    background-repeat: no-repeat;
+    background-position: 0 7px;
+    padding-left: 26px !important;
+}
