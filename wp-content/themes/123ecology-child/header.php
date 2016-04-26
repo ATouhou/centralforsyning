@@ -379,7 +379,7 @@ if ( function_exists( 'get_option_tree') ) {
 								<?php $plugins = get_option('active_plugins');?>
 								<?php $required_plugin = 'sitepress-multilingual-cms/sitepress.php';?>
 								<?php if ( in_array( $required_plugin , $plugins ) ) {?>
-								<div class="meta-data-wpml clearfix"><?php if(!$wpml_switcher_label){?><div class="wpml_label"><?php _e('Languages', GETTEXT_DOMAIN); ?>:</div><?php }?>
+								<div class="meta-data-wpml clearfix"><?php if(!$wpml_switcher_label){?><div class="wpml_label"><?php _e('Languages', GETTEXT_DOMAIN_CHILD); ?>:</div><?php }?>
 								    <div class="wpml_flags"><?php language_selector_flags(); ?></div>
 								</div>
 								<?php }?>

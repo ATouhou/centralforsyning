@@ -5,12 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WooCommerce Shipping Method Class
+ * WooCommerce Shipping Method Class.
  *
  * Extended by shipping methods to handle shipping calculations etc.
  *
  * @class       WC_Shipping_Method
- * @version     1.6.4
+ * @version     2.3.0
  * @package     WooCommerce/Abstracts
  * @category    Abstract Class
  * @author      WooThemes
@@ -18,105 +18,96 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class WC_Shipping_Method extends WC_Settings_API {
 
 	/** @var string Unique ID for the shipping method - must be set. */
-	var $id;
+	public $id;
 
 	/** @var int Optional instance ID. */
-	var $number;
+	public $number;
 
 	/** @var string Method title */
-	var $method_title;
+	public $method_title;
 
 	/** @var string User set title */
-	var $title;
+	public $title;
 
 	/**  @var bool True if the method is available. */
-	var $availability;
+	public $availability;
 
 	/** @var array Array of countries this method is enabled for. */
-	var $countries          = array();
+	public $countries    = array();
 
 	/** @var string If 'taxable' tax will be charged for this method (if applicable) */
-	var $tax_status         = 'taxable';
+	public $tax_status   = 'taxable';
 
 	/** @var mixed Fees for the method */
-	var $fee                = 0;
+	public $fee          = 0;
 
 	/** @var float Minimum fee for the method */
-	var $minimum_fee        = null;
+	public $minimum_fee  = null;
 
 	/** @var bool Enabled for disabled */
-	var $enabled            = false;
+	public $enabled      = false;
 
 	/** @var bool Whether the method has settings or not (In WooCommerce > Settings > Shipping) */
-	var $has_settings       = true;
+	public $has_settings = true;
 
 	/** @var array Features this method supports. */
-	var $supports           = array();    // Features this method supports.
+	public $supports     = array();
 
 	/** @var array This is an array of rates - methods must populate this array to register shipping costs */
-	var $rates              = array();
+	public $rates        = array();
 
 	/**
-	 * Whether or not we need to calculate tax on top of the shipping rate
+	 * Whether or not we need to calculate tax on top of the shipping rate.
 	 *
 	 * @return boolean
 	 */
 	public function is_taxable() {
-		return ( get_option( 'woocommerce_calc_taxes' ) == 'yes' && $this->tax_status == 'taxable' && ! WC()->customer->is_vat_exempt() );
+		return ( wc_tax_enabled() && $this->tax_status == 'taxable' && ! WC()->customer->is_vat_exempt() );
 	}
 
 	/**
-	 * Add a rate
+	 * Add a rate.
 	 *
 	 * Add a shipping rate. If taxes are not set they will be calculated based on cost.
 	 *
 	 * @param array $args (default: array())
 	 */
 	public function add_rate( $args = array() ) {
-
-		$defaults = array(
+		$args = wp_parse_args( $args, array(
 			'id'        => '',          // ID for the rate
 			'label'     => '',          // Label for the rate
 			'cost'      => '0',         // Amount or array of costs (per item shipping)
 			'taxes'     => '',          // Pass taxes, nothing to have it calculated for you, or 'false' to calc no tax
 			'calc_tax'  => 'per_order'  // Calc tax per_order or per_item. Per item needs an array of costs
-		);
-
-		$args = wp_parse_args( $args, $defaults );
-
-		extract( $args );
+		) );
 
 		// Id and label are required
-		if ( ! $id || ! $label ) { return; }
+		if ( ! $args['id'] || ! $args['label'] ) {
+			return;
+		}
 
-		// Handle cost
-		$total_cost = round( ( is_array( $cost ) ) ? array_sum( $cost ) : $cost, absint( get_option( 'woocommerce_price_num_decimals' ) ) );
+		// Total up the cost
+		$total_cost = is_array( $args['cost'] ) ? array_sum( $args['cost'] ) : $args['cost'];
+		$taxes      = $args['taxes'];
 
 		// Taxes - if not an array and not set to false, calc tax based on cost and passed calc_tax variable
 		// This saves shipping methods having to do complex tax calculations
 		if ( ! is_array( $taxes ) && $taxes !== false && $total_cost > 0 && $this->is_taxable() ) {
-
 			$taxes = array();
 
-			switch ( $calc_tax ) {
-
+			switch ( $args['calc_tax'] ) {
 				case "per_item" :
-
 					// If we have an array of costs we can look up each items tax class and add tax accordingly
-					if ( is_array( $cost ) ) {
+					if ( is_array( $args['cost'] ) ) {
 
 						$cart = WC()->cart->get_cart();
 
-						foreach ( $cost as $cost_key => $amount ) {
-
+						foreach ( $args['cost'] as $cost_key => $amount ) {
 							if ( ! isset( $cart[ $cost_key ] ) ) {
 								continue;
 							}
 
-							$_product = $cart[	$cost_key ]['data'];
-
-							$rates = WC_Tax::get_shipping_tax_rates( $_product->get_tax_class() );
-							$item_taxes = WC_Tax::calc_shipping_tax( $amount, $rates );
+							$item_taxes = WC_Tax::calc_shipping_tax( $amount, WC_Tax::get_shipping_tax_rates( $cart[ $cost_key ]['data']->get_tax_class() ) );
 
 							// Sum the item taxes
 							foreach ( array_keys( $taxes + $item_taxes ) as $key ) {
@@ -125,10 +116,8 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 						}
 
 						// Add any cost for the order - order costs are in the key 'order'
-						if ( isset( $cost['order'] ) ) {
-
-							$rates = WC_Tax::get_shipping_tax_rates();
-							$item_taxes = WC_Tax::calc_shipping_tax( $cost['order'], $rates );
+						if ( isset( $args['cost']['order'] ) ) {
+							$item_taxes = WC_Tax::calc_shipping_tax( $args['cost']['order'], WC_Tax::get_shipping_tax_rates() );
 
 							// Sum the item taxes
 							foreach ( array_keys( $taxes + $item_taxes ) as $key ) {
@@ -136,38 +125,34 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 							}
 						}
 					}
-
 				break;
-
 				default :
-
-					$rates = WC_Tax::get_shipping_tax_rates();
-					$taxes = WC_Tax::calc_shipping_tax( $total_cost, $rates );
-
+					$taxes = WC_Tax::calc_shipping_tax( $total_cost, WC_Tax::get_shipping_tax_rates() );
 				break;
 			}
 		}
 
-		$this->rates[] = new WC_Shipping_Rate( $id, $label, $total_cost, $taxes, $this->id );
+		// Round the total cost after taxes have been calculated.
+		$total_cost    = wc_format_decimal( $total_cost, wc_get_price_decimals() );
+		$this->rates[] = new WC_Shipping_Rate( $args['id'], $args['label'], $total_cost, $taxes, $this->id );
 	}
 
 	/**
-	 * has_settings function.
+	 * Check if the shipping method has settings or not.
 	 *
 	 * @return bool
 	 */
 	public function has_settings() {
-		return ( $this->has_settings );
+		return $this->has_settings;
 	}
 
 	/**
-	 * is_available function.
+	 * Check if shipping method is available or not.
 	 *
 	 * @param array $package
 	 * @return bool
 	 */
 	public function is_available( $package ) {
-
 		if ( 'no' == $this->enabled ) {
 			return false;
 		}
@@ -176,7 +161,6 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 		$countries = is_array( $this->countries ) ? $this->countries : array();
 
 		switch ( $this->availability ) {
-
 			case 'specific' :
 			case 'including' :
 				$ship_to_countries = array_intersect( $countries, array_keys( WC()->countries->get_shipping_countries() ) );
@@ -199,7 +183,7 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 	}
 
 	/**
-	 * Return the gateways title
+	 * Return the shipping method title.
 	 *
 	 * @return string
 	 */
@@ -208,18 +192,19 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 	}
 
 	/**
-	 * get_fee function.
+	 * Get fee for the shipping method.
 	 *
-	 * @access public
 	 * @param mixed $fee
 	 * @param mixed $total
 	 * @return float
 	 */
 	public function get_fee( $fee, $total ) {
-		if ( strstr( $fee, '%' ) ) :
+		if ( strstr( $fee, '%' ) ) {
 			$fee = ( $total / 100 ) * str_replace( '%', '', $fee );
-		endif;
-		if ( ! empty( $this->minimum_fee ) && $this->minimum_fee > $fee ) { $fee = $this->minimum_fee; }
+		}
+		if ( ! empty( $this->minimum_fee ) && $this->minimum_fee > $fee ) {
+			$fee = $this->minimum_fee;
+		}
 		return $fee;
 	}
 

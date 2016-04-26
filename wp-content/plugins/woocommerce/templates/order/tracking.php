@@ -2,14 +2,24 @@
 /**
  * Order tracking
  *
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     2.2.0
+ * This template can be overridden by copying it to yourtheme/woocommerce/order/tracking.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
+ * will need to copy the new files to your theme to maintain compatibility. We try to do this.
+ * as little as possible, but it does happen. When this occurs the version of the template file will.
+ * be bumped and the readme will list any important changes.
+ *
+ * @see 	    http://docs.woothemes.com/document/template-structure/
+ * @author  WooThemes
+ * @package WooCommerce/Templates
+ * @version 2.2.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
-$order_status_text = sprintf( __( 'Order %s which was made %s has the status &ldquo;%s&rdquo;', 'woocommerce' ), $order->get_order_number(), human_time_diff( strtotime( $order->order_date ), current_time( 'timestamp' ) ) . ' ' . __( 'ago', 'woocommerce' ), wc_get_order_status_name( $order->get_status() ) );
+$order_status_text = sprintf( __( 'Order #%s which was made %s has the status &ldquo;%s&rdquo;', 'woocommerce' ), $order->get_order_number(), human_time_diff( strtotime( $order->order_date ), current_time( 'timestamp' ) ) . ' ' . __( 'ago', 'woocommerce' ), wc_get_order_status_name( $order->get_status() ) );
 
 if ( $order->has_status( 'completed' ) ) $order_status_text .= ' ' . __( 'and was completed', 'woocommerce' ) . ' ' . human_time_diff( strtotime( $order->completed_date ), current_time( 'timestamp' ) ) . __( ' ago', 'woocommerce' );
 

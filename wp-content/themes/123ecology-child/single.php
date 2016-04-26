@@ -30,7 +30,7 @@ if ( function_exists( 'get_option_tree') ) {
 						<?php get_template_part('includes/single-post' ) ?>
 						<div class="row-fluid"><div class="<?php if ($full_width){?>span9<?php }else{?>span12<?php }?>"><?php comments_template('', true); ?></div></div>
 	                    <?php endwhile; else: ?>
-	                        <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN) ?></p>
+	                        <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD) ?></p>
 	                    <?php endif; ?>
                     </div>
                     <?php if (!$full_width){?>

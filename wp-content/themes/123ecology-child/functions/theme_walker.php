@@ -10,7 +10,7 @@ class portfolio_filter_walker extends Walker_Category {
       $cat_name = apply_filters( 'list_cats', $cat_name, $category );
       $cat_name_ = apply_filters( 'list_cats', $cat_name_, $category );
 	  $link = '<a href="#filter" ';
-      $link .= 'title="' . sprintf( __('View all items filed under', GETTEXT_DOMAIN), $cat_name) . '" ';
+      $link .= 'title="' . sprintf( __('View all items filed under', GETTEXT_DOMAIN_CHILD), $cat_name) . '" ';
       $link .= 'data-option-value=".'.$cat_name.'"';
       $link .= '>';
       // $link .= $cat_name . '</a>';

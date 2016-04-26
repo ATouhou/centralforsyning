@@ -50,7 +50,7 @@ include_once( 'option-tree/theme-options.php' );
 
 define( 'THEME_ASSETS_CHILD', get_bloginfo('url') . '/wp-content/themes/123ecology-child/assets/', true );
 
-define( 'GETTEXT_DOMAIN', '123ecology-child' );
+define( 'GETTEXT_DOMAIN_CHILD', '123ecology-child' );
 
 
 
@@ -62,8 +62,8 @@ add_action('after_setup_theme', 'my_theme_setup_child');
 
 function my_theme_setup_child(){
 
-    load_theme_textdomain( GETTEXT_DOMAIN, get_template_directory() . '/languages');
-
+    load_child_theme_textdomain( GETTEXT_DOMAIN_CHILD,  'http://localhost/centralforsyning/wp-content/themes/123ecology/languages');
+//load_child_theme_textdomain( '123ecology-child', get_stylesheet_directory_uri() . '/languages' );
 }
 
 
@@ -176,7 +176,7 @@ function my_theme_register_required_plugins_child() {
 
 
 
-	$theme_text_domain = '123ecology';
+	$theme_text_domain = '123ecology-child';
 
 
 
@@ -557,7 +557,7 @@ function add_admin_scripts_child( $hook ) {
 
     if ( $hook == 'post-new.php' || $hook == 'post.php' ) {    
 
-        wp_enqueue_script('custom-js', get_template_directory_uri().'/functions/js/custom-js.js');
+        wp_enqueue_script('custom-js', get_bloginfo('url') . '/wp-content/themes/123ecology-child' .'/functions/js/custom-js.js');
 
     }
 
@@ -1163,7 +1163,7 @@ ob_start();
 
     <a class="dropdown-toggle Total cart-icon" data-toggle="dropdown" href="#">
 
-    	<?php _e('Cart', GETTEXT_DOMAIN ); ?> - <span><?php echo $woocommerce->cart->get_cart_subtotal(); ?></span>
+    	<?php _e('Cart', GETTEXT_DOMAIN_CHILD ); ?> - <span><?php echo $woocommerce->cart->get_cart_subtotal(); ?></span>
 
     </a>
 
@@ -1215,7 +1215,7 @@ ob_start();
 
 							<div class="cart-meta">
 
-								<?php echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf('<a href="%s" class="remove" title="%s">Fjern</a>', esc_url( $woocommerce->cart->get_remove_url( $cart_item_key ) ), __('Fjern dette produkt', GETTEXT_DOMAIN) ), $cart_item_key );?>
+								<?php echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf('<a href="%s" class="remove" title="%s">Fjern</a>', esc_url( $woocommerce->cart->get_remove_url( $cart_item_key ) ), __('Fjern dette produkt', GETTEXT_DOMAIN_CHILD) ), $cart_item_key );?>
 
 								<span class="quantity"><?php printf( '%s &times; %s', $cart_item['quantity'], $product_price ); ?></span>
 
@@ -1235,7 +1235,7 @@ ob_start();
 
 		
 
-				<div class="empty"><?php _e('No products in the cart.', GETTEXT_DOMAIN); ?></div>
+				<div class="empty"><?php _e('No products in the cart.', GETTEXT_DOMAIN_CHILD); ?></div>
 
 		
 
@@ -1253,7 +1253,7 @@ ob_start();
 
 		<div class="header_cart_footer">
 
-			<p class="total cleanfix"><strong><?php _e('Cart Subtotal', GETTEXT_DOMAIN); ?>:</strong> <span><?php echo $woocommerce->cart->get_cart_subtotal(); ?></span></p>
+			<p class="total cleanfix"><strong><?php _e('Cart Subtotal', GETTEXT_DOMAIN_CHILD); ?>:</strong> <span><?php echo $woocommerce->cart->get_cart_subtotal(); ?></span></p>
 
 		
 
@@ -1263,9 +1263,9 @@ ob_start();
 
 			<p class="buttons">
 
-				<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>" class="btn btn-primary btn-small"><?php _e('View Cart &rarr;', GETTEXT_DOMAIN); ?></a>
+				<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>" class="btn btn-primary btn-small"><?php _e('View Cart &rarr;', GETTEXT_DOMAIN_CHILD); ?></a>
 
-				<a href="<?php echo $woocommerce->cart->get_checkout_url(); ?>" class="btn btn-primary btn-small checkout"><?php _e('Checkout &rarr;', GETTEXT_DOMAIN); ?></a>
+				<a href="<?php echo $woocommerce->cart->get_checkout_url(); ?>" class="btn btn-primary btn-small checkout"><?php _e('Checkout &rarr;', GETTEXT_DOMAIN_CHILD); ?></a>
 
 			</p>
 

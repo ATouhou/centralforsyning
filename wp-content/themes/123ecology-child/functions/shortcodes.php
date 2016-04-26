@@ -693,7 +693,7 @@ function front_tabs( $atts, $content = null ) {
 			
 	}else{
 	    
-	    $out .= '<p style="color: #ed1c24;">'.__('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN).'</p>';
+	    $out .= '<p style="color: #ed1c24;">'.__('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD).'</p>';
 	    
 	}   
         
@@ -892,11 +892,11 @@ function widget($atts, $content=null){
 								$out .= '<a class="comment" href="'.get_comments_link().'">';
 								$num_comments=get_comments_number();
 									if ( $num_comments == 0 ) {
-										$out .=  __('No Comments', GETTEXT_DOMAIN);
+										$out .=  __('No Comments', GETTEXT_DOMAIN_CHILD);
 									} elseif ( $num_comments > 1 ) {
-										$out .=  $num_comments . __(' Comments', GETTEXT_DOMAIN);
+										$out .=  $num_comments . __(' Comments', GETTEXT_DOMAIN_CHILD);
 									} else {
-										$out .=  __('1 Comment', GETTEXT_DOMAIN);
+										$out .=  __('1 Comment', GETTEXT_DOMAIN_CHILD);
 									}
 								$out .= '</a>';
 							}
@@ -905,9 +905,9 @@ function widget($atts, $content=null){
 						$out .= '<div class="content">';
 							$out .= '<p>'.excerpt_portfolio(15);
 							if ( $linkURL ) {
-							$out .= ' <a class="more-link" href="'.$linkURL.'">'.__( '[view more]', GETTEXT_DOMAIN).'</a></p>';
+							$out .= ' <a class="more-link" href="'.$linkURL.'">'.__( '[view more]', GETTEXT_DOMAIN_CHILD).'</a></p>';
 							}else{
-							$out .= ' <a class="more-link" href="'.get_permalink().'">'.__( '[read more]', GETTEXT_DOMAIN).'</a></p>';
+							$out .= ' <a class="more-link" href="'.get_permalink().'">'.__( '[read more]', GETTEXT_DOMAIN_CHILD).'</a></p>';
 							}
 						$out .= '</div>';
 				$out .= '</div>';
@@ -955,14 +955,14 @@ function clients($atts, $content=null){
 	                        $out .= $image[0].'" />';
 						$out .= '</a>';
 					} else {
-                    	$out .= '<p style="color: #ed1c24;">'.__( 'Please add an image to "Featured Image" for client thumbnail.', GETTEXT_DOMAIN).'</p>';
+                    	$out .= '<p style="color: #ed1c24;">'.__( 'Please add an image to "Featured Image" for client thumbnail.', GETTEXT_DOMAIN_CHILD).'</p>';
                     }
 					$out .= '</li>';
 					endwhile; endif;
 				$out .= '</ul>';
 			$out .= '</div>';
 	}else{
-    	$out .= '<p style="color: #ed1c24;">'.__('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN).'</p>';
+    	$out .= '<p style="color: #ed1c24;">'.__('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD).'</p>';
     }
 									
 	return $out;
@@ -1001,7 +1001,7 @@ global $woocommerce_loop;
 	
 	if($video_url==""){?>
 	
-		<p><?php _e('Please enter a "video_url" value for "Video" shortcode.', GETTEXT_DOMAIN); ?></p>
+		<p><?php _e('Please enter a "video_url" value for "Video" shortcode.', GETTEXT_DOMAIN_CHILD); ?></p>
 	
 	<?php }else{?>
 	
@@ -1126,7 +1126,7 @@ global $woocommerce_loop;
 		</div>
 	</div><?php
 	}else{
-		?><p><?php _e('Sorry, shortcode is not available now, please activate WooCommerce plugin.', GETTEXT_DOMAIN); ?></p><?php
+		?><p><?php _e('Sorry, shortcode is not available now, please activate WooCommerce plugin.', GETTEXT_DOMAIN_CHILD); ?></p><?php
 	}
 	
 	return ob_get_clean();
@@ -1259,7 +1259,7 @@ function team_members($atts, $content=null){
 					    <?php if ( (function_exists('has_post_thumbnail')) && (has_post_thumbnail()) ) {?>
 					        <img alt="<?php the_title(); ?>" src="<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'portfolio-post' ); echo $image[0];?>"/>
 					    <?php } else{?>
-					        <img alt="<?php _e('No Picture', GETTEXT_DOMAIN); ?>" src="<?php echo THEME_ASSETS_CHILD; ?>img/placeholder-user.png"/>
+					        <img alt="<?php _e('No Picture', GETTEXT_DOMAIN_CHILD); ?>" src="<?php echo THEME_ASSETS_CHILD; ?>img/placeholder-user.png"/>
 					    <?php }?>
 					    
 					    <div class="member-content">
@@ -1293,7 +1293,7 @@ function team_members($atts, $content=null){
 			        </div>
 
 				    <?php }else{?>
-				    	<p style="color: #ed1c24;"><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN); ?></p>
+				    	<p style="color: #ed1c24;"><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD); ?></p>
 				    <?php }?>
     
 	<?php return ob_get_clean();	
@@ -1490,7 +1490,7 @@ function showbiz($atts, $content=null){
 										            $image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' ); 
 										            echo $image[0];
 										        };?>
-												">[<?php _e('view gallery', GETTEXT_DOMAIN); ?>]</a>
+												">[<?php _e('view gallery', GETTEXT_DOMAIN_CHILD); ?>]</a>
 												<?php };?>
 												<?php if ( $lightbox ) {;
 										            if (!$videoURL) { $thumbnail_id = get_post_thumbnail_id( get_the_ID() ); }
@@ -1546,16 +1546,16 @@ function showbiz($atts, $content=null){
 				                            $image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' ); 
 				                            echo $image[0];
 			                            };?>
-										">[<?php _e('view gallery', GETTEXT_DOMAIN); ?>]</a>
+										">[<?php _e('view gallery', GETTEXT_DOMAIN_CHILD); ?>]</a>
 										<?php }elseif($linkURL){;?>
 										<a href="<?php echo $linkURL; ?>
-										">[<?php _e('view more', GETTEXT_DOMAIN); ?>]</a>
+										">[<?php _e('view more', GETTEXT_DOMAIN_CHILD); ?>]</a>
 										<?php }elseif($type=="product") {;?>
 										<a href="<?php the_permalink(); ?>
-										">[<?php _e('purchase now', GETTEXT_DOMAIN); ?>]</a>
+										">[<?php _e('purchase now', GETTEXT_DOMAIN_CHILD); ?>]</a>
 										<?php }else{;?>
 										<a href="<?php the_permalink(); ?>
-										">[<?php _e('read more', GETTEXT_DOMAIN); ?>]</a>
+										">[<?php _e('read more', GETTEXT_DOMAIN_CHILD); ?>]</a>
 										<?php };?>
 										<?php if ( $lightbox ) {;
 				                            if (!$videoURL) { $thumbnail_id = get_post_thumbnail_id( get_the_ID() ); }
@@ -1753,7 +1753,7 @@ function showbiz($atts, $content=null){
 														<div class="post_meta">
 															<a href="<?php echo get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d')); ?>" class="date"><?php the_time('M j, Y'); ?></a>
 															<a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>" class="author"><?php echo get_the_author(); ?></a>
-															<?php if($type!="portfolio"){;?><a href="<?php comments_link(); ?>" class="comment"><?php comments_number(__('No Comments', GETTEXT_DOMAIN), __('1 Comment', GETTEXT_DOMAIN), __('% Comments', GETTEXT_DOMAIN)); ?></a><?php };?>
+															<?php if($type!="portfolio"){;?><a href="<?php comments_link(); ?>" class="comment"><?php comments_number(__('No Comments', GETTEXT_DOMAIN_CHILD), __('1 Comment', GETTEXT_DOMAIN_CHILD), __('% Comments', GETTEXT_DOMAIN_CHILD)); ?></a><?php };?>
 														</div>
 														<?php do_action( 'woocommerce_front_rating' ); ?>
 														<div class="divide10"></div>
@@ -1769,7 +1769,7 @@ function showbiz($atts, $content=null){
 														<?php };?>
 
 														<?php if ($type=="product") {?>
-															<p><a class="btn btn-normal btn-small" href="<?php the_permalink(); ?>"><?php _e('Purchase Now', GETTEXT_DOMAIN); ?></a></p>
+															<p><a class="btn btn-normal btn-small" href="<?php the_permalink(); ?>"><?php _e('Purchase Now', GETTEXT_DOMAIN_CHILD); ?></a></p>
 														<?php }else{;?>
 															<?php if ( $lightbox ) {;?>
 															<p><a class="btn btn-normal btn-small" rel="prettyPhoto[pp_gal-'<?php echo get_the_ID(); ?><?php echo $rand; ?>']" href="
@@ -1779,11 +1779,11 @@ function showbiz($atts, $content=null){
 									                            $image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' ); 
 									                            echo $image[0];
 								                            };?>
-															"><?php _e('View Gallery', GETTEXT_DOMAIN); ?></a></p>
+															"><?php _e('View Gallery', GETTEXT_DOMAIN_CHILD); ?></a></p>
 															<?php } elseif($linkURL){;?>
-															<p><a class="btn btn-normal btn-small" href="<?php echo $linkURL; ?>"><?php _e('View More', GETTEXT_DOMAIN); ?></a></p>
+															<p><a class="btn btn-normal btn-small" href="<?php echo $linkURL; ?>"><?php _e('View More', GETTEXT_DOMAIN_CHILD); ?></a></p>
 															<?php } else{;?>
-															<p><a class="btn btn-normal btn-small" href="<?php the_permalink(); ?>"><?php _e('Read More', GETTEXT_DOMAIN); ?></a></p>
+															<p><a class="btn btn-normal btn-small" href="<?php the_permalink(); ?>"><?php _e('Read More', GETTEXT_DOMAIN_CHILD); ?></a></p>
 															<?php };?>
 														<?php };?>
 

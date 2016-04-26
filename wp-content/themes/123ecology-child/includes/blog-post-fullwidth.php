@@ -46,7 +46,7 @@
 									<div class="post_meta">
 										<a href="<?php echo get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d')); ?>" class="date"><?php the_time('M j, Y'); ?></a>
 										<a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>" class="author"><?php echo get_the_author(); ?></a>
-										<a href="<?php comments_link(); ?>" class="comment"><?php comments_number(__('No Comments', GETTEXT_DOMAIN), __('1 Comment', GETTEXT_DOMAIN), __('% Comments', GETTEXT_DOMAIN)); ?></a>
+										<a href="<?php comments_link(); ?>" class="comment"><?php comments_number(__('No Comments', GETTEXT_DOMAIN_CHILD), __('1 Comment', GETTEXT_DOMAIN_CHILD), __('% Comments', GETTEXT_DOMAIN_CHILD)); ?></a>
 									</div>
 									<div class="post_content">
 		                                <?php if ( $linkURL ) { ?>
@@ -56,10 +56,10 @@
 		                                <?php }else{?>
 		                                <?php global $more;?>
 		                                <?php $more = 0;?>
-		                                <?php the_content(__('[read more]', GETTEXT_DOMAIN)); ?>
+		                                <?php the_content(__('[read more]', GETTEXT_DOMAIN_CHILD)); ?>
 		                                <?php }?>
 										<div class="clearfix"></div>
-										<?php edit_post_link( __('edit', GETTEXT_DOMAIN), '<span class="edit-post">[', ']</span>' ); ?>
+										<?php edit_post_link( __('edit', GETTEXT_DOMAIN_CHILD), '<span class="edit-post">[', ']</span>' ); ?>
 									</div>
 								</div>
 							</div>

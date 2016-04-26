@@ -32,7 +32,7 @@ if ( function_exists( 'get_option_tree') ) {
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 						<?php get_template_part('includes/single-portfolio-post' ) ?>
 	                    <?php endwhile; else: ?>
-	                        <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN) ?></p>
+	                        <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD) ?></p>
 	                    <?php endif; ?>
                     </div>
                     <?php if (!$full_width){?>

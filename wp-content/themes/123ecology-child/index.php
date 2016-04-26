@@ -29,11 +29,11 @@ if ( function_exists( 'get_option_tree') ) {
                     <?php if (have_posts()) : while (have_posts()) : the_post(); ?> 
 					<?php get_template_part('includes/blog-post' ) ?>
                     <?php endwhile; else: ?>
-                    <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN); ?></p>
+                    <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD); ?></p>
                     <?php endif; ?>
                     <div class="pagination">
-						<?php previous_posts_link(__('&larr; Newer Entries', GETTEXT_DOMAIN), 0) ?>
-						<?php next_posts_link(__('Older Entries &rarr;', GETTEXT_DOMAIN), 0); ?>
+						<?php previous_posts_link(__('&larr; Newer Entries', GETTEXT_DOMAIN_CHILD), 0) ?>
+						<?php next_posts_link(__('Older Entries &rarr;', GETTEXT_DOMAIN_CHILD), 0); ?>
                     </div>
 					</div>
 					<?php get_sidebar(); ?>

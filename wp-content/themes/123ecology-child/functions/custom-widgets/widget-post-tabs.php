@@ -30,13 +30,13 @@ class post_tabs_widget extends WP_Widget {
 	function Post_Tabs_Widget() {
 	
 		/* widget settings. */
-		$widget_ops = array( 'classname' => 'post_tabs_widget', 'description' => __('A widget that displays your popular posts, recent posts and all tags.', GETTEXT_DOMAIN) );
+		$widget_ops = array( 'classname' => 'post_tabs_widget', 'description' => __('A widget that displays your popular posts, recent posts and all tags.', GETTEXT_DOMAIN_CHILD) );
 
 		/* widget control settings. */
 		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'post_tabs_widget' );
 
 		/* create the widget. */
-		$this->WP_Widget( 'post_tabs_widget', __('Post Tabs Widget', GETTEXT_DOMAIN), $widget_ops, $control_ops );
+		$this->WP_Widget( 'post_tabs_widget', __('Post Tabs Widget', GETTEXT_DOMAIN_CHILD), $widget_ops, $control_ops );
 	}
 
 /* display widget
@@ -65,9 +65,9 @@ class post_tabs_widget extends WP_Widget {
 				<div class="widget list">
 					<div class="tabbable tabs-top"> <!-- Only required for left/right tabs -->
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#tab1-<?php echo $rand;?>" data-toggle="tab"><?php _e('Popular', GETTEXT_DOMAIN) ?></a></li>
-							<li><a href="#tab2-<?php echo $rand;?>" data-toggle="tab"><?php _e('Recent', GETTEXT_DOMAIN) ?></a></li>
-							<li><a href="#tab3-<?php echo $rand;?>" data-toggle="tab"><?php _e('Tags', GETTEXT_DOMAIN) ?></a></li>
+							<li class="active"><a href="#tab1-<?php echo $rand;?>" data-toggle="tab"><?php _e('Popular', GETTEXT_DOMAIN_CHILD) ?></a></li>
+							<li><a href="#tab2-<?php echo $rand;?>" data-toggle="tab"><?php _e('Recent', GETTEXT_DOMAIN_CHILD) ?></a></li>
+							<li><a href="#tab3-<?php echo $rand;?>" data-toggle="tab"><?php _e('Tags', GETTEXT_DOMAIN_CHILD) ?></a></li>
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="tab1-<?php echo $rand;?>">
@@ -183,19 +183,19 @@ class post_tabs_widget extends WP_Widget {
 		
         <!-- widget title: text input -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', GETTEXT_DOMAIN) ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', GETTEXT_DOMAIN_CHILD) ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
         </p>
         
 		<!-- widget title: text input -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'num_popular' ); ?>"><?php _e('Amount to show popular post:', GETTEXT_DOMAIN) ?></label>
+			<label for="<?php echo $this->get_field_id( 'num_popular' ); ?>"><?php _e('Amount to show popular post:', GETTEXT_DOMAIN_CHILD) ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'num_popular' ); ?>" name="<?php echo $this->get_field_name( 'num_popular' ); ?>" value="<?php echo $instance['num_popular']; ?>" />
 		</p>
         
 		<!-- widget num: text input -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'num_recent' ); ?>"><?php _e('Amount to show recent post:', GETTEXT_DOMAIN) ?></label>
+			<label for="<?php echo $this->get_field_id( 'num_recent' ); ?>"><?php _e('Amount to show recent post:', GETTEXT_DOMAIN_CHILD) ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'num_recent' ); ?>" name="<?php echo $this->get_field_name( 'num_recent' ); ?>" value="<?php echo $instance['num_recent']; ?>" />
 		</p>
 

@@ -94,7 +94,7 @@ global $post, $post_meta_boxes;
 function create_post_meta_box() {
 global $theme_name, $post_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'new-meta-boxes', __('Post Format', GETTEXT_DOMAIN), 'post_meta_boxes', 'post', 'normal', 'high' );
+	add_meta_box( 'new-meta-boxes', __('Post Format', GETTEXT_DOMAIN_CHILD), 'post_meta_boxes', 'post', 'normal', 'high' );
 	}
 }
 

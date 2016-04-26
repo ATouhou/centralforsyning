@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'WC_Settings_Accounts' ) ) :
 
 /**
- * WC_Settings_Accounts
+ * WC_Settings_Accounts.
  */
 class WC_Settings_Accounts extends WC_Settings_Page {
 
@@ -33,7 +33,7 @@ class WC_Settings_Accounts extends WC_Settings_Page {
 	}
 
 	/**
-	 * Get settings array
+	 * Get settings array.
 	 *
 	 * @return array
 	 */
@@ -48,7 +48,7 @@ class WC_Settings_Accounts extends WC_Settings_Page {
 				'id'       => 'woocommerce_myaccount_page_id',
 				'type'     => 'single_select_page',
 				'default'  => '',
-				'class'    => 'chosen_select_nostd',
+				'class'    => 'wc-enhanced-select',
 				'css'      => 'min-width:300px;',
 				'desc_tip' => true,
 			),

@@ -23,12 +23,12 @@ if ( function_exists( 'get_option_tree') ) {
 				<div class="row-fluid">
 					<div class="span9 post-page">
 
-						<h4><?php _e('Nothing Found', GETTEXT_DOMAIN) ?></h4>
-	                    <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN) ?></p>
+						<h4><?php _e('Nothing Found', GETTEXT_DOMAIN_CHILD) ?></h4>
+	                    <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD) ?></p>
                         <form role="search" method="get" action="<?php echo site_url(); ?>">
                             <div class="input-append">
                                 <input id="s" class="search_input" type="text" name="s" value="<?php the_search_query() ?>"/>
-                                <input class="btn btn-primary" id="searchsubmit" type="submit" value="<?php _e('Search', GETTEXT_DOMAIN) ?>"/>
+                                <input class="btn btn-primary" id="searchsubmit" type="submit" value="<?php _e('Search', GETTEXT_DOMAIN_CHILD) ?>"/>
                             </div>
                         </form>
                         <hr />
@@ -37,7 +37,7 @@ if ( function_exists( 'get_option_tree') ) {
 	                        <?php $posts = $query->query('ignore_sticky_posts=1&post_status=publish');?>
 	                        <?php if($posts){?>
 				        	<div class="span6">
-						        <h4><?php _e('Blog Posts', GETTEXT_DOMAIN) ?>:</h4>
+						        <h4><?php _e('Blog Posts', GETTEXT_DOMAIN_CHILD) ?>:</h4>
 						        <div class="advanced lists-Tags">
 				                    <ul>
 				                        <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>
@@ -53,7 +53,7 @@ if ( function_exists( 'get_option_tree') ) {
 					        <?php }else{?>
 					        <div class="span6">
 					        <?php }?>
-		                        <h4><?php _e('Available Pages', GETTEXT_DOMAIN) ?>:</h4>
+		                        <h4><?php _e('Available Pages', GETTEXT_DOMAIN_CHILD) ?>:</h4>
 		                        <div class="advanced lists-Documents-1">
 			                        <ul>
 			                            <?php wp_list_pages('title_li=&posts_per_page=15'); ?>
@@ -76,7 +76,7 @@ if ( function_exists( 'get_option_tree') ) {
 					        <div class="span6">
 					        <?php }?>
 						        
-						        <h4><?php _e('Available Products', GETTEXT_DOMAIN) ?>:</h4>
+						        <h4><?php _e('Available Products', GETTEXT_DOMAIN_CHILD) ?>:</h4>
 						        <div class="advanced lists-Shopping-Cart-2">
 				                    <ul>
 				                        <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>
@@ -101,7 +101,7 @@ if ( function_exists( 'get_option_tree') ) {
 					        <div class="span6">
 					        <?php }?>
 					        
-		                        <h4><?php _e('Portfolio Posts', GETTEXT_DOMAIN) ?>:</h4>
+		                        <h4><?php _e('Portfolio Posts', GETTEXT_DOMAIN_CHILD) ?>:</h4>
 		                        <div class="advanced lists-Wallpaper">
 			                    <ul>
 			                        <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>

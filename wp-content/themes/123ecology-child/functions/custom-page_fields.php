@@ -141,7 +141,7 @@ global $post, $page_meta_boxes;
 function create_page_meta_box() {
 global $theme_name, $page_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'new-meta-boxes', __('Front Page Options', GETTEXT_DOMAIN), 'page_meta_boxes', 'page', 'normal', 'high' );
+	add_meta_box( 'new-meta-boxes', __('Front Page Options', GETTEXT_DOMAIN_CHILD), 'page_meta_boxes', 'page', 'normal', 'high' );
 	}
 }
 

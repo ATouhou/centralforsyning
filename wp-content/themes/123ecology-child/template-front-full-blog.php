@@ -56,7 +56,7 @@ if ( function_exists( 'get_option_tree') ) {
 		                    <?php if ( $video ) {?>
 		                    	<iframe class="scale-with-grid-front" width="870" height="489" src="<?php echo $video ?>?wmode=transparent;showinfo=0" frameborder="0" allowfullscreen></iframe>
 		                    <?php }else{?>
-		                    	<p style="color: #ed1c24;"><?php _e('Enter a video URL to "Front Page Options"', GETTEXT_DOMAIN) ?></p>
+		                    	<p style="color: #ed1c24;"><?php _e('Enter a video URL to "Front Page Options"', GETTEXT_DOMAIN_CHILD) ?></p>
 		                    <?php }?>
 	                    
 	                    <?php } elseif ($select_type == 'image'){?>
@@ -69,7 +69,7 @@ if ( function_exists( 'get_option_tree') ) {
 			                    	<img alt="<?php echo $alt; ?>" class="front-image" src="<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'front-2' ); echo $image[0];?>" />
 			                    <?php }?>
 		                    <?php }else{?>
-		                    	<p style="color: #ed1c24;"><?php _e('Add an image to "Featured Image".', GETTEXT_DOMAIN) ?></p>
+		                    	<p style="color: #ed1c24;"><?php _e('Add an image to "Featured Image".', GETTEXT_DOMAIN_CHILD) ?></p>
 		                    <?php }?>      
 			            <?php }?>
 						</div>
@@ -89,7 +89,7 @@ if ( function_exists( 'get_option_tree') ) {
                     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                         <?php the_content();?>
                     <?php endwhile; else: ?>
-                        <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN) ?></p>
+                        <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD) ?></p>
                     <?php endif; ?>
                     </div>
                     
@@ -127,11 +127,11 @@ if ( function_exists( 'get_option_tree') ) {
 	                    if (have_posts()) : while (have_posts()) : the_post(); ?>
 						<?php get_template_part('includes/blog-post-fullwidth' ) ?>
 	                    <?php endwhile; else: ?>
-	                    <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN); ?></p>
+	                    <p><?php _e('Sorry, no posts matched your criteria.', GETTEXT_DOMAIN_CHILD); ?></p>
 	                    <?php endif; ?>
 	                    <div class="pagination">
-		                    <?php next_posts_link(__('Older Entries &rarr;', GETTEXT_DOMAIN), 0); ?>
-		                    <?php previous_posts_link(__('&larr; Newer Entries', GETTEXT_DOMAIN), 0) ?>
+		                    <?php next_posts_link(__('Older Entries &rarr;', GETTEXT_DOMAIN_CHILD), 0); ?>
+		                    <?php previous_posts_link(__('&larr; Newer Entries', GETTEXT_DOMAIN_CHILD), 0) ?>
 	                    </div>
 						</div>
 					</div>

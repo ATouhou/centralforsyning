@@ -425,7 +425,7 @@ global $post, $fronttabs_meta_boxes;
 function create_fronttabs_meta_box() {
 global $theme_name, $fronttabs_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'fronttabs-meta-boxes', __('Front Tabs Options', GETTEXT_DOMAIN), 'fronttabs_meta_boxes', 'front_tabs', 'normal', 'high' );
+	add_meta_box( 'fronttabs-meta-boxes', __('Front Tabs Options', GETTEXT_DOMAIN_CHILD), 'fronttabs_meta_boxes', 'front_tabs', 'normal', 'high' );
 	}
 }
 

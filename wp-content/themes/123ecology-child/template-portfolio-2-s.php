@@ -140,7 +140,7 @@ if ( function_exists( 'get_option_tree') ) {
 		                                    <a class="hide" rel="prettyPhoto[pp_gal-<?php echo $post->ID ?>]" href="<?php echo $imageArrayFull[0] ?>" title="<?php echo $imageTitle ?>"></a>
 		                                <?php }?>
 	                                <?php }else{?>
-	                                <p style="color: #ed1c24; padding: 10px;"><?php _e( 'Please add an image to "Featured Image" for thumbnail.', GETTEXT_DOMAIN);?></p>
+	                                <p style="color: #ed1c24; padding: 10px;"><?php _e( 'Please add an image to "Featured Image" for thumbnail.', GETTEXT_DOMAIN_CHILD);?></p>
 	                                <?php }?>
 								<?php } elseif ( $linkURL ) { ?>
 	                                <?php if(has_post_thumbnail()) {?>
@@ -150,7 +150,7 @@ if ( function_exists( 'get_option_tree') ) {
 											<div class="icon link"></div>
 										</a>
 	                                <?php }else{?>
-	                                <p style="color: #ed1c24; padding: 10px;"><?php _e( 'Please add an image to "Featured Image" for thumbnail.', GETTEXT_DOMAIN);?></p>
+	                                <p style="color: #ed1c24; padding: 10px;"><?php _e( 'Please add an image to "Featured Image" for thumbnail.', GETTEXT_DOMAIN_CHILD);?></p>
 	                                <?php }?>
                                 <?php } elseif ( $videoURL ) { ?>
 	                                <?php if(has_post_thumbnail()) {?>
@@ -160,7 +160,7 @@ if ( function_exists( 'get_option_tree') ) {
 										<div class="icon eye"></div>
 									</a>
 	                                <?php }else{?>
-	                                <p style="color: #ed1c24; padding: 10px;"><?php _e( 'Please add an image to "Featured Image" for video thumbnail.', GETTEXT_DOMAIN);?></p>
+	                                <p style="color: #ed1c24; padding: 10px;"><?php _e( 'Please add an image to "Featured Image" for video thumbnail.', GETTEXT_DOMAIN_CHILD);?></p>
 	                                <?php }?>
                                 <?php } elseif ( (function_exists('has_post_thumbnail')) && (has_post_thumbnail()) ) { ?>
 								<a href="<?php the_permalink(); ?>" class="effect-thumb">
@@ -179,9 +179,9 @@ if ( function_exists( 'get_option_tree') ) {
 										<div class="post_content">
 											<p><?php echo excerpt_portfolio(25)?> 
 											<?php if ( $linkURL ) { ?>
-											<a class="more-link" href="<?php echo $linkURL; ?>">[<?php _e( 'read more', GETTEXT_DOMAIN);?>]</a></p>
+											<a class="more-link" href="<?php echo $linkURL; ?>">[<?php _e( 'read more', GETTEXT_DOMAIN_CHILD);?>]</a></p>
 											<?php }else{?>
-											<a class="more-link" href="<?php the_permalink(); ?>">[<?php _e( 'read more', GETTEXT_DOMAIN);?>]</a></p>
+											<a class="more-link" href="<?php the_permalink(); ?>">[<?php _e( 'read more', GETTEXT_DOMAIN_CHILD);?>]</a></p>
 											<?php }?>
 										</div>
 									</div>

@@ -77,7 +77,7 @@
 	                </li>
 	                <?php }?>
 	                <?php if(!$share){?>
-	                <li class="share"><strong><?php _e( 'Share', GETTEXT_DOMAIN);?>:</strong>
+	                <li class="share"><strong><?php _e( 'Share', GETTEXT_DOMAIN_CHILD);?>:</strong>
 	                    <ul>
 	                        <li><iframe src="//www.facebook.com/plugins/like.php?href=<?php the_permalink(); ?>&amp;send=false&amp;layout=button_count&amp;width=0&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe></li>
 	                        <li>
@@ -208,7 +208,7 @@
 	                </li>
 	                <?php }?>
 	                <?php if(!$share){?>
-	                <li class="share"><strong><?php _e( 'Share', GETTEXT_DOMAIN);?>:</strong>
+	                <li class="share"><strong><?php _e( 'Share', GETTEXT_DOMAIN_CHILD);?>:</strong>
 	                    <ul>
 	                        <li><iframe src="//www.facebook.com/plugins/like.php?href=<?php the_permalink(); ?>&amp;send=false&amp;layout=button_count&amp;width=0&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe></li>
 	                        <li>

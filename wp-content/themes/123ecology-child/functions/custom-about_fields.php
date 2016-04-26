@@ -97,7 +97,7 @@ global $post, $about_meta_boxes;
 function create_about_meta_box() {
 global $theme_name, $about_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'about-meta-boxes', __('Social Buttons', GETTEXT_DOMAIN), 'about_meta_boxes', 'about', 'normal', 'high' );;
+	add_meta_box( 'about-meta-boxes', __('Social Buttons', GETTEXT_DOMAIN_CHILD), 'about_meta_boxes', 'about', 'normal', 'high' );;
 	}
 }
 

@@ -51,11 +51,11 @@ if ( function_exists( 'get_option_tree') ) {
 							
                             } elseif(is_search()){
                             
-	                            _e('Search for: ', GETTEXT_DOMAIN); the_search_query();
+	                            _e('Search for: ', GETTEXT_DOMAIN_CHILD); the_search_query();
 	                            	
 	                        } elseif (is_404()) {
 	                        
-	                        	_e('404 Error', GETTEXT_DOMAIN);
+	                        	_e('404 Error', GETTEXT_DOMAIN_CHILD);
 	                        	 
 	                        } elseif(is_author()){
 	                        
@@ -75,7 +75,7 @@ if ( function_exists( 'get_option_tree') ) {
 							    elseif(is_tag()) :
 							    	single_tag_title();
 						        else :
-						        	_e( 'Archives', GETTEXT_DOMAIN);
+						        	_e( 'Archives', GETTEXT_DOMAIN_CHILD);
 						        endif;
                             
                             } else{
@@ -83,12 +83,12 @@ if ( function_exists( 'get_option_tree') ) {
                             }?>
 						</h2>
 						<?php if(is_singular('product')){?>
-						<div class="Breadcrumb"><a class="heading-navi" href="<?php echo get_permalink(woocommerce_get_page_id('shop')); ?>"><?php _e('&larr; Return To Shop', GETTEXT_DOMAIN)?></a></div>
+						<div class="Breadcrumb"><a class="heading-navi" href="<?php echo get_permalink(woocommerce_get_page_id('shop')); ?>"><?php _e('&larr; Return To Shop', GETTEXT_DOMAIN_CHILD)?></a></div>
                     <?php $plugins = get_option('active_plugins');?>
                     <?php $required_plugin = 'woocommerce/woocommerce.php';?>
                     <?php if ( in_array( $required_plugin , $plugins ) ) {?>
 						<?php } else if(is_shop()){?>
-						<div class="Breadcrumb"><a class="heading-navi" href="<?php echo home_url(); ?>"><?php _e('&larr; Return To Home', GETTEXT_DOMAIN)?></a></div>
+						<div class="Breadcrumb"><a class="heading-navi" href="<?php echo home_url(); ?>"><?php _e('&larr; Return To Home', GETTEXT_DOMAIN_CHILD)?></a></div>
 					<?php }?>
 						<?php }else{?>
 						<div class="Breadcrumb"><?php echo the_breadcrumb()?></div>

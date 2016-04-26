@@ -112,7 +112,7 @@ global $post, $page_portfolio_meta_boxes;
 function create_page_portfolio_meta_box() {
 global $theme_name, $page_portfolio_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'new_portfolio-meta-boxes', __('Portfolio Options', GETTEXT_DOMAIN), 'page_portfolio_meta_boxes', 'page', 'normal', 'high' );
+	add_meta_box( 'new_portfolio-meta-boxes', __('Portfolio Options', GETTEXT_DOMAIN_CHILD), 'page_portfolio_meta_boxes', 'page', 'normal', 'high' );
 	}
 }
 

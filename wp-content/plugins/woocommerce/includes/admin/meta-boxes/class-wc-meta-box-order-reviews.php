@@ -15,12 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC_Meta_Box_Order_Reviews Class
+ * WC_Meta_Box_Order_Reviews Class.
  */
 class WC_Meta_Box_Order_Reviews {
 
 	/**
-	 * Output the metabox
+	 * Output the metabox.
+	 *
+	 * @param WP_Comment $comment
 	 */
 	public static function output( $comment ) {
 		wp_nonce_field( 'woocommerce_save_data', 'woocommerce_meta_nonce' );
@@ -36,11 +38,14 @@ class WC_Meta_Box_Order_Reviews {
 	}
 
 	/**
-	 * Save meta box data
+	 * Save meta box data.
+	 *
+	 * @param string $location
+	 * @param int $comment_id
 	 */
 	public static function save( $location, $comment_id ) {
 		// Not allowed, return regular value without updating meta
-		if ( ! wp_verify_nonce( $_POST['woocommerce_meta_nonce'], 'woocommerce_save_data' ) && ! isset( $_POST['rating'] ) ) {
+		if ( empty( $_POST['woocommerce_meta_nonce'] ) || ( ! wp_verify_nonce( $_POST['woocommerce_meta_nonce'], 'woocommerce_save_data' ) && ! isset( $_POST['rating'] ) ) ) {
 			return $location;
 		}
 

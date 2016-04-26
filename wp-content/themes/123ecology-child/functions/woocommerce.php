@@ -121,25 +121,25 @@ if ( ! function_exists( 'woocommerce_output_upsells' ) ) {
 
 if ( ! $product->is_purchasable() && ! in_array( $product->product_type, array( 'external', 'grouped' ) ) ){
 
-	$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN).'"></a>';
+	$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN_CHILD).'"></a>';
 	
 }else{
 
 	if ( ! $product->is_in_stock() ){
 	
-		$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.apply_filters( 'out_of_stock_add_to_cart_url', get_permalink( $product->id ) ).'" title="'.__('Read More', GETTEXT_DOMAIN).'"></a>';
+		$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.apply_filters( 'out_of_stock_add_to_cart_url', get_permalink( $product->id ) ).'" title="'.__('Read More', GETTEXT_DOMAIN_CHILD).'"></a>';
 	
 	}else{
 			switch ( $product->product_type ) {
 				case "variable" :
 					$icon   = 'check';
 					$link 	= apply_filters( 'variable_add_to_cart_url', get_permalink( $product->id ) );
-					$label 	= apply_filters( 'variable_add_to_cart_text', __('V&aelig;lg muligheder', GETTEXT_DOMAIN) );
+					$label 	= apply_filters( 'variable_add_to_cart_text', __('V&aelig;lg muligheder', GETTEXT_DOMAIN_CHILD) );
 				break;
 				case "grouped" :
 					$icon   = 'search';
 					$link 	= apply_filters( 'grouped_add_to_cart_url', get_permalink( $product->id ) );
-					$label 	= apply_filters( 'grouped_add_to_cart_text', __('View options', GETTEXT_DOMAIN) );
+					$label 	= apply_filters( 'grouped_add_to_cart_text', __('View options', GETTEXT_DOMAIN_CHILD) );
 				break;
 				case "external" :
 					$disable = 'yes';
@@ -150,17 +150,17 @@ if ( ! $product->is_purchasable() && ! in_array( $product->product_type, array( 
 				default :
 					$icon   = 'shopping-cart';
 					$link 	= apply_filters( 'add_to_cart_url', esc_url( $product->add_to_cart_url() ) );
-					$label 	= apply_filters( 'add_to_cart_text', __('Add to cart', GETTEXT_DOMAIN) );
+					$label 	= apply_filters( 'add_to_cart_text', __('Add to cart', GETTEXT_DOMAIN_CHILD) );
 				break;
 			}
 			
 			if($disable == 'yes'){
 			
-				$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN).'"></a>';
+				$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN_CHILD).'"></a>';
 				
 			}else{
 			
-				$output .= '<div class="effect-wrap clearfix"><a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN).'"></a>';
+				$output .= '<div class="effect-wrap clearfix"><a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN_CHILD).'"></a>';
 				$output .= '<a class="icon icon2 shopping-cart ttip add_to_cart_button product_type_'.$product->product_type.'" data-product_id="'.$product->id.'" href="'.$link.'" rel="tooltip" data-placement="bottom" title="'.$label.'"></a></div>';
 				
 			}
@@ -181,25 +181,25 @@ if ( ! $product->is_purchasable() && ! in_array( $product->product_type, array( 
 
 if ( ! $product->is_purchasable() && ! in_array( $product->product_type, array( 'external', 'grouped' ) ) ){
 
-	$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN).'"></a>';
+	$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN_CHILD).'"></a>';
 	
 }else{
 
 	if ( ! $product->is_in_stock() ){
 	
-		$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.apply_filters( 'out_of_stock_add_to_cart_url', get_permalink( $product->id ) ).'" title="'.__('Read More', GETTEXT_DOMAIN).'"></a>';
+		$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.apply_filters( 'out_of_stock_add_to_cart_url', get_permalink( $product->id ) ).'" title="'.__('Read More', GETTEXT_DOMAIN_CHILD).'"></a>';
 	
 	}else{
 			switch ( $product->product_type ) {
 				case "variable" :
 					$icon   = 'check';
 					$link 	= apply_filters( 'variable_add_to_cart_url', get_permalink( $product->id ) );
-					$label 	= apply_filters( 'variable_add_to_cart_text', __('Select options', GETTEXT_DOMAIN) );
+					$label 	= apply_filters( 'variable_add_to_cart_text', __('Select options', GETTEXT_DOMAIN_CHILD) );
 				break;
 				case "grouped" :
 					$icon   = 'search';
 					$link 	= apply_filters( 'grouped_add_to_cart_url', get_permalink( $product->id ) );
-					$label 	= apply_filters( 'grouped_add_to_cart_text', __('View options', GETTEXT_DOMAIN) );
+					$label 	= apply_filters( 'grouped_add_to_cart_text', __('View options', GETTEXT_DOMAIN_CHILD) );
 				break;
 				case "external" :
 					$disable = 'yes';
@@ -210,17 +210,17 @@ if ( ! $product->is_purchasable() && ! in_array( $product->product_type, array( 
 				default :
 					$icon   = 'shopping-cart';
 					$link 	= apply_filters( 'add_to_cart_url', esc_url( $product->add_to_cart_url() ) );
-					$label 	= apply_filters( 'add_to_cart_text', __('Add to cart', GETTEXT_DOMAIN) );
+					$label 	= apply_filters( 'add_to_cart_text', __('Add to cart', GETTEXT_DOMAIN_CHILD) );
 				break;
 			}
 			
 			if($disable == 'yes'){
 			
-				$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN).'"></a>';
+				$output .= '<a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN_CHILD).'"></a>';
 				
 			}else{
 			
-				$output .= '<div class="effect-wrap clearfix"><a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN).'"></a>';
+				$output .= '<div class="effect-wrap clearfix"><a class="icon info ttip" rel="tooltip" data-placement="bottom" href="'.get_permalink().'" title="'.__('Read More', GETTEXT_DOMAIN_CHILD).'"></a>';
 				$output .= '<a class="icon icon2 shopping-cart ttip add_to_cart_button product_type_'.$product->product_type.'" data-product_id="'.$product->id.'" href="'.$link.'" rel="tooltip" data-placement="bottom" title="'.$label.'"></a></div>';
 				
 			}
@@ -265,7 +265,7 @@ if ( ! $product->is_purchasable() && ! in_array( $product->product_type, array( 
 	
 			$average = number_format($rating / $count, 2);
 			
-			$output .= '<div class="star-rating" title="'.sprintf(__('Rated %s out of 5', GETTEXT_DOMAIN), $average).'"><span style="width:'.($average*16).'px"><span itemprop="ratingValue" class="rating">'.$average.'</span> '.__('out of 5', GETTEXT_DOMAIN).'</span></div>';
+			$output .= '<div class="star-rating" title="'.sprintf(__('Rated %s out of 5', GETTEXT_DOMAIN_CHILD), $average).'"><span style="width:'.($average*16).'px"><span itemprop="ratingValue" class="rating">'.$average.'</span> '.__('out of 5', GETTEXT_DOMAIN_CHILD).'</span></div>';
 
 	}
 			

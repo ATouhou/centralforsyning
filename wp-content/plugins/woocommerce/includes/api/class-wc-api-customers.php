@@ -4,10 +4,10 @@
  *
  * Handles requests to the /customers endpoint
  *
- * @author      WooThemes
- * @category    API
- * @package     WooCommerce/API
- * @since       2.2
+ * @author   WooThemes
+ * @category API
+ * @package  WooCommerce/API
+ * @since    2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -90,6 +90,11 @@ class WC_API_Customers extends WC_API_Resource {
 			array( array( $this, 'get_customer_downloads' ), WC_API_SERVER::READABLE ),
 		);
 
+		# POST|PUT /customers/bulk
+		$routes[ $this->base . '/bulk' ] = array(
+			array( array( $this, 'bulk' ), WC_API_Server::EDITABLE | WC_API_Server::ACCEPT_DATA ),
+		);
+
 		return $routes;
 	}
 
@@ -129,7 +134,7 @@ class WC_API_Customers extends WC_API_Resource {
 	 *
 	 * @since 2.1
 	 * @param int $id the customer ID
-	 * @param string $fields
+	 * @param array $fields
 	 * @return array
 	 */
 	public function get_customer( $id, $fields = null ) {
@@ -143,7 +148,7 @@ class WC_API_Customers extends WC_API_Resource {
 
 		$customer = new WP_User( $id );
 
-		// get info about user's last order
+		// Get info about user's last order
 		$last_order = $wpdb->get_row( "SELECT id, post_date_gmt
 						FROM $wpdb->posts AS posts
 						LEFT JOIN {$wpdb->postmeta} AS meta on posts.ID = meta.post_id
@@ -151,6 +156,7 @@ class WC_API_Customers extends WC_API_Resource {
 						AND   meta.meta_value = {$customer->ID}
 						AND   posts.post_type = 'shop_order'
 						AND   posts.post_status IN ( '" . implode( "','", array_keys( wc_get_order_statuses() ) ) . "' )
+						ORDER BY posts.ID DESC
 					" );
 
 		$customer_data = array(
@@ -160,10 +166,11 @@ class WC_API_Customers extends WC_API_Resource {
 			'first_name'       => $customer->first_name,
 			'last_name'        => $customer->last_name,
 			'username'         => $customer->user_login,
+			'role'             => $customer->roles[0],
 			'last_order_id'    => is_object( $last_order ) ? $last_order->id : null,
 			'last_order_date'  => is_object( $last_order ) ? $this->server->format_datetime( $last_order->post_date_gmt ) : null,
-			'orders_count'     => (int) $customer->_order_count,
-			'total_spent'      => wc_format_decimal( $customer->_money_spent, 2 ),
+			'orders_count'     => wc_get_customer_order_count( $customer->ID ),
+			'total_spent'      => wc_format_decimal( wc_get_customer_total_spent( $customer->ID ), 2 ),
 			'avatar_url'       => $this->get_avatar_url( $customer->customer_email ),
 			'billing_address'  => array(
 				'first_name' => $customer->billing_first_name,
@@ -199,21 +206,24 @@ class WC_API_Customers extends WC_API_Resource {
 	 *
 	 * @since 2.1
 	 * @param string $email the customer email
-	 * @param string $fields
+	 * @param array $fields
 	 * @return array
 	 */
 	public function get_customer_by_email( $email, $fields = null ) {
-
-		if ( is_email( $email ) ) {
-			$customer = get_user_by( 'email', $email );
-			if ( ! is_object( $customer ) ) {
-				return new WP_Error( 'woocommerce_api_invalid_customer_email', __( 'Invalid customer Email', 'woocommerce' ), array( 'status' => 404 ) );
+		try {
+			if ( is_email( $email ) ) {
+				$customer = get_user_by( 'email', $email );
+				if ( ! is_object( $customer ) ) {
+					throw new WC_API_Exception( 'woocommerce_api_invalid_customer_email', __( 'Invalid customer Email', 'woocommerce' ), 404 );
+				}
+			} else {
+				throw new WC_API_Exception( 'woocommerce_api_invalid_customer_email', __( 'Invalid customer Email', 'woocommerce' ), 404 );
 			}
-		} else {
-			return new WP_Error( 'woocommerce_api_invalid_customer_email', __( 'Invalid customer Email', 'woocommerce' ), array( 'status' => 404 ) );
-		}
 
-		return $this->get_customer( $customer->ID, $fields );
+			return $this->get_customer( $customer->ID, $fields );
+		} catch ( WC_API_Exception $e ) {
+			return new WP_Error( $e->getErrorCode(), $e->getMessage(), array( 'status' => $e->getCode() ) );
+		}
 	}
 
 	/**
@@ -224,14 +234,17 @@ class WC_API_Customers extends WC_API_Resource {
 	 * @return array
 	 */
 	public function get_customers_count( $filter = array() ) {
+		try {
+			if ( ! current_user_can( 'list_users' ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_user_cannot_read_customers_count', __( 'You do not have permission to read the customers count', 'woocommerce' ), 401 );
+			}
 
-		$query = $this->query_customers( $filter );
+			$query = $this->query_customers( $filter );
 
-		if ( ! current_user_can( 'list_users' ) ) {
-			return new WP_Error( 'woocommerce_api_user_cannot_read_customers_count', __( 'You do not have permission to read the customers count', 'woocommerce' ), array( 'status' => 401 ) );
+			return array( 'count' => $query->get_total() );
+		} catch ( WC_API_Exception $e ) {
+			return new WP_Error( $e->getErrorCode(), $e->getMessage(), array( 'status' => $e->getCode() ) );
 		}
-
-		return array( 'count' => count( $query->get_results() ) );
 	}
 
 	/**
@@ -286,7 +299,6 @@ class WC_API_Customers extends WC_API_Resource {
 	 * @since 2.2
 	 * @param int $id the customer ID
 	 * @param array $data
-	 * @return void
 	 */
 	protected function update_customer_data( $id, $data ) {
 		// Customer first name.
@@ -328,47 +340,50 @@ class WC_API_Customers extends WC_API_Resource {
 	 * @return array
 	 */
 	public function create_customer( $data ) {
+		try {
+			if ( ! isset( $data['customer'] ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_missing_customer_data', sprintf( __( 'No %1$s data specified to create %1$s', 'woocommerce' ), 'customer' ), 400 );
+			}
 
-		$data = isset( $data['customer'] ) ? $data['customer'] : array();
+			$data = $data['customer'];
 
-		// Checks with can create new users.
-		if ( ! current_user_can( 'create_users' ) ) {
-			return new WP_Error( 'woocommerce_api_user_cannot_create_customer', __( 'You do not have permission to create this customer', 'woocommerce' ), array( 'status' => 401 ) );
+			// Checks with can create new users.
+			if ( ! current_user_can( 'create_users' ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_user_cannot_create_customer', __( 'You do not have permission to create this customer', 'woocommerce' ), 401 );
+			}
+
+			$data = apply_filters( 'woocommerce_api_create_customer_data', $data, $this );
+
+			// Checks with the email is missing.
+			if ( ! isset( $data['email'] ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_missing_customer_email', sprintf( __( 'Missing parameter %s', 'woocommerce' ), 'email' ), 400 );
+			}
+
+			// Sets the username.
+			$data['username'] = ! empty( $data['username'] ) ? $data['username'] : '';
+
+			// Sets the password.
+			$data['password'] = ! empty( $data['password'] ) ? $data['password'] : '';
+
+			// Attempts to create the new customer
+			$id = wc_create_new_customer( $data['email'], $data['username'], $data['password'] );
+
+			// Checks for an error in the customer creation.
+			if ( is_wp_error( $id ) ) {
+				throw new WC_API_Exception( $id->get_error_code(), $id->get_error_message(), 400 );
+			}
+
+			// Added customer data.
+			$this->update_customer_data( $id, $data );
+
+			do_action( 'woocommerce_api_create_customer', $id, $data );
+
+			$this->server->send_status( 201 );
+
+			return $this->get_customer( $id );
+		} catch ( WC_API_Exception $e ) {
+			return new WP_Error( $e->getErrorCode(), $e->getMessage(), array( 'status' => $e->getCode() ) );
 		}
-
-		$data = apply_filters( 'woocommerce_api_create_customer_data', $data, $this );
-
-		// Checks with the email is missing.
-		if ( ! isset( $data['email'] ) ) {
-			return new WP_Error( 'woocommerce_api_missing_customer_email', sprintf( __( 'Missing parameter %s', 'woocommerce' ), 'email' ), array( 'status' => 400 ) );
-		}
-
-		// Sets the username.
-		if ( ! isset( $data['username'] ) ) {
-			$data['username'] = '';
-		}
-
-		// Sets the password.
-		if ( ! isset( $data['password'] ) ) {
-			$data['password'] = wp_generate_password();
-		}
-
-		// Attempts to create the new customer
-		$id = wc_create_new_customer( $data['email'], $data['username'], $data['password'] );
-
-		// Checks for an error in the customer creation.
-		if ( is_wp_error( $id ) ) {
-			return new WP_Error( 'woocommerce_api_cannot_create_customer', $id->get_error_message(), array( 'status' => 400 ) );
-		}
-
-		// Added customer data.
-		$this->update_customer_data( $id, $data );
-
-		do_action( 'woocommerce_api_create_customer', $id, $data );
-
-		$this->server->send_status( 201 );
-
-		return $this->get_customer( $id );
 	}
 
 	/**
@@ -380,35 +395,42 @@ class WC_API_Customers extends WC_API_Resource {
 	 * @return array
 	 */
 	public function edit_customer( $id, $data ) {
+		try {
+			if ( ! isset( $data['customer'] ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_missing_customer_data', sprintf( __( 'No %1$s data specified to edit %1$s', 'woocommerce' ), 'customer' ), 400 );
+			}
 
-		$data = isset( $data['customer'] ) ? $data['customer'] : array();
+			$data = $data['customer'];
 
-		// Validate the customer ID.
-		$id = $this->validate_request( $id, 'customer', 'edit' );
+			// Validate the customer ID.
+			$id = $this->validate_request( $id, 'customer', 'edit' );
 
-		// Return the validate error.
-		if ( is_wp_error( $id ) ) {
-			return $id;
+			// Return the validate error.
+			if ( is_wp_error( $id ) ) {
+				throw new WC_API_Exception( $id->get_error_code(), $id->get_error_message(), 400 );
+			}
+
+			$data = apply_filters( 'woocommerce_api_edit_customer_data', $data, $this );
+
+			// Customer email.
+			if ( isset( $data['email'] ) ) {
+				wp_update_user( array( 'ID' => $id, 'user_email' => sanitize_email( $data['email'] ) ) );
+			}
+
+			// Customer password.
+			if ( isset( $data['password'] ) ) {
+				wp_update_user( array( 'ID' => $id, 'user_pass' => wc_clean( $data['password'] ) ) );
+			}
+
+			// Update customer data.
+			$this->update_customer_data( $id, $data );
+
+			do_action( 'woocommerce_api_edit_customer', $id, $data );
+
+			return $this->get_customer( $id );
+		} catch ( WC_API_Exception $e ) {
+			return new WP_Error( $e->getErrorCode(), $e->getMessage(), array( 'status' => $e->getCode() ) );
 		}
-
-		$data = apply_filters( 'woocommerce_api_edit_customer_data', $data, $this );
-
-		// Customer email.
-		if ( isset( $data['email'] ) ) {
-			wp_update_user( array( 'ID' => $id, 'user_email' => sanitize_email( $data['email'] ) ) );
-		}
-
-		// Customer password.
-		if ( isset( $data['password'] ) ) {
-			wp_update_user( array( 'ID' => $id, 'user_pass' => wc_clean( $data['password'] ) ) );
-		}
-
-		// Update customer data.
-		$this->update_customer_data( $id, $data );
-
-		do_action( 'woocommerce_api_edit_customer', $id, $data );
-
-		return $this->get_customer( $id );
 	}
 
 	/**
@@ -439,37 +461,20 @@ class WC_API_Customers extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the customer ID
 	 * @param string $fields fields to include in response
+	 * @param array $filter filters
 	 * @return array
 	 */
-	public function get_customer_orders( $id, $fields = null ) {
-		global $wpdb;
-
+	public function get_customer_orders( $id, $fields = null, $filter = array() ) {
 		$id = $this->validate_request( $id, 'customer', 'read' );
 
 		if ( is_wp_error( $id ) ) {
 			return $id;
 		}
 
-		$order_ids = $wpdb->get_col( $wpdb->prepare( "SELECT id
-						FROM $wpdb->posts AS posts
-						LEFT JOIN {$wpdb->postmeta} AS meta on posts.ID = meta.post_id
-						WHERE meta.meta_key = '_customer_user'
-						AND   meta.meta_value = '%s'
-						AND   posts.post_type = 'shop_order'
-						AND   posts.post_status IN ( '" . implode( "','", array_keys( wc_get_order_statuses() ) ) . "' )
-					", $id ) );
+		$filter['customer_id'] = $id;
+		$orders = WC()->api->WC_API_Orders->get_orders( $fields, $filter, null, -1 );
 
-		if ( empty( $order_ids ) ) {
-			return array( 'orders' => array() );
-		}
-
-		$orders = array();
-
-		foreach ( $order_ids as $order_id ) {
-			$orders[] = current( WC()->api->WC_API_Orders->get_order( $order_id, $fields ) );
-		}
-
-		return array( 'orders' => apply_filters( 'woocommerce_api_customer_orders_response', $orders, $id, $fields, $order_ids, $this->server ) );
+		return $orders;
 	}
 
 	/**
@@ -487,10 +492,12 @@ class WC_API_Customers extends WC_API_Resource {
 			return $id;
 		}
 
-		$downloads = wc_get_customer_available_downloads( $id );
+		$downloads  = array();
+		$_downloads = wc_get_customer_available_downloads( $id );
 
-		if ( empty( $downloads ) ) {
-			return array( 'downloads' => array() );
+		foreach ( $_downloads as $key => $download ) {
+			$downloads[ $key ] = $download;
+			$downloads[ $key ]['access_expires'] = $this->server->format_datetime( $downloads[ $key ]['access_expires'] );
 		}
 
 		return array( 'downloads' => apply_filters( 'woocommerce_api_customer_downloads_response', $downloads, $id, $fields, $this->server ) );
@@ -502,7 +509,9 @@ class WC_API_Customers extends WC_API_Resource {
 	 * Note that WP_User_Query does not have built-in pagination so limit & offset are used to provide limited
 	 * pagination support
 	 *
-	 * @since 2.1
+	 * The filter for role can only be a single role in a string.
+	 *
+	 * @since 2.3
 	 * @param array $args request arguments for filtering query
 	 * @return WP_User_Query
 	 */
@@ -511,7 +520,7 @@ class WC_API_Customers extends WC_API_Resource {
 		// default users per page
 		$users_per_page = get_option( 'posts_per_page' );
 
-		// set base query arguments
+		// Set base query arguments
 		$query_args = array(
 			'fields'  => 'ID',
 			'role'    => 'customer',
@@ -519,30 +528,44 @@ class WC_API_Customers extends WC_API_Resource {
 			'number'  => $users_per_page,
 		);
 
-		// search
+		// Custom Role
+		if ( ! empty( $args['role'] ) ) {
+			$query_args['role'] = $args['role'];
+
+			// Show users on all roles
+			if ( 'all' === $query_args['role'] ) {
+				unset( $query_args['role'] );
+			}
+		}
+
+		// Search
 		if ( ! empty( $args['q'] ) ) {
 			$query_args['search'] = $args['q'];
 		}
 
-		// limit number of users returned
+		// Limit number of users returned
 		if ( ! empty( $args['limit'] ) ) {
-
-			$query_args['number'] = absint( $args['limit'] );
-
-			$users_per_page = absint( $args['limit'] );
+			if ( $args['limit'] == -1 ) {
+				unset( $query_args['number'] );
+			} else {
+				$query_args['number'] = absint( $args['limit'] );
+				$users_per_page       = absint( $args['limit'] );
+			}
+		} else {
+			$args['limit'] = $query_args['number'];
 		}
 
-		// page
+		// Page
 		$page = ( isset( $args['page'] ) ) ? absint( $args['page'] ) : 1;
 
-		// offset
+		// Offset
 		if ( ! empty( $args['offset'] ) ) {
 			$query_args['offset'] = absint( $args['offset'] );
 		} else {
 			$query_args['offset'] = $users_per_page * ( $page - 1 );
 		}
 
-		// created date
+		// Created date
 		if ( ! empty( $args['created_at_min'] ) ) {
 			$this->created_at_min = $this->server->parse_datetime( $args['created_at_min'] );
 		}
@@ -551,16 +574,16 @@ class WC_API_Customers extends WC_API_Resource {
 			$this->created_at_max = $this->server->parse_datetime( $args['created_at_max'] );
 		}
 
-		// order (ASC or DESC, ASC by default)
+		// Order (ASC or DESC, ASC by default)
 		if ( ! empty( $args['order'] ) ) {
 			$query_args['order'] = $args['order'];
 		}
 
-		// orderby
+		// Orderby
 		if ( ! empty( $args['orderby'] ) ) {
 			$query_args['orderby'] = $args['orderby'];
 
-			// allow sorting by meta value
+			// Allow sorting by meta value
 			if ( ! empty( $args['orderby_meta_key'] ) ) {
 				$query_args['meta_key'] = $args['orderby_meta_key'];
 			}
@@ -568,8 +591,8 @@ class WC_API_Customers extends WC_API_Resource {
 
 		$query = new WP_User_Query( $query_args );
 
-		// helper members for pagination headers
-		$query->total_pages = ceil( $query->get_total() / $users_per_page );
+		// Helper members for pagination headers
+		$query->total_pages = ( $args['limit'] == -1 ) ? 1 : ceil( $query->get_total() / $users_per_page );
 		$query->page = $page;
 
 		return $query;
@@ -636,11 +659,11 @@ class WC_API_Customers extends WC_API_Resource {
 	public function modify_user_query( $query ) {
 
 		if ( $this->created_at_min ) {
-			$query->query_where .= sprintf( " AND user_registered >= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%h:%%i:%%s' )", esc_sql( $this->created_at_min ) );
+			$query->query_where .= sprintf( " AND user_registered >= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%H:%%i:%%s' )", esc_sql( $this->created_at_min ) );
 		}
 
 		if ( $this->created_at_max ) {
-			$query->query_where .= sprintf( " AND user_registered <= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%h:%%i:%%s' )", esc_sql( $this->created_at_max ) );
+			$query->query_where .= sprintf( " AND user_registered <= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%H:%%i:%%s' )", esc_sql( $this->created_at_max ) );
 		}
 	}
 
@@ -683,43 +706,47 @@ class WC_API_Customers extends WC_API_Resource {
 	 */
 	protected function validate_request( $id, $type, $context ) {
 
-		$id = absint( $id );
+		try {
+			$id = absint( $id );
 
-		// validate ID
-		if ( empty( $id ) ) {
-			return new WP_Error( 'woocommerce_api_invalid_customer_id', __( 'Invalid customer ID', 'woocommerce' ), array( 'status' => 404 ) );
+			// validate ID
+			if ( empty( $id ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_invalid_customer_id', __( 'Invalid customer ID', 'woocommerce' ), 404 );
+			}
+
+			// non-existent IDs return a valid WP_User object with the user ID = 0
+			$customer = new WP_User( $id );
+
+			if ( 0 === $customer->ID ) {
+				throw new WC_API_Exception( 'woocommerce_api_invalid_customer', __( 'Invalid customer', 'woocommerce' ), 404 );
+			}
+
+			// validate permissions
+			switch ( $context ) {
+
+				case 'read':
+					if ( ! current_user_can( 'list_users' ) ) {
+						throw new WC_API_Exception( 'woocommerce_api_user_cannot_read_customer', __( 'You do not have permission to read this customer', 'woocommerce' ), 401 );
+					}
+					break;
+
+				case 'edit':
+					if ( ! current_user_can( 'edit_users' ) ) {
+						throw new WC_API_Exception( 'woocommerce_api_user_cannot_edit_customer', __( 'You do not have permission to edit this customer', 'woocommerce' ), 401 );
+					}
+					break;
+
+				case 'delete':
+					if ( ! current_user_can( 'delete_users' ) ) {
+						throw new WC_API_Exception( 'woocommerce_api_user_cannot_delete_customer', __( 'You do not have permission to delete this customer', 'woocommerce' ), 401 );
+					}
+					break;
+			}
+
+			return $id;
+		} catch ( WC_API_Exception $e ) {
+			return new WP_Error( $e->getErrorCode(), $e->getMessage(), array( 'status' => $e->getCode() ) );
 		}
-
-		// non-existent IDs return a valid WP_User object with the user ID = 0
-		$customer = new WP_User( $id );
-
-		if ( 0 === $customer->ID ) {
-			return new WP_Error( 'woocommerce_api_invalid_customer', __( 'Invalid customer', 'woocommerce' ), array( 'status' => 404 ) );
-		}
-
-		// validate permissions
-		switch ( $context ) {
-
-			case 'read':
-				if ( ! current_user_can( 'list_users' ) ) {
-					return new WP_Error( 'woocommerce_api_user_cannot_read_customer', __( 'You do not have permission to read this customer', 'woocommerce' ), array( 'status' => 401 ) );
-				}
-				break;
-
-			case 'edit':
-				if ( ! current_user_can( 'edit_users' ) ) {
-					return new WP_Error( 'woocommerce_api_user_cannot_edit_customer', __( 'You do not have permission to edit this customer', 'woocommerce' ), array( 'status' => 401 ) );
-				}
-				break;
-
-			case 'delete':
-				if ( ! current_user_can( 'delete_users' ) ) {
-					return new WP_Error( 'woocommerce_api_user_cannot_delete_customer', __( 'You do not have permission to delete this customer', 'woocommerce' ), array( 'status' => 401 ) );
-				}
-				break;
-		}
-
-		return $id;
 	}
 
 	/**
@@ -731,8 +758,75 @@ class WC_API_Customers extends WC_API_Resource {
 	 * @return bool true if the current user can read users, false otherwise
 	 */
 	protected function is_readable( $post ) {
-
 		return current_user_can( 'list_users' );
 	}
 
+	/**
+	 * Bulk update or insert customers
+	 * Accepts an array with customers in the formats supported by
+	 * WC_API_Customers->create_customer() and WC_API_Customers->edit_customer()
+	 *
+	 * @since 2.4.0
+	 * @param array $data
+	 * @return array
+	 */
+	public function bulk( $data ) {
+
+		try {
+			if ( ! isset( $data['customers'] ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_missing_customers_data', sprintf( __( 'No %1$s data specified to create/edit %1$s', 'woocommerce' ), 'customers' ), 400 );
+			}
+
+			$data  = $data['customers'];
+			$limit = apply_filters( 'woocommerce_api_bulk_limit', 100, 'customers' );
+
+			// Limit bulk operation
+			if ( count( $data ) > $limit ) {
+				throw new WC_API_Exception( 'woocommerce_api_customers_request_entity_too_large', sprintf( __( 'Unable to accept more than %s items for this request', 'woocommerce' ), $limit ), 413 );
+			}
+
+			$customers = array();
+
+			foreach ( $data as $_customer ) {
+				$customer_id = 0;
+
+				// Try to get the customer ID
+				if ( isset( $_customer['id'] ) ) {
+					$customer_id = intval( $_customer['id'] );
+				}
+
+				// Customer exists / edit customer
+				if ( $customer_id ) {
+					$edit = $this->edit_customer( $customer_id, array( 'customer' => $_customer ) );
+
+					if ( is_wp_error( $edit ) ) {
+						$customers[] = array(
+							'id'    => $customer_id,
+							'error' => array( 'code' => $edit->get_error_code(), 'message' => $edit->get_error_message() )
+						);
+					} else {
+						$customers[] = $edit['customer'];
+					}
+				}
+
+				// Customer don't exists / create customer
+				else {
+					$new = $this->create_customer( array( 'customer' => $_customer ) );
+
+					if ( is_wp_error( $new ) ) {
+						$customers[] = array(
+							'id'    => $customer_id,
+							'error' => array( 'code' => $new->get_error_code(), 'message' => $new->get_error_message() )
+						);
+					} else {
+						$customers[] = $new['customer'];
+					}
+				}
+			}
+
+			return array( 'customers' => apply_filters( 'woocommerce_api_customers_bulk_response', $customers, $this ) );
+		} catch ( WC_API_Exception $e ) {
+			return new WP_Error( $e->getErrorCode(), $e->getMessage(), array( 'status' => $e->getCode() ) );
+		}
+	}
 }

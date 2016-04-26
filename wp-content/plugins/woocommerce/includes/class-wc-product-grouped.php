@@ -5,12 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Grouped Product Class
+ * Grouped Product Class.
  *
  * Grouped products cannot be purchased - they are wrappers for other products.
  *
  * @class 		WC_Product_Grouped
- * @version		2.0.0
+ * @version		2.3.0
  * @package		WooCommerce/Classes/Products
  * @category	Class
  * @author 		WooThemes
@@ -20,11 +20,8 @@ class WC_Product_Grouped extends WC_Product {
 	/** @public array Array of child products/posts/variations. */
 	public $children;
 
-	/** @public string The product's total stock, including that of its children. */
-	public $total_stock;
-
 	/**
-	 * __construct function.
+	 * Constructor.
 	 *
 	 * @access public
 	 * @param mixed $product
@@ -35,7 +32,7 @@ class WC_Product_Grouped extends WC_Product {
 	}
 
 	/**
-	 * Get the add to cart button text
+	 * Get the add to cart button text.
 	 *
 	 * @access public
 	 * @return string
@@ -43,40 +40,6 @@ class WC_Product_Grouped extends WC_Product {
 	public function add_to_cart_text() {
 		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'View products', 'woocommerce' ), $this );
 	}
-
-    /**
-     * Get total stock.
-     *
-     * This is the stock of parent and children combined.
-     *
-     * @access public
-     * @return int
-     */
-    public function get_total_stock() {
-
-        if ( empty( $this->total_stock ) ) {
-
-        	$transient_name = 'wc_product_total_stock_' . $this->id;
-
-        	if ( false === ( $this->total_stock = get_transient( $transient_name ) ) ) {
-		        $this->total_stock = $this->stock;
-
-				if ( sizeof( $this->get_children() ) > 0 ) {
-					foreach ($this->get_children() as $child_id) {
-						$stock = get_post_meta( $child_id, '_stock', true );
-
-						if ( $stock != '' ) {
-							$this->total_stock += wc_stock_amount( $stock );
-						}
-					}
-				}
-
-				set_transient( $transient_name, $this->total_stock, YEAR_IN_SECONDS );
-			}
-		}
-
-		return wc_stock_amount( $this->total_stock );
-    }
 
 	/**
 	 * Return the products children posts.
@@ -86,31 +49,28 @@ class WC_Product_Grouped extends WC_Product {
 	 */
 	public function get_children() {
 		if ( ! is_array( $this->children ) || empty( $this->children ) ) {
-        	$transient_name = 'wc_product_children_ids_' . $this->id;
-			$this->children = get_transient( $transient_name );
+        	$transient_name = 'wc_product_children_' . $this->id;
+			$this->children = array_filter( array_map( 'absint', (array) get_transient( $transient_name ) ) );
 
         	if ( empty( $this->children ) ) {
 
-		        $this->children = get_posts( 'post_parent=' . $this->id . '&post_type=product&orderby=menu_order&order=ASC&fields=ids&post_status=publish&numberposts=-1' );
+        		$args = apply_filters( 'woocommerce_grouped_children_args', array(
+        			'post_parent' 	=> $this->id,
+        			'post_type'		=> 'product',
+        			'orderby'		=> 'menu_order',
+        			'order'			=> 'ASC',
+        			'fields'		=> 'ids',
+        			'post_status'	=> 'publish',
+        			'numberposts'	=> -1,
+        		) );
 
-				set_transient( $transient_name, $this->children, YEAR_IN_SECONDS );
+		        $this->children = get_posts( $args );
+
+				set_transient( $transient_name, $this->children, DAY_IN_SECONDS * 30 );
 			}
 		}
 		return (array) $this->children;
 	}
-
-
-	/**
-	 * get_child function.
-	 *
-	 * @access public
-	 * @param mixed $child_id
-	 * @return object WC_Product or WC_Product_variation
-	 */
-	public function get_child( $child_id ) {
-		return get_product( $child_id );
-	}
-
 
 	/**
 	 * Returns whether or not the product has any child product.
@@ -122,7 +82,6 @@ class WC_Product_Grouped extends WC_Product {
 		return sizeof( $this->get_children() ) ? true : false;
 	}
 
-
 	/**
 	 * Returns whether or not the product is on sale.
 	 *
@@ -130,21 +89,26 @@ class WC_Product_Grouped extends WC_Product {
 	 * @return bool
 	 */
 	public function is_on_sale() {
+		$is_on_sale = false;
+
 		if ( $this->has_child() ) {
 
 			foreach ( $this->get_children() as $child_id ) {
 				$sale_price = get_post_meta( $child_id, '_sale_price', true );
-				if ( $sale_price !== "" && $sale_price >= 0 )
-					return true;
+				if ( $sale_price !== "" && $sale_price >= 0 ) {
+					$is_on_sale = true;
+				}
 			}
 
 		} else {
 
-			if ( $this->sale_price && $this->sale_price == $this->price )
-				return true;
+			if ( $this->sale_price && $this->sale_price == $this->price ) {
+				$is_on_sale = true;
+			}
 
 		}
-		return false;
+
+		return apply_filters( 'woocommerce_product_is_on_sale', $is_on_sale, $this );
 	}
 
 

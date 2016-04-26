@@ -133,6 +133,8 @@ class WC_API_Server {
 		// Compatibility for clients that can't use PUT/PATCH/DELETE
 		if ( isset( $_GET['_method'] ) ) {
 			$this->method = strtoupper( $_GET['_method'] );
+		} elseif ( isset( $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] ) ) {
+			$this->method = $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'];
 		}
 
 		// determine type of request/response and load handler, JSON by default
@@ -431,7 +433,7 @@ class WC_API_Server {
 				'timezone'			 => wc_timezone_string(),
 				'currency'       	 => get_woocommerce_currency(),
 				'currency_format'    => get_woocommerce_currency_symbol(),
-				'tax_included'   	 => ( 'yes' === get_option( 'woocommerce_prices_include_tax' ) ),
+				'tax_included'   	 => wc_prices_include_tax(),
 				'weight_unit'    	 => get_option( 'woocommerce_weight_unit' ),
 				'dimension_unit' 	 => get_option( 'woocommerce_dimension_unit' ),
 				'ssl_enabled'    	 => ( 'yes' === get_option( 'woocommerce_force_ssl_checkout' ) ),
@@ -537,7 +539,7 @@ class WC_API_Server {
 		if ( is_a( $query, 'WP_User_Query' ) ) {
 
 			$page        = $query->page;
-			$single      = count( $query->get_results() ) > 1;
+			$single      = count( $query->get_results() ) == 1;
 			$total       = $query->get_total();
 			$total_pages = $query->total_pages;
 
@@ -607,11 +609,16 @@ class WC_API_Server {
 	 * @return string
 	 */
 	public function get_raw_data() {
+		// $HTTP_RAW_POST_DATA is deprecated on PHP 5.6
+		if ( function_exists( 'phpversion' ) && version_compare( phpversion(), '5.6', '>=' ) ) {
+			return file_get_contents( 'php://input' );
+		}
+
 		global $HTTP_RAW_POST_DATA;
 
 		// A bug in PHP < 5.2.2 makes $HTTP_RAW_POST_DATA not set by default,
 		// but we can do it ourself.
-		if ( !isset( $HTTP_RAW_POST_DATA ) ) {
+		if ( ! isset( $HTTP_RAW_POST_DATA ) ) {
 			$HTTP_RAW_POST_DATA = file_get_contents( 'php://input' );
 		}
 

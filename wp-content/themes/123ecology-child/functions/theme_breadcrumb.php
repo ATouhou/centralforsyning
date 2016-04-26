@@ -14,7 +14,7 @@ if ( function_exists( 'get_option_tree') ) {
 	echo '<a href="';
 	echo home_url();
 	echo '">';
-    _e('Home', GETTEXT_DOMAIN); 
+    _e('Home', GETTEXT_DOMAIN_CHILD); 
 	echo "</a>&nbsp;&rarr; ";
     if (is_home()){
         if($posts_page_id){
@@ -35,7 +35,7 @@ if ( function_exists( 'get_option_tree') ) {
             if($portfolio_title){
                 echo $portfolio_title;
             }else{
-                _e('Portfolio', GETTEXT_DOMAIN); 
+                _e('Portfolio', GETTEXT_DOMAIN_CHILD); 
             }
         echo "</a>&nbsp;&rarr; ";
         $terms = get_the_terms( $post->ID, 'portfolio_category' );
@@ -86,7 +86,7 @@ if ( function_exists( 'get_option_tree') ) {
         }
     } elseif (is_404()) {
         echo "<span class='current'>";
-        _e('404 Error', GETTEXT_DOMAIN); 
+        _e('404 Error', GETTEXT_DOMAIN_CHILD); 
         echo "</span>";
     } elseif (is_archive()) {
         echo "<span class='current'>";
@@ -101,10 +101,10 @@ if ( function_exists( 'get_option_tree') ) {
                 if($portfolio_title){
                     echo $portfolio_title;
                 }else{
-                    _e( 'Portfolio', GETTEXT_DOMAIN); 
+                    _e( 'Portfolio', GETTEXT_DOMAIN_CHILD); 
                 }
             }else{
-                _e( 'Archives', GETTEXT_DOMAIN);  
+                _e( 'Archives', GETTEXT_DOMAIN_CHILD);  
             }
         endif;
         echo "</span>";
@@ -114,25 +114,25 @@ if ( function_exists( 'get_option_tree') ) {
             echo $author->display_name;
             echo "</span>";
         }elseif(is_category()){
-            _e( '&nbsp;&rarr; Category', GETTEXT_DOMAIN);
+            _e( '&nbsp;&rarr; Category', GETTEXT_DOMAIN_CHILD);
             echo "&nbsp;&rarr; <span class='current'>";
             single_cat_title();
             echo "</span>";
         }elseif(is_tag()){
-            _e( '&nbsp;&rarr; Tag', GETTEXT_DOMAIN);
+            _e( '&nbsp;&rarr; Tag', GETTEXT_DOMAIN_CHILD);
             echo "&nbsp;&rarr; <span class='current'>";
             single_tag_title();
             echo "</span>";
         }elseif (is_tax('portfolio_category')) {
         	echo "&nbsp;&rarr; <span class='current'>";
-            _e( 'Portfolio Category', GETTEXT_DOMAIN);
+            _e( 'Portfolio Category', GETTEXT_DOMAIN_CHILD);
             echo "</span>";
             echo "&nbsp;&rarr; <span class='current'>";
             echo get_queried_object()->name;
             echo "</span>";
         }elseif (is_tax('portfolio_tags')) {
         	echo "&nbsp;&rarr; <span class='current'>";
-            _e( 'Portfolio Tag', GETTEXT_DOMAIN);
+            _e( 'Portfolio Tag', GETTEXT_DOMAIN_CHILD);
             echo "</span>";
             echo "&nbsp;&rarr; <span class='current'>";
             echo get_queried_object()->name;
@@ -140,7 +140,7 @@ if ( function_exists( 'get_option_tree') ) {
         } 
 	} elseif(is_search()){
         echo " <span class='current'>";
-        _e('Search for:', GETTEXT_DOMAIN);                
+        _e('Search for:', GETTEXT_DOMAIN_CHILD);                
         the_search_query();
         echo "</span>";
 	}

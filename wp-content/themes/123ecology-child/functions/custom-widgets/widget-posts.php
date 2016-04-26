@@ -30,13 +30,13 @@ class posts_widget extends WP_Widget {
 	function Posts_Widget() {
 	
 		/* widget settings. */
-		$widget_ops = array( 'classname' => 'posts_widget', 'description' => __('A widget that displays your posts.', GETTEXT_DOMAIN) );
+		$widget_ops = array( 'classname' => 'posts_widget', 'description' => __('A widget that displays your posts.', GETTEXT_DOMAIN_CHILD) );
 
 		/* widget control settings. */
 		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'posts_widget' );
 
 		/* create the widget. */
-		$this->WP_Widget( 'posts_widget', __('Posts Widget', GETTEXT_DOMAIN), $widget_ops, $control_ops );
+		$this->WP_Widget( 'posts_widget', __('Posts Widget', GETTEXT_DOMAIN_CHILD), $widget_ops, $control_ops );
 	}
 
 /* display widget
@@ -128,13 +128,13 @@ class posts_widget extends WP_Widget {
 		
         <!-- widget title: text input -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', GETTEXT_DOMAIN) ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', GETTEXT_DOMAIN_CHILD) ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
         </p>
         
 		<!-- widget num: text input -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'num' ); ?>"><?php _e('Number of posts to show:', GETTEXT_DOMAIN) ?></label>
+			<label for="<?php echo $this->get_field_id( 'num' ); ?>"><?php _e('Number of posts to show:', GETTEXT_DOMAIN_CHILD) ?></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'num' ); ?>" name="<?php echo $this->get_field_name( 'num' ); ?>" value="<?php echo $instance['num']; ?>" />
 		</p>
 
