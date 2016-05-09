@@ -15,7 +15,7 @@ require_once('inc/dws_tabs.php');
 require_once('inc/dws_collapse.php');
 #require_once('inc/dws_icons.php');
 
-class DesignwallShortcodes{
+class DesignwallShortcodes_child{
 	
 	function __construct()
 	{
@@ -131,4 +131,4 @@ class DesignwallShortcodes{
 
 
 }
-$dwcodes = new DesignwallShortcodes();
+$dwcodes = new DesignwallShortcodes_child();

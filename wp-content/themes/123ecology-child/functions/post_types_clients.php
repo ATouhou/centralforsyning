@@ -1,7 +1,7 @@
 <?php
 /* Clients post type
 ================================================== */
-function client_post_type() 
+function client_post_type_child() 
 {
 	$labels = array(
 		'name' => __( 'Clients'),
@@ -36,7 +36,7 @@ function client_post_type()
 
 /* Clients edit
 ================================================== */
-function client_edit_columns($columns){  
+function client_edit_columns_child($columns){  
 
         $columns = array(  
             "cb" => "<input type=\"checkbox\" />",  
@@ -50,7 +50,7 @@ function client_edit_columns($columns){
 
 /* Client custom column
 ================================================== */
-function client_custom_columns($column){  
+function client_custom_columns_child($column){  
         global $post;  
         switch ($column)  
         {
@@ -63,7 +63,7 @@ function client_custom_columns($column){
         }  
 }  
 
-add_action( 'init', 'client_post_type' ); 
-add_filter("manage_edit-client_columns", "client_edit_columns");  
-add_action("manage_posts_custom_column",  "client_custom_columns");  
+add_action( 'init', 'client_post_type_child' ); 
+add_filter("manage_edit-client_columns", "client_edit_columns_child");  
+add_action("manage_posts_custom_column",  "client_custom_columns_child");  
 ?>

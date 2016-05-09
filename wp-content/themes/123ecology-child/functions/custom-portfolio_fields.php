@@ -57,7 +57,7 @@ array(
 
 /* meta_boxes
 ================================================== */
-function portfolio_meta_boxes() {
+function portfolio_meta_boxes_child() {
 global $post, $portfolio_meta_boxes;
 	
 	foreach($portfolio_meta_boxes as $meta_box) {
@@ -145,16 +145,16 @@ global $post, $portfolio_meta_boxes;
 
 /* enable meta_boxes
 ================================================== */
-function create_portfolio_meta_box() {
+function create_portfolio_meta_box_child() {
 global $theme_name, $portfolio_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'new-meta-boxes', __('Post Options', GETTEXT_DOMAIN_CHILD), 'portfolio_meta_boxes', 'portfolio', 'normal', 'high' );
+	add_meta_box( 'new-meta-boxes', __('Post Options', GETTEXT_DOMAIN_CHILD), 'portfolio_meta_boxes_child', 'portfolio', 'normal', 'high' );
 	}
 }
 
 /* update meta_boxes
 ================================================== */
-function save_portfolio_postdata( $post_id ) {
+function save_portfolio_postdata_child( $post_id ) {
 	global $post, $portfolio_meta_boxes;  
 		foreach($portfolio_meta_boxes as $meta_box) {  
  
@@ -181,6 +181,6 @@ function save_portfolio_postdata( $post_id ) {
 	}
 	
 }
-add_action('admin_menu', 'create_portfolio_meta_box');
-add_action('save_post', 'save_portfolio_postdata');
+add_action('admin_menu', 'create_portfolio_meta_box_child');
+add_action('save_post', 'save_portfolio_postdata_child');
 ?>

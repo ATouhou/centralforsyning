@@ -33,7 +33,7 @@ if ( $products->have_posts() ) : ?>
 
 	<div class="related1 products">
 
-		<h4><?php _e( 'Related Products', GETTEXT_DOMAIN_CHILD ); ?></h4>
+		<h4><?php _e( 'Related Products', GETTEXT_DOMAIN ); ?></h4>
 
 		<?php woocommerce_product_loop_start(); ?>
 

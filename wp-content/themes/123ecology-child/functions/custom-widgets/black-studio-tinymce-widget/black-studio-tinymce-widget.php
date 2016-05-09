@@ -15,7 +15,7 @@ $black_studio_tinymce_widget_version = "1.3.0"; // This is used internally - sho
 $black_studio_tinymce_widget_dev_mode = false;
 
 /* Widget class */
-class WP_Widget_Black_Studio_TinyMCE extends WP_Widget {
+class WP_Widget_Black_Studio_TinyMCE_child extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array( 'classname' => 'widget_black_studio_tinymce', 'description' => __( 'Arbitrary text or HTML with visual editor', 'black-studio-tinymce-widget' ) );
@@ -105,16 +105,16 @@ class WP_Widget_Black_Studio_TinyMCE extends WP_Widget {
 load_plugin_textdomain('black-studio-tinymce-widget', false, get_template_directory() .'functions/custom-widgets/black-studio-tinymce-widget/languages/' );
 
 /* Widget initialization */
-add_action( 'widgets_init', 'black_studio_tinymce_widgets_init' );
-function black_studio_tinymce_widgets_init() {
+add_action( 'widgets_init', 'black_studio_tinymce_widgets_init_child' );
+function black_studio_tinymce_widgets_init_child() {
 	if ( ! is_blog_installed() )
 		return;
-	register_widget( 'WP_Widget_Black_Studio_TinyMCE' );
+	register_widget( 'WP_Widget_Black_Studio_TinyMCE_child' );
 }
 
 /* Add actions and filters (only in widgets admin page) */
-add_action( 'admin_init', 'black_studio_tinymce_admin_init' );
-function black_studio_tinymce_admin_init() {
+add_action( 'admin_init', 'black_studio_tinymce_admin_init_child' );
+function black_studio_tinymce_admin_init_child() {
 	global $pagenow;
 	$load_editor = false;
 	if ( $pagenow == "widgets.php" ) {
@@ -129,17 +129,17 @@ function black_studio_tinymce_admin_init() {
 		$load_editor = true;
 	}
 	if ( $load_editor ) {
-		add_action( 'admin_head', 'black_studio_tinymce_load_tiny_mce' );
-		add_filter( 'tiny_mce_before_init', 'black_studio_tinymce_init_editor', 20 );
-		add_action( 'admin_print_scripts', 'black_studio_tinymce_scripts' );
-		add_action( 'admin_print_styles', 'black_studio_tinymce_styles' );
-		add_action( 'admin_print_footer_scripts', 'black_studio_tinymce_footer_scripts' );
+		add_action( 'admin_head', 'black_studio_tinymce_load_tiny_mce_child' );
+		add_filter( 'tiny_mce_before_init', 'black_studio_tinymce_init_editor_child', 20 );
+		add_action( 'admin_print_scripts', 'black_studio_tinymce_scripts_child' );
+		add_action( 'admin_print_styles', 'black_studio_tinymce_styles_child' );
+		add_action( 'admin_print_footer_scripts', 'black_studio_tinymce_footer_scripts_child' );
 		add_filter( 'atd_load_scripts', '__return_true'); // Compatibility with Jetpack After the deadline
 	}
 }
 
 /* Instantiate tinyMCE editor */
-function black_studio_tinymce_load_tiny_mce() {
+function black_studio_tinymce_load_tiny_mce_child() {
 	// Remove filters added from "After the deadline" plugin, to avoid conflicts
 	// Add support for thickbox media dialog
 	add_thickbox();
@@ -150,7 +150,7 @@ function black_studio_tinymce_load_tiny_mce() {
 }
 
 /* TinyMCE setup customization */
-function black_studio_tinymce_init_editor( $initArray ) {
+function black_studio_tinymce_init_editor_child( $initArray ) {
 	global $pagenow;
 	// Remove WP fullscreen mode and set the native tinyMCE fullscreen mode
 	if ( get_bloginfo( 'version' ) < "3.3" ) {
@@ -186,7 +186,7 @@ function black_studio_tinymce_init_editor( $initArray ) {
 }
 
 /* Widget js loading */
-function black_studio_tinymce_scripts() {
+function black_studio_tinymce_scripts_child() {
 	global $black_studio_tinymce_widget_version, $black_studio_tinymce_widget_dev_mode;
 	wp_enqueue_script('media-upload');
 	if ( get_bloginfo( 'version' ) >= "3.3" ) {
@@ -200,7 +200,7 @@ function black_studio_tinymce_scripts() {
 }
 
 /* Widget css loading */
-function black_studio_tinymce_styles() {
+function black_studio_tinymce_styles_child() {
 	global $black_studio_tinymce_widget_version;
 	if ( get_bloginfo( 'version' ) < "3.3" ) {
 		wp_enqueue_style( 'thickbox' );
@@ -214,7 +214,7 @@ function black_studio_tinymce_styles() {
 
 
 /* Footer script */
-function black_studio_tinymce_footer_scripts() {
+function black_studio_tinymce_footer_scripts_child() {
 	// Setup for WP 3.1 and previous versions
 	if ( get_bloginfo( 'version' ) < "3.2" ) {
 		if ( function_exists( 'wp_tiny_mce' ) ) {
@@ -240,8 +240,8 @@ function black_studio_tinymce_footer_scripts() {
 }
 
 /* Support for Smilies */
-add_filter( 'widget_text', 'black_studio_tinymce_apply_smilies_to_widget_text' );
-function black_studio_tinymce_apply_smilies_to_widget_text( $text ) {
+add_filter( 'widget_text', 'black_studio_tinymce_apply_smilies_to_widget_text_child' );
+function black_studio_tinymce_apply_smilies_to_widget_text_child( $text ) {
 	if ( get_option( 'use_smilies' ) ) {
 		$text = convert_smilies( $text );
 	}
@@ -250,8 +250,8 @@ function black_studio_tinymce_apply_smilies_to_widget_text( $text ) {
 
 /* Hack needed to enable full media options when adding content form media library */
 /* (this is done excluding post_id parameter in Thickbox iframe url) */
-add_filter( '_upload_iframe_src', 'black_studio_tinymce_upload_iframe_src' );
-function black_studio_tinymce_upload_iframe_src ( $upload_iframe_src ) {
+add_filter( '_upload_iframe_src', 'black_studio_tinymce_upload_iframe_src_child' );
+function black_studio_tinymce_upload_iframe_src_child ( $upload_iframe_src ) {
 	global $pagenow;
 	if ( $pagenow == "widgets.php" || ( $pagenow == "admin-ajax.php" && isset ( $_POST['id_base'] ) && $_POST['id_base'] == "black-studio-tinymce" ) ) {
 		$upload_iframe_src = str_replace( 'post_id=0', '', $upload_iframe_src );
@@ -260,8 +260,8 @@ function black_studio_tinymce_upload_iframe_src ( $upload_iframe_src ) {
 }
 
 /* Hack for widgets accessibility mode */
-add_filter( 'wp_default_editor', 'black_studio_tinymce_editor_accessibility_mode' );
-function black_studio_tinymce_editor_accessibility_mode($editor) {
+add_filter( 'wp_default_editor', 'black_studio_tinymce_editor_accessibility_mode_child' );
+function black_studio_tinymce_editor_accessibility_mode_child($editor) {
 	global $pagenow;
 	if ( $pagenow == "widgets.php" && isset( $_GET['editwidget'] ) && strpos( $_GET['editwidget'], 'black-studio-tinymce' ) === 0 ) {
 		$editor = 'html';

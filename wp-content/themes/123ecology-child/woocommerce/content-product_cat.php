@@ -65,11 +65,11 @@ $woocommerce_loop['loop']++;
 				
 				if($category->count=='1'){
 				
-					$label = __(' Item', GETTEXT_DOMAIN_CHILD);
+					$label = __(' Item', GETTEXT_DOMAIN);
 				
 				} else{
 				
-					$label = __(' Items', GETTEXT_DOMAIN_CHILD);
+					$label = __(' Items', GETTEXT_DOMAIN);
 				
 				}
 				

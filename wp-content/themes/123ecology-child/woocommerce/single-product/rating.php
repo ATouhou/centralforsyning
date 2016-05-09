@@ -20,7 +20,7 @@ $count   = $product->get_rating_count();
 if ( $count > 0 ) : ?>
 
 	<div class="woocommerce-product-rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-		<a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $count, GETTEXT_DOMAIN_CHILD ), '<span itemprop="ratingCount" class="count">' . $count . '</span>' ); ?>)</a>
+		<a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $count, GETTEXT_DOMAIN ), '<span itemprop="ratingCount" class="count">' . $count . '</span>' ); ?>)</a>
 	</div>
 
 <?php endif; ?>

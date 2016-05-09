@@ -4,7 +4,7 @@
  * Plugin URI: http://plugins.svn.wordpress.org/woocommerce-e-conomic-integration/
  * Description: An e-conomic API Interface. Synchronizes products, orders, Customers and more to e-conomic.
  * Also fetches inventory from e-conomic and updates WooCommerce
- * Version: 1.9.9.11
+ * Version: 1.9.9.16
  * Author: wooconomics
  * Text Domain: woocommerce-e-conomic-integration
  * Author URI: www.wooconomics.com
@@ -22,14 +22,18 @@ if(!defined('AUTOMATED_TESTING')){
 if ( ! function_exists( 'logthis' ) ) {
     function logthis($msg) {
         if(TESTING){
-            if(!file_exists(dirname(__FILE__).'/logfile.log')){
-                $fileobject = fopen(dirname(__FILE__).'/logfile.log', 'a');
-                chmod(dirname(__FILE__).'/logfile.log', 0666);
+			$filePath = dirname(__FILE__).'/logfile.log';
+			$archivedFilePath = dirname(__FILE__).'/logfile_archived.log';
+			if(file_exists($filePath) && ceil(filesize($filePath)/(1024*1024)) > 2){
+				rename($filePath, $archivedFilePath);
+			}
+            if(!file_exists($filePath)){
+                $fileobject = fopen($filePath, 'a');
+                chmod($filePath, 0666);
             }
             else{
-                $fileobject = fopen(dirname(__FILE__).'/logfile.log', 'a');
+                $fileobject = fopen($filePath, 'a');
             }
-
             if(is_array($msg) || is_object($msg)){
                 fwrite($fileobject,print_r($msg, true));
             }
@@ -94,6 +98,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
         }
 		
 		add_action( 'wp_ajax_sync_products_ew', 'economic_sync_products_ew_callback' );
+		//add_action( 'wp_ajax_nopriv_sync_products_ew', 'economic_sync_products_ew_callback' );
         function economic_sync_products_ew_callback() {
 			//echo json_encode(array('status' => 'test', 'msg'=>'testing ajax')); exit; die();
             global $wpdb; // this is how you get access to the database
@@ -123,6 +128,49 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
             }
             die(); // this is required to return a proper result
         }
+		
+		
+		//Added for version 1.9.9.12, edited on 1.9.9.14
+		add_action( 'wp_ajax_nopriv_sync_products_ew_webhook', 'economic_sync_products_ew_webhook_callback' );
+		function economic_sync_products_ew_webhook_callback(){
+			include_once("class-economic-api.php");
+            $wce_api = new WCE_API();
+			$wce = new WC_Economic();
+			if($wce->is_license_key_valid() != "Active" || !$wce_api->create_API_validation_request()){
+			  logthis("economic_sync_products_ew_webhook_callback exiting because license key validation not passed.");
+			  return false;
+			}	
+			logthis('wp_ajax_nopriv_sync_products_ew_webhook executed');
+			$number = $_GET['number'];
+			$log_msg = '';	
+			$sync_log = $wce_api->sync_products_ew($number);
+			/*
+			foreach(array_slice($sync_log, 1) as $key => $value){
+				$log_msg .= __('<br>Sync status: ', 'woocommerce-e-conomic-integration'). $value['status'].'<br>';
+				$log_msg .= __('Product SKU: ', 'woocommerce-e-conomic-integration'). $value['sku'].'<br>';
+				$log_msg .= __('Product Name: ', 'woocommerce-e-conomic-integration'). $value['name'].'<br>';
+				$log_msg .= __('Sync message: ', 'woocommerce-e-conomic-integration'). $value['msg'].'<br>';
+			}
+			
+            if($sync_log[0]){
+				$log = array('status' => __('Products are synchronized without problems.', 'woocommerce-e-conomic-integration'), 'msg' => $log_msg);
+				//logthis(json_encode($log));
+				echo json_encode($log);
+            }
+            else{
+				$log = array('status' => __('Something went wrong.', 'woocommerce-e-conomic-integration'), 'msg' => $log_msg);
+				echo json_encode($log);
+            }
+			*/
+			if($sync_log[0]){
+				logthis('wp_ajax_nopriv_sync_products_ew_webhook web hook "Product inventory updated" for e-conomic product number:'.$number.' successfully!');
+			}else{
+				logthis('wp_ajax_nopriv_sync_products_ew_webhook web hook "Product inventory updated" for e-conomic product number:'.$number.' failed!');
+			}
+			
+            die(); // this is required to return a proper result	
+		}
+		//Added for version 1.9.9.12
 
         add_action( 'wp_ajax_sync_orders', 'economic_sync_orders_callback' );
         function economic_sync_orders_callback() {
@@ -642,7 +690,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 					return;
 				}
 				
-				do_action('woo_save_'.$post->post_type.'_to_economic', $post_id, $post);
+				do_action('woo_save_'.$post->post_type.'_to_economic', $post_id, NULL, str_replace("wc-", "", $post->post_status));
 				return;
 			}
 			
@@ -662,6 +710,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				
 		add_action('woo_save_product_to_economic', 'woo_save_product_to_economic', 1,2);
 		add_action('woo_save_product_variation_to_economic', 'woo_save_product_to_economic', 1,2);
+		add_action( 'wp_ajax_save_product', 'woo_save_product_to_economic', 1,2 );
 		function woo_save_product_to_economic($post_id, $post) {
 		  include_once("class-economic-api.php");
 		  $wce = new WC_Economic();
@@ -793,22 +842,89 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		 * Create new customer at economic with minimial required data.
 		 */
 		add_action('woocommerce_checkout_order_processed', 'woo_save_customer_to_economic');
-		add_action('woo_save_shop_order_to_economic', 'woo_save_customer_to_economic');
-		//add_action('woocommerce_order_status_completed', 'woo_save_customer_to_economic');
+		add_action('woo_save_shop_order_to_economic', 'woo_save_customer_to_economic', 10, 3);
+		add_action('woocommerce_order_status_changed', 'woo_save_customer_to_economic', 10, 3);
 		
-		function woo_save_customer_to_economic($order_id) {
+		function woo_save_customer_to_economic($order_id, $old_status = NULL, $new_status = NULL) {
 			try{
-				include_once("class-economic-api.php");
-				$order = new WC_Order($order_id);
 				global $wpdb;
-				if($wpdb->query ("SELECT * FROM wce_orders WHERE order_id=".$order->id." AND synced=1")){
+				$options = get_option('woocommerce_economic_general_settings');
+				$sync = array( 'sync' => true, 'type' => '');
+				if($old_status != NULL && $new_status != NULL){
+					$sync['type'] = 'status';
+				}elseif($old_status == NULL && $new_status != NULL){
+					$sync['type'] = 'save';
+				}else{
+					$sync['type'] = 'event';
+				}
+				if($options['initiate-order'] == 'status_based'){					
+					logthis('woo_save_customer_to_economic: Order sync initiated for the status_based option.');
+					if($new_status != NULL){
+						if($options['initiate-order-status-'.$new_status] == 'on'){
+							if($old_status != NULL){
+								logthis('woo_save_customer_to_economic: Order sync initiated for the status change: '.$new_status);
+							}else{
+								logthis('woo_save_customer_to_economic: Order sync initiated for the order save with status: '.$new_status);
+							}
+						}else{
+							$sync['sync'] = false;
+						}
+					}else{
+						$sync['sync'] = false;
+					}
+				}
+				
+				if($options['initiate-order'] == 'event_based'){
+					logthis('woo_save_customer_to_economic: Order sync initiated for the event_based option.');
+					if(current_filter() == 'woocommerce_checkout_order_processed' && $options['initiate-order-event'] == 'checkout_order_processed'){
+						logthis('woo_save_customer_to_economic: Order sync initiated by event: '.current_filter());
+					}else{
+						$sync['sync'] = false;
+					}
+				}
+				
+				if(!$sync['sync']){
+					if($wpdb->query ("SELECT * FROM wce_orders WHERE order_id=".$order_id." AND synced=1")){
+						if($options['initiate-order'] == 'status_based' && $sync['type'] == 'status'){
+							logthis('woo_save_customer_to_economic: Order sync initiated by status update is exiting because status: '.$new_status.' is not selected for active sync and the order is already synced on valid status or event!');
+						}elseif($options['initiate-order'] == 'event_based' && $sync['type'] == 'event'){
+							logthis('woo_save_customer_to_economic: Order sync initiated by event is exiting because event: '.current_filter().' is not selected for active sync and the order is already synced on valid status or event!');
+						}else{
+							logthis('woo_save_customer_to_economic: Order sync initiated by save event is exiting because the event or status is not selected for sync and the order is already synced on valid status or event!');
+						}
+						return false;
+					}else{
+						if($options['initiate-order'] == 'status_based' && $sync['type'] == 'status'){
+							logthis('woo_save_customer_to_economic: Order sync initiated by status update is exiting because status: '.$new_status.' is not selected for active sync and this is the initial order sync!');
+						}elseif($options['initiate-order'] == 'event_based' && $sync['type'] == 'event'){
+							logthis('woo_save_customer_to_economic: Order sync initiated by event is exiting because event: '.current_filter().' is not selected for active sync and this is the initial order sync!');
+						}else{
+							logthis('woo_save_customer_to_economic: Order sync initiated by save event is exiting because the event or status is not selected for sync');						
+						}
+						
+						if($wpdb->query ("SELECT * FROM wce_orders WHERE order_id=".$order_id." AND synced=0")){
+							return false;
+						}else{
+							$wpdb->insert ("wce_orders", array('order_id' => $order_id, 'synced' => 0), array('%d', '%d'));
+							return false;
+						}
+						
+					}
+				}				
+				
+				
+				if($wpdb->query ("SELECT * FROM wce_orders WHERE order_id=".$order_id." AND synced=1")){
 					logthis('syncing order for update.');
-				}elseif($wpdb->query ("SELECT * FROM wce_orders WHERE order_id=".$order->id." AND synced=0")){
+				}elseif($wpdb->query ("SELECT * FROM wce_orders WHERE order_id=".$order_id." AND synced=0")){
 					logthis('syncing order failed previously');
 				}else{
 					$wpdb->insert ("wce_orders", array('order_id' => $order_id, 'synced' => 0), array('%d', '%d'));
 				}
-				$options = get_option('woocommerce_economic_general_settings');
+				
+				include_once("class-economic-api.php");
+				$order = new WC_Order($order_id);
+				
+				
 				$wce = new WC_Economic();
 				$wce_api = new WCE_API();
 				if($order->customer_user != 0){
@@ -983,6 +1099,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		 */
 		add_action('update_user_meta', 'woo_update_user_meta_to_economic', 10, 4);
 		function woo_update_user_meta_to_economic($meta_id, $object_id, $meta_key, $_meta_value) {
+			if(!get_option('woo_save_object_to_economic')){
+				logthis("woo_update_user_meta_to_economic existing because disabled!");
+				return;
+			}
 		  global $wpdb;
 		  include_once("class-economic-api.php");
 		  $wce = new WC_Economic();
@@ -1055,7 +1175,15 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
             dbDelta( $sql );
 			
-			update_option('economic_version', 1.9992);
+			//1.9.9.16 new feature
+			$options = get_option('woocommerce_economic_general_settings');
+			$options['initiate-order'] = 'event_based';
+			$options['initiate-order-event'] = 'checkout_order_processed';
+			update_option('woocommerce_economic_general_settings', $options);
+			//1.9.9.16 new feature
+			
+			//1.9.9.16 = 1.9997
+			update_option('economic_version', 1.9997);
 			update_option('woo_save_object_to_economic', true);
 		}
 		
@@ -1112,7 +1240,14 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				}
 				update_option('woocommerce_economic_general_settings', $options);
 			}
-			update_option('economic_version', 1.9992);
+			if(floatval($economic_version) < 1.9997 ){
+				$options = get_option('woocommerce_economic_general_settings');
+				$options['initiate-order'] = 'event_based';
+				$options['initiate-order-event'] = 'checkout_order_processed';
+				update_option('woocommerce_economic_general_settings', $options);
+			}
+			//1.9.9.16 = 1.9997
+			update_option('economic_version', 1.9997);
 			update_option('woo_save_object_to_economic', true);
 		}
 		
@@ -1285,10 +1420,14 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                 $twicedaily = '';
 				$daily = '';
 				$disabled = '';
+				$webhook = '';
                 if(isset($options[$args['key']])){
                     if($options[$args['key']] == 'hourly'){
                         $hourly = 'selected';
                     }
+					elseif($options[$args['key']] == 'webhook'){
+						$webhook = 'selected';
+					}
 					elseif($options[$args['key']] == 'twicedaily'){
 						$twicedaily = 'selected';
 					}
@@ -1301,18 +1440,18 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                 }
 				
 				wp_clear_scheduled_hook('economic_product_sync_cron');
-				if($options[$args['key']] != 'disabled' && $options[$args['key']] != ''){
+				if($options[$args['key']] != 'disabled' && $options[$args['key']] != '' && $options[$args['key']] != 'webhook'){
 					wp_schedule_event(time(), $options[$args['key']], 'economic_product_sync_cron');
 				}
-
                 ?>
                 <select <?php echo isset($args['id'])? 'id="'.$args['id'].'"':''; ?> name="<?php echo $args['tab_key']; ?>[<?php echo $args['key']; ?>]">
                 	<option <?php echo $disabled; ?> value='disabled'><?php _e('Disabled', 'woocommerce-e-conomic-integration'); ?></option>
+                    <option <?php echo $webhook; ?> value='webhook'><?php _e('Web hook', 'woocommerce-e-conomic-integration'); ?></option>
                     <option <?php echo $hourly; ?> value='hourly'><?php _e('Hourly', 'woocommerce-e-conomic-integration'); ?></option>
                     <option <?php echo $twicedaily; ?> value='twicedaily'><?php _e('Twice Daily', 'woocommerce-e-conomic-integration'); ?></option>
                     <option <?php echo $daily; ?> value='daily'><?php _e('Daily', 'woocommerce-e-conomic-integration'); ?></option>
                 </select>
-                <span><i><?php echo $args['desc']; ?></i></span>
+                <span><i><?php echo $args['desc']; ?></i><?php if($webhook == 'selected'){ echo '<br><i style="margin-left:25px; color: #F00; font-weight: bold;">Note: </i> <i>Add a web hook to your e-conomic account for “Product inventory updated” type, using URL: <b>'.admin_url('admin-ajax.php').'?action=sync_products_ew_webhook&number=[NUMBER]</b></i>'; }?></span>
             <?php
             }
 			
@@ -1358,6 +1497,84 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                 <span><i><?php echo $args['desc']; ?></i></span>
             <?php
             }
+			
+			
+			
+			/**
+             * Generates html for dropdown for order initiate option.
+             *
+             * @access public
+             * @param void
+             * @return void
+             */
+			function field_option_order_sync_dropdown($args) {
+				$options = get_option($args['tab_key']);
+                $str1 = '';
+                $str2 = '';
+                if(isset($options[$args['key']])){
+                    if($options[$args['key']] == 'event_based'){
+                        $str1 = 'selected';
+                    }
+					if($options[$args['key']] == 'status_based'){
+						$str2 = 'selected';
+					}
+                }
+
+                ?>
+                <select id="initiate_order" <?php echo isset($args['id'])? 'id="'.$args['id'].'"':''; ?> name="<?php echo $args['tab_key']; ?>[<?php echo $args['key']; ?>]">
+                    <option <?php echo $str1; ?> value='event_based'><?php _e('Based on an Event', 'woocommerce-e-conomic-integration'); ?></option>
+                    <option <?php echo $str2; ?> value='status_based'><?php _e('Based on Order status', 'woocommerce-e-conomic-integration'); ?></option>  
+                </select>
+                <span><i><?php echo $args['desc']; ?></i></span>
+            <?php
+			}
+			
+			
+			/**
+             * Generates html for radio buttons for order initiate event option.
+             *
+             * @access public
+             * @param void
+             * @return void
+             */
+			function field_option_event_radio($args) {
+				$options = get_option($args['tab_key']);
+				//print_r($options); echo "<br>";
+                ?><span><i><?php echo $args['desc']; ?></i></span>
+                <div id="event_based_options">
+                	<input type="radio" name="<?php echo $args['tab_key']; ?>[<?php echo $args['key']; ?>]" value="checkout_order_processed" id="initiate-order-event" <?php echo $options[$args['key']] == 'checkout_order_processed' ? 'checked="checked"' : ''; ?>/><label for="initiate-order-event">Checkout Order Processed</label>  
+                </div>
+                
+            <?php
+			}
+			
+			
+			/**
+             * Generates html for radio buttons for order initiate event option.
+             *
+             * @access public
+             * @param void
+             * @return void
+             */
+			function field_option_status_checkbox($args) {
+				$options = get_option($args['tab_key']);
+				if($options['initiate-order'] == 'status_based' && $options[$args['key'].'-pending'] != 'on' && $options[$args['key'].'-processing'] != 'on' && $options[$args['key'].'-onhold'] != 'on' && $options[$args['key'].'-completed'] != 'on' && $options[$args['key'].'-cancelled'] != 'on' && $options[$args['key'].'-refunded'] != 'on' && $options[$args['key'].'-failed'] != 'on'){
+					echo '<i style="color: #F00;">Warning: Select atleast one Order status for initiating sync to e-conomic!</i><br>';
+				}
+                ?><span><i><?php echo $args['desc']; ?></i></span>
+                <div id="status_based_options">
+                	<input type="checkbox" name="<?php echo $args['tab_key']; ?>[<?php echo $args['key'].'-pending'; ?>]" id="pending1" <?php echo $options[$args['key'].'-pending'] == 'on' ? 'checked="checked"' : ''; ?> /><label for="pending1">Pending Payment</label><br />
+                    <input type="checkbox" name="<?php echo $args['tab_key']; ?>[<?php echo $args['key'].'-processing'; ?>]" id="processing" <?php echo $options[$args['key'].'-processing'] == 'on' ? 'checked="checked"' : ''; ?> /><label for="processing">Processing</label><br />
+                    <input type="checkbox" name="<?php echo $args['tab_key']; ?>[<?php echo $args['key'].'-on-hold'; ?>]" id="onhold" <?php echo $options[$args['key'].'-on-hold'] == 'on' ? 'checked="checked"' : ''; ?> /><label for="onhold">On Hold</label><br />
+                    <input type="checkbox" name="<?php echo $args['tab_key']; ?>[<?php echo $args['key'].'-completed'; ?>]" id="completed" <?php echo $options[$args['key'].'-completed'] == 'on' ? 'checked="checked"' : ''; ?> /><label for="completed">Completed</label><br />
+                    <input type="checkbox" name="<?php echo $args['tab_key']; ?>[<?php echo $args['key'].'-cancelled'; ?>]" id="cancelled" <?php echo $options[$args['key'].'-cancelled'] == 'on' ? 'checked="checked"' : ''; ?> /><label for="cancelled">Cancelled</label><br />
+                    <input type="checkbox" name="<?php echo $args['tab_key']; ?>[<?php echo $args['key'].'-refunded'; ?>]" id="refunded" <?php echo $options[$args['key'].'-refunded'] == 'on' ? 'checked="checked"' : ''; ?> /><label for="refunded">Refunded</label><br />
+                    <input type="checkbox" name="<?php echo $args['tab_key']; ?>[<?php echo $args['key'].'-failed'; ?>]" id="failed" <?php echo $options[$args['key'].'-failed'] == 'on' ? 'checked="checked"' : ''; ?> /><label for="failed">Failed</label><br />
+                </div>
+                
+            <?php
+			}
+			
 			
 			
 			/**
@@ -1503,7 +1720,14 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				$options = get_option('woocommerce_economic_general_settings');
 
                 register_setting( $this->general_settings_key, $this->general_settings_key );
-                add_settings_section( 'section_general', __('General settings', 'woocommerce-e-conomic-integration'), array( &$this, 'section_general_desc' ), $this->general_settings_key );
+				
+                add_settings_section( 'section_general', __('API Keys', 'woocommerce-e-conomic-integration'), array( &$this, 'api_key_section_desc' ), $this->general_settings_key );
+				
+				add_settings_section( 'product_settings', __('Product sync settings', 'woocommerce-e-conomic-integration'), array( &$this, 'product_setting_section_desc' ), $this->general_settings_key );
+				
+				add_settings_section( 'order_settings', __('Order sync settings', 'woocommerce-e-conomic-integration'), array( &$this, 'order_setting_section_desc' ), $this->general_settings_key );
+				
+				add_settings_section( 'other_settings', __('Other settings', 'woocommerce-e-conomic-integration'), array( &$this, 'other_setting_section_desc' ), $this->general_settings_key );
 				
 				add_settings_field( 'woocommerce-economic-token', __('Token ID', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_text'), $this->general_settings_key, 'section_general', array ( 'tab_key' => $this->general_settings_key, 'key' => 'token', 'desc' => __('Token access ID from e-conomic.', 'woocommerce-e-conomic-integration')) );
 				
@@ -1525,28 +1749,34 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				
                 //add_settings_field( 'woocommerce-economic-cashbook-name', 'Kassaböckerna namn', array( &$this, 'field_option_text'), $this->general_settings_key, 'section_general', array ( 'id' => 'cashbook-name', 'tab_key' => $this->general_settings_key, 'key' => 'cashbook-name', 'desc' => 'Välj kassaböckerna att lägga gäldenärens betalningar.'));
 				
-				add_settings_field( 'woocommerce-economic-other-checkout', __('Other checkout', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_dropdown' ), $this->general_settings_key, 'section_general', array ( 'tab_key' => $this->general_settings_key, 'key' => 'other-checkout', 'desc' => __('What should be created at e-conomic when the checkout is made via any payment gateway but not e-conomic. <br><i style="margin-left:25px; color: #F00;">Note: e-conomic Orders and Draft invoices can be updated later, but e-conomic Invoice are readonly.</i>', 'woocommerce-e-conomic-integration')) );
+				add_settings_field( 'woocommerce-economic-initiate-order', __('Initiate order sync', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_order_sync_dropdown' ), $this->general_settings_key, 'order_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'initiate-order', 'desc' => __('Select how do you want to sync WooCommerce order to e-conomic initially.', 'woocommerce-e-conomic-integration')) );
 				
-				add_settings_field( 'woocommerce-economic-economic-checkout', __('e-conomic checkout', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_dropdown' ), $this->general_settings_key, 'section_general', array ( 'tab_key' => $this->general_settings_key, 'key' => 'economic-checkout', 'desc' => __('What should be created at e-conomic when the checkout is made via e-conomic. Go to WooCommerce>Settings>Checkout to enable e-Conomic Invoice as payment option. <br><i style="margin-left:25px; color: #F00;">Note: e-conomic Orders and Draft invoices can be updated later, but e-conomic Invoice are readonly.</i>', 'woocommerce-e-conomic-integration')) );
+				add_settings_field( 'woocommerce-economic-initiate-order-event', __('', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_event_radio' ), $this->general_settings_key, 'order_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'initiate-order-event', 'desc' => __('Chose an event for initial order sync.')) );
 				
-				add_settings_field( 'woocommerce-economic-activate-oldordersync', __('Activate old orders sync', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_checkbox' ), $this->general_settings_key, 'section_general', array ( 'tab_key' => $this->general_settings_key, 'key' => 'activate-oldordersync', 'desc' => __('Also sync orders created before wooconomics installation.', 'woocommerce-e-conomic-integration')) );
+				add_settings_field( 'woocommerce-economic-initiate-order-status', __('', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_status_checkbox' ), $this->general_settings_key, 'order_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'initiate-order-status', 'desc' => __('Chose all statuses for which an order is synced.')) );			
 				
-				add_settings_field( 'woocommerce-economic-product-sync', __('Activate product sync', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_checkbox' ), $this->general_settings_key, 'section_general', array ( 'tab_key' => $this->general_settings_key, 'key' => 'product-sync', 'desc' => __('Sync product information from WooCommerce to e-conomic. (Stock information is updated regardless of this setting)', 'woocommerce-e-conomic-integration')) );
+				add_settings_field( 'woocommerce-economic-other-checkout', __('Other checkout', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_dropdown' ), $this->general_settings_key, 'order_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'other-checkout', 'desc' => __('What should be created at e-conomic when the checkout is made via any payment gateway but not e-conomic. <br><i style="margin-left:25px; color: #F00; font-weight: bold;">Note: </i><i>e-conomic Orders and Draft invoices can be updated later, but e-conomic Invoice are readonly.</i>', 'woocommerce-e-conomic-integration')) );
 				
-				add_settings_field( 'woocommerce-economic-scheduled-product-sync', __('Run scheduled product stock sync', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_schedule' ), $this->general_settings_key, 'section_general', array ( 'tab_key' => $this->general_settings_key, 'key' => 'scheduled-product-sync', 'desc' => __('Run scheduled product stock sync from e-conomic to WooCommerce.', 'woocommerce-e-conomic-integration')) );
+				add_settings_field( 'woocommerce-economic-economic-checkout', __('e-conomic checkout', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_dropdown' ), $this->general_settings_key, 'order_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'economic-checkout', 'desc' => __('What should be created at e-conomic when the checkout is made via e-conomic. Go to WooCommerce>Settings>Checkout to enable e-Conomic Invoice as payment option. <br><i style="margin-left:25px; color: #F00; font-weight: bold;">Note: </i><i>e-conomic Orders and Draft invoices can be updated later, but e-conomic Invoice are readonly.</i>', 'woocommerce-e-conomic-integration')) );
+				
+				add_settings_field( 'woocommerce-economic-activate-oldordersync', __('Activate old orders sync', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_checkbox' ), $this->general_settings_key, 'order_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'activate-oldordersync', 'desc' => __('Also sync orders created before wooconomics installation.', 'woocommerce-e-conomic-integration')) );
+				
+				add_settings_field( 'woocommerce-economic-product-sync', __('Activate product sync', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_checkbox' ), $this->general_settings_key, 'product_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'product-sync', 'desc' => __('Sync product information from WooCommerce to e-conomic. (Stock information is updated regardless of this setting)', 'woocommerce-e-conomic-integration')) );
+				
+				add_settings_field( 'woocommerce-economic-scheduled-product-sync', __('Run scheduled product stock sync', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_schedule' ), $this->general_settings_key, 'product_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'scheduled-product-sync', 'desc' => __('Run scheduled product stock sync from e-conomic to WooCommerce. Web hook option will update WooCommerce product when e-conomic product is updated.', 'woocommerce-e-conomic-integration')) );
 				
 				if($options['token'] != ''){
-					add_settings_field( 'woocommerce-economic-product-group', __('Product group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'section_general', array ( 'id' => 'product-group', 'tab_key' => $this->general_settings_key, 'key' => 'product-group', 'desc' => __('e-conomic product group to which new products are added.', 'woocommerce-e-conomic-integration')) );
+					add_settings_field( 'woocommerce-economic-product-group', __('Product group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'product_settings', array ( 'id' => 'product-group', 'tab_key' => $this->general_settings_key, 'key' => 'product-group', 'desc' => __('e-conomic product group to which new products are added.', 'woocommerce-e-conomic-integration')) );
 					
-					add_settings_field( 'woocommerce-economic-product-prefix', __('Product prefix', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_text' ), $this->general_settings_key, 'section_general', array ( 'id' => 'product-prefix', 'tab_key' => $this->general_settings_key, 'key' => 'product-prefix', 'desc' => __('Prefix added to the products stored to e-conomic from woocommerce', 'woocommerce-e-conomic-integration')) );
+					add_settings_field( 'woocommerce-economic-product-prefix', __('Product prefix', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_text' ), $this->general_settings_key, 'product_settings', array ( 'id' => 'product-prefix', 'tab_key' => $this->general_settings_key, 'key' => 'product-prefix', 'desc' => __('Prefix added to the products stored to e-conomic from woocommerce', 'woocommerce-e-conomic-integration')) );
 					
-					add_settings_field( 'woocommerce-economic-customer-group', __('Customer group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'section_general', array ( 'id' => 'customer-group', 'tab_key' => $this->general_settings_key, 'key' => 'customer-group', 'desc' => __('e-conomic customer group to which new customers are added. <br><i style="margin-left:25px; color: #F00;">MUST be selected. Sync is not possible if not selected.</i>', 'woocommerce-e-conomic-integration')) );
+					add_settings_field( 'woocommerce-economic-customer-group', __('Customer group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'other_settings', array ( 'id' => 'customer-group', 'tab_key' => $this->general_settings_key, 'key' => 'customer-group', 'desc' => __('e-conomic customer group to which new customers are added. <br><i style="margin-left:25px; color: #F00;">MUST be selected. Sync is not possible if not selected.</i>', 'woocommerce-e-conomic-integration')) );
 					
-					add_settings_field( 'woocommerce-economic-shipping-group', __('Shipping group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'section_general', array ( 'id' => 'shipping-group', 'tab_key' => $this->general_settings_key, 'key' => 'shipping-group', 'desc' => __('e-conomic product group to which shipping methods are added.', 'woocommerce-e-conomic-integration')) );
+					add_settings_field( 'woocommerce-economic-shipping-group', __('Shipping group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'other_settings', array ( 'id' => 'shipping-group', 'tab_key' => $this->general_settings_key, 'key' => 'shipping-group', 'desc' => __('e-conomic product group to which shipping methods are added.', 'woocommerce-e-conomic-integration')) );
 					
-					add_settings_field( 'woocommerce-economic-coupon-group', __('Coupon group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'section_general', array ( 'id' => 'coupon-group', 'tab_key' => $this->general_settings_key, 'key' => 'coupon-group', 'desc' => __('e-conomic product group to which coupon discounts are added.', 'woocommerce-e-conomic-integration')) );
+					add_settings_field( 'woocommerce-economic-coupon-group', __('Coupon group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'other_settings', array ( 'id' => 'coupon-group', 'tab_key' => $this->general_settings_key, 'key' => 'coupon-group', 'desc' => __('e-conomic product group to which coupon discounts are added.', 'woocommerce-e-conomic-integration')) );
 					
-					add_settings_field( 'woocommerce-economic-order-reference-prefix', __('Order reference prefix', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_text' ), $this->general_settings_key, 'section_general', array ( 'id' => 'order-reference-prefix', 'tab_key' => $this->general_settings_key, 'key' => 'order-reference-prefix', 'desc' => __('Prefix added to the order reference of an Order synced to e-conomic from woocommerce', 'woocommerce-e-conomic-integration')) );
+					add_settings_field( 'woocommerce-economic-order-reference-prefix', __('Order reference prefix', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_text' ), $this->general_settings_key, 'order_settings', array ( 'id' => 'order-reference-prefix', 'tab_key' => $this->general_settings_key, 'key' => 'order-reference-prefix', 'desc' => __('Prefix added to the order reference of an Order synced to e-conomic from woocommerce', 'woocommerce-e-conomic-integration')) );
 				}
 				//add_settings_field( 'woocommerce-economic-customer-prefix', 'Kund prefix', array( &$this, 'field_option_text' ), $this->general_settings_key, 'section_general', array ( 'id' => 'customer-prefix', 'tab_key' => $this->general_settings_key, 'key' => 'customer-prefix', 'desc' => 'Prefix läggs till kunder sparade till e-conomic från woocommerce') );
 				//add_settings_field( 'woocommerce-economic-shipping-id', 'Frakt produktnummer', array( &$this, 'field_option_text' ), $this->general_settings_key, 'section_general', array ( 'id' => 'shipping-product-id', 'tab_key' => $this->general_settings_key, 'key' => 'shipping-product-id', 'desc' => 'Denna produkt numret läggs till alla fakturor som produktnummer för sjöfarten') );
@@ -1592,6 +1822,49 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                 $this->plugin_settings_tabs[$this->support_key] = __('Support', 'woocommerce-e-conomic-integration');
                 register_setting( $this->support_key, $this->support_key );
             }
+			
+			
+			
+			/**
+             * The description for the general section API key settings
+             *
+             * @access public
+             * @param void
+             * @return void
+             */
+            function api_key_section_desc() { echo __('API key configuration', 'woocommerce-e-conomic-integration'); }
+			
+			/**
+             * The description for the general section Order settings
+             *
+             * @access public
+             * @param void
+             * @return void
+             */
+            function order_setting_section_desc() { echo __('Basic settings for order sync between WooCommerce and e-conomic. You can control which parts you want to sync to e-conomic', 'woocommerce-e-conomic-integration'); }
+			
+			
+			/**
+             * The description for the general section Product settings
+             *
+             * @access public
+             * @param void
+             * @return void
+             */
+            function product_setting_section_desc() { echo __('Basic settings for product sync between WooCommerce and e-conomic. You can control which parts you want to sync to e-conomic', 'woocommerce-e-conomic-integration'); }
+			
+			/**
+             * The description for the general section Product settings
+             *
+             * @access public
+             * @param void
+             * @return void
+             */
+            function other_setting_section_desc() { echo __('Basic settings for customers, shippings and coupons sync between WooCommerce and e-conomic.', 'woocommerce-e-conomic-integration'); }
+			
+			
+			
+			
 
             /**
              * The description for the general section
@@ -1720,7 +1993,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 					}
 					.key_error
 					{
-						 background-color: white;
+						background-color: white;
 					    color: red;
 					    display: inline;
 					    font-weight: bold;
@@ -1780,27 +2053,46 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 								element.hide(300);
 							}
 						});
+						var event_based_option = jQuery("#event_based_options").parent().parent();
+						var status_based_options = jQuery("#status_based_options").parent().parent();
+						if(jQuery("#initiate_order").val() == 'event_based'){
+							jQuery(status_based_options).hide();
+						}
+						if(jQuery("#initiate_order").val() == 'status_based'){
+							jQuery(event_based_option).hide();
+						}
 						
+						jQuery("#initiate_order").change(function(){
+							if(jQuery(this).val() == 'event_based'){
+								jQuery(event_based_option).show();
+								jQuery(status_based_options).hide();
+							}
+							if(jQuery(this).val() == 'status_based'){
+								jQuery(event_based_option).hide();
+								jQuery(status_based_options).show();
+							}
 						});
+					});
 						
-						jQuery("#license-key").live("keyup", function(){
-							var str = jQuery("#license-key").val();
-							var patt = /wem-[a-zA-Z0-9][^\W]+/gi;
-							var licenseMatch = patt.exec(str);
-							if(licenseMatch){
-								licenseMatch = licenseMatch.toString();
-								if(licenseMatch.length == 24){
-									jQuery("#license-key").next().removeClass("error");
-									jQuery("#license-key").next().children("i").html("Här anges License-nyckeln du har erhållit från oss via mail.");
-								}else{
-									jQuery("#license-key").next().children("i").html("Ogiltigt format");
-									jQuery("#license-key").next().addClass("error");
-								}
+					jQuery("#license-key").live("keyup", function(){
+						var str = jQuery("#license-key").val();
+						var patt = /wem-[a-zA-Z0-9][^\W]+/gi;
+						var licenseMatch = patt.exec(str);
+						if(licenseMatch){
+							licenseMatch = licenseMatch.toString();
+							if(licenseMatch.length == 24){
+								jQuery("#license-key").next().removeClass("error");
+								jQuery("#license-key").next().children("i").html("Här anges License-nyckeln du har erhållit från oss via mail.");
 							}else{
 								jQuery("#license-key").next().children("i").html("Ogiltigt format");
 								jQuery("#license-key").next().addClass("error");
 							}
-						});
+						}else{
+							jQuery("#license-key").next().children("i").html("Ogiltigt format");
+							jQuery("#license-key").next().addClass("error");
+						}
+						
+					});
 				</script>
                 <?php
                 if($tab == $this->support_key){ ?>

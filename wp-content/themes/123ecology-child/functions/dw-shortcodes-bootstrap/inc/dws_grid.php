@@ -8,7 +8,7 @@
 /**
  * Row
  */
-function dws_row($params, $content = null){
+function dws_row_child($params, $content = null){
 	extract(shortcode_atts(array(
 		'class' => 'row-fluid'
 	), $params));
@@ -18,12 +18,12 @@ function dws_row($params, $content = null){
 	$result .= '</div>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('row', 'dws_row');
+add_shortcode('row', 'dws_row_child');
 
 /**
  * Col span
  */
-function dws_span($params,$content=null){
+function dws_span_child($params,$content=null){
 	extract(shortcode_atts(array(
 		'class' => 'span1'
 		), $params));
@@ -33,4 +33,4 @@ function dws_span($params,$content=null){
 	$result .= '</div>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('col', 'dws_span');
+add_shortcode('col', 'dws_span_child');

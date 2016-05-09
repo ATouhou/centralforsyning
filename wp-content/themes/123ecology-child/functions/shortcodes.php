@@ -2,12 +2,11 @@
 
 /* Shortcodes
 ================================================== */
-
 // This will do nothing but will allow the shortcode to be stripped
-add_shortcode( 'foobar', 'shortcode_foobar' );
+add_shortcode( 'foobar', 'shortcode_foobar_child' );
  
 // Actual processing of the shortcode happens here
-function foobar_run_shortcode( $content ) {
+function foobar_run_shortcode_child( $content ) {
     global $shortcode_tags;
  
     // Backup current registered shortcodes and clear them all out
@@ -29,134 +28,134 @@ add_filter( 'the_content', 'foobar_run_shortcode', 7 );
 
 /* prettyprint pre
 ================================================== */
-function pre_clean($content){
+function pre_clean_child($content){
 
     $content = str_ireplace('<br />', '', $content);
     return $content;
 }
 
-function prettyprint($atts, $content=null){
+function prettyprint_child($atts, $content=null){
 	return '<pre class="prettyprint linenums">'.pre_clean($content).'</pre>';
 }
-add_shortcode('prettyprint', 'prettyprint');
+add_shortcode('prettyprint', 'prettyprint_child');
 
 /* headings
 ================================================== */
-function h1($atts, $content=null){
+function h1_child($atts, $content=null){
 	extract(shortcode_atts( array( 'type' => '' ), $atts ));
 	$Type = '';
 	if($type){ $Type = 'class="'.$type.'"';};
 	return '<h1 '.$Type.'>'.do_shortcode($content).'</h1>';
 }
-function h2($atts, $content=null){
+function h2_child($atts, $content=null){
 	extract(shortcode_atts( array( 'type' => '' ), $atts ));
 	$Type = '';
 	if($type){ $Type = 'class="'.$type.'"';};
 	return '<h2 '.$Type.'>'.do_shortcode($content).'</h2>';
 }
-function h3($atts, $content=null){
+function h3_child($atts, $content=null){
 	extract(shortcode_atts( array( 'type' => '' ), $atts ));
 	$Type = '';
 	if($type){ $Type = 'class="'.$type.'"';};
 	return '<h3 '.$Type.'>'.do_shortcode($content).'</h3>';
 }
-function h4($atts, $content=null){
+function h4_child($atts, $content=null){
 	extract(shortcode_atts( array( 'type' => '' ), $atts ));
 	$Type = '';
 	if($type){ $Type = 'class="'.$type.'"';};
 	return '<h4 '.$Type.'>'.do_shortcode($content).'</h4>';
 }
-function h5($atts, $content=null){
+function h5_child($atts, $content=null){
 	extract(shortcode_atts( array( 'type' => '' ), $atts ));
 	$Type = '';
 	if($type){ $Type = 'class="'.$type.'"';};
 	return '<h5 '.$Type.'>'.do_shortcode($content).'</h5>';
 }
-function h6($atts, $content=null){
+function h6_child($atts, $content=null){
 	extract(shortcode_atts( array( 'type' => '' ), $atts ));
 	$Type = '';
 	if($type){ $Type = 'class="'.$type.'"';};
 	return '<h6 '.$Type.'>'.do_shortcode($content).'</h6>';
 }
-add_shortcode('h1', 'h1');
-add_shortcode('h2', 'h2');
-add_shortcode('h3', 'h3');
-add_shortcode('h4', 'h4');
-add_shortcode('h5', 'h5');
-add_shortcode('h6', 'h6');
+add_shortcode('h1', 'h1_child');
+add_shortcode('h2', 'h2_child');
+add_shortcode('h3', 'h3_child');
+add_shortcode('h4', 'h4_child');
+add_shortcode('h5', 'h5_child');
+add_shortcode('h6', 'h6_child');
 
 
 /* paragraph
 ================================================== */
-function p($atts, $content=null){
+function p_child($atts, $content=null){
 	return '<p>'.do_shortcode($content).'</p>';
 }
-add_shortcode('p', 'p');
+add_shortcode('p', 'p_child');
 
 
 /* image wrap
 ================================================== */
-function image_wrap($atts, $content=null){
+function image_wrap_child($atts, $content=null){
 	extract(shortcode_atts( array(), $atts ));
 							
 	return '<div class="image-wrap">'.do_shortcode($content).'</div>';
 }
-add_shortcode('image-wrap', 'image_wrap');
+add_shortcode('image-wrap', 'image_wrap_child');
 
 /* address
 ================================================== */
-function address($atts, $content=null){
+function address_child($atts, $content=null){
 	return '<address>'.do_shortcode($content).'</address>';
 }
-add_shortcode('address', 'address');
+add_shortcode('address', 'address_child');
 
 /* margin bottom
 ================================================== */
-function margin_bottom($atts, $content=null){
+function margin_bottom_child($atts, $content=null){
 	return '<div style="margin-bottom: 20px;">'.do_shortcode($content).'</div>';
 }
-add_shortcode('margin-bottom', 'margin_bottom');
+add_shortcode('margin-bottom', 'margin_bottom_child');
 
 /* strong
 ================================================== */
-function strong($atts, $content=null){
+function strong_child($atts, $content=null){
 	return '<strong>'.do_shortcode($content).'</strong>';
 }
-add_shortcode('strong', 'strong');
+add_shortcode('strong', 'strong_child');
 
 /* selected
 ================================================== */
-function Select($atts, $content=null){
+function Select_child($atts, $content=null){
 	return '<span class="selected">'.do_shortcode($content).'</span>';
 }
-add_shortcode('select', 'Select');
+add_shortcode('select', 'Select_child');
 
 /* abbr
 ================================================== */
-function abbr($atts, $content=null){
+function abbr_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 							'title' => 'your title goes here',
 							), $atts ));
 	return '<abbr title="'.$title.'">'.do_shortcode($content).'</abbr>';
 }
-add_shortcode('abbr', 'abbr');
+add_shortcode('abbr', 'abbr_child');
 
 
 /* code, pre
 ================================================== */
-function code($atts, $content=null){
+function code_child($atts, $content=null){
 	return '<code>'.pre_clean($content).'</code>';
 }
 add_shortcode('code', 'code');
 
-function pre($atts, $content=null){
+function pre_child($atts, $content=null){
 	return '<pre>'.pre_clean($content).'</pre>';
 }
-add_shortcode('pre', 'pre');
+add_shortcode('pre', 'pre_child');
 
 /* blockquote
 ================================================== */
-function blockquote( $atts, $content = null ) {
+function blockquote_child( $atts, $content = null ) {
 	extract(shortcode_atts(array(
 							'cite' => ''
 							),$atts));
@@ -169,9 +168,9 @@ function blockquote( $atts, $content = null ) {
     }
     return $out;
 }
-add_shortcode('blockquote', 'blockquote');
+add_shortcode('blockquote', 'blockquote_child');
 
-function blockquote_right( $atts, $content = null ) {
+function blockquote_right_child( $atts, $content = null ) {
 	extract(shortcode_atts(array(
 							'cite' => ''
 							),$atts));
@@ -184,32 +183,32 @@ function blockquote_right( $atts, $content = null ) {
     }
     return $out;
 }
-add_shortcode('blockquote-right', 'blockquote_right');
+add_shortcode('blockquote-right', 'blockquote_right_child');
 
 /* hr
 ================================================== */
-function hr($atts, $content=null){
+function hr_child($atts, $content=null){
 	return '<hr/>';
 }
-add_shortcode('hr', 'hr');
+add_shortcode('hr', 'hr_child');
 
 /* br
 ================================================== */
-function br($atts, $content=null){
+function br_child($atts, $content=null){
 	return '<br/>';
 }
-add_shortcode('br', 'br');
+add_shortcode('br', 'br_child');
 
 
 /* lists
 ================================================== */
-function p_clean($content){
+function p_clean_child($content){
 
     $content = str_ireplace('<p>', '', $content);
     $content = str_ireplace('<p/>', '', $content);
     return $content;
 }
-function lists($atts, $content=null){
+function lists_child($atts, $content=null){
 	extract(shortcode_atts(array(
 							'bullet' => 'square',
 							'type' => 'style1'
@@ -225,94 +224,94 @@ function lists($atts, $content=null){
 							
 	return'<div class="'.$type_.' lists-'. $bullet .'">'.p_clean(do_shortcode($content)).'</div>';
 }
-add_shortcode('lists', 'lists');
+add_shortcode('lists', 'lists_child');
 
 
 /* dropcap, dropcap1, dropcap2
 ================================================== */
-function dropcap($atts, $content=null){
+function dropcap_child($atts, $content=null){
 	extract(shortcode_atts(array(
 							'type' => ''
 							),$atts));
 	return '<span class="dropcap">'.do_shortcode($content).'</span>';
 }
-add_shortcode('dropcap', 'dropcap');
+add_shortcode('dropcap', 'dropcap_child');
 
-function dropcap1($atts, $content=null){
+function dropcap1_child($atts, $content=null){
 	extract(shortcode_atts(array(
 							'type' => ''
 							),$atts));
 	return '<span class="dropcap1">'.do_shortcode($content).'</span>';
 }
-add_shortcode('dropcap1', 'dropcap1');
+add_shortcode('dropcap1', 'dropcap1_child');
 
-function dropcap2($atts, $content=null){
+function dropcap2_child($atts, $content=null){
 	extract(shortcode_atts(array(
 							'type' => ''
 							),$atts));
 	return '<span class="dropcap2 ' . $type . '">'.do_shortcode($content).'</span>';
 }
-add_shortcode('dropcap2', 'dropcap2');
+add_shortcode('dropcap2', 'dropcap2_child');
 
 /* table
 ================================================== */
-function pre_table($content){
+function pre_table_child($content){
 
     $content = str_ireplace('<br />', '', $content);
     return $content;
 }
 
-function table( $atts, $content = null ) {
+function table_child( $atts, $content = null ) {
     extract(shortcode_atts(array('type' => ''), $atts));
 	$out = '';
     $out .= '<table class="table '.$type.'">'.do_shortcode(pre_table($content)).'</table>';
     return $out;
 }
-add_shortcode('table', 'table');
+add_shortcode('table', 'table_child');
 
-function table_head( $atts, $content = null ) {
+function table_head_child( $atts, $content = null ) {
     extract(shortcode_atts(array(), $atts));
 	$out = '';
     $out .= '<thead>'.do_shortcode(pre_table($content)).'</thead>';
     return $out;
 }
-add_shortcode('table-head', 'table_head');
+add_shortcode('table-head', 'table_head_child');
 
-function table_body( $atts, $content = null ) {
+function table_body_child( $atts, $content = null ) {
     extract(shortcode_atts(array(), $atts));
 	$out = '';
     $out .= '<tbody>'.do_shortcode(pre_table($content)).'</tbody>';
     return $out;
 }
-add_shortcode('table-body', 'table_body');
+add_shortcode('table-body', 'table_body_child');
 
-function tr( $atts, $content = null ) {
+function tr_child( $atts, $content = null ) {
     extract(shortcode_atts(array('type' => ''), $atts));
 	$out = '';
     $out .= '<tr class="'.$type.'">'.do_shortcode(pre_table($content)).'</tr>';
     return $out;
 }
-add_shortcode('tr', 'tr');
+add_shortcode('tr', 'tr_child');
 
-function td( $atts, $content = null ) {
+function td_child( $atts, $content = null ) {
     extract(shortcode_atts(array(), $atts));
 	$out = '';
     $out .= '<td>'.do_shortcode(pre_table($content)).'</td>';
     return $out;
 }
-add_shortcode('td', 'td');
+add_shortcode('td', 'td_child');
 
-function th( $atts, $content = null ) {
+function th_child( $atts, $content = null ) {
     extract(shortcode_atts(array(), $atts));
 	$out = '';
     $out .= '<th>'.do_shortcode(pre_table($content)).'</th>';
     return $out;
 }
-add_shortcode('th', 'th');
+add_shortcode('th', 'th_child');
 
 /* label
 ================================================== */
-function label( $atts, $content = null ) {
+function label_child( $atts, $content = null ) {
     extract(shortcode_atts(array('type' => ''), $atts));
 	$out = '';
 	if($type){
@@ -321,11 +320,11 @@ function label( $atts, $content = null ) {
     $out .= '<span class="label '.$type_.'">'.do_shortcode(pre_table($content)).'</span>';
     return $out;
 }
-add_shortcode('label', 'label');
+add_shortcode('label', 'label_child');
 
 /* badge
 ================================================== */
-function badge( $atts, $content = null ) {
+function badge_child( $atts, $content = null ) {
     extract(shortcode_atts(array('type' => ''), $atts));
 	$out = '';
 	if($type){
@@ -334,11 +333,11 @@ function badge( $atts, $content = null ) {
     $out .= '<span class="badge '.$type_.'">'.do_shortcode(pre_table($content)).'</span>';
     return $out;
 }
-add_shortcode('badge', 'badge');
+add_shortcode('badge', 'badge_child');
 
 /* icon heading
 ================================================== */
-function icon_heading($atts, $content=null){
+function icon_heading_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 							'icon_size' => '',
                             'align' => '',
@@ -361,21 +360,21 @@ function icon_heading($atts, $content=null){
     $out .= '</div>';
     return $out;
 }
-add_shortcode('icon_heading', 'icon_heading');
+add_shortcode('icon_heading', 'icon_heading_child');
 
 /* clear
 ================================================== */
-function clear( $atts, $content = null ) {
+function clear_child( $atts, $content = null ) {
     extract(shortcode_atts(array(), $atts));
 	$out = '';
     $out .= '<div class="clearfix"></div>';
     return $out;
 }
-add_shortcode('clear', 'clear');
+add_shortcode('clear', 'clear_child');
 
 /* hyperlink
 ================================================== */
-function hyperlink($atts, $content=null){
+function hyperlink_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 							'href' => '#',
 							'target' => '_self',
@@ -383,11 +382,11 @@ function hyperlink($atts, $content=null){
 
 	return '<a href="'.$href.'" target="'.$target.'">'.do_shortcode($content).'</a>';
 }
-add_shortcode('hyperlink', 'hyperlink');
+add_shortcode('hyperlink', 'hyperlink_child');
 
 /* iconitem
 ================================================== */
-function iconitem($atts, $content=null){
+function iconitem_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 							'icon' => '',
 							'title' => 'Lorem ipsum dolor',
@@ -402,22 +401,22 @@ function iconitem($atts, $content=null){
 	return '<div class="iconitem"><h5 class="title">'.$icon_.''.$title.'</h5><div class="content">'.do_shortcode($content).'</div></div>';
 	
 }
-add_shortcode('iconitem', 'iconitem');
+add_shortcode('iconitem', 'iconitem_child');
 
 /* tooltip
 ================================================== */
-function tooltip($atts, $content=null){
+function tooltip_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 							'placement' => 'top',
 							'title' => 'This is a tooltip',
 							), $atts ));
 	return '<a href="#" rel="tooltip" class="ttip" data-placement="'.$placement.'" title="'.$title.'">'.do_shortcode($content).'</a>';
 }
-add_shortcode('tooltip', 'tooltip');
+add_shortcode('tooltip', 'tooltip_child');
 
 /* carousel
 ================================================== */
-function clear_carousel($content){
+function clear_carousel_child($content){
 
 	$content = str_ireplace('<p>', '', $content);
     $content = str_ireplace('</p>', '', $content);
@@ -425,7 +424,7 @@ function clear_carousel($content){
     return $content;
 }
 
-function carousel($atts, $content=null){
+function carousel_child($atts, $content=null){
 
 	$rand = rand(2, 999999);
 	extract(shortcode_atts( array( 
@@ -447,9 +446,9 @@ function carousel($atts, $content=null){
 	return $title_. '<div id="myCarousel'.$rand.'" class="carousel slide"><div class="carousel-inner">'.clear_carousel(do_shortcode($content)).'</div>'.$control_.'</div>';
 }
 
-add_shortcode('carousel', 'carousel');
+add_shortcode('carousel', 'carousel_child');
 
-function carousel_item($atts, $content=null){
+function carousel_item_child($atts, $content=null){
 
 	extract(shortcode_atts( array( 
 							'img' => '',
@@ -466,11 +465,11 @@ function carousel_item($atts, $content=null){
 	return '<div class="item">'.$link_.'</div>';
 }
 
-add_shortcode('carousel-item', 'carousel_item');
+add_shortcode('carousel-item', 'carousel_item_child');
 
 /* testimonial
 ================================================== */
-function testimonial( $atts, $content = null ) {
+function testimonial_child( $atts, $content = null ) {
 
 	$rand = rand(2, 999999);
 	extract(shortcode_atts( array( 
@@ -505,9 +504,9 @@ function testimonial( $atts, $content = null ) {
 	return $title_. '<div id="myCarousel'.$rand.'" class="testimonial slide '.$type_.'"><div class="carousel-inner">'.do_shortcode($content).'</div>'.$control_.'</div>';
 
 }
-add_shortcode('testimonial', 'testimonial');
+add_shortcode('testimonial', 'testimonial_child');
 
-function testimonial_item($atts, $content=null){
+function testimonial_item_child($atts, $content=null){
 
 	extract(shortcode_atts( array( 
 							'cite' => '',
@@ -531,11 +530,11 @@ function testimonial_item($atts, $content=null){
 	return '<div class="item">'.do_shortcode($content).''.$cite_.'</div>';
 }
 
-add_shortcode('testimonial-item', 'testimonial_item');
+add_shortcode('testimonial-item', 'testimonial_item_child');
 
 /* Business Hours
 ================================================== */
-function biz_hours( $atts, $content = null ) {
+function biz_hours_child( $atts, $content = null ) {
 
 	extract(shortcode_atts( array( 
 							'title' => 'Business Hours'
@@ -559,10 +558,10 @@ function biz_hours( $atts, $content = null ) {
 	<?php return ob_get_clean();
 
 }
-add_shortcode('biz-hours', 'biz_hours');
+add_shortcode('biz-hours', 'biz_hours_child');
 
 
-function biz_day($atts, $content=null){
+function biz_day_child($atts, $content=null){
 
 	extract(shortcode_atts( array( 
 							'day' => 'Monday :',
@@ -576,13 +575,13 @@ function biz_day($atts, $content=null){
 							
 }
 
-add_shortcode('biz-day', 'biz_day');
+add_shortcode('biz-day', 'biz_day_child');
 
 
 
 /* callout
 ================================================== */
-function callout($atts, $content=null){
+function callout_child($atts, $content=null){
 
 	extract(shortcode_atts( array(
 							'type' => ''
@@ -608,9 +607,9 @@ function callout($atts, $content=null){
 	return $out;
 	
 }
-add_shortcode('callout', 'callout');
+add_shortcode('callout', 'callout_child');
 
-function callout_content($atts, $content=null){
+function callout_content_child($atts, $content=null){
 
 	extract(shortcode_atts( array(
 							'layout' => 'span8'
@@ -623,9 +622,9 @@ function callout_content($atts, $content=null){
 	return $out;
 	
 }
-add_shortcode('callout-content', 'callout_content');
+add_shortcode('callout-content', 'callout_content_child');
 
-function callout_button($atts, $content=null){
+function callout_button_child($atts, $content=null){
 
 	extract(shortcode_atts( array(
 							'layout' => 'span4'
@@ -638,12 +637,12 @@ function callout_button($atts, $content=null){
 	return $out;
 	
 }
-add_shortcode('callout-button', 'callout_button');
+add_shortcode('callout-button', 'callout_button_child');
 
 
 /* front tabs widget
 ================================================== */
-function front_tabs( $atts, $content = null ) {
+function front_tabs_child( $atts, $content = null ) {
 	extract(shortcode_atts( array( 
 							'category' => '',
 							), $atts ));
@@ -699,12 +698,12 @@ function front_tabs( $atts, $content = null ) {
         
     return $out;
 }
-add_shortcode('front_tabs', 'front_tabs');
+add_shortcode('front_tabs', 'front_tabs_child');
 
 
 /* sidebar
 ================================================== */
-function sidebar($atts, $content=null){
+function sidebar_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 							'type' => 'right',
 							), $atts ));
@@ -723,12 +722,12 @@ function sidebar($atts, $content=null){
     ob_end_clean();
     return $out;
 }
-add_shortcode('sidebar', 'sidebar');
+add_shortcode('sidebar', 'sidebar_child');
 
 
 /* widget
 ================================================== */
-function widget($atts, $content=null){
+function widget_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 							'layout' => '4-column',
 							'type' => 'portfolio',
@@ -918,11 +917,11 @@ function widget($atts, $content=null){
 													
 	return $out;
 }
-add_shortcode('widget', 'widget');
+add_shortcode('widget', 'widget_child');
 
 /* clients
 ================================================== */
-function clients($atts, $content=null){
+function clients_child($atts, $content=null){
 	extract(shortcode_atts( array(
 							'title' => 'This is a title',
 							), $atts ));
@@ -967,11 +966,11 @@ function clients($atts, $content=null){
 									
 	return $out;
 }
-add_shortcode('clients', 'clients');
+add_shortcode('clients', 'clients_child');
 
 /* title
 ================================================== */
-function title($atts, $content=null){
+function title_child($atts, $content=null){
 	extract(shortcode_atts( array(), $atts ));
 	
 	$out .= '<div class="title-widget">';
@@ -984,12 +983,12 @@ function title($atts, $content=null){
 	
 	return $out;
 }
-add_shortcode('title', 'title');
+add_shortcode('title', 'title_child');
 
 
 /* video youtube or vimeo
 ================================================== */
-function video($atts, $content=null){
+function video_child($atts, $content=null){
 global $woocommerce_loop;
 	extract(shortcode_atts( array( 
 							'video_url' => '',
@@ -1012,11 +1011,11 @@ global $woocommerce_loop;
 	return ob_get_clean();
 
 }
-add_shortcode('video', 'video');
+add_shortcode('video', 'video_child');
 
 /* divider20 divider10 divider5
 ================================================== */
-function divider20($atts, $content=null){
+function divider20_child($atts, $content=null){
 
 	extract(shortcode_atts( array( 
 	), $atts ));
@@ -1028,9 +1027,9 @@ function divider20($atts, $content=null){
 	return ob_get_clean();
 
 }
-add_shortcode('divider20', 'divider20');
+add_shortcode('divider20', 'divider20_child');
 
-function divider10($atts, $content=null){
+function divider10_child($atts, $content=null){
 
 	extract(shortcode_atts( array( 
 	), $atts ));
@@ -1042,9 +1041,9 @@ function divider10($atts, $content=null){
 	return ob_get_clean();
 
 }
-add_shortcode('divider10', 'divider10');
+add_shortcode('divider10', 'divider10_child');
 
-function divider5($atts, $content=null){
+function divider5_child($atts, $content=null){
 
 	extract(shortcode_atts( array( 
 	), $atts ));
@@ -1056,11 +1055,11 @@ function divider5($atts, $content=null){
 	return ob_get_clean();
 
 }
-add_shortcode('divider5', 'divider5');
+add_shortcode('divider5', 'divider5_child');
 
 /* shop tabs
 ================================================== */
-function shop_tabs($atts, $content=null){
+function shop_tabs_child($atts, $content=null){
 global $woocommerce_loop;
 	extract(shortcode_atts( array( 
 							'columns' => '4',
@@ -1132,11 +1131,11 @@ global $woocommerce_loop;
 	return ob_get_clean();
 
 }
-add_shortcode('shop-tabs', 'shop_tabs');
+add_shortcode('shop-tabs', 'shop_tabs_child');
 
 /* google map
 ================================================== */
-function map($atts, $content=null){
+function map_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 		'latitude' => '51.507335',
 		'longitude' => '-0.127683',
@@ -1200,12 +1199,12 @@ function map($atts, $content=null){
 	<?php return ob_get_clean();	
 	
 }
-add_shortcode('map', 'map');
+add_shortcode('map', 'map_child');
 
 
 /*  team members
 ================================================== */
-function team_members($atts, $content=null){
+function team_members_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 		'columns' => '4',
 		'posts' => '',
@@ -1299,11 +1298,11 @@ function team_members($atts, $content=null){
 	<?php return ob_get_clean();	
 	
 }
-add_shortcode('team-members', 'team_members');
+add_shortcode('team-members', 'team_members_child');
 
 /*  showbiz pro
 ================================================== */
-function showbiz($atts, $content=null){
+function showbiz_child($atts, $content=null){
 	extract(shortcode_atts( array( 
 		'columns' => '4',
 		'category' => '',
@@ -1856,6 +1855,6 @@ function showbiz($atts, $content=null){
 	<?php return ob_get_clean();	
 	
 }
-add_shortcode('showbiz', 'showbiz');
+add_shortcode('showbiz', 'showbiz_child');
 
 ?>

@@ -1,5 +1,6 @@
 /*global $:false, jQuery:false */
 jQuery(document).ready(function() {
+	
 	"use strict";		
     calloutButton();
     callout1Button();

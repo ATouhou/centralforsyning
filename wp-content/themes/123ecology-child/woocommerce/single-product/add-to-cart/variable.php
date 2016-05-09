@@ -22,7 +22,7 @@ global $woocommerce, $product, $post;
 					<tr>
 						<td class="label"><label for="<?php echo sanitize_title($name); ?>"><?php echo wc_attribute_label( $name ); ?></label></td>
 						<td class="value"><select id="<?php echo esc_attr( sanitize_title( $name ) ); ?>" name="attribute_<?php echo sanitize_title( $name ); ?>">
-							<option value=""><?php echo __( 'V&aelig;lg en mulighed', GETTEXT_DOMAIN_CHILD ) ?>&hellip;</option>
+							<option value=""><?php echo __( 'V&aelig;lg en mulighed', GETTEXT_DOMAIN ) ?>&hellip;</option>
 							<?php
 								if ( is_array( $options ) ) {
 
@@ -70,7 +70,7 @@ global $woocommerce, $product, $post;
 							?>
 						</select> <?php
 							if ( sizeof($attributes) == $loop )
-								echo '<a class="reset_variations" href="#reset">' . __( 'Ryd det valgte', GETTEXT_DOMAIN_CHILD ) . '</a>';
+								echo '<a class="reset_variations" href="#reset">' . __( 'Ryd det valgte', GETTEXT_DOMAIN ) . '</a>';
 						?></td>
 					</tr>
 		        <?php endforeach;?>
@@ -100,7 +100,7 @@ global $woocommerce, $product, $post;
 
 	<?php else : ?>
 
-		<p class="stock out-of-stock"><?php _e( 'This product is currently out of stock and unavailable.', GETTEXT_DOMAIN_CHILD ); ?></p>
+		<p class="stock out-of-stock"><?php _e( 'This product is currently out of stock and unavailable.', GETTEXT_DOMAIN ); ?></p>
 
 	<?php endif; ?>
 

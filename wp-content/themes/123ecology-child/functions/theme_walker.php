@@ -2,7 +2,7 @@
 
 /* walker for wp_list_categories (portfolio filter)
 ================================================== */
-class portfolio_filter_walker extends Walker_Category {
+class portfolio_filter_walker_child extends Walker_Category {
    function start_el(&$output, $category, $depth, $args) {
       extract($args);
       $cat_name = esc_attr( $category->slug);
@@ -28,7 +28,7 @@ class portfolio_filter_walker extends Walker_Category {
 }
 
 
-class bootstrap_nav_menu_456shop_walker extends Walker_Nav_Menu  {
+class bootstrap_nav_menu_456shop_walker_child extends Walker_Nav_Menu  {
 
 
 	/**
@@ -474,7 +474,7 @@ class bootstrap_nav_menu_456shop_walker extends Walker_Nav_Menu  {
 }
 
 
-class new_nav_menus_walker extends Walker_Nav_Menu {
+class new_nav_menus_walker_child extends Walker_Nav_Menu {
 	/**
 	 * @see Walker_Nav_Menu::start_lvl()
 	 * @since 3.0.0
@@ -711,14 +711,14 @@ class new_nav_menus_walker extends Walker_Nav_Menu {
 		$output .= "</li>\n";
 	}
 }
-add_filter( 'wp_edit_nav_menu_walker', 'modify_backend_walker' , 100);
-function modify_backend_walker($name)
+add_filter( 'wp_edit_nav_menu_walker', 'modify_backend_walker_child' , 100);
+function modify_backend_walker_child($name)
 		{
-			return 'new_nav_menus_walker';
+			return 'new_nav_menus_walker_child';
 		}
 		
 
-function hmenu_scripts()
+function hmenu_scripts_child()
 		{
 			if(basename( $_SERVER['PHP_SELF']) == "nav-menus.php" )
 			{	
@@ -727,18 +727,18 @@ function hmenu_scripts()
 
 			}
 		}
-add_action('admin_init', 'hmenu_scripts');
+add_action('admin_init', 'hmenu_scripts_child');
 				
 
-add_action( 'wp_update_nav_menu_item', 'update_menu', 100, 3);
-function update_menu($menu_id, $menu_item_db){	
+add_action( 'wp_update_nav_menu_item', 'update_menu_child', 100, 3);
+function update_menu_child($menu_id, $menu_item_db){	
 		$value = $_POST['menu-item-nav-type-'.$menu_item_db];		
 		update_post_meta( $menu_item_db, 'menu-item-nav-type-'.$menu_item_db , $value );
 					
 }
 
 
-class bootstrap_list_pages_walker extends Walker_Page{
+class bootstrap_list_pages_walker_child extends Walker_Page{
  
         
 	function start_lvl(&$output, $depth) {

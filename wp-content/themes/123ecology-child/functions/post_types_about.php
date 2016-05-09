@@ -1,7 +1,7 @@
 <?php
 /* About post type
 ================================================== */
-function about_post_type() 
+function about_post_type_child() 
 {
 	$labels = array(
 		'name' => __( 'Team Members'),
@@ -37,7 +37,7 @@ function about_post_type()
 
 /* Portfolio taxonomies
 ================================================== */
-function about_taxonomies(){
+function about_taxonomies_child(){
     
 	// Categories
 	
@@ -56,7 +56,7 @@ function about_taxonomies(){
 
 /* Portfolio edit
 ================================================== */
-function about_edit_columns($columns){  
+function about_edit_columns_child($columns){  
 
         $columns = array(  
             "cb" => "<input type=\"checkbox\" />",  
@@ -70,7 +70,7 @@ function about_edit_columns($columns){
 
 /* Portfolio custom column
 ================================================== */
-function about_custom_columns($column){  
+function about_custom_columns_child($column){  
         global $post;  
         switch ($column)  
         {    
@@ -83,8 +83,8 @@ function about_custom_columns($column){
         }  
 }  
 
-add_action( 'init', 'about_post_type' );
-add_action( 'init', 'about_taxonomies', 0 ); 
-add_filter("manage_edit-about_columns", "about_edit_columns");  
-add_action("manage_posts_custom_column",  "about_custom_columns");  
+add_action( 'init', 'about_post_type_child' );
+add_action( 'init', 'about_taxonomies_child', 0 ); 
+add_filter("manage_edit-about_columns", "about_edit_columns_child");  
+add_action("manage_posts_custom_column",  "about_custom_columns_child");  
 ?>

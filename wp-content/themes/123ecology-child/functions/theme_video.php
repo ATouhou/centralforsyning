@@ -1,5 +1,5 @@
 <?php
-function theme_parse_video($path){
+function theme_parse_video_child($path){
 	$parsedUrl  = parse_url($path);
 	
 	if(strpos($path, "youtube.com")){
@@ -16,7 +16,7 @@ function theme_parse_video($path){
 		return "http://player.vimeo.com/video$embed";
 	}
 }
-function theme_parse_video_yt_id($path){
+function theme_parse_video_yt_id_child($path){
 	$parsedUrl  = parse_url($path);
 	
 	if(strpos($path, "youtube.com")){
@@ -28,7 +28,7 @@ function theme_parse_video_yt_id($path){
 	}
 	
 }
-function theme_parse_video_vimeo_id($path){
+function theme_parse_video_vimeo_id_child($path){
 	$parsedUrl  = parse_url($path);
 	
 	if(strpos($path, "vimeo.com")){

@@ -476,6 +476,7 @@ class UpdraftPlus_Admin {
 			'servererrorcode' => __('The web server returned an error code (try again, or check your web server logs)', 'updraftplus'),
 			'newuserpass' => __("The new user's RackSpace console password is (this will not be shown again):", 'updraftplus'),
 			'trying' => __('Trying...', 'updraftplus'),
+			'fetching' => __('Fetching...', 'updraftplus'),
 			'calculating' => __('calculating...','updraftplus'),
 			'begunlooking' => __('Begun looking for this entity','updraftplus'),
 			'stilldownloading' => __('Some files are still downloading or being processed - please wait.', 'updraftplus'),
@@ -536,13 +537,14 @@ class UpdraftPlus_Admin {
 			'key' => __('Key', 'updraftplus'),
 			'nokeynamegiven' => sprintf(__("Failure: No %s was given.",'updraftplus'), __('key name','updraftplus')),
 			'deleting' => __('Deleting...', 'updraftplus'),
+			'enter_mothership_url' => __('Please enter a valid URL', 'updraftplus'),
 			'delete_response_not_understood' => __("We requested to delete the file, but could not understand the server's response", 'updraftplus'),
 			'testingconnection' => __('Testing connection...', 'updraftplus'),
 			'send' => __('Send', 'updraftplus'),
 			'migratemodalheight' => class_exists('UpdraftPlus_Addons_Migrator') ? 555 : 300,
 			'migratemodalwidth' => class_exists('UpdraftPlus_Addons_Migrator') ? 770 : 500,
 			'download' => _x('Download', '(verb)', 'updraftplus'),
-			'unsavedsettingsbackup' => __('You have made changes to your settings, and not saved.', 'updraftplus')."\n".__('Your backup will use your old settings until you save your changes.','updraftplus'),
+			'unsavedsettingsbackup' => __('You have made changes to your settings, and not saved.', 'updraftplus')."\n".__('You should save your changes to ensure that they are used for making your backup.','updraftplus'),
 			'dayselector' => $day_selector,
 			'mdayselector' => $mday_selector,
 			'ud_url' => UPDRAFTPLUS_URL,
@@ -864,7 +866,7 @@ class UpdraftPlus_Admin {
 		die();
 	}
 	
-	// This function may die(), depending on the request being made
+	// This function may die(), depending on the request being made in $stage
 	public function do_updraft_download_backup($findex, $type, $timestamp, $stage, $close_connection_callable = false) {
 	
 		@set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);
@@ -910,7 +912,7 @@ class UpdraftPlus_Admin {
 		$fullpath = $updraftplus->backups_dir_location().'/'.$file;
 
 		if (2 == $stage) {
-			$updraftplus->spool_file($type, $fullpath);
+			$updraftplus->spool_file($fullpath);
 			// Do not return - we do not want the caller to add any output
 			die;
 		}
@@ -1078,25 +1080,31 @@ class UpdraftPlus_Admin {
 		
 			echo json_encode($this->get_activejobs_list($_GET));
 
-		} elseif (isset($_REQUEST['subaction']) && 'remotecontrol_createkey' == $_REQUEST['subaction']) {
-			// Use the site URL - this means that if the site URL changes, communication ends; which is the case anyway
-			$user = wp_get_current_user();
-			$name_hash = $user->ID;
-			// Sending the key over https means it doesn't have to travel potentially over insecure http to the user's browser for copy-paste
-			$send_it_where = defined('UPDRAFTPLUS_REMOTE_SENDKEY_WHERE') ? UPDRAFTPLUS_REMOTE_SENDKEY_WHERE : false;
-			
-			$extra_info = array(
-				'user_id' => $user->ID,
-				'user_login' => $user->user_login,
-			);
+		} elseif (isset($_REQUEST['subaction']) && 'updraftcentral_delete_key' == $_REQUEST['subaction'] && isset($_REQUEST['key_id'])) {
 
-			if ($send_it_where) {
-				$extra_info['mothership'] = UPDRAFTPLUS_REMOTE_SENDKEY_WHERE;
+			global $updraftplus_updraftcentral_main;
+			if (!is_a($updraftplus_updraftcentral_main, 'UpdraftPlus_UpdraftCentral_Main')) {
+				echo json_encode(array('error' => 'UpdraftPlus_UpdraftCentral_Main object not found'));
+				die;
 			}
 			
-			$created = $updraftplus->create_remote_control_key($name_hash, $extra_info, $send_it_where);
-			echo json_encode($created);
+			echo json_encode($updraftplus_updraftcentral_main->delete_key($_REQUEST['key_id']));
 			die;
+			
+		} elseif (isset($_REQUEST['subaction']) && ('updraftcentral_create_key' == $_REQUEST['subaction'] || 'updraftcentral_get_log' == $_REQUEST['subaction'])) {
+		
+			global $updraftplus_updraftcentral_main;
+			if (!is_a($updraftplus_updraftcentral_main, 'UpdraftPlus_UpdraftCentral_Main')) {
+				echo json_encode(array('error' => 'UpdraftPlus_UpdraftCentral_Main object not found'));
+				die;
+			}
+			
+			$call_method = substr($_REQUEST['subaction'], 15);
+			
+			echo json_encode(call_user_func(array($updraftplus_updraftcentral_main, $call_method), $_REQUEST));
+			
+			die;
+			
 		} elseif (isset($_REQUEST['subaction']) && 'callwpaction' == $_REQUEST['subaction'] && !empty($_REQUEST['wpaction'])) {
 
 			ob_start();
@@ -4056,7 +4064,7 @@ class UpdraftPlus_Admin {
 			$included = (UpdraftPlus_Options::get_updraft_option("updraft_include_$key", apply_filters("updraftplus_defaultoption_include_".$key, true))) ? 'checked="checked"' : "";
 			if ('others' == $key || 'uploads' == $key) {
 
-				$ret .= '<input id="'.$prefix.'updraft_include_'.$key.'" type="checkbox" name="updraft_include_'.$key.'" value="1" '.$included.'> <label '.(('others' == $key) ? 'title="'.sprintf(__('Your wp-content directory server path: %s', 'updraftplus'), WP_CONTENT_DIR).'" ' : '').' for="'.$prefix.'updraft_include_'.$key.'">'.(('others' == $key) ? __('Any other directories found inside wp-content', 'updraftplus') : htmlspecialchars($info['description'])).'</label><br>';
+				$ret .= '<input class="updraft_include_entity" id="'.$prefix.'updraft_include_'.$key.'" type="checkbox" name="updraft_include_'.$key.'" value="1" '.$included.'> <label '.(('others' == $key) ? 'title="'.sprintf(__('Your wp-content directory server path: %s', 'updraftplus'), WP_CONTENT_DIR).'" ' : '').' for="'.$prefix.'updraft_include_'.$key.'">'.(('others' == $key) ? __('Any other directories found inside wp-content', 'updraftplus') : htmlspecialchars($info['description'])).'</label><br>';
 				
 				if ($show_exclusion_options) {
 					$include_exclude = UpdraftPlus_Options::get_updraft_option('updraft_include_'.$key.'_exclude', ('others' == $key) ? UPDRAFT_DEFAULT_OTHERS_EXCLUDE : UPDRAFT_DEFAULT_UPLOADS_EXCLUDE);
@@ -4075,7 +4083,7 @@ class UpdraftPlus_Admin {
 			} else {
 
 				if ($key != 'more' || true === $include_more || ('sometimes' === $include_more && !empty($include_more_paths))) {
-					$ret .= "<input id=\"".$prefix."updraft_include_$key\" type=\"checkbox\" name=\"updraft_include_$key\" value=\"1\" $included /><label for=\"".$prefix."updraft_include_$key\"".((isset($info['htmltitle'])) ? ' title="'.htmlspecialchars($info['htmltitle']).'"' : '')."> ".htmlspecialchars($info['description']);
+					$ret .= "<input class=\"updraft_include_entity\" id=\"".$prefix."updraft_include_$key\" type=\"checkbox\" name=\"updraft_include_$key\" value=\"1\" $included /><label for=\"".$prefix."updraft_include_$key\"".((isset($info['htmltitle'])) ? ' title="'.htmlspecialchars($info['htmltitle']).'"' : '')."> ".htmlspecialchars($info['description']);
 
 					$ret .= "</label><br>";
 					$ret .= apply_filters("updraftplus_config_option_include_$key", '', $prefix);

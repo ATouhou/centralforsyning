@@ -243,7 +243,7 @@ array('value' => 'Play-2', 'text' => 'Play-2'),
 
 array('value' => 'Plus', 'text' => 'Plus'),
 
-array('value' => 'Pokéball', 'text' => 'Pokéball'),
+array('value' => 'Pokéball', 'text' => 'Pokéball'),
 
 array('value' => 'Previous', 'text' => 'Previous'),
 
@@ -371,7 +371,7 @@ array('value' => 'Zoom-out', 'text' => 'Zoom-out')),
 
 /* meta_boxes
 ================================================== */
-function fronttabs_meta_boxes() {
+function fronttabs_meta_boxes_child() {
 global $post, $fronttabs_meta_boxes;
 	
 	foreach($fronttabs_meta_boxes as $meta_box) {
@@ -422,16 +422,16 @@ global $post, $fronttabs_meta_boxes;
 
 /* enable meta_boxes
 ================================================== */
-function create_fronttabs_meta_box() {
+function create_fronttabs_meta_box_child() {
 global $theme_name, $fronttabs_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'fronttabs-meta-boxes', __('Front Tabs Options', GETTEXT_DOMAIN_CHILD), 'fronttabs_meta_boxes', 'front_tabs', 'normal', 'high' );
+	add_meta_box( 'fronttabs-meta-boxes', __('Front Tabs Options', GETTEXT_DOMAIN_CHILD), 'fronttabs_meta_boxes_child', 'front_tabs', 'normal', 'high' );
 	}
 }
 
 /* update meta_boxes
 ================================================== */
-function save_fronttabs_postdata( $post_id ) {
+function save_fronttabs_postdata_child( $post_id ) {
 	global $post, $fronttabs_meta_boxes;  
 		foreach($fronttabs_meta_boxes as $meta_box) {  
  
@@ -464,6 +464,6 @@ function save_fronttabs_postdata( $post_id ) {
 	}
 	
 }
-add_action('admin_menu', 'create_fronttabs_meta_box');
-add_action('save_post', 'save_fronttabs_postdata');
+add_action('admin_menu', 'create_fronttabs_meta_box_child');
+add_action('save_post', 'save_fronttabs_postdata_child');
 ?>

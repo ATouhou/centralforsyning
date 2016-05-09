@@ -37,7 +37,7 @@ global $woocommerce;
 					}
 				} else {
 
-					echo '<p>' . __( 'Sorry, it seems that there are no payment methods which support adding a new payment method. Please contact us if you require assistance or wish to make alternate arrangements.', GETTEXT_DOMAIN_CHILD ) . '</p>';
+					echo '<p>' . __( 'Sorry, it seems that there are no payment methods which support adding a new payment method. Please contact us if you require assistance or wish to make alternate arrangements.', GETTEXT_DOMAIN ) . '</p>';
 
 				}
 			?>
@@ -45,7 +45,7 @@ global $woocommerce;
 
 		<div class="form-row">
 			<?php wp_nonce_field( 'woocommerce-add-payment-method' ); ?>
-			<input type="submit" class="btn btn-normal btn-primary" id="place_order" value="<?php _e( 'Add Payment Method', GETTEXT_DOMAIN_CHILD ); ?>" />
+			<input type="submit" class="btn btn-normal btn-primary" id="place_order" value="<?php _e( 'Add Payment Method', GETTEXT_DOMAIN ); ?>" />
 			<input type="hidden" name="woocommerce_add_payment_method" value="1" />
 		</div>
 

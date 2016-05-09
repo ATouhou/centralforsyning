@@ -1,5 +1,5 @@
 <?php
-function comment($comment, $args, $depth) {
+function comment_child($comment, $args, $depth) {
 
     $GLOBALS['comment'] = $comment; ?>
     <div class="comment-container">

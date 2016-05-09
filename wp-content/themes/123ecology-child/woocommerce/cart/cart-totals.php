@@ -13,18 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-<!--	<div class="heading-content"><h4 class="title"><span><?php _e( 'Cart Totals', GETTEXT_DOMAIN_CHILD ); ?></span></h4></div> -->
+<!--	<div class="heading-content"><h4 class="title"><span><?php _e( 'Cart Totals', GETTEXT_DOMAIN ); ?></span></h4></div> -->
 
 	<table cellspacing="0">
 
 		<tr class="cart-subtotal">
-			<th><?php _e( 'Cart Subtotal', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th><?php _e( 'Cart Subtotal', GETTEXT_DOMAIN ); ?></th>
 			<td><?php wc_cart_totals_subtotal_html(); ?></td>
 		</tr>
 
 		<?php foreach ( WC()->cart->get_coupons( 'cart' ) as $code => $coupon ) : ?>
 			<tr class="cart-discount coupon-<?php echo esc_attr( $code ); ?>">
-				<th><?php _e( 'Coupon:', GETTEXT_DOMAIN_CHILD ); ?> <?php echo esc_html( $code ); ?></th>
+				<th><?php _e( 'Coupon:', GETTEXT_DOMAIN ); ?> <?php echo esc_html( $code ); ?></th>
 				<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 			</tr>
 		<?php endforeach; ?>
@@ -64,7 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		<?php foreach ( WC()->cart->get_coupons( 'order' ) as $code => $coupon ) : ?>
 			<tr class="order-discount coupon-<?php echo esc_attr( $code ); ?>">
-				<th><?php _e( 'Coupon:', GETTEXT_DOMAIN_CHILD ); ?> <?php echo esc_html( $code ); ?></th>
+				<th><?php _e( 'Coupon:', GETTEXT_DOMAIN ); ?> <?php echo esc_html( $code ); ?></th>
 				<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 			</tr>
 		<?php endforeach; ?>
@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
 		<tr class="order-total">
-			<th><?php _e( 'Order Total', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th><?php _e( 'Order Total', GETTEXT_DOMAIN ); ?></th>
 			<td><?php wc_cart_totals_order_total_html(); ?></td>
 		</tr>
 
@@ -84,10 +84,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<p><small><?php
 
 			$estimated_text = WC()->customer->is_customer_outside_base() && ! WC()->customer->has_calculated_shipping()
-				? sprintf( ' ' . __( ' (taxes estimated for %s)', GETTEXT_DOMAIN_CHILD ), WC()->countries->estimated_for_prefix() . __( WC()->countries->countries[ WC()->countries->get_base_country() ], GETTEXT_DOMAIN_CHILD ) )
+				? sprintf( ' ' . __( ' (taxes estimated for %s)', GETTEXT_DOMAIN ), WC()->countries->estimated_for_prefix() . __( WC()->countries->countries[ WC()->countries->get_base_country() ], GETTEXT_DOMAIN ) )
 				: '';
 
-			printf( __( 'Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information.', GETTEXT_DOMAIN_CHILD ), $estimated_text );
+			printf( __( 'Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information.', GETTEXT_DOMAIN ), $estimated_text );
 
 		?></small></p>
 	<?php endif; ?>

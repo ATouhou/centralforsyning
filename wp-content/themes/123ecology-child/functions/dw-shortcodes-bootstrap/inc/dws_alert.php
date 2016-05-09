@@ -8,7 +8,7 @@
 /**
  * Notification
  */
-function dws_notice($params, $content = null){
+function dws_notice_child($params, $content = null){
 	extract(shortcode_atts(array(
 		'type' => 'unknown'
 	), $params));
@@ -19,4 +19,4 @@ function dws_notice($params, $content = null){
 	$result .= '</div>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('notification', 'dws_notice');
+add_shortcode('notification', 'dws_notice_child');

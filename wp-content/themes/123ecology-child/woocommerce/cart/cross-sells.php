@@ -39,7 +39,7 @@ if ( $products->have_posts() ) : ?>
 
 		<div class="title-widget">
 			<h4 class="heading-title">
-				<span class="left"><?php _e( 'You may also like&hellip;', GETTEXT_DOMAIN_CHILD ) ?></span>
+				<span class="left"><?php _e( 'You may also like&hellip;', GETTEXT_DOMAIN ) ?></span>
 			</h4>
 		</div>
 

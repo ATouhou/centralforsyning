@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		<td valign="top" width="50%">
 
-			<h3><?php _e( 'Billing address', GETTEXT_DOMAIN_CHILD ); ?></h3>
+			<h3><?php _e( 'Billing address', GETTEXT_DOMAIN ); ?></h3>
 
 			<p><?php echo $order->get_formatted_billing_address(); ?></p>
 
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		<td valign="top" width="50%">
 
-			<h3><?php _e( 'Shipping address', GETTEXT_DOMAIN_CHILD ); ?></h3>
+			<h3><?php _e( 'Shipping address', GETTEXT_DOMAIN ); ?></h3>
 
 			<p><?php echo $shipping; ?></p>
 

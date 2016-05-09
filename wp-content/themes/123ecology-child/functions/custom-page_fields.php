@@ -49,7 +49,7 @@ array(
 
 /* meta_boxes
 ================================================== */
-function page_meta_boxes() {
+function page_meta_boxes_child() {
 global $post, $page_meta_boxes;
 	
 	foreach($page_meta_boxes as $meta_box) {
@@ -138,16 +138,16 @@ global $post, $page_meta_boxes;
 
 /* enable meta_boxes
 ================================================== */
-function create_page_meta_box() {
+function create_page_meta_box_child() {
 global $theme_name, $page_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'new-meta-boxes', __('Front Page Options', GETTEXT_DOMAIN_CHILD), 'page_meta_boxes', 'page', 'normal', 'high' );
+	add_meta_box( 'new-meta-boxes', __('Front Page Options', GETTEXT_DOMAIN_CHILD), 'page_meta_boxes_child', 'page', 'normal', 'high' );
 	}
 }
 
 /* update meta_boxes
 ================================================== */
-function save_page_postdata( $post_id ) {
+function save_page_postdata_child( $post_id ) {
 	global $post, $page_meta_boxes;  
 		foreach($page_meta_boxes as $meta_box) {  
  
@@ -174,6 +174,6 @@ function save_page_postdata( $post_id ) {
 	}
 	
 }
-add_action('admin_menu', 'create_page_meta_box');
-add_action('save_post', 'save_page_postdata');
+add_action('admin_menu', 'create_page_meta_box_child');
+add_action('save_post', 'save_page_postdata_child');
 ?>

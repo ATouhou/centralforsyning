@@ -240,7 +240,7 @@ p.stars span a.active {
 .woocommerce ul.cart_list, .woocommerce ul.product_list_widget{
 	border-top: 1px solid #ebebeb;	
 }
-.woocommerce ul.cart_list li, .woocommerce ul.product_list_widget li{
+.woocommerce ul.cart_list li, .woocommerce ul.product_list_widget li,.woocommerce .widget_shopping_cart .cart_list li, .woocommerce.widget_shopping_cart .cart_list li{
 	padding: 10px 0;
 	border-bottom: 1px solid #ebebeb	
 }
@@ -1139,6 +1139,7 @@ form .form-row textarea{
 	-webkit-box-sizing: inherit !important;
 	padding: 4px 3%;
 	width: 94%;
+	line-height:20px;
 }
 .woocommerce form .form-row input#shipping_address_1,
 .woocommerce-page form .form-row input#shipping_address_1,

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $woocommerce, $current_user;
 
-$page_title = ( $load_address == 'billing' ) ? __( 'Billing Address', GETTEXT_DOMAIN_CHILD ) : __( 'Shipping Address', GETTEXT_DOMAIN_CHILD );
+$page_title = ( $load_address == 'billing' ) ? __( 'Billing Address', GETTEXT_DOMAIN ) : __( 'Shipping Address', GETTEXT_DOMAIN );
 
 get_currentuserinfo();
 ?>
@@ -35,7 +35,7 @@ get_currentuserinfo();
 		<?php endforeach; ?>
 
 		<p>
-			<input type="submit" class="btn btn-normal btn-primary" name="save_address" value="<?php _e( 'Save Address', GETTEXT_DOMAIN_CHILD ); ?>" />
+			<input type="submit" class="btn btn-normal btn-primary" name="save_address" value="<?php _e( 'Save Address', GETTEXT_DOMAIN ); ?>" />
 			<?php wp_nonce_field( 'woocommerce-edit_address' ); ?>
 			<input type="hidden" name="action" value="edit_address" />
 		</p>

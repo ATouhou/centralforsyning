@@ -1,7 +1,7 @@
 <?php
 /* Portfolio post type
 ================================================== */
-function portfolio_post_type() 
+function portfolio_post_type_child() 
 {
 	$labels = array(
 		'name' => __( 'Portfolio'),
@@ -37,7 +37,7 @@ function portfolio_post_type()
 
 /* Portfolio taxonomies
 ================================================== */
-function portfolio_taxonomies(){
+function portfolio_taxonomies_child(){
     
 	// Categories
 	
@@ -69,7 +69,7 @@ function portfolio_taxonomies(){
 
 /* Portfolio edit
 ================================================== */
-function portfolio_edit_columns($columns){  
+function portfolio_edit_columns_child($columns){  
 
         $columns = array(  
             "cb" => "<input type=\"checkbox\" />",  
@@ -83,7 +83,7 @@ function portfolio_edit_columns($columns){
 
 /* Portfolio custom column
 ================================================== */
-function portfolio_custom_columns($column){  
+function portfolio_custom_columns_child($column){  
         global $post;  
         switch ($column)  
         {    
@@ -96,8 +96,8 @@ function portfolio_custom_columns($column){
         }  
 }  
 
-add_action( 'init', 'portfolio_post_type' );
-add_action( 'init', 'portfolio_taxonomies', 0 ); 
-add_filter("manage_edit-portfolio_columns", "portfolio_edit_columns");  
-add_action("manage_posts_custom_column",  "portfolio_custom_columns");  
+add_action( 'init', 'portfolio_post_type_child' );
+add_action( 'init', 'portfolio_taxonomies_child', 0 ); 
+add_filter("manage_edit-portfolio_columns", "portfolio_edit_columns_child");  
+add_action("manage_posts_custom_column",  "portfolio_custom_columns_child");  
 ?>

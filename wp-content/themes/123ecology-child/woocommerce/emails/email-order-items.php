@@ -22,7 +22,7 @@ foreach ( $items as $item ) :
 
 			// Show title/image etc
 			if ( $show_image ) {
-				echo apply_filters( 'woocommerce_order_item_thumbnail', '<img src="' . current( wp_get_attachment_image_src( get_post_thumbnail_id( $_product->id ), 'thumbnail') ) .'" alt="' . __( 'Product Image', GETTEXT_DOMAIN_CHILD ) . '" height="' . esc_attr( $image_size[1] ) . '" width="' . esc_attr( $image_size[0] ) . '" style="vertical-align:middle; margin-right: 10px;" />', $item );
+				echo apply_filters( 'woocommerce_order_item_thumbnail', '<img src="' . current( wp_get_attachment_image_src( get_post_thumbnail_id( $_product->id ), 'thumbnail') ) .'" alt="' . __( 'Product Image', GETTEXT_DOMAIN ) . '" height="' . esc_attr( $image_size[1] ) . '" width="' . esc_attr( $image_size[0] ) . '" style="vertical-align:middle; margin-right: 10px;" />', $item );
 			}
 
 			// Product name
@@ -43,9 +43,9 @@ foreach ( $items as $item ) :
 					$i++;
 
 					if ( count( $download_files ) > 1 ) {
-						$prefix = sprintf( __( 'Download %d', GETTEXT_DOMAIN_CHILD ), $i );
+						$prefix = sprintf( __( 'Download %d', GETTEXT_DOMAIN ), $i );
 					} elseif ( $i == 1 ) {
-						$prefix = __( 'Download', GETTEXT_DOMAIN_CHILD );
+						$prefix = __( 'Download', GETTEXT_DOMAIN );
 					}
 
 					echo '<br/><small>' . $prefix . ': <a href="' . esc_url( $file['download_url'] ) . '" target="_blank">' . esc_html( $file['name'] ) . '</a></small>';

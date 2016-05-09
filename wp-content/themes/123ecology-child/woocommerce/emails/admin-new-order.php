@@ -10,18 +10,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 <?php do_action( 'woocommerce_email_header', $email_heading ); ?>
 
-<p><?php printf( __( 'You have received an order from %s. Their order is as follows:', GETTEXT_DOMAIN_CHILD ), $order->billing_first_name . ' ' . $order->billing_last_name ); ?></p>
+<p><?php printf( __( 'You have received an order from %s. Their order is as follows:', GETTEXT_DOMAIN ), $order->billing_first_name . ' ' . $order->billing_last_name ); ?></p>
 
 <?php do_action( 'woocommerce_email_before_order_table', $order, true ); ?>
 
-<h2><?php printf( __( 'Order: %s', GETTEXT_DOMAIN_CHILD), $order->get_order_number() ); ?> (<?php printf( '<time datetime="%s">%s</time>', date_i18n( 'c', strtotime( $order->order_date ) ), date_i18n( woocommerce_date_format(), strtotime( $order->order_date ) ) ); ?>)</h2>
+<h2><?php printf( __( 'Order: %s', GETTEXT_DOMAIN), $order->get_order_number() ); ?> (<?php printf( '<time datetime="%s">%s</time>', date_i18n( 'c', strtotime( $order->order_date ) ), date_i18n( woocommerce_date_format(), strtotime( $order->order_date ) ) ); ?>)</h2>
 
 <table cellspacing="0" cellpadding="6" style="width: 100%; border: 1px solid #eee;" border="1" bordercolor="#eee">
 	<thead>
 		<tr>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Product', GETTEXT_DOMAIN_CHILD ); ?></th>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Quantity', GETTEXT_DOMAIN_CHILD ); ?></th>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Price', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Product', GETTEXT_DOMAIN ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Quantity', GETTEXT_DOMAIN ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Price', GETTEXT_DOMAIN ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -47,13 +47,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 <?php do_action( 'woocommerce_email_order_meta', $order, true ); ?>
 
-<h2><?php _e( 'Customer details', GETTEXT_DOMAIN_CHILD ); ?></h2>
+<h2><?php _e( 'Customer details', GETTEXT_DOMAIN ); ?></h2>
 
 <?php if ( $order->billing_email ) : ?>
-	<p><strong><?php _e( 'Email:', GETTEXT_DOMAIN_CHILD ); ?></strong> <?php echo $order->billing_email; ?></p>
+	<p><strong><?php _e( 'Email:', GETTEXT_DOMAIN ); ?></strong> <?php echo $order->billing_email; ?></p>
 <?php endif; ?>
 <?php if ( $order->billing_phone ) : ?>
-	<p><strong><?php _e( 'Tel:', GETTEXT_DOMAIN_CHILD ); ?></strong> <?php echo $order->billing_phone; ?></p>
+	<p><strong><?php _e( 'Tel:', GETTEXT_DOMAIN ); ?></strong> <?php echo $order->billing_phone; ?></p>
 <?php endif; ?>
 
 <?php woocommerce_get_template( 'emails/email-addresses.php', array( 'order' => $order ) ); ?>

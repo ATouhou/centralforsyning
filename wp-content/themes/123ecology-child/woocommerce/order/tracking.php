@@ -15,9 +15,9 @@ global $woocommerce;
 <?php
 	$status = get_term_by('slug', $order->status, 'shop_order_status');
 
-	$order_status_text = sprintf( __( 'Order %s which was made %s has the status &ldquo;%s&rdquo;', GETTEXT_DOMAIN_CHILD ), $order->get_order_number(), human_time_diff(strtotime($order->order_date), current_time('timestamp')) . ' ' . __( 'ago', GETTEXT_DOMAIN_CHILD ), __($status->name, GETTEXT_DOMAIN_CHILD) );
+	$order_status_text = sprintf( __( 'Order %s which was made %s has the status &ldquo;%s&rdquo;', GETTEXT_DOMAIN ), $order->get_order_number(), human_time_diff(strtotime($order->order_date), current_time('timestamp')) . ' ' . __( 'ago', GETTEXT_DOMAIN ), __($status->name, GETTEXT_DOMAIN) );
 
-	if ($order->status == 'completed') $order_status_text .= ' ' . __( 'and was completed', GETTEXT_DOMAIN_CHILD ) . ' ' . human_time_diff(strtotime($order->completed_date), current_time('timestamp')).__( ' ago', GETTEXT_DOMAIN_CHILD );
+	if ($order->status == 'completed') $order_status_text .= ' ' . __( 'and was completed', GETTEXT_DOMAIN ) . ' ' . human_time_diff(strtotime($order->completed_date), current_time('timestamp')).__( ' ago', GETTEXT_DOMAIN );
 
 	$order_status_text .= '.';
 
@@ -28,13 +28,13 @@ global $woocommerce;
 	$notes = $order->get_customer_order_notes();
 	if ($notes) :
 		?>
-		<h2 class="my-account-title"><?php _e( 'Order Updates', GETTEXT_DOMAIN_CHILD ); ?></h2>
+		<h2 class="my-account-title"><?php _e( 'Order Updates', GETTEXT_DOMAIN ); ?></h2>
 		<ol class="commentlist notes">
 			<?php foreach ($notes as $note) : ?>
 			<li class="comment note">
 				<div class="comment_container">
 					<div class="comment-text">
-						<p class="meta"><?php echo date_i18n(__( 'l jS \o\f F Y, h:ia', GETTEXT_DOMAIN_CHILD ), strtotime($note->comment_date)); ?></p>
+						<p class="meta"><?php echo date_i18n(__( 'l jS \o\f F Y, h:ia', GETTEXT_DOMAIN ), strtotime($note->comment_date)); ?></p>
 						<div class="description">
 							<?php echo wpautop( wptexturize( wp_kses_post( $note->comment_content ) ) ); ?>
 						</div>

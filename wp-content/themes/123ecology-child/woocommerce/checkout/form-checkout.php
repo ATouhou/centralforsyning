@@ -17,7 +17,7 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout
 if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_user_logged_in() ) {
-	echo apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', GETTEXT_DOMAIN_CHILD ) );
+	echo apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', GETTEXT_DOMAIN ) );
 	return;
 }
 
@@ -38,9 +38,9 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', $woocommerce-
 				<div class="accordion-heading">
 					<a class="accordion-toggle" data-toggle="collapse" data-parent="#checkout-accordion" href="#collapse1">
 					<?php if ( WC()->cart->ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-						<?php _e( 'Billing &amp; Shipping', GETTEXT_DOMAIN_CHILD ); ?>
+						<?php _e( 'Billing &amp; Shipping', GETTEXT_DOMAIN ); ?>
 					<?php else : ?>
-						<?php _e( 'Billing Address', GETTEXT_DOMAIN_CHILD ); ?>
+						<?php _e( 'Billing Address', GETTEXT_DOMAIN ); ?>
 					<?php endif; ?>
 					</a>
 				</div>
@@ -54,9 +54,9 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', $woocommerce-
 				<div class="accordion-heading">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#checkout-accordion" href="#collapse2">
 					<?php if ($woocommerce->cart->ship_to_billing_address_only()) : ?>
-						<?php _e( 'Additional Information', GETTEXT_DOMAIN_CHILD ); ?>
+						<?php _e( 'Additional Information', GETTEXT_DOMAIN ); ?>
 					<?php else : ?>
-						<?php _e( 'Shipping Address', GETTEXT_DOMAIN_CHILD ); ?>
+						<?php _e( 'Shipping Address', GETTEXT_DOMAIN ); ?>
 					<?php endif; ?>
 					</a>
 				</div>
@@ -74,7 +74,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', $woocommerce-
 		<div class="row-fluid heading-content">
 			<div class="span12">
 				<h4 class="title">
-					<span><?php _e( 'Your order', GETTEXT_DOMAIN_CHILD ); ?></span>
+					<span><?php _e( 'Your order', GETTEXT_DOMAIN ); ?></span>
 				</h4>
 			</div>
 		</div>

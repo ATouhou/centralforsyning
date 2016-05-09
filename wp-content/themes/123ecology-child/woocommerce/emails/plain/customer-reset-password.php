@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 echo $email_heading . "\n\n";
 
-echo __( 'Someone requested that the password be reset for the following account:', GETTEXT_DOMAIN_CHILD ) . "\r\n\r\n";
+echo __( 'Someone requested that the password be reset for the following account:', GETTEXT_DOMAIN ) . "\r\n\r\n";
 echo network_home_url( '/' ) . "\r\n\r\n";
-echo sprintf(__( 'Username: %s', GETTEXT_DOMAIN_CHILD ), $user_login) . "\r\n\r\n";
-echo __( 'If this was a mistake, just ignore this email and nothing will happen.', GETTEXT_DOMAIN_CHILD ) . "\r\n\r\n";
-echo __( 'To reset your password, visit the following address:', GETTEXT_DOMAIN_CHILD ) . "\r\n\r\n";
+echo sprintf(__( 'Username: %s', GETTEXT_DOMAIN ), $user_login) . "\r\n\r\n";
+echo __( 'If this was a mistake, just ignore this email and nothing will happen.', GETTEXT_DOMAIN ) . "\r\n\r\n";
+echo __( 'To reset your password, visit the following address:', GETTEXT_DOMAIN ) . "\r\n\r\n";
 
 echo get_permalink( woocommerce_get_page_id( 'lost_password' ) ) . sprintf( '?key=%s&login=%s', $reset_key, $user_login ) . "\r\n";
 

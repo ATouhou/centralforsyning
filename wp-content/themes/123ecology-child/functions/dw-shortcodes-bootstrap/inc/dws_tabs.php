@@ -24,25 +24,25 @@
 //	---------------
 //	
 
-function dws_tabs($params, $content = null){
+function dws_tabs_child($params, $content = null){
 	$content = preg_replace('/<br class="nc".\/>/', '', $content);
 	$result = '<div class="tab_wrap">';
 	$result .= do_shortcode($content );
 	$result .= '</div>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('tabs', 'dws_tabs');
+add_shortcode('tabs', 'dws_tabs_child');
 
-function dws_thead($params, $content = null){
+function dws_thead_child($params, $content = null){
 	$content = preg_replace('/<br class="nc".\/>/', '', $content);
 	$result = '<ul class="nav nav-tabs">';
 	$result .= do_shortcode($content );
 	$result .= '</ul>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('thead', 'dws_thead');
+add_shortcode('thead', 'dws_thead_child');
 
-function dws_tab($params, $content = null){
+function dws_tab_child($params, $content = null){
 	extract(shortcode_atts(array(
 		'href' => '#',
 		'title' => '',
@@ -55,9 +55,9 @@ function dws_tab($params, $content = null){
 	$result .= '</li>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('tab', 'dws_tab');
+add_shortcode('tab', 'dws_tab_child');
 
-function dws_dropdown($params, $content = null){
+function dws_dropdown_child($params, $content = null){
 	global $dws_timestamp;
 	extract(shortcode_atts(array(
 		'title' => '',
@@ -72,18 +72,18 @@ function dws_dropdown($params, $content = null){
 	$result .= '</ul></li>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('dropdown', 'dws_dropdown');
+add_shortcode('dropdown', 'dws_dropdown_child');
 
-function dws_tcontents($params, $content = null){
+function dws_tcontents_child($params, $content = null){
 	$content = preg_replace('/<br class="nc".\/>/', '', $content);
 	$result = '<div class="tab-content">';
 	$result .= do_shortcode($content );
 	$result .= '</div>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('tcontents', 'dws_tcontents');
+add_shortcode('tcontents', 'dws_tcontents_child');
 
-function dws_tcontent($params, $content = null){
+function dws_tcontent_child($params, $content = null){
 	extract(shortcode_atts(array(
 		'id' => '',
 		'class'=>'',
@@ -95,4 +95,4 @@ function dws_tcontent($params, $content = null){
 	$result .= '</div>'; 
 	return force_balance_tags( $result );
 }
-add_shortcode('tcontent', 'dws_tcontent');
+add_shortcode('tcontent', 'dws_tcontent_child');

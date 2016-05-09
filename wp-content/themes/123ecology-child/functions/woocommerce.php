@@ -1,18 +1,18 @@
 <?php
 
-function shop_layout_pages_after() {
+function shop_layout_pages_after_child() {
     ?></div></div></div><?php    
 }
 
 if ( in_array( 'woocommerce/woocommerce.php' , get_option('active_plugins') ) ) {
-	add_filter('body_class','my_class_names');
-	function my_class_names($classes) {
+	add_filter('body_class','my_class_names_child');
+	function my_class_names_child($classes) {
 		$classes[] = 'woocommerce-123ecology';
 		return $classes;
 	}
 }
 
-add_action( 'woocommerce_sidebar', 'shop_layout_pages_after', 99 );
+add_action( 'woocommerce_sidebar', 'shop_layout_pages_after_child', 99 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
@@ -273,9 +273,9 @@ if ( ! $product->is_purchasable() && ! in_array( $product->product_type, array( 
 	}
  }*/
 
-add_filter('woocommerce_placeholder_img_src', 'custom_woocommerce_placeholder_img_src');
+add_filter('woocommerce_placeholder_img_src', 'custom_woocommerce_placeholder_img_src_child');
 
-function custom_woocommerce_placeholder_img_src( $src ) {
+function custom_woocommerce_placeholder_img_src_child( $src ) {
     $upload_dir = wp_upload_dir();
     $uploads = THEME_ASSETS_CHILD;
     $src = $uploads . '/img/placeholder.png';
@@ -322,9 +322,9 @@ if ( ! function_exists( 'woocommerce_show_messages1' ) ) {
 	}
 }
 
-add_filter ( 'single_product_small_thumbnail_size', 'lts_456shop' ); 
-add_filter ( 'single_product_large_thumbnail_size', 'lts_456shop' ); 
-function lts_456shop() {
+add_filter ( 'single_product_small_thumbnail_size', 'lts_456shop_child' ); 
+add_filter ( 'single_product_large_thumbnail_size', 'lts_456shop_child' ); 
+function lts_456shop_child() {
 	return 'product';
 }
 ?>

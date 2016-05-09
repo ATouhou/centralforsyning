@@ -102,9 +102,9 @@ get_header('shop'); ?>
 		<!--<h1 class="page-title">
 			<?php if ( is_search() ) : ?>
 				<?php
-					printf( __( 'Search Results: &ldquo;%s&rdquo;', GETTEXT_DOMAIN_CHILD ), get_search_query() );
+					printf( __( 'Search Results: &ldquo;%s&rdquo;', GETTEXT_DOMAIN ), get_search_query() );
 					if ( get_query_var( 'paged' ) )
-						printf( __( '&nbsp;&ndash; Page %s', GETTEXT_DOMAIN_CHILD ), get_query_var( 'paged' ) );
+						printf( __( '&nbsp;&ndash; Page %s', GETTEXT_DOMAIN ), get_query_var( 'paged' ) );
 				?>
 			<?php elseif ( is_tax() ) : ?>
 				<?php echo single_term_title( "", false ); ?>
@@ -147,7 +147,7 @@ get_header('shop'); ?>
 
 			<?php if ( ! woocommerce_product_subcategories( array( 'before' => '<ul class="products">', 'after' => '</ul>' ) ) ) : ?>
 
-				<p><?php _e( 'No products found which match your selection.', GETTEXT_DOMAIN_CHILD ); ?></p>
+				<p><?php _e( 'No products found which match your selection.', GETTEXT_DOMAIN ); ?></p>
 
 			<?php endif; ?>
 

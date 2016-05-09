@@ -23,16 +23,16 @@ $customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_q
 
 if ( $customer_orders ) : ?>
 
-	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', __( 'Recent Orders', GETTEXT_DOMAIN_CHILD ) ); ?></h2>
+	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', __( 'Recent Orders', GETTEXT_DOMAIN ) ); ?></h2>
 
 	<table class="shop_table my_account_orders">
 
 		<thead>
 			<tr>
-				<th class="order-number"><span class="nobr"><?php _e( 'Order', GETTEXT_DOMAIN_CHILD ); ?></span></th>
-				<th class="order-date"><span class="nobr"><?php _e( 'Date', GETTEXT_DOMAIN_CHILD ); ?></span></th>
-				<th class="order-status"><span class="nobr"><?php _e( 'Status', GETTEXT_DOMAIN_CHILD ); ?></span></th>
-				<th class="order-total"><span class="nobr"><?php _e( 'Total', GETTEXT_DOMAIN_CHILD ); ?></span></th>
+				<th class="order-number"><span class="nobr"><?php _e( 'Order', GETTEXT_DOMAIN ); ?></span></th>
+				<th class="order-date"><span class="nobr"><?php _e( 'Date', GETTEXT_DOMAIN ); ?></span></th>
+				<th class="order-status"><span class="nobr"><?php _e( 'Status', GETTEXT_DOMAIN ); ?></span></th>
+				<th class="order-total"><span class="nobr"><?php _e( 'Total', GETTEXT_DOMAIN ); ?></span></th>
 				<th class="order-actions">&nbsp;</th>
 			</tr>
 		</thead>
@@ -56,10 +56,10 @@ if ( $customer_orders ) : ?>
 						<time datetime="<?php echo date( 'Y-m-d', strtotime( $order->order_date ) ); ?>" title="<?php echo esc_attr( strtotime( $order->order_date ) ); ?>"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ); ?></time>
 					</td>
 					<td class="order-status" style="text-align:left; white-space:nowrap;">
-						<?php echo ucfirst( __( $status->name, GETTEXT_DOMAIN_CHILD ) ); ?>
+						<?php echo ucfirst( __( $status->name, GETTEXT_DOMAIN ) ); ?>
 					</td>
 					<td class="order-total">
-						<?php echo sprintf( _n( '%s for %s item', '%s for %s items', $item_count, GETTEXT_DOMAIN_CHILD ), $order->get_formatted_order_total(), $item_count ); ?>
+						<?php echo sprintf( _n( '%s for %s item', '%s for %s items', $item_count, GETTEXT_DOMAIN ), $order->get_formatted_order_total(), $item_count ); ?>
 					</td>
 					<td class="order-actions">
 						<?php
@@ -68,20 +68,20 @@ if ( $customer_orders ) : ?>
 							if ( in_array( $order->status, apply_filters( 'woocommerce_valid_order_statuses_for_payment', array( 'pending', 'failed' ), $order ) ) ) {
 								$actions['pay'] = array(
 									'url'  => $order->get_checkout_payment_url(),
-									'name' => __( 'Pay', GETTEXT_DOMAIN_CHILD )
+									'name' => __( 'Pay', GETTEXT_DOMAIN )
 								);
 							}
 
 							if ( in_array( $order->status, apply_filters( 'woocommerce_valid_order_statuses_for_cancel', array( 'pending', 'failed' ), $order ) ) ) {
 								$actions['cancel'] = array(
 									'url'  => $order->get_cancel_order_url( get_permalink( wc_get_page_id( 'myaccount' ) ) ),
-									'name' => __( 'Cancel', GETTEXT_DOMAIN_CHILD )
+									'name' => __( 'Cancel', GETTEXT_DOMAIN )
 								);
 							}
 
 							$actions['view'] = array(
 								'url'  => $order->get_view_order_url(),
-								'name' => __( 'View', GETTEXT_DOMAIN_CHILD )
+								'name' => __( 'View', GETTEXT_DOMAIN )
 							);
 
 							$actions = apply_filters( 'woocommerce_my_account_my_orders_actions', $actions, $order );

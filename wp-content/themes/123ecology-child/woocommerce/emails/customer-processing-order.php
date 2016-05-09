@@ -20,14 +20,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 	<br>
 	<p><?php echo "Vi ønsker Dem god fornøjelse."?></p>
 </span>
-<h2><?php echo __( 'Order Details', GETTEXT_DOMAIN_CHILD )?></h2>
+<h2><?php echo __( 'Order Details', GETTEXT_DOMAIN )?></h2>
 
 <table cellspacing="0" cellpadding="6" style="width: 100%; border: 1px solid #eee; color: black;" border="1" bordercolor="#eee">
 	<thead>
 		<tr>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Product', GETTEXT_DOMAIN_CHILD ); ?></th>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Quantity', GETTEXT_DOMAIN_CHILD ); ?></th>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Price', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Product', GETTEXT_DOMAIN ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Quantity', GETTEXT_DOMAIN ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Price', GETTEXT_DOMAIN ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 				foreach ( $totals as $total ) {
 					$i++;
 					?><tr>
-						<th scope="row" colspan="2" style="text-align:left; border: 1px solid #eee; <?php if ( $i == 1 ) echo 'border-top-width: 4px;'; ?>"><?php _e( $total['label'], GETTEXT_DOMAIN_CHILD );?></th>
+						<th scope="row" colspan="2" style="text-align:left; border: 1px solid #eee; <?php if ( $i == 1 ) echo 'border-top-width: 4px;'; ?>"><?php _e( $total['label'], GETTEXT_DOMAIN );?></th>
 						<td style="text-align:left; border: 1px solid #eee; <?php if ( $i == 1 ) echo 'border-top-width: 4px;'; ?>"><?php echo $total['value']; ?></td>
 					</tr><?php
 				}
@@ -49,17 +49,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 	</tfoot>
 </table>
 
-<h2><?php _e( 'Customer details', GETTEXT_DOMAIN_CHILD ); ?></h2>
+<h2><?php _e( 'Customer details', GETTEXT_DOMAIN ); ?></h2>
 <div>
 	<?php if ($order->billing_first_name && $order->billing_last_name) : ?>
 		<span><p><strong><?php echo  $order->billing_first_name . " " . $order->billing_last_name;?></p></strong></span>
 	<?php endif; ?>
 
 	<?php if ($order->billing_email) : ?>
-		<p><strong><?php _e( 'Email:', GETTEXT_DOMAIN_CHILD ); ?></strong> <?php echo $order->billing_email; ?></p>
+		<p><strong><?php _e( 'Email:', GETTEXT_DOMAIN ); ?></strong> <?php echo $order->billing_email; ?></p>
 	<?php endif; ?>
 	<?php if ($order->billing_phone) : ?>
-		<p><strong><?php _e( 'Tel:', GETTEXT_DOMAIN_CHILD ); ?></strong> <?php echo $order->billing_phone; ?></p>
+		<p><strong><?php _e( 'Tel:', GETTEXT_DOMAIN ); ?></strong> <?php echo $order->billing_phone; ?></p>
 	<?php endif; ?>
 </div>
 <?php woocommerce_get_template('emails/email-addresses.php', array( 'order' => $order )); ?>

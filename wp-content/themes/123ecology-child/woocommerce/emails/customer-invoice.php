@@ -13,20 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 <?php if ($order->status=='pending') : ?>
 
-	<p><?php printf( __( 'An order has been created for you on %s. To pay for this order please use the following link: %s', GETTEXT_DOMAIN_CHILD ), get_bloginfo( 'name' ), '<a href="' . $order->get_checkout_payment_url() . '">' . __( 'pay', GETTEXT_DOMAIN_CHILD ) . '</a>' ); ?></p>
+	<p><?php printf( __( 'An order has been created for you on %s. To pay for this order please use the following link: %s', GETTEXT_DOMAIN ), get_bloginfo( 'name' ), '<a href="' . $order->get_checkout_payment_url() . '">' . __( 'pay', GETTEXT_DOMAIN ) . '</a>' ); ?></p>
 
 <?php endif; ?>
 
 <?php do_action('woocommerce_email_before_order_table', $order, false); ?>
 
-<h2><?php echo __( 'Order:', GETTEXT_DOMAIN_CHILD ) . ' ' . $order->get_order_number(); ?> (<?php printf( '<time datetime="%s">%s</time>', date_i18n( 'c', strtotime( $order->order_date ) ), date_i18n( woocommerce_date_format(), strtotime( $order->order_date ) ) ); ?>)</h2>
+<h2><?php echo __( 'Order:', GETTEXT_DOMAIN ) . ' ' . $order->get_order_number(); ?> (<?php printf( '<time datetime="%s">%s</time>', date_i18n( 'c', strtotime( $order->order_date ) ), date_i18n( woocommerce_date_format(), strtotime( $order->order_date ) ) ); ?>)</h2>
 
 <table cellspacing="0" cellpadding="6" style="width: 100%; border: 1px solid #eee;" border="1" bordercolor="#eee">
 	<thead>
 		<tr>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Product', GETTEXT_DOMAIN_CHILD ); ?></th>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Quantity', GETTEXT_DOMAIN_CHILD ); ?></th>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Price', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Product', GETTEXT_DOMAIN ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Quantity', GETTEXT_DOMAIN ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php _e( 'Price', GETTEXT_DOMAIN ); ?></th>
 		</tr>
 	</thead>
 	<tbody>

@@ -273,7 +273,12 @@ if ( function_exists( 'get_option_tree') ) {
     <?php if($iphone_icon){ ?><link rel="apple-touch-icon-precomposed" href="<?php echo $iphone_icon ?>"><?php } ?>
     
     <!-- JS -->
-    <?php wp_head(); ?>
+    
+    <?php 
+
+	wp_head(); ?> 
+    
+    
     
     <?php get_template_part('includes/fonts') ?>
     <?php get_template_part('includes/color') ?>

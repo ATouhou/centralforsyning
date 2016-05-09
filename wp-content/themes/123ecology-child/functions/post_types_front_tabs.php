@@ -1,7 +1,7 @@
 <?php
 /* front tabs post type
 ================================================== */
-function front_post_type() 
+function front_post_type_child() 
 {
 	$labels = array(
 		'name' => __( 'Front Tabs'),
@@ -37,7 +37,7 @@ function front_post_type()
 
 /* front tabs taxonomies
 ================================================== */
-function front_taxonomies(){
+function front_taxonomies_child(){
     
 	// Categories
 	
@@ -56,7 +56,7 @@ function front_taxonomies(){
 
 /* front tabs edit
 ================================================== */
-function front_edit_columns($columns){  
+function front_edit_columns_child($columns){  
 
         $columns = array(  
             "cb" => "<input type=\"checkbox\" />",  
@@ -69,7 +69,7 @@ function front_edit_columns($columns){
 
 /* front tabs custom column
 ================================================== */
-function front_custom_columns($column){  
+function front_custom_columns_child($column){  
         global $post;  
         switch ($column)  
         {    
@@ -79,8 +79,8 @@ function front_custom_columns($column){
         }  
 }  
 
-add_action( 'init', 'front_post_type' );
-add_action( 'init', 'front_taxonomies', 0 ); 
-add_filter("manage_edit-front_tabs_columns", "front_edit_columns");  
-add_action("manage_posts_custom_column",  "front_custom_columns");  
+add_action( 'init', 'front_post_type_child' );
+add_action( 'init', 'front_taxonomies_child', 0 ); 
+add_filter("manage_edit-front_tabs_columns", "front_edit_columns_child");  
+add_action("manage_posts_custom_column",  "front_custom_columns_child");  
 ?>

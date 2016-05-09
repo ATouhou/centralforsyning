@@ -6,14 +6,18 @@
 if ( ! function_exists( 'logthis' ) ) {
     function logthis($msg) {
         if(TESTING){
-            if(!file_exists(dirname(__FILE__).'/logfile.log')){
-                $fileobject = fopen(dirname(__FILE__).'/logfile.log', 'a');
-                chmod(dirname(__FILE__).'/logfile.log', 0666);
+			$filePath = dirname(__FILE__).'/logfile.log';
+			$archivedFilePath = dirname(__FILE__).'/logfile_archived.log';
+			if(file_exists($filePath) && ceil(filesize($filePath)/(1024*1024)) > 2){
+				rename($filePath, $archivedFilePath);
+			}
+            if(!file_exists($filePath)){
+                $fileobject = fopen($filePath, 'a');
+                chmod($filePath, 0666);
             }
             else{
-                $fileobject = fopen(dirname(__FILE__).'/logfile.log', 'a');
+                $fileobject = fopen($filePath, 'a');
             }
-
             if(is_array($msg) || is_object($msg)){
                 fwrite($fileobject,print_r($msg, true));
             }
@@ -144,6 +148,251 @@ class WCE_API{
 		'SE' => 'Sweden',
 		'GB' => 'United Kingdom'
 	  );
+	  
+	public $countrycodes = array (
+	  'AF' => 'Afghanistan',
+	  'AX' => 'Åland Islands',
+	  'AL' => 'Albania',
+	  'DZ' => 'Algeria',
+	  'AS' => 'American Samoa',
+	  'AD' => 'Andorra',
+	  'AO' => 'Angola',
+	  'AI' => 'Anguilla',
+	  'AQ' => 'Antarctica',
+	  'AG' => 'Antigua and Barbuda',
+	  'AR' => 'Argentina',
+	  'AU' => 'Australia',
+	  'AT' => 'Austria',
+	  'AZ' => 'Azerbaijan',
+	  'BS' => 'Bahamas',
+	  'BH' => 'Bahrain',
+	  'BD' => 'Bangladesh',
+	  'BB' => 'Barbados',
+	  'BY' => 'Belarus',
+	  'BE' => 'Belgium',
+	  'BZ' => 'Belize',
+	  'BJ' => 'Benin',
+	  'BM' => 'Bermuda',
+	  'BT' => 'Bhutan',
+	  'BO' => 'Bolivia',
+	  'BA' => 'Bosnia and Herzegovina',
+	  'BW' => 'Botswana',
+	  'BV' => 'Bouvet Island',
+	  'BR' => 'Brazil',
+	  'IO' => 'British Indian Ocean Territory',
+	  'BN' => 'Brunei Darussalam',
+	  'BG' => 'Bulgaria',
+	  'BF' => 'Burkina Faso',
+	  'BI' => 'Burundi',
+	  'KH' => 'Cambodia',
+	  'CM' => 'Cameroon',
+	  'CA' => 'Canada',
+	  'CV' => 'Cape Verde',
+	  'KY' => 'Cayman Islands',
+	  'CF' => 'Central African Republic',
+	  'TD' => 'Chad',
+	  'CL' => 'Chile',
+	  'CN' => 'China',
+	  'CX' => 'Christmas Island',
+	  'CC' => 'Cocos (Keeling) Islands',
+	  'CO' => 'Colombia',
+	  'KM' => 'Comoros',
+	  'CG' => 'Congo',
+	  'CD' => 'Zaire',
+	  'CK' => 'Cook Islands',
+	  'CR' => 'Costa Rica',
+	  'CI' => 'Côte D\'Ivoire',
+	  'HR' => 'Croatia',
+	  'CU' => 'Cuba',
+	  'CY' => 'Cyprus',
+	  'CZ' => 'Czech Republic',
+	  'DK' => 'Denmark',
+	  'DJ' => 'Djibouti',
+	  'DM' => 'Dominica',
+	  'DO' => 'Dominican Republic',
+	  'EC' => 'Ecuador',
+	  'EG' => 'Egypt',
+	  'SV' => 'El Salvador',
+	  'GQ' => 'Equatorial Guinea',
+	  'ER' => 'Eritrea',
+	  'EE' => 'Estonia',
+	  'ET' => 'Ethiopia',
+	  'FK' => 'Falkland Islands (Malvinas)',
+	  'FO' => 'Faroe Islands',
+	  'FJ' => 'Fiji',
+	  'FI' => 'Finland',
+	  'FR' => 'France',
+	  'GF' => 'French Guiana',
+	  'PF' => 'French Polynesia',
+	  'TF' => 'French Southern Territories',
+	  'GA' => 'Gabon',
+	  'GM' => 'Gambia',
+	  'GE' => 'Georgia',
+	  'DE' => 'Germany',
+	  'GH' => 'Ghana',
+	  'GI' => 'Gibraltar',
+	  'GR' => 'Greece',
+	  'GL' => 'Greenland',
+	  'GD' => 'Grenada',
+	  'GP' => 'Guadeloupe',
+	  'GU' => 'Guam',
+	  'GT' => 'Guatemala',
+	  'GG' => 'Guernsey',
+	  'GN' => 'Guinea',
+	  'GW' => 'Guinea-Bissau',
+	  'GY' => 'Guyana',
+	  'HT' => 'Haiti',
+	  'HM' => 'Heard Island and Mcdonald Islands',
+	  'VA' => 'Vatican City State',
+	  'HN' => 'Honduras',
+	  'HK' => 'Hong Kong',
+	  'HU' => 'Hungary',
+	  'IS' => 'Iceland',
+	  'IN' => 'India',
+	  'ID' => 'Indonesia',
+	  'IR' => 'Iran, Islamic Republic of',
+	  'IQ' => 'Iraq',
+	  'IE' => 'Ireland',
+	  'IM' => 'Isle of Man',
+	  'IL' => 'Israel',
+	  'IT' => 'Italy',
+	  'JM' => 'Jamaica',
+	  'JP' => 'Japan',
+	  'JE' => 'Jersey',
+	  'JO' => 'Jordan',
+	  'KZ' => 'Kazakhstan',
+	  'KE' => 'KENYA',
+	  'KI' => 'Kiribati',
+	  'KP' => 'Korea, Democratic People\'s Republic of',
+	  'KR' => 'Korea, Republic of',
+	  'KW' => 'Kuwait',
+	  'KG' => 'Kyrgyzstan',
+	  'LA' => 'Lao People\'s Democratic Republic',
+	  'LV' => 'Latvia',
+	  'LB' => 'Lebanon',
+	  'LS' => 'Lesotho',
+	  'LR' => 'Liberia',
+	  'LY' => 'Libyan Arab Jamahiriya',
+	  'LI' => 'Liechtenstein',
+	  'LT' => 'Lithuania',
+	  'LU' => 'Luxembourg',
+	  'MO' => 'Macao',
+	  'MK' => 'Macedonia, the Former Yugoslav Republic of',
+	  'MG' => 'Madagascar',
+	  'MW' => 'Malawi',
+	  'MY' => 'Malaysia',
+	  'MV' => 'Maldives',
+	  'ML' => 'Mali',
+	  'MT' => 'Malta',
+	  'MH' => 'Marshall Islands',
+	  'MQ' => 'Martinique',
+	  'MR' => 'Mauritania',
+	  'MU' => 'Mauritius',
+	  'YT' => 'Mayotte',
+	  'MX' => 'Mexico',
+	  'FM' => 'Micronesia, Federated States of',
+	  'MD' => 'Moldova, Republic of',
+	  'MC' => 'Monaco',
+	  'MN' => 'Mongolia',
+	  'ME' => 'Montenegro',
+	  'MS' => 'Montserrat',
+	  'MA' => 'Morocco',
+	  'MZ' => 'Mozambique',
+	  'MM' => 'Myanmar',
+	  'NA' => 'Namibia',
+	  'NR' => 'Nauru',
+	  'NP' => 'Nepal',
+	  'NL' => 'Netherlands',
+	  'AN' => 'Netherlands Antilles',
+	  'NC' => 'New Caledonia',
+	  'NZ' => 'New Zealand',
+	  'NI' => 'Nicaragua',
+	  'NE' => 'Niger',
+	  'NG' => 'Nigeria',
+	  'NU' => 'Niue',
+	  'NF' => 'Norfolk Island',
+	  'MP' => 'Northern Mariana Islands',
+	  'NO' => 'Norway',
+	  'OM' => 'Oman',
+	  'PK' => 'Pakistan',
+	  'PW' => 'Palau',
+	  'PS' => 'Palestinian Territory, Occupied',
+	  'PA' => 'Panama',
+	  'PG' => 'Papua New Guinea',
+	  'PY' => 'Paraguay',
+	  'PE' => 'Peru',
+	  'PH' => 'Philippines',
+	  'PN' => 'Pitcairn',
+	  'PL' => 'Poland',
+	  'PT' => 'Portugal',
+	  'PR' => 'Puerto Rico',
+	  'QA' => 'Qatar',
+	  'RE' => 'Réunion',
+	  'RO' => 'Romania',
+	  'RU' => 'Russian Federation',
+	  'RW' => 'Rwanda',
+	  'SH' => 'Saint Helena',
+	  'KN' => 'Saint Kitts and Nevis',
+	  'LC' => 'Saint Lucia',
+	  'PM' => 'Saint Pierre and Miquelon',
+	  'VC' => 'Saint Vincent and the Grenadines',
+	  'WS' => 'Samoa',
+	  'SM' => 'San Marino',
+	  'ST' => 'Sao Tome and Principe',
+	  'SA' => 'Saudi Arabia',
+	  'SN' => 'Senegal',
+	  'RS' => 'Serbia',
+	  'SC' => 'Seychelles',
+	  'SL' => 'Sierra Leone',
+	  'SG' => 'Singapore',
+	  'SK' => 'Slovakia',
+	  'SI' => 'Slovenia',
+	  'SB' => 'Solomon Islands',
+	  'SO' => 'Somalia',
+	  'ZA' => 'South Africa',
+	  'GS' => 'South Georgia and the South Sandwich Islands',
+	  'ES' => 'Spain',
+	  'LK' => 'Sri Lanka',
+	  'SD' => 'Sudan',
+	  'SR' => 'Suriname',
+	  'SJ' => 'Svalbard and Jan Mayen',
+	  'SZ' => 'Swaziland',
+	  'SE' => 'Sweden',
+	  'CH' => 'Switzerland',
+	  'SY' => 'Syrian Arab Republic',
+	  'TW' => 'Taiwan, Province of China',
+	  'TJ' => 'Tajikistan',
+	  'TZ' => 'Tanzania, United Republic of',
+	  'TH' => 'Thailand',
+	  'TL' => 'Timor-Leste',
+	  'TG' => 'Togo',
+	  'TK' => 'Tokelau',
+	  'TO' => 'Tonga',
+	  'TT' => 'Trinidad and Tobago',
+	  'TN' => 'Tunisia',
+	  'TR' => 'Turkey',
+	  'TM' => 'Turkmenistan',
+	  'TC' => 'Turks and Caicos Islands',
+	  'TV' => 'Tuvalu',
+	  'UG' => 'Uganda',
+	  'UA' => 'Ukraine',
+	  'AE' => 'United Arab Emirates',
+	  'GB' => 'United Kingdom',
+	  'US' => 'United States',
+	  'UM' => 'United States Minor Outlying Islands',
+	  'UY' => 'Uruguay',
+	  'UZ' => 'Uzbekistan',
+	  'VU' => 'Vanuatu',
+	  'VE' => 'Venezuela',
+	  'VN' => 'Viet Nam',
+	  'VG' => 'Virgin Islands, British',
+	  'VI' => 'Virgin Islands, U.S.',
+	  'WF' => 'Wallis and Futuna',
+	  'EH' => 'Western Sahara',
+	  'YE' => 'Yemen',
+	  'ZM' => 'Zambia',
+	  'ZW' => 'Zimbabwe',
+	);
 	
 	public $product_lock;
 	
@@ -896,7 +1145,7 @@ class WCE_API{
 					}
 					
 					logthis("woo_get_debtor_handle_from_economic name: " . $debtor_name);
-					logthis("woo_get_debtor_handle_from_economic billing_comnpany: " . $billing_company);
+					//logthis("woo_get_debtor_handle_from_economic billing_comnpany: " . $billing_company);
 				
 					$debtor_grouphandle = $client->DebtorGroup_FindByNumber(array(
 						'number' => $debtor_grouphandle_meta
@@ -1548,6 +1797,16 @@ class WCE_API{
 		if(!empty($orders)){
 			foreach ($orders as $order) {
 				logthis('sync_orders Order ID: ' . $order->id);
+				if($options['initiate-order'] == 'status_based'){
+					if($options['initiate-order-status-'.$order->get_status()] != 'on'){
+						$sync_log[0] = false;
+						array_push($sync_log, array('status' => __('skipped', 'woocommerce-e-conomic-integration'), 'order_id' => $order->id, 'msg' => __('Order skipped from syncing, because the order status "'.$order->get_status().'" is not selected for sync in "Initiate order sync"' , 'woocommerce-e-conomic-integration')));
+						continue;
+					}
+				}else{
+					
+				}
+				
 				if($order->customer_user != 0){
 					$user = new WP_User($order->customer_user);
 				}else{
@@ -1687,7 +1946,7 @@ class WCE_API{
 				$product_handle = $client->Product_Create(array(
 					'number' => $product_sku,
 					'productGroupHandle' => $productGroupHandle,
-					'name' => utf8_encode($product->get_title())
+					'name' => $product->get_title()
 				))->Product_CreateResult;
 				logthis($product_handle);
 				logthis("save_product_to_economic - product created:" . $product->get_title());
@@ -1742,8 +2001,8 @@ class WCE_API{
 				'Handle' => $product_data->Handle,
 				'Number' => $product_data->Number,
 				'ProductGroupHandle' => $product_data->ProductGroupHandle,
-				'Name' => utf8_encode($product->get_title()),
-				'Description' => utf8_encode($this->woo_economic_product_content_trim($product->post->post_content, 255)),
+				'Name' => $product->get_title(),
+				'Description' => $this->woo_economic_product_content_trim($product->post->post_content, 255),
 				'BarCode' => "",
 				//'SalesPrice' => (isset($product->price) && !empty($product->price) ? $product->price : 0.0),
 				'SalesPrice' => (isset($sales_price) && !empty($sales_price) ? $sales_price : 0.0),
@@ -1839,7 +2098,7 @@ class WCE_API{
 		$products = array();
 		$sync_log = array();
 		$sync_log[0] = true;
-		$args = array('post_type' => array('product'), 'nopaging' => true, 'fields' => 'ids');
+		$args = array('post_type' => array('product'), 'post_status' => array( 'publish', 'future', 'private' ), 'nopaging' => true, 'fields' => 'ids');
 		$product_ids = new WP_Query($args);
 		//$posts = $product_query->get_posts();
 		foreach ($product_ids->posts as $key=>$post_id) {
@@ -1853,7 +2112,7 @@ class WCE_API{
 		foreach ($product_variation_ids->posts as $key=>$variation_post_id) {
 			$variation_parent_post_id = wp_get_post_parent_id( $variation_post_id );
 			$variation_parent_post = get_post($variation_parent_post_id);
-			if($variation_parent_post->post_status == 'publish'){
+			if($variation_parent_post->post_status == 'publish' || $variation_parent_post->post_status == 'future' || $variation_parent_post->post_status == 'private'){
 				array_push($products, $variation_post_id);
 			}
 		}
@@ -1915,7 +2174,7 @@ class WCE_API{
      * @return array log
      */
 	 
-	 public function sync_products_ew(){
+	 public function sync_products_ew($productNo = NULL){
 		update_option('woo_save_object_to_economic', false);
 		global $wpdb;
 		$client = $this->woo_economic_client();
@@ -1927,17 +2186,35 @@ class WCE_API{
 			return $sync_log;
 		}
 		
-		$products = $client->Product_GetAll()->Product_GetAllResult;
-		//logthis($products);
+		//Added for version 1.9.9.12
+		if($productNo == NULL){
 		
-		$product_handles = array();
-		
-		foreach($products->ProductHandle as $product){
-			$product_handles[$product->Number] = $client->Product_GetProductGroup(array('productHandle' => $product))->Product_GetProductGroupResult;
+			$products = $client->Product_GetAll()->Product_GetAllResult;
+			//logthis($products);
+			
+			$product_handles = array();
+			
+			foreach($products->ProductHandle as $product){
+				$product_handles[$product->Number] = $client->Product_GetProductGroup(array('productHandle' => $product))->Product_GetProductGroupResult;
+			}
+		}else{
+			$product_handles = array();
+			logthis('Finding product by number: '.$productNo);
+			$product = $client->Product_FindByNumber(array(
+				'number' => $productNo
+			))->Product_FindByNumberResult;
+			
+			logthis('--product_handle--');
+			logthis($product);
+			
+			$product_handles[$productNo] = $client->Product_GetProductGroup(array('productHandle' => $product))->Product_GetProductGroupResult;
 		}
+		//Added for version 1.9.9.12
 
 		foreach($product_handles as $product_number => $group){
+			//Added for version 1.9.9.12 and updated on 1.9.9.14
 			$sku = str_replace($this->product_offset, '', $product_number);
+			//Added for version 1.9.9.12 and updated on 1.9.9.14
 			
 			$product_name = $client->Product_GetName(array(
 				'productHandle' => array('Number' => $product_number ),
@@ -1962,7 +2239,9 @@ class WCE_API{
 			))->Product_GetDataResult;	
 			
 			//logthis($product_data);
-			
+			//Added for version 1.9.9.12
+			$sku = str_replace($this->product_offset, '', $product_number);
+			//Added for version 1.9.9.12
 			if($product_id != NULL){
 				logthis('update product : '.$product_number);
 				
@@ -1981,6 +2260,7 @@ class WCE_API{
 							logthis($error);
 						}
 					}
+					update_post_meta( $post_id, '_sku', $sku );
 					update_post_meta( $post_id, '_price', (int) $product_data->SalesPrice );
 					update_post_meta( $post_id, 'productGroup', $group->Number );
 					//update_post_meta( $post_id, '_sale_price', (int) $product_data->SalesPrice );
@@ -1999,14 +2279,21 @@ class WCE_API{
 					}
 				}else{
 					if($product->managing_stock()){
+						logthis($product_data);
 						($product_data->InStock !=0 || $product_data->InStock =='') ? $product->set_stock($product_data->InStock) : logthis('Product stock not updated.');
 						logthis('Product: '.$product->get_title().' Stock updated to '.$product_data->InStock);
-						array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'sku' => $product_number, 'name' => $product_data->Name, 'msg' => __('Product sync: Disabled! Use "Activate product sync" settings to enable it. <br> Product stock sync: Successfull!', 'woocommerce-e-conomic-integration') ));
+						array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'sku' => $sku, 'name' => $product_data->Name, 'msg' => __('Product sync: Disabled! Use "Activate product sync" settings to enable it. <br> Product stock sync: Successfull!', 'woocommerce-e-conomic-integration') ));
 					}else{
-						array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'sku' => $product_number, 'name' => $product_data->Name, 'msg' => __('Product sync: Disabled! Use "Activate product sync" settings to enable it. <br> Product stock sync: Stock management disabled, Stock management can be enabled at Product->Inventory.', 'woocommerce-e-conomic-integration') ));
+						array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'sku' => $sku, 'name' => $product_data->Name, 'msg' => __('Product sync: Disabled! Use "Activate product sync" settings to enable it. <br> Product stock sync: Stock management disabled, Stock management can be enabled at Product->Inventory.', 'woocommerce-e-conomic-integration') ));
 					}
 				}
 			}else{
+				//Added for version 1.9.9.12
+				if($productNo != NULL){
+					logthis('wp_ajax_nopriv_sync_products_ew_webhook tyring to create new product, this is not allowed yet! Only updating an existing product works!');
+					continue;
+				}
+				//Added for version 1.9.9.12
 				logthis('add product : '.$product_number);
 				$post = array(
 					'post_status'  => 'publish',
@@ -2038,7 +2325,7 @@ class WCE_API{
 					update_post_meta( $post_id, '_stock_status', 'outofstock' );
 				}
 
-				array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'sku' => $product_number, 'name' => $product_data->Name, 'msg' => __('Product sync: Successful! <br> Product stock sync: Successfull!', 'woocommerce-e-conomic-integration') ));
+				array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'sku' => $sku, 'name' => $product_data->Name, 'msg' => __('Product sync: Successful! <br> Product stock sync: Successfull!', 'woocommerce-e-conomic-integration') ));
 			}
 		}
 		update_option('woo_save_object_to_economic', true);
@@ -2173,7 +2460,20 @@ class WCE_API{
 	
 		} elseif ($meta_key == 'billing_company') {
 			  logthis("woo_save_customer_meta_data_to_economic key: " . $meta_key . " value: " . $meta_value);
-			  $meta_value = $order ? $order->billing_company ? $order->billing_company : $order->billing_first_name.' '.$order->billing_last_name : $user->get('firstname');
+			  if($order && $order->billing_company != ''){
+				  $meta_value = $order->billing_company;
+				  logthis('woo_save_customer_meta_data_to_economic billing_company saved as Debtor Name!');
+			  }elseif($order && $order->billing_first_name != '') {
+				  $meta_value = $order->billing_first_name.' '.$order->billing_last_name;
+				  logthis('woo_save_customer_meta_data_to_economic billing_first_name and billing_second_name saved as Debtor Name!');
+			  }/*elseif($user){
+				  $meta_value = $user->get('firstname');
+				  logthis('woo_save_customer_meta_data_to_economic user firstname: '.$meta_value.' is saved as Debtor Name because order is null!');
+			  }*/else{
+				  logthis('woo_save_customer_meta_data_to_economic neither order nor user, "NULL" is saved as Debtor Name!');
+				  $meta_value = '';
+			  }
+			  //$meta_value = $order ? $order->billing_company ? $order->billing_company : $order->billing_first_name.' '.$order->billing_last_name : $user->get('firstname');
 			  $client->Debtor_SetName(array(
 				'debtorHandle' => $debtor_handle,
 				'value' => $meta_value
@@ -2184,27 +2484,61 @@ class WCE_API{
 			  $first = ($meta_key == 'billing_first_name') ? $meta_value : $order ? $order->billing_first_name : $user->get('billing_first_name');
 			  $last = ($meta_key == 'billing_last_name') ? $meta_value : $order ? $order->billing_last_name : $user->get('billing_last_name');
 			  $name = $first . " " . $last;
+			  $email = $order ? $order->billing_email : $user->get('billing_email');
+			  $phone = $order ? $order->billing_phone : $user->get('billing_phone');
 			  
-			  $debtorContact = $client->DebtorContact_GetAll()->DebtorContact_GetAllResult;
+			  $debtorAttention = $client->Debtor_GetAttention(array('debtorHandle' => $debtor_handle))->Debtor_GetAttentionResult;
+			  $debtor_contact_handles = $client->Debtor_GetDebtorContacts(array('debtorHandle' => $debtor_handle))->Debtor_GetDebtorContactsResult;
 			  
-			  //logthis('DebtorContact_GetAll:');
-			  //logthis($debtorContact); 
+			  logthis('woo_save_customer_meta_data_to_economic Debtor attention:');
+			  logthis($debtorAttention);
 			  
-			  $debtorContactArray = (array) $debtorContact;
-			  if(empty( $debtorContactArray )){
-				  logthis('woo_save_customer_meta_data_to_economic: creating new debtor contact'); 
-				  $debtor_contact_handle = $client->DebtorContact_Create(array(
-					'debtorHandle' => $debtor_handle,
-					'name' => $name))->DebtorContact_CreateResult;
-				  $client->Debtor_SetAttention(array(
-					'debtorHandle' => $debtor_handle,
-					'valueHandle' => $debtor_contact_handle
-				  ));
+			  logthis('woo_save_customer_meta_data_to_economic DebtorContactHandles:');
+			  logthis($debtor_contact_handles);
+			  
+			  $debtorAttentionArray = (array) $debtorAttention;
+			  $debtor_contact_handlesArray = (array) $debtor_contact_handles;
+			  
+			  if(is_array($debtor_contact_handles->DebtorContactHandle)){
+				  $debtor_contact_id = $debtor_contact_handles->DebtorContactHandle[0];
+			  }else{
+				  $debtor_contact_id = $debtor_contact_handles->DebtorContactHandle;
+			  }
+			  logthis("woo_save_customer_meta_data_to_economic first contact of the debtor");
+			  logthis($debtor_contact_id);
+			  
+			  if(empty( $debtorAttentionArray )){
+				  if(empty(  $debtor_contact_handlesArray )){
+					  logthis('woo_save_customer_meta_data_to_economic: creating new debtor contact'); 
+					  $debtor_contact_handle = $client->DebtorContact_Create(array(
+						'debtorHandle' => $debtor_handle,
+						'name' => $name))->DebtorContact_CreateResult;
+					  $client->DebtorContact_SetEmail(array(
+						'debtorContactHandle' => $debtor_contact_handle,
+						'value' => $email));
+					  $client->DebtorContact_SetTelephoneNumber(array(
+						'debtorContactHandle' => $debtor_contact_handle,
+						'value' => $phone));
+					  logthis('woo_save_customer_meta_data_to_economic: setting new debtor contact as Debtor attention!');	
+					  logthis('woo_save_customer_meta_data_to_economic debtor_contact_handle:');
+					  logthis($debtor_contact_handle);			  
+					  $client->Debtor_SetAttention(array(
+						'debtorHandle' => $debtor_handle,
+						'valueHandle' => $debtor_contact_handle
+					  ));
+				  }else{
+					  logthis('woo_save_customer_meta_data_to_economic: setting existing debtor contact as Debtor attention!');				  
+					  $client->Debtor_SetAttention(array(
+						'debtorHandle' => $debtor_handle,
+						'valueHandle' => $debtor_contact_id
+					  ));
+				  }			  
 			  }else{
 				  logthis('woo_save_customer_meta_data_to_economic: using exiting debtor contact'); 
+				  $debtor_contact_handles = $client->Debtor_GetDebtorContacts(array('debtorHandle' => $debtor_handle))->Debtor_GetDebtorContactsResult;
 				  $client->Debtor_SetAttention(array(
 					'debtorHandle' => $debtor_handle,
-					'valueHandle' => $debtor_contact_handle->DebtorContactHandle[0]
+					'valueHandle' => $debtor_contact_id
 				  ));
 			  }
 	
@@ -2242,8 +2576,8 @@ class WCE_API{
 			  $formatted_state = (isset($state)) ? $countries->states[$shipping_country][$state] : "";
 			  $formatted_adr = trim("$adr1\n$adr2\n$formatted_state");
 			  logthis("woo_save_customer_meta_data_to_economic adr1: " . $adr1 . ", adr2: " . $adr2 . ", state: " . $formatted_state);
-			  //logthis("debtor_delivery_location_handle:");
-			  //logthis($debtor_delivery_location_handle);
+			  logthis("debtor_delivery_location_handle:");
+			  logthis($debtor_delivery_location_handle);
 			  $client->DeliveryLocation_SetAddress(array(
 				'deliveryLocationHandle' => $debtor_delivery_location_handle,
 				'value' => $formatted_adr
@@ -2324,7 +2658,8 @@ class WCE_API{
 					array_push($sync_log, array('status' => __('fail', 'woocommerce-e-conomic-integration'), 'user_id' => $user->ID, 'msg' => __('Sync failed, please try again later!', 'woocommerce-e-conomic-integration') ));
 				}
 			}
-		}elseif(!empty($orders)){
+		}
+		if(!empty($orders)){
 			foreach ($orders as $order) {
 				logthis('sync_contacts User email (guest user): ' . $order->billing_email);
 				if($this->save_customer_to_economic($client, NULL, $order)){
@@ -2334,7 +2669,9 @@ class WCE_API{
 					array_push($sync_log, array('status' => __('fail', 'woocommerce-e-conomic-integration'), 'user_id' => $order->billing_email, 'msg' => __('Guest customer sync failed, please try again later!', 'woocommerce-e-conomic-integration') ));
 				}
 			}
-		}else{
+		}
+		
+		if(empty($users) && empty($orders)){
 			$sync_log[0] = true;
 			array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'user_id' => '', 'msg' => __('All customers were already synced!', 'woocommerce-e-conomic-integration') ));
 		}
@@ -2354,6 +2691,8 @@ class WCE_API{
      */
 	 
 	public function sync_contacts_ew(){
+		update_option('woo_save_object_to_economic', false);
+		logthis('sync_contacts_ew: syncing e-conomic customer sto WC store starts...');
 		global $wpdb;
 		$client = $this->woo_economic_client();
 		$sync_log = array();
@@ -2374,14 +2713,69 @@ class WCE_API{
 		}
 		//logthis('debtor_handle_list');
 		foreach($debtor_handles as $debtor_number => $group){
+			logthis('sync_contacts_ew: customer group number: '.$group->Number);
 			if($group->Number == $this->customer_group){
+				logthis('sync_contacts_ew: debtor_number:'.$debtor_number.' is being synced.');
 				$debtor_email = $client->Debtor_GetEmail(array(
 					'debtorHandle' => array('Number' => $debtor_number ),
 				))->Debtor_GetEmailResult;
+				logthis('sync_contacts_ew: email: '.$debtor_email);
 				
-				$debtor_name = explode(' ', $client->Debtor_GetName(array(
+				$debtor_contact_handles = $client->Debtor_GetDebtorContacts(array('debtorHandle' => array('Number' => $debtor_number )))->Debtor_GetDebtorContactsResult;
+				//logthis('debtor_contact_handles:');
+				//logthis($debtor_contact_handles);
+				
+				if(is_array($debtor_contact_handles->DebtorContactHandle)){
+					$debtor_contact_handle = $debtor_contact_handles->DebtorContactHandle[0];
+				}else{
+					$debtor_contact_handle = $debtor_contact_handles->DebtorContactHandle;
+				}
+				
+				if(!empty($debtor_contact_handle) && $debtor_contact_handle!=''){
+					$debtor_name = $client->DebtorContact_GetName(array(
+						'debtorContactHandle' => $debtor_contact_handle
+					))->DebtorContact_GetNameResult;
+					logthis('sync_contacts_ew: name from debtor\'s first contact:');
+					logthis($debtor_name);
+					$debtor_name = explode(' ', $debtor_name );
+					logthis($debtor_name);
+				}else{
+					$debtor_name = $client->Debtor_GetName(array(
+						'debtorHandle' => array('Number' => $debtor_number ),
+					))->Debtor_GetNameResult;
+					logthis('sync_contacts_ew: name from debtors name:');
+					logthis($debtor_name);
+					$debtor_name = explode(' ', $debtor_name);
+					logthis($debtor_name);
+				}
+				
+				$debtor_phone = $client->Debtor_GetTelephoneAndFaxNumber(array(
 					'debtorHandle' => array('Number' => $debtor_number ),
-				))->Debtor_GetNameResult);
+				))->Debtor_GetTelephoneAndFaxNumberResult;
+				logthis('sync_contacts_ew: phone:'.$debtor_phone);
+				
+				$debtor_country = $client->Debtor_GetCountry(array(
+					'debtorHandle' => array('Number' => $debtor_number ),
+				))->Debtor_GetCountryResult;
+				logthis('sync_contacts_ew: country:'.$debtor_country);
+				
+				$debtor_country_code = array_search($debtor_country, $this->countrycodes);
+				logthis('sync_contacts_ew: debtor_country_code:'.$debtor_country_code);
+				
+				$debtor_address = $client->Debtor_GetAddress(array(
+					'debtorHandle' => array('Number' => $debtor_number ),
+				))->Debtor_GetAddressResult;
+				logthis('sync_contacts_ew: debtor_address:'.$debtor_address);
+				
+				$debtor_PostalCode = $client->Debtor_GetPostalCode(array(
+					'debtorHandle' => array('Number' => $debtor_number ),
+				))->Debtor_GetPostalCodeResult;
+				logthis('sync_contacts_ew: debtor_PostalCode:'.$debtor_PostalCode);
+				
+				$debtor_city = $client->Debtor_GetCity(array(
+					'debtorHandle' => array('Number' => $debtor_number ),
+				))->Debtor_GetCityResult;
+				logthis('sync_contacts_ew: debtor_city:'.$debtor_city);
 				
 				//logthis($debtor_email);
 				//logthis($debtor_name);
@@ -2405,6 +2799,13 @@ class WCE_API{
 						logthis("User updated : ". $customer ." for debtor_number: ". $debtor_number);
 						$sync_log[0] = true;
 						update_user_meta($customer, 'debtor_number', $debtor_number);
+						update_user_meta($customer, 'billing_first_name', $debtor_name[0]);
+						update_user_meta($customer, 'billing_last_name', $debtor_name[1]);
+						update_user_meta($customer, 'billing_phone', $debtor_phone);
+						update_user_meta($customer, 'billing_country', $debtor_country_code);
+						update_user_meta($customer, 'billing_address_1', $debtor_address);
+						update_user_meta($customer, 'billing_postcode', $debtor_PostalCode);
+						update_user_meta($customer, 'billing_city', $debtor_city);
 						array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'user_id' => $customer, 'msg' => __('User '.$debtor_name[0].' '.$debtor_name[1].' with customer role updated!', 'woocommerce-e-conomic-integration') ));	
 					}else{
 						logthis($customer);
@@ -2427,6 +2828,13 @@ class WCE_API{
 							logthis("User updated : ". $customer ." for debtor_number: ". $debtor_number);
 							$sync_log[0] = true;
 							update_user_meta($customer, 'debtor_number', $debtor_number);
+							update_user_meta($customer, 'billing_first_name', $debtor_name[0]);
+							update_user_meta($customer, 'billing_last_name', $debtor_name[1]);
+							update_user_meta($customer, 'billing_phone', $debtor_phone);
+							update_user_meta($customer, 'billing_country', $debtor_country_code);
+							update_user_meta($customer, 'billing_address_1', $debtor_address);
+							update_user_meta($customer, 'billing_postcode', $debtor_PostalCode);
+							update_user_meta($customer, 'billing_city', $debtor_city);
 							array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'user_id' => $customer, 'msg' => __('User '.$debtor_name[0].' with customer role updated!', 'woocommerce-e-conomic-integration') ));	
 						}else{
 							logthis($customer);
@@ -2434,7 +2842,7 @@ class WCE_API{
 					}else{
 						logthis('add new customer: '.$debtor_number);
 						$userdata = array(
-							'user_login' => strtolower($debtor_name[0].$debtor_number),
+							'user_login' => strtolower($debtor_name[0].'_'.$debtor_number),
 							'first_name' => $debtor_name[0],
 							'last_name' => $debtor_name[1],
 							'user_email' => $debtor_email,
@@ -2447,6 +2855,13 @@ class WCE_API{
 							logthis("User created : ". $customer ." for debtor_number: ". $debtor_number);
 							$sync_log[0] = true;
 							update_user_meta($customer, 'debtor_number', $debtor_number);
+							update_user_meta($customer, 'billing_first_name', $debtor_name[0]);
+							update_user_meta($customer, 'billing_last_name', $debtor_name[1]);
+							update_user_meta($customer, 'billing_phone', $debtor_phone);
+							update_user_meta($customer, 'billing_country', $debtor_country_code);
+							update_user_meta($customer, 'billing_address_1', $debtor_address);
+							update_user_meta($customer, 'billing_postcode', $debtor_PostalCode);
+							update_user_meta($customer, 'billing_city', $debtor_city);
 							array_push($sync_log, array('status' => __('success', 'woocommerce-e-conomic-integration'), 'user_id' => $customer, 'msg' => __('New user '.$debtor_name[0].' '.$debtor_name[1].' with customer role created!', 'woocommerce-e-conomic-integration') ));	
 							if(!$wpdb->query ("SELECT * FROM wce_customers WHERE email='".$debtor_email."'")){
 								$wpdb->insert ("wce_customers", array('user_id' => $customer, 'customer_number' => $debtor_number, 'email' => $debtor_email, 'synced' => 1), array('%d', '%s', '%s', '%d'));
@@ -2464,6 +2879,8 @@ class WCE_API{
 				logthis("Customer group doesn't match the Customer group in settings: ".$customer);
 			}
 		}
+		update_option('woo_save_object_to_economic', true);
+		logthis('sync_contacts_ew: syncing e-conomic customer sto WC store ends...');
 		return $sync_log;
 	}
 	

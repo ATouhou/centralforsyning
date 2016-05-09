@@ -16,9 +16,9 @@ global $woocommerce;
 	<table class="shop_table">
 		<thead>
 			<tr>
-				<th class="product-name"><?php _e( 'Product', GETTEXT_DOMAIN_CHILD ); ?></th>
-				<th class="product-quantity"><?php _e( 'Qty', GETTEXT_DOMAIN_CHILD ); ?></th>
-				<th class="product-total"><?php _e( 'Totals', GETTEXT_DOMAIN_CHILD ); ?></th>
+				<th class="product-name"><?php _e( 'Product', GETTEXT_DOMAIN ); ?></th>
+				<th class="product-quantity"><?php _e( 'Qty', GETTEXT_DOMAIN ); ?></th>
+				<th class="product-total"><?php _e( 'Totals', GETTEXT_DOMAIN ); ?></th>
 			</tr>
 		</thead>
 		<tfoot>
@@ -75,7 +75,7 @@ global $woocommerce;
 					}
 				} else {
 
-					echo '<p>'.__( 'Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements.', GETTEXT_DOMAIN_CHILD ).'</p>';
+					echo '<p>'.__( 'Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements.', GETTEXT_DOMAIN ).'</p>';
 
 				}
 			?>
@@ -84,7 +84,7 @@ global $woocommerce;
 
 		<div class="form-row">
 			<?php $woocommerce->nonce_field('pay')?>
-			<input type="submit" class="button1 btn btn-normal btn-primary alt" id="place_order" value="<?php _e( 'Pay for order', GETTEXT_DOMAIN_CHILD ); ?>" />
+			<input type="submit" class="button1 btn btn-normal btn-primary alt" id="place_order" value="<?php _e( 'Pay for order', GETTEXT_DOMAIN ); ?>" />
 			<input type="hidden" name="woocommerce_pay" value="1" />
 		</div>
 

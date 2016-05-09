@@ -13,16 +13,16 @@
 
 
 // add function to widgets_init that'll load our widget.
-add_action( 'widgets_init', 'post_tabs_widget' );
+add_action( 'widgets_init', 'post_tabs_widget_child' );
 
 
 // register widget.
-function post_tabs_widget() {
+function post_tabs_widget_child() {
 	register_widget( 'Post_Tabs_Widget' );
 }
 
 // widget class.
-class post_tabs_widget extends WP_Widget {
+class post_tabs_widget_child extends WP_Widget {
 
 
 /* widget setup

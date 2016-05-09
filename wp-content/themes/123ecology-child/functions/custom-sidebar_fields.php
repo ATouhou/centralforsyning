@@ -13,7 +13,7 @@ array(
 
 /* meta_boxes
 ================================================== */
-function sidebar_meta_boxes() {
+function sidebar_meta_boxes_child() {
 global $post, $sidebar_meta_boxes;
 	
 	foreach($sidebar_meta_boxes as $meta_box) {
@@ -51,18 +51,18 @@ global $post, $sidebar_meta_boxes;
 
 /* enable meta_boxes
 ================================================== */
-function create_sidebar_meta_box() {
+function create_sidebar_meta_box_child() {
 global $theme_name, $sidebar_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'new-sidebar-meta-boxes', __('Sidebar Options', GETTEXT_DOMAIN_CHILD), 'sidebar_meta_boxes', 'post', 'side', 'default' );
-    add_meta_box( 'new-sidebar-meta-boxes', __('Sidebar Options', GETTEXT_DOMAIN_CHILD), 'sidebar_meta_boxes', 'page', 'side', 'default' );
-    add_meta_box( 'new-sidebar-meta-boxes', __('Sidebar Options', GETTEXT_DOMAIN_CHILD), 'sidebar_meta_boxes', 'portfolio', 'side', 'default' );
+	add_meta_box( 'new-sidebar-meta-boxes', __('Sidebar Options', GETTEXT_DOMAIN_CHILD), 'sidebar_meta_boxes_child', 'post', 'side', 'default' );
+    add_meta_box( 'new-sidebar-meta-boxes', __('Sidebar Options', GETTEXT_DOMAIN_CHILD), 'sidebar_meta_boxes_child', 'page', 'side', 'default' );
+    add_meta_box( 'new-sidebar-meta-boxes', __('Sidebar Options', GETTEXT_DOMAIN_CHILD), 'sidebar_meta_boxes_child', 'portfolio', 'side', 'default' );
 	}
 }
 
 /* update meta_boxes
 ================================================== */
-function save_sidebar_postdata( $post_id ) {
+function save_sidebar_postdata_child( $post_id ) {
 	global $post, $sidebar_meta_boxes;  
 		foreach($sidebar_meta_boxes as $meta_box) {  
  
@@ -89,6 +89,6 @@ function save_sidebar_postdata( $post_id ) {
 	}
 	
 }
-add_action('admin_menu', 'create_sidebar_meta_box');
-add_action('save_post', 'save_sidebar_postdata');
+add_action('admin_menu', 'create_sidebar_meta_box_child');
+add_action('save_post', 'save_sidebar_postdata_child');
 ?>

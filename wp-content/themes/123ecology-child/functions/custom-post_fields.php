@@ -34,7 +34,7 @@ array(
 
 /* meta_boxes
 ================================================== */
-function post_meta_boxes() {
+function post_meta_boxes_child() {
 global $post, $post_meta_boxes;
 	
 	foreach($post_meta_boxes as $meta_box) {
@@ -91,16 +91,16 @@ global $post, $post_meta_boxes;
 
 /* enable meta_boxes
 ================================================== */
-function create_post_meta_box() {
+function create_post_meta_box_child() {
 global $theme_name, $post_meta_boxes;
 	if (function_exists('add_meta_box') ) {
-	add_meta_box( 'new-meta-boxes', __('Post Format', GETTEXT_DOMAIN_CHILD), 'post_meta_boxes', 'post', 'normal', 'high' );
+	add_meta_box( 'new-meta-boxes', __('Post Format', GETTEXT_DOMAIN_CHILD), 'post_meta_boxes_child', 'post', 'normal', 'high' );
 	}
 }
 
 /* update meta_boxes
 ================================================== */
-function save_post_postdata( $post_id ) {
+function save_post_postdata_child( $post_id ) {
 	global $post, $post_meta_boxes;
 	  
 	foreach($post_meta_boxes as $meta_box) {  
@@ -129,6 +129,6 @@ function save_post_postdata( $post_id ) {
 	}
 	
 }
-add_action('admin_menu', 'create_post_meta_box');
-add_action('save_post', 'save_post_postdata');
+add_action('admin_menu', 'create_post_meta_box_child');
+add_action('save_post', 'save_post_postdata_child');
 ?>

@@ -2298,21 +2298,25 @@ textarea#comment{
 	width: 188px;
 	overflow-x: hidden;
 }
-.cart-meta{
+.woocommerce .cart-content .cart-meta{
 	min-height: 20px;
 	width: 188px;
 }
-.cart-meta .remove{
+.woocommerce .cart-content .cart-meta a.remove{
 	float: left;
-	color: #959595;
+	color: #959595 !important;
 	font-size: 12px;
 	text-decoration: line-through;
 	font-weight: 300;
+	width:auto;
+	height:auto;
+	line-height: 22px;
 }
-.cart-meta .remove:hover{
-	text-decoration: none;
+.woocommerce .cart-content .cart-meta a.remove:hover{
+	text-decoration: none !important;
+	background:none;
 }
-.cart-meta .quantity{
+.woocommerce .cart-content .cart-meta .quantity{
 	float: right;
 	font-size: 14px;
 	width: 120px !important;

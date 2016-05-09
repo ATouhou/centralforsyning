@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: We Are Crunch v1.1\n"
+"Project-Id-Version: 123 Ecology\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: Tue Apr 26 2016 16:24:06 GMT+0530 (India Standard Time)\n"
+"POT-Creation-Date: 2014-02-27 08:34+0200\n"
+"PO-Revision-Date: Tue Apr 26 2016 18:36:04 GMT+0530 (India Standard Time)\n"
 "Last-Translator: admin <foo@foo.foo>\n"
-"Language-Team: \n"
+"Language-Team: lpd-themes.com\n"
 "Language: Danish\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
@@ -26,97 +26,60 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Loco-Target-Locale: da_DK"
 
-#: 404.php:26
-#: search.php:43
+#: 404.php:26 search.php:43
 msgid "Nothing Found"
 msgstr ""
 
-#: 404.php:27
-#: functions/shortcodes.php:696
-#: functions/shortcodes.php:965
-#: functions/shortcodes.php:1296
-#: index.php:32
-#: page.php:35
-#: search.php:44
-#: single-portfolio.php:35
-#: single.php:33
-#: template-blog-full-width.php:46
-#: template-blog-full-width.php:84
-#: template-blog-mini-sidebar.php:53
-#: template-blog-mini.php:53
-#: template-contact.php:39
+#: 404.php:27 functions/shortcodes.php:696 functions/shortcodes.php:965
+#: functions/shortcodes.php:1296 index.php:32 page.php:35 search.php:44
+#: single-portfolio.php:35 single.php:33 template-blog-full-width.php:46
+#: template-blog-full-width.php:84 template-blog-mini-sidebar.php:53
+#: template-blog-mini.php:53 template-contact.php:39
 #: template-front-blog-mini-sidebar.php:91
-#: template-front-blog-mini-sidebar.php:129
-#: template-front-blog-mini.php:91
-#: template-front-blog-mini.php:129
-#: template-front-blog.php:91
-#: template-front-blog.php:129
-#: template-front-full-blog.php:92
-#: template-front-full-blog.php:130
-#: template-front.php:91
+#: template-front-blog-mini-sidebar.php:129 template-front-blog-mini.php:91
+#: template-front-blog-mini.php:129 template-front-blog.php:91
+#: template-front-blog.php:129 template-front-full-blog.php:92
+#: template-front-full-blog.php:130 template-front.php:91
 #: template-full-width.php:39
 msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
-#: 404.php:31
-#: search.php:30
-#: search.php:48
+#: 404.php:31 search.php:30 search.php:48
 msgid "Search"
 msgstr ""
 
-#: 404.php:40
-#: search.php:57
-#: template-sitemap.php:37
+#: 404.php:40 search.php:57 template-sitemap.php:37
 msgid "Blog Posts"
 msgstr ""
 
-#: 404.php:56
-#: search.php:73
-#: template-sitemap.php:53
+#: 404.php:56 search.php:73 template-sitemap.php:53
 msgid "Available Pages"
 msgstr ""
 
-#: 404.php:79
-#: search.php:96
-#: template-sitemap.php:76
+#: 404.php:79 search.php:96 template-sitemap.php:76
 msgid "Available Products"
 msgstr ""
 
-#: 404.php:104
-#: search.php:121
-#: template-sitemap.php:101
+#: 404.php:104 search.php:121 template-sitemap.php:101
 msgid "Portfolio Posts"
 msgstr ""
 
-#: archive-portfolio.php:70
-#: archive-portfolio.php:80
-#: taxonomy-portfolio_category.php:70
-#: taxonomy-portfolio_category.php:80
-#: taxonomy-portfolio_tags.php:70
-#: taxonomy-portfolio_tags.php:80
-#: template-portfolio-2-s.php:143
-#: template-portfolio-2-s.php:153
-#: template-portfolio-2.php:110
-#: template-portfolio-2.php:120
-#: template-portfolio-3-s.php:142
-#: template-portfolio-3-s.php:152
-#: template-portfolio-3.php:110
-#: template-portfolio-3.php:120
-#: template-portfolio-4-s.php:141
-#: template-portfolio-4-s.php:151
-#: template-portfolio-4.php:110
-#: template-portfolio-4.php:120
+#: archive-portfolio.php:70 archive-portfolio.php:80
+#: taxonomy-portfolio_category.php:70 taxonomy-portfolio_category.php:80
+#: taxonomy-portfolio_tags.php:70 taxonomy-portfolio_tags.php:80
+#: template-portfolio-2-s.php:143 template-portfolio-2-s.php:153
+#: template-portfolio-2.php:110 template-portfolio-2.php:120
+#: template-portfolio-3-s.php:142 template-portfolio-3-s.php:152
+#: template-portfolio-3.php:110 template-portfolio-3.php:120
+#: template-portfolio-4-s.php:141 template-portfolio-4-s.php:151
+#: template-portfolio-4.php:110 template-portfolio-4.php:120
 msgid "Please add an image to \"Featured Image\" for thumbnail."
 msgstr ""
 
-#: archive-portfolio.php:90
-#: taxonomy-portfolio_category.php:90
-#: taxonomy-portfolio_tags.php:90
-#: template-portfolio-2-s.php:163
-#: template-portfolio-2.php:130
-#: template-portfolio-3-s.php:162
-#: template-portfolio-3.php:130
-#: template-portfolio-4-s.php:161
+#: archive-portfolio.php:90 taxonomy-portfolio_category.php:90
+#: taxonomy-portfolio_tags.php:90 template-portfolio-2-s.php:163
+#: template-portfolio-2.php:130 template-portfolio-3-s.php:162
+#: template-portfolio-3.php:130 template-portfolio-4-s.php:161
 #: template-portfolio-4.php:130
 msgid "Please add an image to \"Featured Image\" for video thumbnail."
 msgstr ""
@@ -125,13 +88,9 @@ msgstr ""
 msgid "This post is password protected. Enter the password to view comments."
 msgstr ""
 
-#: comments.php:21
-#: functions/shortcodes.php:895
-#: functions/shortcodes.php:1756
-#: includes/blog-post-fullwidth.php:49
-#: includes/blog-post-mini-sidebar.php:63
-#: includes/blog-post-mini.php:63
-#: includes/blog-post.php:49
+#: comments.php:21 functions/shortcodes.php:895 functions/shortcodes.php:1756
+#: includes/blog-post-fullwidth.php:49 includes/blog-post-mini-sidebar.php:63
+#: includes/blog-post-mini.php:63 includes/blog-post.php:49
 #: includes/single-post.php:38
 msgid "No Comments"
 msgstr ""
@@ -140,12 +99,9 @@ msgstr ""
 msgid "One Comment"
 msgstr ""
 
-#: comments.php:21
-#: functions/shortcodes.php:1756
-#: includes/blog-post-fullwidth.php:49
-#: includes/blog-post-mini-sidebar.php:63
-#: includes/blog-post-mini.php:63
-#: includes/blog-post.php:49
+#: comments.php:21 functions/shortcodes.php:1756
+#: includes/blog-post-fullwidth.php:49 includes/blog-post-mini-sidebar.php:63
+#: includes/blog-post-mini.php:63 includes/blog-post.php:49
 #: includes/single-post.php:38
 #, c-format
 msgid "% Comments"
@@ -184,50 +140,42 @@ msgstr ""
 msgid "Submit Comment"
 msgstr ""
 
-#: footer.php:148
-#: includes/footer-meta.php:138
-#: includes/header-social.php:116
+#: footer.php:148 includes/footer-meta.php:138 includes/header-social.php:116
 msgid "Social Media:"
 msgstr ""
 
-#: functions/class-tgm-plugin-activation.php:164
-#: functions.php:203
+#: functions.php:102 functions/class-tgm-plugin-activation.php:164
 msgid "Install Required Plugins"
 msgstr ""
 
-#: functions/class-tgm-plugin-activation.php:165
-#: functions.php:205
+#: functions.php:103 functions/class-tgm-plugin-activation.php:165
 msgid "Install Plugins"
 msgstr ""
 
-#: functions/class-tgm-plugin-activation.php:166
-#: functions.php:207
+#: functions.php:104 functions/class-tgm-plugin-activation.php:166
 #, php-format
 msgid "Installing Plugin: %s"
 msgstr ""
 
-#: functions/class-tgm-plugin-activation.php:167
-msgid "Something went wrong."
+#: functions.php:105
+msgid "Something went wrong with the plugin API."
 msgstr ""
 
-#: functions/class-tgm-plugin-activation.php:168
-#: functions.php:211
+#: functions.php:106 functions/class-tgm-plugin-activation.php:168
 #, php-format
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:169
-#: functions.php:213
+#: functions.php:107 functions/class-tgm-plugin-activation.php:169
 #, php-format
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:170
-#: functions.php:215
+#: functions.php:108 functions/class-tgm-plugin-activation.php:170
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to install the %s plugin. "
@@ -240,24 +188,21 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:171
-#: functions.php:217
+#: functions.php:109 functions/class-tgm-plugin-activation.php:171
 #, php-format
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:172
-#: functions.php:219
+#: functions.php:110 functions/class-tgm-plugin-activation.php:172
 #, php-format
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:173
-#: functions.php:221
+#: functions.php:111 functions/class-tgm-plugin-activation.php:173
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to activate the %s plugin."
@@ -270,8 +215,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:174
-#: functions.php:223
+#: functions.php:112 functions/class-tgm-plugin-activation.php:174
 #, php-format
 msgid ""
 "The following plugin needs to be updated to its latest version to ensure "
@@ -282,8 +226,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:175
-#: functions.php:225
+#: functions.php:113 functions/class-tgm-plugin-activation.php:175
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to update the %s plugin. "
@@ -296,30 +239,47 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:176
-#: functions.php:227
+#: functions.php:114 functions/class-tgm-plugin-activation.php:176
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:177
-#: functions.php:229
+#: functions.php:115 functions/class-tgm-plugin-activation.php:177
 msgid "Activate installed plugin"
 msgid_plural "Activate installed plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions/class-tgm-plugin-activation.php:178
+#: functions.php:116 functions/class-tgm-plugin-activation.php:178
 #: functions/class-tgm-plugin-activation.php:490
-#: functions.php:231
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: functions/class-tgm-plugin-activation.php:179
+#: functions.php:117 functions/class-tgm-plugin-activation.php:179
 #: functions/class-tgm-plugin-activation.php:1846
-#: functions.php:233
 msgid "Plugin activated successfully."
+msgstr ""
+
+#: functions.php:118
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: functions.php:139
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:140
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:607 includes/cart.php:31 woocommerce/cart/cart.php:47
+msgid "Remove this item"
+msgstr ""
+
+#: functions/class-tgm-plugin-activation.php:167
+msgid "Something went wrong."
 msgstr ""
 
 #: functions/class-tgm-plugin-activation.php:180
@@ -635,16 +595,13 @@ msgstr ""
 msgid "Could not read image size"
 msgstr ""
 
-#: functions/grayscale.php:57
-#: functions/grayscale.php:60
+#: functions/grayscale.php:57 functions/grayscale.php:60
 #: functions/grayscale.php:65
 msgid "Resize path invalid"
 msgstr ""
 
-#: functions/post_types-portfolio.php:7
-#: functions/post_types-portfolio.php:8
-#: functions/theme_breadcrumb.php:38
-#: functions/theme_breadcrumb.php:104
+#: functions/post_types-portfolio.php:7 functions/post_types-portfolio.php:8
+#: functions/theme_breadcrumb.php:38 functions/theme_breadcrumb.php:104
 msgid "Portfolio"
 msgstr ""
 
@@ -681,8 +638,7 @@ msgstr ""
 msgid "No portfolio found in Trash"
 msgstr ""
 
-#: functions/post_types-portfolio.php:30
-#: functions/post_types-portfolio.php:34
+#: functions/post_types-portfolio.php:30 functions/post_types-portfolio.php:34
 msgid "portfolio"
 msgstr ""
 
@@ -694,18 +650,8 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: functions/post_types_about.php:7
-#: functions/post_types_about.php:8
+#: functions/post_types_about.php:7 functions/post_types_about.php:8
 msgid "Team Members"
-msgstr ""
-
-#: functions/post_types_about.php:9
-msgctxt "about"
-msgid "Add New"
-msgstr ""
-
-#: functions/post_types_about.php:10
-msgid "Add New Team Member"
 msgstr ""
 
 #: functions/post_types_about.php:11
@@ -732,8 +678,7 @@ msgstr ""
 msgid "No member found in trash"
 msgstr ""
 
-#: functions/post_types_about.php:30
-#: functions/post_types_about.php:34
+#: functions/post_types_about.php:30 functions/post_types_about.php:34
 msgid "about"
 msgstr ""
 
@@ -749,8 +694,7 @@ msgstr ""
 msgid "Member Picture"
 msgstr ""
 
-#: functions/post_types_clients.php:7
-#: functions/post_types_clients.php:8
+#: functions/post_types_clients.php:7 functions/post_types_clients.php:8
 msgid "Clients"
 msgstr ""
 
@@ -787,8 +731,7 @@ msgstr ""
 msgid "No client found in trash"
 msgstr ""
 
-#: functions/post_types_clients.php:30
-#: functions/post_types_clients.php:34
+#: functions/post_types_clients.php:30 functions/post_types_clients.php:34
 msgid "client"
 msgstr ""
 
@@ -804,18 +747,13 @@ msgstr ""
 msgid "Client Logo"
 msgstr ""
 
-#: functions/post_types_front_tabs.php:7
-#: functions/post_types_front_tabs.php:8
+#: functions/post_types_front_tabs.php:7 functions/post_types_front_tabs.php:8
 msgid "Front Tabs"
 msgstr ""
 
 #: functions/post_types_front_tabs.php:9
 msgctxt "front_tabs"
 msgid "Add New"
-msgstr ""
-
-#: functions/post_types_front_tabs.php:10
-msgid "Add New Tab"
 msgstr ""
 
 #: functions/post_types_front_tabs.php:11
@@ -855,16 +793,9 @@ msgstr ""
 msgid "Tab Category"
 msgstr ""
 
-#: functions/shortcodes.php:897
-msgid " Comments"
-msgstr ""
-
-#: functions/shortcodes.php:899
-#: functions/shortcodes.php:1756
-#: includes/blog-post-fullwidth.php:49
-#: includes/blog-post-mini-sidebar.php:63
-#: includes/blog-post-mini.php:63
-#: includes/blog-post.php:49
+#: functions/shortcodes.php:899 functions/shortcodes.php:1756
+#: includes/blog-post-fullwidth.php:49 includes/blog-post-mini-sidebar.php:63
+#: includes/blog-post-mini.php:63 includes/blog-post.php:49
 #: includes/single-post.php:38
 msgid "1 Comment"
 msgstr ""
@@ -889,13 +820,8 @@ msgstr ""
 msgid "No Picture"
 msgstr ""
 
-#: functions/shortcodes.php:1493
-#: functions/shortcodes.php:1549
+#: functions/shortcodes.php:1493 functions/shortcodes.php:1549
 msgid "view gallery"
-msgstr ""
-
-#: functions/shortcodes.php:1552
-msgid "view more"
 msgstr ""
 
 #: functions/shortcodes.php:1555
@@ -918,13 +844,11 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: functions/theme_breadcrumb.php:89
-#: includes/heading.php:58
+#: functions/theme_breadcrumb.php:89 includes/heading.php:58
 msgid "404 Error"
 msgstr ""
 
-#: functions/theme_breadcrumb.php:107
-#: includes/heading.php:78
+#: functions/theme_breadcrumb.php:107 includes/heading.php:78
 msgid "Archives"
 msgstr ""
 
@@ -982,15 +906,6 @@ msgstr ""
 msgid "%s (Pending)"
 msgstr ""
 
-#: functions/theme_walker.php:590
-msgid "Move up"
-msgstr ""
-
-#: functions/theme_walker.php:603
-msgid "Move down"
-msgstr ""
-
-#: functions/theme_walker.php:605
 #: functions/theme_walker.php:607
 msgid "Edit Menu Item"
 msgstr ""
@@ -1030,72 +945,38 @@ msgstr ""
 msgid "Original: %s"
 msgstr ""
 
-#: functions/theme_walker.php:686
-#: woocommerce/myaccount/my-orders.php:78
+#: functions/theme_walker.php:686 woocommerce/myaccount/my-orders.php:78
 msgid "Cancel"
 msgstr ""
 
-#: functions/woocommerce.php:137
-#: functions/woocommerce.php:197
+#: functions/woocommerce.php:137 functions/woocommerce.php:197
 msgid "Select options"
 msgstr ""
 
-#: functions/woocommerce.php:142
-#: functions/woocommerce.php:202
+#: functions/woocommerce.php:142 functions/woocommerce.php:202
 msgid "View options"
 msgstr ""
 
-#: functions.php:209
-msgid "Something went wrong with the plugin API."
-msgstr ""
-
-#: functions.php:235
-#, php-format
-msgid "All plugins installed and activated successfully. %s"
-msgstr ""
-
-#: functions.php:277
-msgid "Primary Menu"
-msgstr ""
-
-#: functions.php:279
-msgid "Footer Menu"
-msgstr ""
-
-#: functions.php:1218
-#: includes/cart.php:31
-#: woocommerce/cart/cart.php:47
-msgid "Remove this item"
-msgstr ""
-
-#: header.php:382
+#: header.php:355
 msgid "Languages"
 msgstr ""
 
-#: includes/blog-post-fullwidth.php:62
-#: includes/blog-post-mini-sidebar.php:57
-#: includes/blog-post-mini.php:57
-#: includes/blog-post.php:62
+#: includes/blog-post-fullwidth.php:62 includes/blog-post-mini-sidebar.php:57
+#: includes/blog-post-mini.php:57 includes/blog-post.php:62
 #: includes/single-post.php:44
 #: option-tree/includes/ot-functions-admin.php:2675
 msgid "edit"
 msgstr ""
 
-#: includes/cart.php:70
-#: includes/cart.php:74
-#: includes/cart.php:77
-#: includes/cart.php:93
-#: woocommerce/global/form-login.php:35
+#: includes/cart.php:70 includes/cart.php:74 includes/cart.php:77
+#: includes/cart.php:93 woocommerce/global/form-login.php:35
 #: woocommerce/myaccount/form-login.php:25
 #: woocommerce/myaccount/form-login.php:44
 msgid "Login"
 msgstr ""
 
-#: includes/cart.php:71
-#: includes/cart.php:102
-#: includes/cart.php:105
-#: includes/cart.php:149
-#: woocommerce/myaccount/form-login.php:63
+#: includes/cart.php:71 includes/cart.php:102 includes/cart.php:105
+#: includes/cart.php:149 woocommerce/myaccount/form-login.php:63
 #: woocommerce/myaccount/form-login.php:96
 msgid "Register"
 msgstr ""
@@ -1108,14 +989,12 @@ msgstr ""
 msgid "search site"
 msgstr ""
 
-#: includes/heading.php:40
-#: woocommerce/archive-product.php:105
+#: includes/heading.php:40 woocommerce/archive-product.php:105
 #, php-format
 msgid "Search Results: &ldquo;%s&rdquo;"
 msgstr ""
 
-#: includes/heading.php:42
-#: woocommerce/archive-product.php:107
+#: includes/heading.php:42 woocommerce/archive-product.php:107
 #, php-format
 msgid "&nbsp;&ndash; Page %s"
 msgstr ""
@@ -1124,17 +1003,11 @@ msgstr ""
 msgid "Search for: "
 msgstr ""
 
-#: includes/heading.php:91
-msgid "&larr; Return To Home"
-msgstr ""
-
 #: includes/portfolio-filter.php:9
 msgid "All Categories"
 msgstr ""
 
-#: includes/single-portfolio-post.php:60
-#: sidebar.php:80
-#: sidebar.php:211
+#: includes/single-portfolio-post.php:60 sidebar.php:80 sidebar.php:211
 msgid "Share"
 msgstr ""
 
@@ -1142,27 +1015,17 @@ msgstr ""
 msgid "More Images"
 msgstr ""
 
-#: index.php:35
-#: search.php:39
-#: template-blog-full-width.php:88
-#: template-blog-mini-sidebar.php:58
-#: template-blog-mini.php:58
-#: template-front-blog-mini-sidebar.php:133
-#: template-front-blog-mini.php:133
-#: template-front-blog.php:132
-#: template-front-full-blog.php:134
+#: index.php:35 search.php:39 template-blog-full-width.php:88
+#: template-blog-mini-sidebar.php:58 template-blog-mini.php:58
+#: template-front-blog-mini-sidebar.php:133 template-front-blog-mini.php:133
+#: template-front-blog.php:132 template-front-full-blog.php:134
 msgid "&larr; Newer Entries"
 msgstr ""
 
-#: index.php:36
-#: search.php:40
-#: template-blog-full-width.php:87
-#: template-blog-mini-sidebar.php:57
-#: template-blog-mini.php:57
-#: template-front-blog-mini-sidebar.php:134
-#: template-front-blog-mini.php:134
-#: template-front-blog.php:133
-#: template-front-full-blog.php:133
+#: index.php:36 search.php:40 template-blog-full-width.php:87
+#: template-blog-mini-sidebar.php:57 template-blog-mini.php:57
+#: template-front-blog-mini-sidebar.php:134 template-front-blog-mini.php:134
+#: template-front-blog.php:133 template-front-full-blog.php:133
 msgid "Older Entries &rarr;"
 msgstr ""
 
@@ -1220,10 +1083,6 @@ msgstr ""
 msgid "Layout activated."
 msgstr ""
 
-#: option-tree/includes/ot-functions-admin.php:1476
-msgid "Settings updated."
-msgstr ""
-
 #: option-tree/includes/ot-functions-admin.php:1480
 msgid "Settings could not be saved."
 msgstr ""
@@ -1250,10 +1109,6 @@ msgstr ""
 
 #: option-tree/includes/ot-functions-admin.php:1515
 msgid "Layouts could not be imported."
-msgstr ""
-
-#: option-tree/includes/ot-functions-admin.php:1523
-msgid "Layouts Updated."
 msgstr ""
 
 #: option-tree/includes/ot-functions-admin.php:1527
@@ -2822,18 +2677,14 @@ msgstr ""
 msgid "What's a layout anyhow?"
 msgstr ""
 
-#: template-front-blog-mini-sidebar.php:58
-#: template-front-blog-mini.php:58
-#: template-front-blog.php:58
-#: template-front-full-blog.php:59
+#: template-front-blog-mini-sidebar.php:58 template-front-blog-mini.php:58
+#: template-front-blog.php:58 template-front-full-blog.php:59
 #: template-front.php:59
 msgid "Enter a video URL to \"Front Page Options\""
 msgstr ""
 
-#: template-front-blog-mini-sidebar.php:71
-#: template-front-blog-mini.php:71
-#: template-front-blog.php:71
-#: template-front-full-blog.php:72
+#: template-front-blog-mini-sidebar.php:71 template-front-blog-mini.php:71
+#: template-front-blog.php:71 template-front-full-blog.php:72
 #: template-front.php:72
 msgid "Add an image to \"Featured Image\"."
 msgstr ""
@@ -2859,25 +2710,18 @@ msgstr ""
 msgid "Please fill in your details to see available shipping methods."
 msgstr ""
 
-#: woocommerce/cart/cart-shipping.php:69
-#: woocommerce/cart/cart-shipping.php:77
+#: woocommerce/cart/cart-shipping.php:69 woocommerce/cart/cart-shipping.php:77
 #, php-format
 msgid "Sorry, shipping is unavailable %s."
 msgstr ""
 
-#: woocommerce/cart/cart-shipping.php:69
-#: woocommerce/cart/cart-shipping.php:77
+#: woocommerce/cart/cart-shipping.php:69 woocommerce/cart/cart-shipping.php:77
 msgid ""
 "If you require assistance or wish to make alternate arrangements please "
 "contact us."
 msgstr ""
 
-#: woocommerce/cart/cart-totals.php:16
-msgid "Cart Totals"
-msgstr ""
-
-#: woocommerce/cart/cart-totals.php:27
-#: woocommerce/cart/cart-totals.php:67
+#: woocommerce/cart/cart-totals.php:27 woocommerce/cart/cart-totals.php:67
 #: woocommerce/checkout/review-order.php:31
 #: woocommerce/checkout/review-order.php:71
 msgid "Coupon:"
@@ -2895,8 +2739,7 @@ msgid ""
 "based on your billing and shipping information."
 msgstr ""
 
-#: woocommerce/cart/cart.php:28
-#: woocommerce/emails/admin-new-order.php:24
+#: woocommerce/cart/cart.php:28 woocommerce/emails/admin-new-order.php:24
 #: woocommerce/emails/customer-completed-order.php:25
 #: woocommerce/emails/customer-invoice.php:29
 #: woocommerce/emails/customer-note.php:29
@@ -2904,8 +2747,7 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: woocommerce/cart/cart.php:30
-#: woocommerce/checkout/review-order.php:19
+#: woocommerce/cart/cart.php:30 woocommerce/checkout/review-order.php:19
 #: woocommerce/myaccount/my-orders.php:35
 #: woocommerce/order/order-details.php:21
 msgid "Total"
@@ -2919,8 +2761,7 @@ msgstr ""
 msgid "Coupon"
 msgstr ""
 
-#: woocommerce/cart/cart.php:118
-#: woocommerce/checkout/form-coupon.php:29
+#: woocommerce/cart/cart.php:118 woocommerce/checkout/form-coupon.php:29
 msgid "Apply Coupon"
 msgstr ""
 
@@ -2939,12 +2780,6 @@ msgstr ""
 
 #: woocommerce/cart/shipping-calculator.php:85
 msgid "Update Totals"
-msgstr ""
-
-#: woocommerce/checkout/cart-errors.php:16
-msgid ""
-"There are some issues with the items in your cart (shown above). Please go "
-"back to the cart page and resolve these issues before checking out."
 msgstr ""
 
 #: woocommerce/checkout/form-billing.php:29
@@ -3056,13 +2891,11 @@ msgstr ""
 msgid "Please attempt your purchase again."
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:28
-#: woocommerce/myaccount/my-orders.php:71
+#: woocommerce/checkout/thankyou.php:28 woocommerce/myaccount/my-orders.php:71
 msgid "Pay"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:36
-#: woocommerce/checkout/thankyou.php:67
+#: woocommerce/checkout/thankyou.php:36 woocommerce/checkout/thankyou.php:67
 msgid "Thank you. Your order has been received."
 msgstr ""
 
@@ -3258,8 +3091,7 @@ msgstr ""
 msgid "Products tagged &ldquo;"
 msgstr ""
 
-#: woocommerce/global/breadcrumb.php:91
-#: woocommerce/global/breadcrumb.php:189
+#: woocommerce/global/breadcrumb.php:91 woocommerce/global/breadcrumb.php:189
 msgid "Search results for &ldquo;"
 msgstr ""
 
@@ -3338,18 +3170,6 @@ msgstr ""
 
 #: woocommerce/myaccount/form-edit-address.php:38
 msgid "Save Address"
-msgstr ""
-
-#: woocommerce/myaccount/form-login.php:73
-msgid "username"
-msgstr ""
-
-#: woocommerce/myaccount/form-login.php:80
-msgid "email"
-msgstr ""
-
-#: woocommerce/myaccount/form-login.php:85
-msgid "password"
 msgstr ""
 
 #: woocommerce/myaccount/form-login.php:89
@@ -3436,13 +3256,11 @@ msgid ""
 "date\">%s</mark> and is currently <mark class=\"order-status\">%s</mark>."
 msgstr ""
 
-#: woocommerce/myaccount/view-order.php:17
-#: woocommerce/order/tracking.php:31
+#: woocommerce/myaccount/view-order.php:17 woocommerce/order/tracking.php:31
 msgid "Order Updates"
 msgstr ""
 
-#: woocommerce/myaccount/view-order.php:23
-#: woocommerce/order/tracking.php:37
+#: woocommerce/myaccount/view-order.php:23 woocommerce/order/tracking.php:37
 msgid "l jS \\o\\f F Y, h:ia"
 msgstr ""
 
@@ -3502,54 +3320,6 @@ msgstr ""
 
 #: woocommerce/order/tracking.php:20
 msgid " ago"
-msgstr ""
-
-#: woocommerce/single-product/add-to-cart/variable.php:25
-msgid "Choose an option"
-msgstr ""
-
-#: woocommerce/single-product/add-to-cart/variable.php:73
-msgid "Clear selection"
-msgstr ""
-
-#: woocommerce/single-product/add-to-cart/variable.php:103
-msgid "This product is currently out of stock and unavailable."
-msgstr ""
-
-#: woocommerce/single-product/meta.php:18
-msgid "Tags:"
-msgstr ""
-
-#: woocommerce/single-product/product-attributes.php:28
-msgid "Weight"
-msgstr ""
-
-#: woocommerce/single-product/product-attributes.php:37
-msgid "Dimensions"
-msgstr ""
-
-#: woocommerce/single-product/rating.php:23
-#, php-format
-msgid "%s customer review"
-msgid_plural "%s customer reviews"
-msgstr[0] ""
-msgstr[1] ""
-
-#: woocommerce/single-product/review.php:26
-#, php-format
-msgid "Rated %d out of 5"
-msgstr ""
-
-#: woocommerce/single-product/review.php:27
-msgid "out of 5"
-msgstr ""
-
-#: woocommerce/single-product/review.php:34
-msgid "Your comment is awaiting approval"
-msgstr ""
-
-#: woocommerce/single-product/review.php:43
-msgid "verified owner"
 msgstr ""
 
 #: woocommerce/single-product-reviews.php:38
@@ -3613,40 +3383,114 @@ msgstr ""
 msgid "Only logged in customers who have purchased this product may leave a review."
 msgstr ""
 
-#: includes/cart.php:65
-msgid "Logout"
-msgstr "Log ud"
+#: woocommerce/single-product/add-to-cart/variable.php:25
+msgid "Choose an option"
+msgstr ""
 
-#: includes/cart.php:66
-#: woocommerce/checkout/thankyou.php:30
-msgid "My Account"
-msgstr "Min konto"
+#: woocommerce/single-product/add-to-cart/variable.php:73
+msgid "Clear selection"
+msgstr ""
 
-#: woocommerce/cart/shipping-calculator.php:72
-msgid "City"
-msgstr "By"
+#: woocommerce/single-product/add-to-cart/variable.php:103
+msgid "This product is currently out of stock and unavailable."
+msgstr ""
 
-#: includes/cart.php:87
-#: includes/cart.php:133
-#: woocommerce/global/form-login.php:26
-#: woocommerce/myaccount/form-login.php:36
-#: woocommerce/myaccount/form-login.php:84
-msgid "Password"
-msgstr "Kodeord"
+#: woocommerce/single-product/meta.php:18
+msgid "Tags:"
+msgstr ""
 
-#: includes/cart.php:137
-msgid "Re-enter password"
-msgstr "Gentag kodeord"
+#: woocommerce/single-product/product-attributes.php:28
+msgid "Weight"
+msgstr ""
 
-#: woocommerce/myaccount/form-change-password.php:20
-#: woocommerce/myaccount/form-lost-password.php:31
-msgid "New password"
-msgstr "Ny kodeord"
+#: woocommerce/single-product/product-attributes.php:37
+msgid "Dimensions"
+msgstr ""
 
-#: woocommerce/myaccount/form-change-password.php:24
-#: woocommerce/myaccount/form-lost-password.php:35
-msgid "Re-enter new password"
-msgstr "Gentag kodeord"
+#: woocommerce/single-product/rating.php:23
+#, php-format
+msgid "%s customer review"
+msgid_plural "%s customer reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/review.php:26
+#, php-format
+msgid "Rated %d out of 5"
+msgstr ""
+
+#: woocommerce/single-product/review.php:27
+msgid "out of 5"
+msgstr ""
+
+#: woocommerce/single-product/review.php:34
+msgid "Your comment is awaiting approval"
+msgstr ""
+
+#: woocommerce/single-product/review.php:43
+msgid "verified owner"
+msgstr ""
+
+#: functions/post_types_about.php:9
+msgctxt "about"
+msgid "Add New"
+msgstr ""
+
+#: functions/post_types_about.php:10
+msgid "Add New Team Member"
+msgstr ""
+
+#: functions/post_types_front_tabs.php:10
+msgid "Add New Tab"
+msgstr ""
+
+#: functions/shortcodes.php:897
+msgid " Comments"
+msgstr ""
+
+#: functions/shortcodes.php:1552
+msgid "view more"
+msgstr ""
+
+#: includes/heading.php:91
+msgid "&larr; Return To Home"
+msgstr ""
+
+#: option-tree/includes/ot-functions-admin.php:1476
+msgid "Settings updated."
+msgstr ""
+
+#: option-tree/includes/ot-functions-admin.php:1523
+msgid "Layouts Updated."
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:16
+msgid "Cart Totals"
+msgstr ""
+
+#: woocommerce/checkout/cart-errors.php:16
+msgid ""
+"There are some issues with the items in your cart (shown above). Please go "
+"back to the cart page and resolve these issues before checking out."
+msgstr ""
+
+#: comments.php:56 includes/cart.php:126
+#: woocommerce/single-product-reviews.php:58
+msgid "Email"
+msgstr "E-mail adresse "
+
+#: functions.php:632 includes/cart.php:56 woocommerce/cart/mini-cart.php:65
+msgid "Checkout &rarr;"
+msgstr ""
+"Check ud\n"
+" &rarr;"
+
+#: functions/shortcodes.php:1387 functions/shortcodes.php:1673
+#: functions/theme_walker.php:293 woocommerce/loop/sale-flash.php:16
+#: woocommerce/single-product/product-image.php:24
+#: woocommerce/single-product/sale-flash.php:16
+msgid "Sale!"
+msgstr "Tilbud!"
 
 #: functions/theme_walker.php:653
 #: option-tree/includes/ot-functions-admin.php:2155
@@ -3657,6 +3501,46 @@ msgstr "Gentag kodeord"
 msgid "Description"
 msgstr "Beskrivelse"
 
+#: functions/theme_walker.php:685
+msgid "Remove"
+msgstr "Tøm kurv"
+
+#: includes/cart.php:65
+msgid "Logout"
+msgstr "Log ud"
+
+#: includes/cart.php:66 woocommerce/checkout/thankyou.php:30
+msgid "My Account"
+msgstr "Min konto"
+
+#: includes/cart.php:83 woocommerce/global/form-login.php:22
+#: woocommerce/myaccount/form-lost-password.php:24
+msgid "Username or email"
+msgstr "Brugernavn og e-mail"
+
+#: includes/cart.php:87 includes/cart.php:133
+#: woocommerce/global/form-login.php:26
+#: woocommerce/myaccount/form-login.php:36
+#: woocommerce/myaccount/form-login.php:84
+msgid "Password"
+msgstr "Kodeord"
+
+#: includes/cart.php:94
+msgid "Lost Password?"
+msgstr "Glemt kodeord?"
+
+#: includes/cart.php:114 woocommerce/myaccount/form-login.php:72
+msgid "Username"
+msgstr "Brugernavn"
+
+#: includes/cart.php:137
+msgid "Re-enter password"
+msgstr "Gentag kodeord"
+
+#: includes/heading.php:86 woocommerce/cart/cart-empty.php:18
+msgid "&larr; Return To Shop"
+msgstr "&larr; Tilbage til butik"
+
 #: woocommerce/cart/cart-shipping.php:18
 msgid "Shipping and Handling"
 msgstr "Levering og behandling"
@@ -3665,117 +3549,12 @@ msgstr "Levering og behandling"
 msgid "Shipping"
 msgstr "Levering"
 
-#: woocommerce/checkout/form-checkout.php:59
-#: woocommerce/myaccount/form-edit-address.php:14
-#: woocommerce/myaccount/my-address.php:20
-#: woocommerce/order/order-details.php:133
-msgid "Shipping Address"
-msgstr "Leveringsadresse"
-
-#: woocommerce/checkout/form-shipping.php:29
-msgid "Ship to a different address?"
-msgstr "Levering til en anden adresse?"
-
-#: woocommerce/checkout/review-order.php:168
-msgid "Place order"
-msgstr "Bestil"
-
-#: woocommerce/emails/email-addresses.php:28
-#: woocommerce/emails/plain/email-addresses.php:17
-msgid "Shipping address"
-msgstr "Leveringsadresse"
-
-#: woocommerce/single-product/meta.php:16
-msgid "Category:"
-msgstr "Kategori"
-
-#: woocommerce/single-product/related.php:36
-msgid "Related Products"
-msgstr "Relaterede produkter"
-
-#: includes/cart.php:83
-#: woocommerce/global/form-login.php:22
-#: woocommerce/myaccount/form-lost-password.php:24
-msgid "Username or email"
-msgstr "Brugernavn og e-mail"
-
-#: includes/cart.php:94
-msgid "Lost Password?"
-msgstr "Glemt kodeord?"
-
-#: includes/cart.php:114
-#: woocommerce/myaccount/form-login.php:72
-msgid "Username"
-msgstr "Brugernavn"
-
-#: woocommerce/global/form-login.php:42
-#: woocommerce/myaccount/form-login.php:50
-msgid "Lost your password?"
-msgstr "Glemt kodeord?"
-
-#: woocommerce/myaccount/form-login.php:32
-msgid "Username or email address"
-msgstr "Brugernavn eller e-mail"
-
-#: comments.php:56
-#: includes/cart.php:126
-#: woocommerce/single-product-reviews.php:58
-msgid "Email"
-msgstr "E-mail adresse "
-
-#: functions/shortcodes.php:1786
-#: functions/woocommerce.php:124
-#: functions/woocommerce.php:130
-#: functions/woocommerce.php:159
-#: functions/woocommerce.php:163
-#: functions/woocommerce.php:184
-#: functions/woocommerce.php:190
-#: functions/woocommerce.php:219
-#: functions/woocommerce.php:223
-msgid "Read More"
-msgstr "Læs mere"
-
-#: functions/theme_walker.php:685
-msgid "Remove"
-msgstr "Tøm kurv"
-
-#: functions.php:1238
-#: includes/cart.php:41
-#: woocommerce/cart/mini-cart.php:51
-msgid "No products in the cart."
-msgstr "Ingen produkter i kurven"
-
-#: functions.php:1256
-#: includes/cart.php:50
-#: woocommerce/cart/cart-totals.php:21
-#: woocommerce/checkout/review-order.php:25
-msgid "Cart Subtotal"
-msgstr "Kurv i alt"
-
-#: functions.php:1268
-#: includes/cart.php:56
-#: woocommerce/cart/mini-cart.php:65
-msgid "Checkout &rarr;"
-msgstr ""
-"Check ud\n"
-" &rarr;"
-
-#: includes/heading.php:86
-#: woocommerce/cart/cart-empty.php:18
-msgid "&larr; Return To Shop"
-msgstr "&larr; Tilbage til butik"
-
-#: woocommerce/cart/cart-empty.php:14
-msgid "Your cart is currently empty."
-msgstr "Ingen produkter i kurven"
-
 #: woocommerce/cart/cart-totals.php:75
 #: woocommerce/checkout/review-order.php:79
 msgid "Order Total"
 msgstr "Bestilling total"
 
-#: woocommerce/cart/cart.php:27
-#: woocommerce/checkout/form-pay.php:19
+#: woocommerce/cart/cart.php:27 woocommerce/checkout/form-pay.php:19
 #: woocommerce/checkout/review-order.php:18
 #: woocommerce/emails/admin-new-order.php:22
 #: woocommerce/emails/customer-completed-order.php:23
@@ -3786,8 +3565,7 @@ msgstr "Bestilling total"
 msgid "Product"
 msgstr "Produkt"
 
-#: woocommerce/cart/cart.php:29
-#: woocommerce/emails/admin-new-order.php:23
+#: woocommerce/cart/cart.php:29 woocommerce/emails/admin-new-order.php:23
 #: woocommerce/emails/customer-completed-order.php:24
 #: woocommerce/emails/customer-invoice.php:28
 #: woocommerce/emails/customer-note.php:28
@@ -3807,11 +3585,9 @@ msgstr "I alt"
 msgid "Calculate Shipping"
 msgstr "Opsummering af ordre"
 
-#: woocommerce/cart/shipping-calculator.php:45
-#: woocommerce/cart/shipping-calculator.php:51
-#: woocommerce/cart/shipping-calculator.php:63
-msgid "State / county"
-msgstr "Land"
+#: woocommerce/cart/shipping-calculator.php:72
+msgid "City"
+msgstr "By"
 
 #: woocommerce/cart/shipping-calculator.php:80
 msgid "Postcode / Zip"
@@ -3825,9 +3601,28 @@ msgstr "Postnummer"
 msgid "Billing Address"
 msgstr "Faktureringsadresse"
 
+#: woocommerce/checkout/form-checkout.php:59
+#: woocommerce/myaccount/form-edit-address.php:14
+#: woocommerce/myaccount/my-address.php:20
+#: woocommerce/order/order-details.php:133
+msgid "Shipping Address"
+msgstr "Leveringsadresse"
+
 #: woocommerce/checkout/form-checkout.php:77
 msgid "Your order"
 msgstr "Din bestilling"
+
+#: woocommerce/checkout/form-shipping.php:29
+msgid "Ship to a different address?"
+msgstr "Levering til en anden adresse?"
+
+#: woocommerce/checkout/review-order.php:168
+msgid "Place order"
+msgstr "Bestil"
+
+#: woocommerce/checkout/review-order.php:177
+msgid "I have read and accept the"
+msgstr "Jeg acceptere handelsbetingelserne"
 
 #: woocommerce/checkout/thankyou.php:40
 #: woocommerce/emails/customer-completed-order.php:18
@@ -3849,10 +3644,20 @@ msgstr ""
 msgid "Billing address"
 msgstr "Faktureringsadresse"
 
+#: woocommerce/emails/email-addresses.php:28
+#: woocommerce/emails/plain/email-addresses.php:17
+msgid "Shipping address"
+msgstr "Leveringsadresse"
+
 #: woocommerce/emails/plain/email-order-items.php:32
 #, php-format
 msgid "Quantity: %s"
 msgstr "kvantitet: %s"
+
+#: woocommerce/global/form-login.php:42
+#: woocommerce/myaccount/form-login.php:50
+msgid "Lost your password?"
+msgstr "Glemt kodeord?"
 
 #: woocommerce/loop/orderby.php:21
 msgid "Default sorting"
@@ -3874,6 +3679,16 @@ msgstr "Sorter efter pris: lav til høj"
 msgid "Sort by price: high to low"
 msgstr "Sorter efter pris: høj til lav"
 
+#: woocommerce/myaccount/form-change-password.php:20
+#: woocommerce/myaccount/form-lost-password.php:31
+msgid "New password"
+msgstr "Ny kodeord"
+
+#: woocommerce/myaccount/form-change-password.php:24
+#: woocommerce/myaccount/form-lost-password.php:35
+msgid "Re-enter new password"
+msgstr "Gentag kodeord"
+
 #: woocommerce/myaccount/form-edit-account.php:20
 msgid "First name"
 msgstr "Fornavn"
@@ -3887,6 +3702,10 @@ msgstr "Efternavn"
 msgid "Email address"
 msgstr "E-mail adresse"
 
+#: woocommerce/myaccount/form-login.php:32
+msgid "Username or email address"
+msgstr "Brugernavn eller e-mail"
+
 #: woocommerce/myaccount/my-orders.php:32
 msgid "Order"
 msgstr "Bestilling"
@@ -3895,54 +3714,68 @@ msgstr "Bestilling"
 msgid "Order ID"
 msgstr "Bestilling ID"
 
-#: functions/shortcodes.php:910
-#: includes/blog-post-fullwidth.php:59
-#: includes/blog-post-mini-sidebar.php:54
-#: includes/blog-post-mini.php:54
+#: woocommerce/single-product/meta.php:16
+msgid "Category:"
+msgstr "Kategori"
+
+#: woocommerce/single-product/related.php:36
+msgid "Related Products"
+msgstr "Relaterede produkter"
+
+#: functions/shortcodes.php:910 includes/blog-post-fullwidth.php:59
+#: includes/blog-post-mini-sidebar.php:54 includes/blog-post-mini.php:54
 #: includes/blog-post.php:59
 msgid "[read more]"
 msgstr "[læs mere]"
 
-#: functions/shortcodes.php:1387
-#: functions/shortcodes.php:1673
-#: functions/theme_walker.php:293
-#: woocommerce/loop/sale-flash.php:16
-#: woocommerce/single-product/product-image.php:24
-#: woocommerce/single-product/sale-flash.php:16
-msgid "Sale!"
-msgstr "Tilbud!"
-
-#: functions/shortcodes.php:1558
-#: template-portfolio-2-s.php:182
-#: template-portfolio-2-s.php:184
-#: template-portfolio-2.php:149
-#: template-portfolio-2.php:151
-#: template-portfolio-3-s.php:181
-#: template-portfolio-3-s.php:183
-#: template-portfolio-3.php:149
-#: template-portfolio-3.php:151
-#: template-portfolio-4-s.php:180
-#: template-portfolio-4-s.php:182
-#: template-portfolio-4.php:149
+#: functions/shortcodes.php:1558 template-portfolio-2-s.php:182
+#: template-portfolio-2-s.php:184 template-portfolio-2.php:149
+#: template-portfolio-2.php:151 template-portfolio-3-s.php:181
+#: template-portfolio-3-s.php:183 template-portfolio-3.php:149
+#: template-portfolio-3.php:151 template-portfolio-4-s.php:180
+#: template-portfolio-4-s.php:182 template-portfolio-4.php:149
 #: template-portfolio-4.php:151
 msgid "read more"
 msgstr "læs mere"
 
-#: functions/woocommerce.php:153
-#: functions/woocommerce.php:213
-msgid "Add to cart"
-msgstr "Tilføj til kurv"
+#: woocommerce/cart/shipping-calculator.php:45
+#: woocommerce/cart/shipping-calculator.php:51
+#: woocommerce/cart/shipping-calculator.php:63
+msgid "State / county"
+msgstr "Land"
 
-#: functions.php:1166
-#: includes/cart.php:5
+#: functions.php:581 includes/cart.php:5
 msgid "Cart"
 msgstr "Kurv"
 
-#: functions.php:1266
-#: includes/cart.php:55
-#: woocommerce/cart/mini-cart.php:64
+#: functions.php:617 includes/cart.php:41 woocommerce/cart/mini-cart.php:51
+msgid "No products in the cart."
+msgstr "Ingen produkter i kurven"
+
+#: functions.php:626 includes/cart.php:50 woocommerce/cart/cart-totals.php:21
+#: woocommerce/checkout/review-order.php:25
+msgid "Cart Subtotal"
+msgstr "Kurv i alt"
+
+#: functions.php:631 includes/cart.php:55 woocommerce/cart/mini-cart.php:64
 msgid "View Cart &rarr;"
 msgstr "Se Kurv &rarr;"
+
+#: functions/shortcodes.php:1786 functions/woocommerce.php:124
+#: functions/woocommerce.php:130 functions/woocommerce.php:159
+#: functions/woocommerce.php:163 functions/woocommerce.php:184
+#: functions/woocommerce.php:190 functions/woocommerce.php:219
+#: functions/woocommerce.php:223
+msgid "Read More"
+msgstr "Læs mere"
+
+#: functions/woocommerce.php:153 functions/woocommerce.php:213
+msgid "Add to cart"
+msgstr "Tilføj til kurv"
+
+#: woocommerce/cart/cart-empty.php:14
+msgid "Your cart is currently empty."
+msgstr "Ingen produkter i kurven"
 
 #: woocommerce/cart/cart.php:126
 msgid "Update Cart"
@@ -3951,7 +3784,3 @@ msgstr "opdater kurv"
 #: woocommerce/checkout/cart-errors.php:20
 msgid "&larr; Return To Cart"
 msgstr "&larr; Return To Kurv"
-
-#: woocommerce/checkout/review-order.php:177
-msgid "I have read and accept the"
-msgstr "Jeg acceptere handelsbetingelserne"

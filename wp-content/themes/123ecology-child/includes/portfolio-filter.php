@@ -8,9 +8,9 @@
                             <ul id="filters" class="option-set clearfix" data-option-key="filter">
                                 <li><a href="#filter" data-option-value="*" title="<?php _e( 'All Categories', GETTEXT_DOMAIN_CHILD);?>" class="selected"><?php _e( 'All Categories', GETTEXT_DOMAIN_CHILD);?></a></li>
             					<?php if($filter){?>
-                                    <?php wp_list_categories(array('title_li' => '', 'taxonomy' => 'portfolio_category', 'include' => $filter_id, 'walker' => new portfolio_filter_walker())); ?>
+                                    <?php wp_list_categories(array('title_li' => '', 'taxonomy' => 'portfolio_category', 'include' => $filter_id, 'walker' => new portfolio_filter_walker_child())); ?>
             				    <?php }else{?>
-                                    <?php wp_list_categories(array('title_li' => '', 'taxonomy' => 'portfolio_category', 'walker' => new portfolio_filter_walker())); ?>
+                                    <?php wp_list_categories(array('title_li' => '', 'taxonomy' => 'portfolio_category', 'walker' => new portfolio_filter_walker_child())); ?>
                                 <?php }?>
                             </ul>
                         </div>

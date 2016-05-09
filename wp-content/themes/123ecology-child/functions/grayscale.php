@@ -24,13 +24,13 @@
 */
 
 // provide a new function to declare grayscaled images
-function grayscale_add_image_size( $name, $width = 0, $height = 0, $crop = false, $grayscale = true ) {
+function grayscale_add_image_size_child( $name, $width = 0, $height = 0, $crop = false, $grayscale = true ) {
 	global $_wp_additional_image_sizes;
 	$_wp_additional_image_sizes[$name] = array( 'width' => absint( $width ), 'height' => absint( $height ), 'crop' => (bool) $crop, 'grayscale' => (bool) $grayscale );
 }
 
 // actualy create the black and white image
-function grayscale_make_grayscale_image($resized_file){
+function grayscale_make_grayscale_image_child($resized_file){
     $image = wp_load_image( $resized_file );
     if ( !is_resource( $image ) )
 	    return new WP_Error( 'error_loading_image', $image, $resized_file );
@@ -77,8 +77,8 @@ function grayscale_make_grayscale_image($resized_file){
 }
 
 // hook to call the image generation function if needed
-add_filter('wp_generate_attachment_metadata', 'grayscale_check_grayscale_image', 10, 2);
-function grayscale_check_grayscale_image($metadata, $attachment_id){
+add_filter('wp_generate_attachment_metadata', 'grayscale_check_grayscale_image_child', 10, 2);
+function grayscale_check_grayscale_image_child($metadata, $attachment_id){
     global $_wp_additional_image_sizes;
     $attachment = get_post( $attachment_id );
     if ( preg_match('!image!', get_post_mime_type( $attachment )) ) {
@@ -86,7 +86,7 @@ function grayscale_check_grayscale_image($metadata, $attachment_id){
             if(isset($_wp_additional_image_sizes[$size]['grayscale']) && $_wp_additional_image_sizes[$size]['grayscale']) {
                 $file = pathinfo(get_attached_file($attachment_id));
                 $metadata['sizes'][$size.'-gray'] = $metadata['sizes'][$size];
-                $metadata['sizes'][$size.'-gray']['file'] = _wp_relative_upload_path(grayscale_make_grayscale_image($file['dirname'].'/'.$size_data['file']));
+                $metadata['sizes'][$size.'-gray']['file'] = _wp_relative_upload_path(grayscale_make_grayscale_image_child($file['dirname'].'/'.$size_data['file']));
             }
         }
     }

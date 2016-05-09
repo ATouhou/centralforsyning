@@ -1,5 +1,5 @@
 <?php
-function the_breadcrumb() {
+function the_breadcrumb_child() {
     
 //OptionTree Stuff
 if ( function_exists( 'get_option_tree') ) {

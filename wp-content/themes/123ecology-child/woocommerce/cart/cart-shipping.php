@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 <tr class="shipping">
 	<th><?php
 		if ( $show_package_details ) {
-			printf( __( 'Shipping #%d', GETTEXT_DOMAIN_CHILD ), $index + 1 );
+			printf( __( 'Shipping #%d', GETTEXT_DOMAIN ), $index + 1 );
 		} else {
-			_e( 'Shipping and Handling', GETTEXT_DOMAIN_CHILD );
+			_e( 'Shipping and Handling', GETTEXT_DOMAIN );
 		}
 	?></th>
 	<td>
@@ -52,11 +52,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			<?php if ( is_cart() ) : ?>
 
-				<p><?php _e( 'No shipping methods were found; please recalculate your shipping or continue to checkout and enter your full address to see if there is shipping available to your location.', GETTEXT_DOMAIN_CHILD ); ?></p>
+				<p><?php _e( 'No shipping methods were found; please recalculate your shipping or continue to checkout and enter your full address to see if there is shipping available to your location.', GETTEXT_DOMAIN ); ?></p>
 
 			<?php else : ?>
 
-				<p><?php _e( 'Please fill in your details to see available shipping methods.', GETTEXT_DOMAIN_CHILD ); ?></p>
+				<p><?php _e( 'Please fill in your details to see available shipping methods.', GETTEXT_DOMAIN ); ?></p>
 
 			<?php endif; ?>
 
@@ -66,7 +66,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 				<?php echo apply_filters( 'woocommerce_cart_no_shipping_available_html',
 					'<div class="woocommerce-error"><p>' .
-					sprintf( __( 'Sorry, shipping is unavailable %s.', GETTEXT_DOMAIN_CHILD ) . ' ' . __( 'If you require assistance or wish to make alternate arrangements please contact us.', GETTEXT_DOMAIN_CHILD ), WC()->countries->shipping_to_prefix() . ' ' . WC()->countries->countries[ WC()->customer->get_shipping_country() ] ) .
+					sprintf( __( 'Sorry, shipping is unavailable %s.', GETTEXT_DOMAIN ) . ' ' . __( 'If you require assistance or wish to make alternate arrangements please contact us.', GETTEXT_DOMAIN ), WC()->countries->shipping_to_prefix() . ' ' . WC()->countries->countries[ WC()->customer->get_shipping_country() ] ) .
 					'</p></div>'
 				); ?>
 
@@ -74,7 +74,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 				<?php echo apply_filters( 'woocommerce_no_shipping_available_html',
 					'<p>' .
-					sprintf( __( 'Sorry, shipping is unavailable %s.', GETTEXT_DOMAIN_CHILD ) . ' ' . __( 'If you require assistance or wish to make alternate arrangements please contact us.', GETTEXT_DOMAIN_CHILD ), WC()->countries->shipping_to_prefix() . ' ' . WC()->countries->countries[ WC()->customer->get_shipping_country() ] ) .
+					sprintf( __( 'Sorry, shipping is unavailable %s.', GETTEXT_DOMAIN ) . ' ' . __( 'If you require assistance or wish to make alternate arrangements please contact us.', GETTEXT_DOMAIN ), WC()->countries->shipping_to_prefix() . ' ' . WC()->countries->countries[ WC()->customer->get_shipping_country() ] ) .
 					'</p>'
 				); ?>
 
@@ -90,7 +90,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 					}
 				}
 
-				echo '<p class="woocommerce-shipping-contents"><small>' . __( 'Shipping', GETTEXT_DOMAIN_CHILD ) . ': ' . implode( ', ', $product_names ) . '</small></p>';
+				echo '<p class="woocommerce-shipping-contents"><small>' . __( 'Shipping', GETTEXT_DOMAIN ) . ': ' . implode( ', ', $product_names ) . '</small></p>';
 			?>
 		<?php endif; ?>
 	</td>

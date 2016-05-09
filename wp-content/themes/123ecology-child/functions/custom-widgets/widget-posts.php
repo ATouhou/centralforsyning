@@ -13,16 +13,16 @@
 
 
 // add function to widgets_init that'll load our widget.
-add_action( 'widgets_init', 'posts_widget' );
+add_action( 'widgets_init', 'posts_widget_child' );
 
 
 // register widget.
-function posts_widget() {
+function posts_widget_child() {
 	register_widget( 'Posts_Widget' );
 }
 
 // widget class.
-class posts_widget extends WP_Widget {
+class posts_widget_child extends WP_Widget {
 
 
 /* widget setup
