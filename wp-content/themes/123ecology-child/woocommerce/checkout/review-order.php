@@ -15,20 +15,20 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<table class="shop_table">
 		<thead>
 			<tr>
-				<th class="product-name"><?php _e( 'Product', GETTEXT_DOMAIN ); ?></th>
-				<th class="product-total"><?php _e( 'Total', GETTEXT_DOMAIN ); ?></th>
+				<th class="product-name"><?php _e( 'Product', GETTEXT_DOMAIN_CHILD ); ?></th>
+				<th class="product-total"><?php _e( 'Total', GETTEXT_DOMAIN_CHILD ); ?></th>
 			</tr>
 		</thead>
 		<tfoot>
 
 			<tr class="cart-subtotal">
-				<th><?php _e( 'Cart Subtotal', GETTEXT_DOMAIN ); ?></th>
+				<th><?php _e( 'Cart Subtotal', GETTEXT_DOMAIN_CHILD ); ?></th>
 				<td><?php wc_cart_totals_subtotal_html(); ?></td>
 			</tr>
 
 			<?php foreach ( WC()->cart->get_coupons( 'cart' ) as $code => $coupon ) : ?>
 				<tr class="cart-discount coupon-<?php echo esc_attr( $code ); ?>">
-					<th><?php _e( 'Coupon:', GETTEXT_DOMAIN ); ?> <?php echo esc_html( $code ); ?></th>
+					<th><?php _e( 'Coupon:', GETTEXT_DOMAIN_CHILD ); ?> <?php echo esc_html( $code ); ?></th>
 					<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 				</tr>
 			<?php endforeach; ?>
@@ -68,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			<?php foreach ( WC()->cart->get_coupons( 'order' ) as $code => $coupon ) : ?>
 				<tr class="order-discount coupon-<?php echo esc_attr( $code ); ?>">
-					<th><?php _e( 'Coupon:', GETTEXT_DOMAIN ); ?> <?php echo esc_html( $code ); ?></th>
+					<th><?php _e( 'Coupon:', GETTEXT_DOMAIN_CHILD ); ?> <?php echo esc_html( $code ); ?></th>
 					<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 				</tr>
 			<?php endforeach; ?>
@@ -76,7 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 			<tr class="order-total">
-				<th><?php _e( 'Order Total', GETTEXT_DOMAIN ); ?></th>
+				<th><?php _e( 'Order Total', GETTEXT_DOMAIN_CHILD ); ?></th>
 				<td><?php wc_cart_totals_order_total_html(); ?></td>
 			</tr>
 
@@ -147,9 +147,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				} else {
 
 					if ( ! WC()->customer->get_country() )
-						echo '<p>' . __( 'Please fill in your details above to see available payment methods.', GETTEXT_DOMAIN ) . '</p>';
+						echo '<p>' . __( 'Please fill in your details above to see available payment methods.', GETTEXT_DOMAIN_CHILD ) . '</p>';
 					else
-						echo '<p>' . __( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', GETTEXT_DOMAIN ) . '</p>';
+						echo '<p>' . __( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', GETTEXT_DOMAIN_CHILD ) . '</p>';
 
 				}
 			?>
@@ -158,14 +158,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		<div class="form-row place-order">
 
-			<noscript><?php _e( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so.', GETTEXT_DOMAIN ); ?><br/><input type="submit" class="btn btn-normal btn-primary" name="woocommerce_checkout_update_totals" value="<?php _e( 'Update totals', GETTEXT_DOMAIN ); ?>" /></noscript>
+			<noscript><?php _e( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so.', GETTEXT_DOMAIN_CHILD ); ?><br/><input type="submit" class="btn btn-normal btn-primary" name="woocommerce_checkout_update_totals" value="<?php _e( 'Update totals', GETTEXT_DOMAIN_CHILD ); ?>" /></noscript>
 
 			<?php wp_nonce_field( 'woocommerce-process_checkout' ); ?>
 
 			<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
 			<?php
-			$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Place order', GETTEXT_DOMAIN ) );
+			$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Place order', GETTEXT_DOMAIN_CHILD ) );
 
 			echo apply_filters( 'woocommerce_order_button_html', '<input type="submit" class="button1 btn btn-normal btn-primary alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' );
 			?>
@@ -174,7 +174,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				$terms_is_checked = apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) );
 				?>
 				<p class="form-row terms">
-					<label for="terms" class="checkbox"><?php _e( 'I have read and accept the', GETTEXT_DOMAIN ); ?> <a href="<?php echo esc_url( get_permalink(wc_get_page_id('terms')) ); ?>" target="_blank"><?php _e( 'terms &amp; conditions', GETTEXT_DOMAIN ); ?></a></label>
+					<label for="terms" class="checkbox"><?php _e( 'I have read and accept the', GETTEXT_DOMAIN_CHILD ); ?> <a href="<?php echo esc_url( get_permalink(wc_get_page_id('terms')) ); ?>" target="_blank"><?php _e( 'terms &amp; conditions', GETTEXT_DOMAIN_CHILD ); ?></a></label>
 					<input type="checkbox" class="input-checkbox" name="terms" <?php checked( $terms_is_checked, true ); ?> id="terms" />
 				</p>
 			<?php } ?>

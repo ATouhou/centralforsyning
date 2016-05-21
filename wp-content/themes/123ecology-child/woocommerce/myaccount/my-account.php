@@ -16,12 +16,12 @@ wc_print_notices(); ?>
 <p class="myaccount_user">
 	<?php
 	printf(
-		__( 'Hello <strong>%1$s</strong> (not %1$s? <a href="%2$s">Sign out</a>).', GETTEXT_DOMAIN ) . ' ',
+		__( 'Hello <strong>%1$s</strong> (not %1$s? <a href="%2$s">Sign out</a>).', GETTEXT_DOMAIN_CHILD ) . ' ',
 		$current_user->display_name,
 		wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) )
 	);
 
-	printf( __( 'From your account dashboard you can view your recent orders, manage your shipping and billing addresses and <a href="%s">edit your password and account details</a>.', GETTEXT_DOMAIN ),
+	printf( __( 'From your account dashboard you can view your recent orders, manage your shipping and billing addresses and <a href="%s">edit your password and account details</a>.', GETTEXT_DOMAIN_CHILD ),
 		wc_customer_edit_account_url()
 	);
 	?>

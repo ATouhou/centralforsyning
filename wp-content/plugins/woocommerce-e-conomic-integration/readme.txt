@@ -6,9 +6,9 @@ Tags:              WooCommerce, Order, E-Commerce, Accounting, Bookkeeping, invo
 Author URI:        www.wooconomics.com
 Author:            wooconomics
 Requires at least: 3.8
-Tested up to:      4.4.2
-Stable tag:        1.9.9.16
-Version:           1.9.9.16
+Tested up to:      4.5
+Stable tag:        1.9.10
+Version:           1.9.10
 
 WooCommerce e-conomic integration synchronizes your WooCommerce Orders, Customers and Products to your e-conomic account.
 
@@ -113,6 +113,16 @@ Read the FAQ or business hours mail support except weekends and holidays.
 http://wooconomics.com/category/faq/
 
 == Changelog ==
+
+= 1.9.10 =
+* Improved performance.
+* Added AppIdentifier header compliance with e-conomic standard.
+
+= 1.9.9.18 =
+* bug fixes for e-conomic old ledger layout.
+
+= 1.9.9.17 =
+* Compatibility for WooCommerce Subscription is added.
 
 = 1.9.9.16 =
 * Added option to specify when an order sync should happen from WooCommerce to e-conomic, Based on an Event or Based on Order status.

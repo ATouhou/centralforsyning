@@ -408,9 +408,9 @@ class WCE_API{
         $this->localkeydata = get_option('local_key_economic_plugin');
         $this->api_url = dirname(__FILE__)."/EconomicWebservice.asmx.xml";
 		//$this->api_url = 'https://api.e-conomic.com/secure/api1/EconomicWebservice.asmx?WSDL';
-        $this->license_key = $options['license-key'];
+        $this->license_key = isset($options['license-key'])? $options['license-key'] : '';
 		
-		$this->token = $options['token'];
+		$this->token = isset($options['token'])? $options['token'] : '';
 		$this->appToken = '15MjebGLGLPv4_I90Wy8EqzcXwThPmrY5iRNlG0H3_w1';
 		$this->product_sync = isset($options['product-sync'])? $options['product-sync'] : '';
 		$this->other_checkout = isset($options['other-checkout'])? $options['other-checkout'] : '';
@@ -435,7 +435,17 @@ class WCE_API{
      */
     public function woo_economic_client(){
 	
-	  $client = new SoapClient($this->api_url, array("trace" => 1, "exceptions" => 1));
+	  //Added for 1.9.10 AppIdentifier change
+	  $opts = array(
+		  'http' => array(
+			'header' => "X-EconomicAppIdentifier:  WooCommerce e-conomic Integration/1.9.10 (http://wooconomics.com/; support@wooconomics.com) PHP-SOAP/1.0\r\n"
+		  )
+	  );
+	  $context = stream_context_create($opts);
+	  
+	  $client = new SoapClient($this->api_url, array("trace" => 1, "exceptions" => 1, 'stream_context' => $context));
+	  
+	  //Added for 1.9.10 AppIdentifier change
 	
 	  //logthis("woo_economic_client loaded token: " . $this->token . " appToken: " . $this->appToken);
 	  if (!$this->token || !$this->appToken)
@@ -2174,7 +2184,7 @@ class WCE_API{
      * @return array log
      */
 	 
-	 public function sync_products_ew($productNo = NULL){
+	public function sync_products_ew($productNo = NULL){
 		update_option('woo_save_object_to_economic', false);
 		global $wpdb;
 		$client = $this->woo_economic_client();
@@ -2185,20 +2195,39 @@ class WCE_API{
 			array_push($sync_log, array('status' => __('fail', 'woocommerce-e-conomic-integration'), 'msg' => __('Could not create e-conomic client, please try again later!', 'woocommerce-e-conomic-integration') ));
 			return $sync_log;
 		}
-		
+		$product_handles = array();
 		//Added for version 1.9.9.12
 		if($productNo == NULL){
 		
 			$products = $client->Product_GetAll()->Product_GetAllResult;
+			if($products && $products->ProductHandle)
+			{
+				///split the handles by 1000 to reduce the API query load
+				$arrProductHandle=array_chunk($products->ProductHandle, 1000);
+				try
+				{
+					foreach($arrProductHandle as $indSplit=>$ProductHandles)
+					{
+						$tmpProduct=$client->Product_GetDataArray(array('entityHandles' => $ProductHandles))->Product_GetDataArrayResult;
+						foreach($tmpProduct->ProductData as $product)
+						{
+							$product_handles[$product->Number] = $product;
+						}
+					}
+				}
+				catch(Exception $e)
+				{
+					die($e);
+				}
+			}
 			//logthis($products);
 			
-			$product_handles = array();
+			/*$product_handles = array();
 			
 			foreach($products->ProductHandle as $product){
 				$product_handles[$product->Number] = $client->Product_GetProductGroup(array('productHandle' => $product))->Product_GetProductGroupResult;
-			}
+			}*/
 		}else{
-			$product_handles = array();
 			logthis('Finding product by number: '.$productNo);
 			$product = $client->Product_FindByNumber(array(
 				'number' => $productNo
@@ -2210,15 +2239,14 @@ class WCE_API{
 			$product_handles[$productNo] = $client->Product_GetProductGroup(array('productHandle' => $product))->Product_GetProductGroupResult;
 		}
 		//Added for version 1.9.9.12
-
-		foreach($product_handles as $product_number => $group){
+                                            if($product_handles)
+		foreach($product_handles as $product_number => $objProduct){
+                                                $group=$objProduct->ProductGroupHandle;
 			//Added for version 1.9.9.12 and updated on 1.9.9.14
 			$sku = str_replace($this->product_offset, '', $product_number);
 			//Added for version 1.9.9.12 and updated on 1.9.9.14
 			
-			$product_name = $client->Product_GetName(array(
-				'productHandle' => array('Number' => $product_number ),
-			))->Product_GetNameResult;
+			$product_name = $objProduct->Name;
 			
 			
 			$product_post_ids = $wpdb->get_results("SELECT post_id FROM ".$wpdb->prefix."postmeta WHERE meta_key = '_sku' AND meta_value = '".$sku."'", OBJECT_K );
@@ -2234,9 +2262,7 @@ class WCE_API{
 				$product_id = NULL;
 			}
 			
-			$product_data = $client->Product_GetData(array(
-				'entityHandle' => array('Number' => $product_number ),
-			))->Product_GetDataResult;	
+			$product_data = $objProduct;
 			
 			//logthis($product_data);
 			//Added for version 1.9.9.12
@@ -2261,7 +2287,7 @@ class WCE_API{
 						}
 					}
 					update_post_meta( $post_id, '_sku', $sku );
-					update_post_meta( $post_id, '_price', (int) $product_data->SalesPrice );
+					update_post_meta( $post_id, '_regular_price', (string) $product_data->SalesPrice );
 					update_post_meta( $post_id, 'productGroup', $group->Number );
 					//update_post_meta( $post_id, '_sale_price', (int) $product_data->SalesPrice );
 					if($product->managing_stock()){
@@ -2314,7 +2340,7 @@ class WCE_API{
 				}
 				$product = new WC_Product($post_id);
 				update_post_meta( $post_id, '_sku', $sku );
-				update_post_meta( $post_id, '_price', (string) $product_data->SalesPrice );
+				update_post_meta( $post_id, '_regular_price', (string) $product_data->SalesPrice );
 				update_post_meta( $post_id, 'productGroup', $group->Number );
 				//update_post_meta( $post_id, '_sale_price', (int) $product_data->SalesPrice );
 				if((int)$product_data->InStock > 0){

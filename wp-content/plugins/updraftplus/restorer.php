@@ -35,6 +35,9 @@ class Updraft_Restorer extends WP_Upgrader {
 	
 	private $restore_this_table = array();
 
+	private $line = 0;
+	private $statements_run = 0;
+	
 	// Constants for use with the move_backup_in method
 	// These can't be arbitrarily changed; there is legacy code doing bitwise operations and numerical comparisons, and possibly legacy code still using the values directly.
 	const MOVEIN_OVERWRITE_NO_BACKUP = 0;
@@ -94,7 +97,7 @@ class Updraft_Restorer extends WP_Upgrader {
 		$this->strings['moving_backup'] = __('Moving unpacked backup into place...','updraftplus');
 		$this->strings['restore_database'] = __('Restoring the database (on a large site this can take a long time - if it times out (which can happen if your web hosting company has configured your hosting to limit resources) then you should use a different method, such as phpMyAdmin)...','updraftplus');
 		$this->strings['cleaning_up'] = __('Cleaning up rubbish...','updraftplus');
-		$this->strings['old_move_failed'] = __('Could not move old files out of the way.','updraftplus').' '.__('You should check the file permissions in your WordPress installation', 'updraftplus');
+		$this->strings['old_move_failed'] = __('Could not move old files out of the way.','updraftplus').' '.__('You should check the file ownerships and permissions in your WordPress installation', 'updraftplus');
 		$this->strings['old_delete_failed'] = __('Could not delete old directory.','updraftplus');
 		$this->strings['new_move_failed'] = __('Could not move new files into place. Check your wp-content/upgrade folder.','updraftplus');
 		$this->strings['move_failed'] = __('Could not move the files into place. Check your file permissions.','updraftplus');
@@ -914,17 +917,14 @@ class Updraft_Restorer extends WP_Upgrader {
 					'expected_oldhome' => $this->old_home,
 					'expected_oldcontent' => $this->old_content
 				), $import_table_prefix);
+				
+				# N.B. flush_rewrite_rules() causes $wp_rewrite to become up to date again - important for the no_mod_rewrite() call
 				$this->flush_rewrite_rules();
 
-				# N.B. flush_rewrite_rules() causes $wp_rewrite to become up to date again
-				if (function_exists('apache_get_modules')) {
-					global $wp_rewrite;
-					$mods = apache_get_modules();
-					if (($wp_rewrite->using_mod_rewrite_permalinks() && in_array('core', $mods) || in_array('http_core', $mods)) && !in_array('mod_rewrite', $mods)) {
-						$updraftplus->log("Using Apache, with permalinks (".get_option('permalink_structure').") but no mod_rewrite enabled - enable it to make your permalinks work");
-						$warn_no_rewrite = sprintf(__('You are using the %s webserver, but do not seem to have the %s module loaded.', 'updraftplus'), 'Apache', 'mod_rewrite').' '.sprintf(__('You should enable %s to make your pretty permalinks (e.g. %s) work', 'updraftplus'), 'mod_rewrite', 'http://example.com/my-page/');
-						echo '<p><strong>'.htmlspecialchars($warn_no_rewrite).'</strong></p>';
-					}
+				if ($updraftplus->mod_rewrite_unavailable()) {
+					$updraftplus->log("Using Apache, with permalinks (".get_option('permalink_structure').") but no mod_rewrite enabled - enable it to make your permalinks work");
+					$warn_no_rewrite = sprintf(__('You are using the %s webserver, but do not seem to have the %s module loaded.', 'updraftplus'), 'Apache', 'mod_rewrite').' '.sprintf(__('You should enable %s to make any pretty permalinks (e.g. %s) work', 'updraftplus'), 'mod_rewrite', 'http://example.com/my-page/');
+					echo '<p><strong>'.htmlspecialchars($warn_no_rewrite).'</strong></p>';
 				}
 
 			break;
@@ -1755,9 +1755,9 @@ ENDHERE;
 			} elseif (preg_match('/^use /i', $sql_line)) {
 				# WPB2D produces these, as do some phpMyAdmin dumps
 				$sql_type = 7;
-			} elseif (preg_match('#/\*\!40\d+ SET NAMES (\S+)#', $sql_line, $smatches)) {
+			} elseif (preg_match('#/\*\!40\d+ SET NAMES (.*)\*\/#', $sql_line, $smatches)) {
 				$sql_type = 8;
-				$this->set_names = $smatches[1];
+				$this->set_names = rtrim($smatches[1]);
 			} else {
 				# Prevent the previous value of $sql_type being retained for an unknown type
 				$sql_type = 0;

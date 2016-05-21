@@ -4,7 +4,7 @@
  * Plugin URI: http://plugins.svn.wordpress.org/woocommerce-e-conomic-integration/
  * Description: An e-conomic API Interface. Synchronizes products, orders, Customers and more to e-conomic.
  * Also fetches inventory from e-conomic and updates WooCommerce
- * Version: 1.9.9.16
+ * Version: 1.9.10
  * Author: wooconomics
  * Text Domain: woocommerce-e-conomic-integration
  * Author URI: www.wooconomics.com
@@ -50,6 +50,14 @@ if ( ! function_exists( 'logthis' ) ) {
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
     if ( ! class_exists( 'WC_Economic' ) ) {
+		
+		//WooConomis developer tools
+		add_action( 'wp_ajax_deletelog', 'economic_delete_log' );
+		function economic_delete_log(){
+			$filePath = dirname(__FILE__).'/logfile.log';
+			unlink($filePath);
+			logthis('Log file removed by economic_delete_log!');
+		}
 		
 		
 		//Add e-conomic payment class
@@ -436,8 +444,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		}
 		add_action( 'save_post', 'economic_productGroup_save_meta_box_data', 1 );
 
-		
-
         function economic_send_support_mail_callback() {
 
             //$message = 'Kontakta ' . $_POST['name'] . ' <br>på ' . $_POST['company'] . ' <br>antingen på ' .$_POST['telephone'] .' <br>eller ' . $_POST['email'] . ' <br>gällande: <br>' . $_POST['subject'];
@@ -459,7 +465,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				$order_options = get_option('woocommerce_economic_order_settings');
 				$message .= '<tr><td align="right" colspan="1"><strong>Allmänna inställningar</strong></td></tr>';
 				if(array_key_exists('token', $options)){
-					$message .= '<tr><td align="right">Token ID: </td><td align="left">'.$options['token'].'</td></tr>';
+					//$message .= '<tr><td align="right">Token ID: </td><td align="left">'.$options['token'].'</td></tr>';
 				}
 				if(array_key_exists('license-key', $options)){
 					$message .= '<tr><td align="right">License Nyckel: </td><td align="left">'.$options['license-key'].'</td></tr>';
@@ -649,22 +655,28 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			}
 			logthis("woo_save_object_to_economic called by post_id: " . $post_id . " posttype: " . $post->post_type);
 			if ( !$post ) return $post_id;		  
-			if ( is_int( wp_is_post_revision( $post_id ) ) ) {
+			if ( wp_is_post_revision( $post_id )) {
 				logthis('woo_save_object_to_economic exit on wp_is_post_revision'); 
 				return;
 			}
 			
-			if( is_int( wp_is_post_autosave( $post_id ) ) ) {
+			if( wp_is_post_autosave( $post_id ) || $post->post_status == 'auto-draft' ) {
 				logthis('woo_save_object_to_economic exit on wp_is_post_autosave'); 
 				return;
 			}
+			
+			if($post->post_status == 'trash' ) {
+				logthis('woo_save_object_to_economic exit on post status trash.'); 
+				return;
+			}
+
 			if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
 				logthis('woo_save_object_to_economic exit on wp_is_post_autosave'); 
 				return $post_id;
 			}
 			
 			
-			if($post->post_type == 'shop_order' && $post->post_status != 'auto-draft' && $post->post_status != 'wc-cancelled'){
+			if($post->post_type == 'shop_order' && $post->post_status != 'wc-cancelled'){
 				$order = new WC_Order($post_id);
 				$options = get_option('woocommerce_economic_general_settings');
 				if(($options['economic-checkout'] == 'invoice' || $options['other-checkout'] == 'invoice') && $wpdb->query ("SELECT * FROM wce_orders WHERE order_id=".$post_id." AND synced=1")){
@@ -694,15 +706,28 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				return;
 			}
 			
+			if($post->post_type == 'product'){
+				logthis("woo_save_object_to_economic calling woo_save_".$post->post_type."_to_economic");
+				do_action('woo_save_'.$post->post_type.'_to_economic', $post_id, $post);
+				
+				//Added for 1.9.9.17 update by Alvin
+				$args = array(
+					'post_parent' => $post_id,
+					'post_type'   => 'product_variation', 
+					'numberposts' => -1,
+					'post_status' => 'publish' 
+				); 
+				$children_array = get_children( $args );
+				foreach ($children_array as $variation_product) {
+					do_action('woo_save_'.$post->post_type.'_to_economic', $variation_product->ID, $variation_product);
+				}
+				
+				return;
+			}
+			
 			
 			if ($post->post_type != 'product' || $post->post_status != 'publish') {
 				logthis('woo_save_object_to_economic exit on post_type: '.$post->post_type.' and post_status: '.$post->post_status); 
-				return;
-			}
-		  
-			if($post->post_type == 'product' || $post->post_type == 'product_variation'){
-				logthis("woo_save_object_to_economic calling woo_save_".$post->post_type."_to_economic");
-				do_action('woo_save_'.$post->post_type.'_to_economic', $post_id, $post);
 				return;
 			}
 		  
@@ -838,6 +863,124 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		
 		//Save customers to economic from woocommerce ends.
 		
+		//Add action to schedules payment for subscriptions
+		add_action('woocommerce_scheduled_subscription_payment_economic-invoice', 'scheduled_subscription_payment_economic', 10, 2);
+		function scheduled_subscription_payment_economic($amount_to_charge, $order){
+			logthis("scheduled_subscription_payment_economic run for order: ".$order->id);
+			if(woo_save_customer_to_economic($order->id, NULL, NULL)){
+				logthis("scheduled_subscription_payment_economic created order/invoice/draft invoice at e-conomoic!");
+			}else{
+				logthis("scheduled_subscription_payment_economic creating order/invoice/draft invoice at e-conomoic failed!");
+			}
+		}
+		
+		add_action( 'wp_ajax_capture_payment', 'economic_capture_payment' );
+		add_action( 'wp_ajax_nopriv_capture_payment', 'economic_capture_payment' );
+		function economic_capture_payment(){
+			logthis('economic_capture_payment is run by Webhook Day book or Entries Booked hook');
+			include_once("class-economic-api.php");
+			include_once("restclient.php");
+			$tono = isset($_GET['tono'])? $_GET['tono'] : '';
+			$fromno = isset($_GET['fromno'])? $_GET['fromno'] : '';
+			$daybookno = isset($_GET['daybookno'])? $_GET['daybookno'] : '';
+			$wce_api = new WCE_API();
+			
+			$client = $wce_api->woo_economic_client();
+			
+			$api = new RestClient(array(
+				'base_url' => "https://restapi.e-conomic.com", 
+				'format' => "json", 
+				'headers' => array('X-AppSecretToken' => $wce_api->appToken, 'X-AgreementGrantToken' => $wce_api->token, 'Content-Type' => 'application/json'), 
+			));
+			
+			$entry = json_decode($api->get("entries/".$tono)->response);
+			$voucherNo = $entry->voucherNumber;
+			$invoiceNo = json_decode($api->get("vouchers/booked/".$voucherNo."/".$entry->date)->response);
+			
+			$InvoiceNumber = $invoiceNo->lines[1]->invoiceNumber;
+			
+			if(empty($InvoiceNumber)) {
+				try{
+					//logthis("Geting Cashbook entry!");
+					//$entryTypes = array('DebtorPayment', 'DebtorInvoice', 'CreditorInvoice', 'CreditorPayment', 'JournalEntry', 'Reminder', 'OpeningEntry', 'TransferredOpeningEntry', 'SystemEntry', 'ManualDebtorInvoice');
+					$DebtorEntry_FindBySerialNumber  = $client->DebtorEntry_FindBySerialNumber   (array(
+						'from' => $fromno,
+						'to' => $tono,
+					))->DebtorEntry_FindBySerialNumberResult;
+					//logthis('DebtorEntry_FindBySerialNumber  :');
+					//logthis($DebtorEntry_FindBySerialNumber  );
+					
+					if(is_array($DebtorEntry_FindBySerialNumber->DebtorEntryHandle)){
+						$DebtorEntryHandle = $DebtorEntry_FindBySerialNumber->DebtorEntryHandle[0];
+					}else{
+						$DebtorEntryHandle = $DebtorEntry_FindBySerialNumber->DebtorEntryHandle;
+					}
+					
+					$DebtorEntry_GetData = $client->DebtorEntry_GetData(array(
+						'entityHandle' => $DebtorEntryHandle
+					))->DebtorEntry_GetDataResult;
+					
+					//logthis('DebtorEntry_GetData: ');
+					//logthis($DebtorEntry_GetData);
+					
+					$InvoiceNumber = $DebtorEntry_GetData->InvoiceNumber;
+					//logthis("InvoiceNo: ".$InvoiceNumber);
+				}
+				catch (Exception $exception) {
+					$wce_api->debug_client($client);
+					logthis($exception->getMessage);
+				}
+			}
+			
+			try{
+				$invoiceHandle = $client->Invoice_FindByNumber(array(
+					'number' => $InvoiceNumber
+				))->Invoice_FindByNumberResult;
+				
+				$invoiceOtherReference = $client->Invoice_GetOtherReference(array(
+					'invoiceHandle' => $invoiceHandle
+				))->Invoice_GetOtherReferenceResult;
+				
+				logthis("Invoice other reference: ".$invoiceOtherReference);
+			}
+			catch (Exception $exception) {
+				$wce_api->debug_client($client);
+				logthis($exception->getMessage);
+			}
+			
+			//Condition for checking if the booked entry is a payment entry in the next release 1.9.9.18 if
+			//if($invoiceOtherReference)?
+			
+			if($wce_api->order_reference_prefix != ''){
+				$orderId = str_replace($wce_api->order_reference_prefix,"", $invoiceOtherReference);
+			}else{
+				$orderId = $invoiceOtherReference;
+			}
+			logthis("orderID: ");
+			logthis($orderId);
+			$webhookURL = admin_url('admin-ajax.php').'?action=capture_payment&tono='.$tono.'&fromno='.$fromno;
+			if(!empty($orderId)){
+				$order = new WC_Order($orderId);
+				if($order->payment_method == 'economic-invoice'){
+					$order->add_order_note( 'Payment for e-conomic invoice "'.$InvoiceNumber.'" is recorded on entry No: '.$tono );
+				}
+				//Should verify if the payment is already paid before marking it as paid.
+				//Payment already marked as processing is handled correctly by payment_completed 
+				$order->payment_complete();
+				$wooSubscription = 'woocommerce-subscriptions/woocommerce-subscriptions.php';
+				if(is_plugin_active($wooSubscription)){
+					if(WC_Subscriptions_Order::order_contains_subscription( $orderId )){
+						WC_Subscriptions_Manager::process_subscription_payments_on_order( $order );
+					}
+				}
+				logthis('Capturing payment successful for WC order ID: '.$$orderId.', e-conomic Invoice no: '.$InvoiceNumber.'!');
+				echo 'If you want to run the webhook manually again for this entry then use this URL <a href="'.$webhookURL.'">'.$webhookURL.'</a>!';
+			}else{
+				logthis('Capturing payment failed for serial: '.$fromno.' - '.$tono);
+				echo 'Somthing went wrong, please visit this URL <a href="'.$webhookURL.'">'.$webhookURL.'</a> to run the webhook again manually.';
+			}
+		}
+		
 		/*
 		 * Create new customer at economic with minimial required data.
 		 */
@@ -849,6 +992,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			try{
 				global $wpdb;
 				$options = get_option('woocommerce_economic_general_settings');
+				$order = new WC_Order($order_id);
 				$sync = array( 'sync' => true, 'type' => '');
 				if($old_status != NULL && $new_status != NULL){
 					$sync['type'] = 'status';
@@ -856,6 +1000,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 					$sync['type'] = 'save';
 				}else{
 					$sync['type'] = 'event';
+					//Added to sync Subscription renewal order as event based sync.
+					$options['initiate-order'] = 'event_based';
 				}
 				if($options['initiate-order'] == 'status_based'){					
 					logthis('woo_save_customer_to_economic: Order sync initiated for the status_based option.');
@@ -876,10 +1022,13 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				
 				if($options['initiate-order'] == 'event_based'){
 					logthis('woo_save_customer_to_economic: Order sync initiated for the event_based option.');
-					if(current_filter() == 'woocommerce_checkout_order_processed' && $options['initiate-order-event'] == 'checkout_order_processed'){
+					if((current_filter() == 'woocommerce_checkout_order_processed' && $options['initiate-order-event'] == 'checkout_order_processed')){
 						logthis('woo_save_customer_to_economic: Order sync initiated by event: '.current_filter());
 					}else{
 						$sync['sync'] = false;
+					}
+					if(current_filter() == 'woocommerce_scheduled_subscription_payment_'.$order->payment_method){
+						$sync['sync'] = true;
 					}
 				}
 				
@@ -921,9 +1070,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 					$wpdb->insert ("wce_orders", array('order_id' => $order_id, 'synced' => 0), array('%d', '%d'));
 				}
 				
-				include_once("class-economic-api.php");
-				$order = new WC_Order($order_id);
-				
+				include_once("class-economic-api.php");			
 				
 				$wce = new WC_Economic();
 				$wce_api = new WCE_API();
@@ -952,19 +1099,19 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 							
 							if($options['economic-checkout'] == 'order'){
 								if($wce_api->save_order_to_economic($client, $user, $order, false)){
-									logthis("woo_save_order_to_economic order: " . $order_id . " is synced with economic as draft invoice.");
+									logthis("woo_save_order_to_economic order: " . $order_id . " is synced with economic as order.");
 								}
 								else{
-									logthis("woo_save_order_to_economic order: " . $order_id . " draft invoice sync failed, please try again after sometime!");
+									logthis("woo_save_order_to_economic order: " . $order_id . " order sync failed, please try again after sometime!");
 								}
 							}
 							
 							if($options['economic-checkout'] == 'draft invoice' || $options['economic-checkout'] == 'invoice'){
 								if($wce_api->save_invoice_to_economic($client, $user, $order, false)){
-									logthis("woo_save_invoice_to_economic order: " . $order_id . " is synced with economic as invoice.");
+									logthis("woo_save_invoice_to_economic order: " . $order_id . " is synced with economic as draft invoice.");
 								}
 								else{
-									logthis("woo_save_invoice_to_economic order: " . $order_id . " invoice sync failed, please try again after sometime!");
+									logthis("woo_save_invoice_to_economic order: " . $order_id . " draft invoice sync failed, please try again after sometime!");
 								}
 								
 								if($options['economic-checkout'] == 'invoice'){
@@ -1034,7 +1181,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				return false;
 			}
 		}
-		
 		
 		// add the action for payment completed to add note to e-conomic order/invoice about the payment type and date. 
 		add_action( 'woocommerce_payment_complete', 'woo_update_order_payment_to_economic', 10, 1 ); 
@@ -1182,8 +1328,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			update_option('woocommerce_economic_general_settings', $options);
 			//1.9.9.16 new feature
 			
-			//1.9.9.16 = 1.9997
-			update_option('economic_version', 1.9997);
+			//1.9.9.18 = 1.9999
+			update_option('economic_version', 1.9999);
 			update_option('woo_save_object_to_economic', true);
 		}
 		
@@ -1240,14 +1386,14 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				}
 				update_option('woocommerce_economic_general_settings', $options);
 			}
-			if(floatval($economic_version) < 1.9997 ){
+			if(floatval($economic_version) < 1.9999 ){
 				$options = get_option('woocommerce_economic_general_settings');
 				$options['initiate-order'] = 'event_based';
 				$options['initiate-order-event'] = 'checkout_order_processed';
 				update_option('woocommerce_economic_general_settings', $options);
 			}
-			//1.9.9.16 = 1.9997
-			update_option('economic_version', 1.9997);
+			//1.9.9.18 = 1.9999
+			update_option('economic_version', 1.9999);
 			update_option('woo_save_object_to_economic', true);
 		}
 		
@@ -1440,7 +1586,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                 }
 				
 				wp_clear_scheduled_hook('economic_product_sync_cron');
-				if($options[$args['key']] != 'disabled' && $options[$args['key']] != '' && $options[$args['key']] != 'webhook'){
+				if(isset($options[$args['key']]) && $options[$args['key']] != 'disabled' && $options[$args['key']] != '' && $options[$args['key']] != 'webhook'){
 					wp_schedule_event(time(), $options[$args['key']], 'economic_product_sync_cron');
 				}
                 ?>
@@ -1666,6 +1812,22 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
                 <span><i><?php echo $args['desc']; ?></i></span>
             <?php
             }
+			
+			/**
+             * Generates webhook URL for WooCommerce subscription
+             *
+             * @access public
+             * @param void
+             * @return webshook for handling payment capture when the invoice is booked and markeda as paid.
+             */
+            function field_woosubscription($args) {
+				echo '<b>'.admin_url('admin-ajax.php').'?action=capture_payment&tono=[TOSERIALNO]&fromno=[FROMSERIALNO]</b>';
+            ?>
+                <br /><span><i><?php echo $args['desc']; ?></i></span>
+            <?php
+            }
+			
+			
 
             /**
              * WooCommerce Loads settigns
@@ -1765,12 +1927,17 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				
 				add_settings_field( 'woocommerce-economic-scheduled-product-sync', __('Run scheduled product stock sync', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_schedule' ), $this->general_settings_key, 'product_settings', array ( 'tab_key' => $this->general_settings_key, 'key' => 'scheduled-product-sync', 'desc' => __('Run scheduled product stock sync from e-conomic to WooCommerce. Web hook option will update WooCommerce product when e-conomic product is updated.', 'woocommerce-e-conomic-integration')) );
 				
-				if($options['token'] != ''){
+				if(isset($options['token'])){
 					add_settings_field( 'woocommerce-economic-product-group', __('Product group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'product_settings', array ( 'id' => 'product-group', 'tab_key' => $this->general_settings_key, 'key' => 'product-group', 'desc' => __('e-conomic product group to which new products are added.', 'woocommerce-e-conomic-integration')) );
 					
 					add_settings_field( 'woocommerce-economic-product-prefix', __('Product prefix', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_text' ), $this->general_settings_key, 'product_settings', array ( 'id' => 'product-prefix', 'tab_key' => $this->general_settings_key, 'key' => 'product-prefix', 'desc' => __('Prefix added to the products stored to e-conomic from woocommerce', 'woocommerce-e-conomic-integration')) );
 					
 					add_settings_field( 'woocommerce-economic-customer-group', __('Customer group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'other_settings', array ( 'id' => 'customer-group', 'tab_key' => $this->general_settings_key, 'key' => 'customer-group', 'desc' => __('e-conomic customer group to which new customers are added. <br><i style="margin-left:25px; color: #F00;">MUST be selected. Sync is not possible if not selected.</i>', 'woocommerce-e-conomic-integration')) );
+					
+					$wooSubscription = 'woocommerce-subscriptions/woocommerce-subscriptions.php';
+					if(is_plugin_active($wooSubscription)){
+						add_settings_field( 'woocommerce-economic-subscription', __('WooCommerce Subscription Hook', 'woocommerce-e-conomic-integration'), array( &$this, 'field_woosubscription' ), $this->general_settings_key, 'other_settings', array ( 'id' => 'subscription', 'tab_key' => $this->general_settings_key, 'key' => 'shipping-group', 'desc' => __('Add this URL to e-conomic Web hook type "Entries booked" in new ledger layout or "Day book booked" in old ledger layout to support WooCommerce subscriptions.', 'woocommerce-e-conomic-integration')) );
+					}
 					
 					add_settings_field( 'woocommerce-economic-shipping-group', __('Shipping group', 'woocommerce-e-conomic-integration'), array( &$this, 'field_option_group' ), $this->general_settings_key, 'other_settings', array ( 'id' => 'shipping-group', 'tab_key' => $this->general_settings_key, 'key' => 'shipping-group', 'desc' => __('e-conomic product group to which shipping methods are added.', 'woocommerce-e-conomic-integration')) );
 					

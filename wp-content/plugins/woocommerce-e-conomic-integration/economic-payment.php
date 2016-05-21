@@ -23,6 +23,18 @@ function init_economic_payment() {
 			$this->method_title = __( 'e-conomic Invoice', 'woocommerce-e-conomic-integration' );
 			$this->method_description = __( 'Receive an invoice from e-conomic in no time!', 'woocommerce-e-conomic-integration' );
 			
+			//Features Supported
+			$this->supports = array(
+				'products',
+				'subscriptions',
+				'subscription_cancellation',
+				'subscription_suspension', 
+				'subscription_reactivation',	
+				'subscription_date_changes',		  
+				'subscription_payment_method_change',
+				'subscription_amount_changes',
+			);
+			
 			// Load the settings.
 			$this->init_form_fields();
 			$this->init_settings();
@@ -111,6 +123,8 @@ function init_economic_payment() {
 	
 			// Mark as on-hold (we're awaiting the cheque)
 			$order->update_status( 'on-hold', __( 'Awaiting e-conomic Invoice payment', 'woocommerce-e-conomic-integration' ) );
+			
+			$order->add_order_note( 'Pending Payment: Awaiting e-conomic Invoice payment' );
 	
 			// Reduce stock levels
 			$order->reduce_order_stock();

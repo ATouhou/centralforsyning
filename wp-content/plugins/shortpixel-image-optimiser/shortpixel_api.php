@@ -17,11 +17,12 @@ class ShortPixelAPI {
 
     private $_settings;
     private $_maxAttempts = 10;
-    private $_apiEndPoint = 'https://api.shortpixel.com/v2/reducer_dev.php';
+    private $_apiEndPoint;
 
 
     public function __construct($settings) {
         $this->_settings = $settings;
+        $this->_apiEndPoint = $this->_settings->httpProto . '://api.shortpixel.com/v2/reducer.php';
         add_action('processImageAction', array(&$this, 'processImageAction'), 10, 4);
     }
 
@@ -29,12 +30,12 @@ class ShortPixelAPI {
         $this->processImage($URLs, $PATHs, $ID, $time);
     }
 
-    public function doRequests($URLs, $Blocking, $ID) {
+    public function doRequests($URLs, $Blocking, $ID, $compressionType = false) {
         
         $requestParameters = array(
             'plugin_version' => PLUGIN_VERSION,
             'key' => $this->_settings->apiKey,
-            'lossy' => $this->_settings->compressionType,
+            'lossy' => $compressionType === false ? $this->_settings->compressionType : $compressionType,
             'cmyk2rgb' => $this->_settings->CMYKtoRGBconversion,
             'keep_exif' => ($this->_settings->keepExif ? "1" : "0"),
             'resize' => $this->_settings->resizeImages,
@@ -44,7 +45,7 @@ class ShortPixelAPI {
         );
         $arguments = array(
             'method' => 'POST',
-            'timeout' => 45,
+            'timeout' => 15,
             'redirection' => 3,
             'sslverify' => false,
             'httpversion' => '1.0',
@@ -53,13 +54,16 @@ class ShortPixelAPI {
             'body' => json_encode($requestParameters),
             'cookies' => array()
         );
-        //echo("URL:".$this->_apiEndPoint."ARGUMENTS:");var_dump($arguments);
+        //add this explicitely only for https, otherwise (for http) it slows the request
+        if($this->_settings->httpProto !== 'https') {
+            unset($arguments['sslverify']);
+        }
         $response = wp_remote_post($this->_apiEndPoint, $arguments );
-        //echo("RESPONSE:"); var_dump($response);
         
         //only if $Blocking is true analyze the response
         if ( $Blocking )
         {
+            //die(var_dump(array('URL: ' => $this->_apiEndPoint, '<br><br>REQUEST:' => $arguments, '<br><br>RESPONSE: ' => $response )));
             //there was an error, save this error inside file's SP optimization field
             if ( is_object($response) && get_class($response) == 'WP_Error' ) 
             {
@@ -80,7 +84,7 @@ class ShortPixelAPI {
                 wp_update_attachment_metadata($ID, $meta);
                 return array("response" => array("code" => $errorCode, "message" => $errorMessage ));
             }
-            
+
             return $response;//this can be an error or a good response
         }
         
@@ -97,25 +101,31 @@ class ShortPixelAPI {
     public function processImage($URLs, $PATHs, $ID = null, $startTime = 0) 
     {    
         
+        $meta = wp_get_attachment_metadata($ID);
+        
         $PATHs = self::CheckAndFixImagePaths($PATHs);//check for images to make sure they exist on disk
-        if ( $PATHs === false )
-            return array("Status" => self::STATUS_SKIP, "Message" => 'The file(s) do not exist on disk, Image ID: ' .$ID);
+        if ( $PATHs === false ) {
+            $msg = 'The file(s) do not exist on disk.';
+            $meta['ShortPixelImprovement'] = $msg;
+            wp_update_attachment_metadata($ID, $meta);
+            return array("Status" => self::STATUS_SKIP, "Message" => $msg);
+        }
         
         //tries multiple times (till timeout almost reached) to fetch images.
         if($startTime == 0) { 
             $startTime = time(); 
         }        
         $apiRetries = get_option('wp-short-pixel-api-retries');
+        
         if( time() - $startTime > MAX_EXECUTION_TIME) 
         {//keeps track of time
             if ( $apiRetries > MAX_API_RETRIES )//we tried to process this time too many times, giving up...
             {
-                $meta = wp_get_attachment_metadata($ID);
                 $meta['ShortPixelImprovement'] = 'Timed out while processing.';
                 unset($meta['ShortPixel']['WaitingProcessing']);
                 update_option('wp-short-pixel-api-retries', 0);//fai added to solve a bug?
                 wp_update_attachment_metadata($ID, $meta);
-                return array("Status" => self::STATUS_SKIP, "Message" => 'Skip this image, tries the next one.');                
+                return array("Status" => self::STATUS_SKIP, "Message" => 'Image ID: ' . $ID .' Skip this image, try the next one.');                
             }
             else
             {//we'll try again next time user visits a page on admin panel
@@ -124,7 +134,9 @@ class ShortPixelAPI {
                 return array("Status" => self::STATUS_RETRY, "Message" => 'Timed out while processing. (pass '.$apiRetries.')');   
             }
         }
-        $response = $this->doRequests($URLs, true, $ID);//send requests to API
+        
+        $compressionType = isset($meta['ShortPixel']['type']) ? ($meta['ShortPixel']['type'] == 'lossy' ? 1 : 0) : $this->_settings->compressionType;
+        $response = $this->doRequests($URLs, true, $ID, $compressionType);//send requests to API
 
         if($response['response']['code'] != 200)//response <> 200 -> there was an error apparently?
             return array("Status" => self::STATUS_FAIL, "Message" => "There was an error and your request was not processed.");
@@ -148,14 +160,16 @@ class ShortPixelAPI {
             case 2:
                 //handle image has been processed
                 update_option( 'wp-short-pixel-quota-exceeded', 0);//reset the quota exceeded flag
-                return $this->handleSuccess($APIresponse, $URLs, $PATHs, $ID);
+                return $this->handleSuccess($APIresponse, $URLs, $PATHs, $ID, $compressionType);
                 break;
             default:
                 //handle error
                 if ( !file_exists($PATHs[0]) )
-                    return array("Status" => self::STATUS_NOT_FOUND, "Message" => "File not found on disk.");
-                elseif ( isset($APIresponse[0]->Status->Message) ) 
-                    return array("Status" => self::STATUS_FAIL, "Message" => "There was an error and your request was not processed (" . $APIresponse[0]->Status->Message . ").");                
+                    return array("Status" => self::STATUS_NOT_FOUND, "Message" => "File not found on disk. Image ID: " .$ID);
+                elseif ( isset($APIresponse[0]->Status->Message) ) {
+                    //return array("Status" => self::STATUS_FAIL, "Message" => "There was an error and your request was not processed (" . $APIresponse[0]->Status->Message . "). REQ: " . json_encode($URLs));                
+                    return array("Status" => self::STATUS_FAIL, "Message" => "There was an error and your request was not processed (" . $APIresponse[0]->Status->Message . ")");                
+                }
                 
                 return array("Status" => self::STATUS_FAIL, "Message" => "There was an error and your request was not processed");
                 break;
@@ -180,9 +194,24 @@ class ShortPixelAPI {
         
     }
     
-    public function handleDownload($fileData,$counter){
+    public function setPreferredProtocol($url, $reset = false) {
+        //switch protocol based on the formerly detected working protocol
+        if($this->_settings->downloadProto == '' || $reset) {
+            //make a test to see if the http is working
+            $testURL = 'http://api.shortpixel.com/img/connection-test-image.png';
+            $result = download_url($testURL, 10);
+            $this->_settings->downloadProto = is_wp_error( $result ) ? 'https' : 'http';
+        }
+        return $this->_settings->downloadProto == 'http' ? 
+                str_replace('https://', 'http://', $url) :
+                str_replace('http://', 'https://', $url);
+
+
+    }
+    
+    public function handleDownload($fileData,$counter, $compressionType){
         //var_dump($fileData);
-        if($this->_settings->compressionType)
+        if($compressionType)
         {
             $fileType = "LossyURL";
             $fileSize = "LossySize";
@@ -198,12 +227,16 @@ class ShortPixelAPI {
             return array("Status" => self::STATUS_UNCHANGED, "Message" => "File wasn't optimized so we do not download it.");
         
         $correctFileSize = $fileData->$fileSize;
-        $tempFiles[$counter] = download_url(urldecode($fileData->$fileType));
+        $fileURL = $this->setPreferredProtocol(urldecode($fileData->$fileType));
+ 
+        $downloadTimeout = max(ini_get('max_execution_time') - 10, 15);        
+        $tempFiles[$counter] = download_url($fileURL, $downloadTimeout);
         //var_dump($tempFiles);
                 
-        if(is_wp_error( $tempFiles[$counter] )) //also tries with http instead of https
-        {
-            $tempFiles[$counter] = download_url(str_replace('http://', 'https://', urldecode($fileData->$fileType)));
+        if(is_wp_error( $tempFiles[$counter] )) 
+        { //try to switch the default protocol
+            $fileURL = $this->setPreferredProtocol(urldecode($fileData->$fileType), true); //force recheck of the protocol
+            $tempFiles[$counter] = download_url($fileURL, $downloadTimeout);
         }    
         //on success we return this
         $returnMessage = array("Status" => self::STATUS_SUCCESS, "Message" => $tempFiles[$counter]);
@@ -228,8 +261,9 @@ class ShortPixelAPI {
         return $returnMessage;        
     }
 
-    public function handleSuccess($APIresponse, $URLs, $PATHs, $ID) {
+    public function handleSuccess($APIresponse, $URLs, $PATHs, $ID, $compressionType) {
         $counter = $savedSpace =  $originalSpace =  $optimizedSpace =  $averageCompression = 0;
+        $NoBackup = true;
 
         //download each file from array and process it
         foreach ( $APIresponse as $fileData )
@@ -240,7 +274,7 @@ class ShortPixelAPI {
                     $percentImprovement = $fileData->PercentImprovement;
                 else //count thumbnails only
                     update_option( 'wp-short-pixel-thumbnail-count', get_option('wp-short-pixel-thumbnail-count') + 1 );
-                $downloadResult = $this->handleDownload($fileData,$counter);
+                $downloadResult = $this->handleDownload($fileData,$counter,$compressionType);
                 //when the status is STATUS_UNCHANGED we just skip the array line for that one
                 if ( $downloadResult['Status'] == self::STATUS_SUCCESS ) {
                     $tempFiles[$counter] = $downloadResult['Message'];
@@ -258,10 +292,10 @@ class ShortPixelAPI {
         $SubDir = $this->returnSubDir(get_attached_file($ID));
         
         //if backup is enabled - we try to save the images
-        if( get_option('wp-short-backup_images') )
+        if( $this->_settings->backupImages )
         {
             $uploadDir = wp_upload_dir();
-            $source = $PATHs;//array with final paths for this files
+            $source = $PATHs; //array with final paths for these files
 
             if( !file_exists(SP_BACKUP_FOLDER) && !@mkdir(SP_BACKUP_FOLDER, 0777, true) ) {//creates backup folder if it doesn't exist
                 return array("Status" => self::STATUS_FAIL, "Message" => "Backup folder does not exist and it cannot be created");
@@ -282,19 +316,19 @@ class ShortPixelAPI {
                     if ( !file_exists($filePATH) )
                     {                        
                         if ( !@copy($source[$fileID], $destination[$fileID]) )
-                        {//file couldn't have been saved in backup folder
+                        {//file couldn't be saved in backup folder
                             ShortPixelAPI::SaveMessageinMetadata($ID, 'Cannot save file <i>' . self::MB_basename($source[$fileID]) . '</i> in backup directory');
                             return array("Status" => self::STATUS_FAIL, "Message" => 'Cannot save file <i>' . self::MB_basename($source[$fileID]) . '</i> in backup directory');
                         }
                     }
                 }
+                $NoBackup = true;
             } else {//cannot write to the backup dir, return with an error
                 ShortPixelAPI::SaveMessageinMetadata($ID, 'Cannot save file in backup directory');
                 return array("Status" => self::STATUS_FAIL, "Message" => 'Cannot save file in backup directory');
             }
 
         }//end backup section
-
 
         $writeFailed = 0;
         
@@ -309,27 +343,29 @@ class ShortPixelAPI {
                     $writeFailed++;
                 }
                 @unlink($tempFilePATH);
-                
-                if ( $writeFailed > 0 )//there was an error
-                {
-                    ShortPixelAPI::SaveMessageinMetadata($ID, 'Error: optimized version of ' . $writeFailed . ' file(s) couldn\'t be updated.');
-                    update_option('bulkProcessingStatus', "error");
-                    return array("Status" => self::STATUS_FAIL, "Code" =>"write-fail", "Message" => 'Error: optimized version of ' . $writeFailed . ' file(s) couldn\'t be updated.');
-                }
-                else
-                {//all files were copied, optimization data regarding the savings locally in DB
-                    $fileType = ( $this->_settings->compressionType ) ? "LossySize" : "LoselessSize";
-                    $savedSpace += $APIresponse[$tempFileID]->OriginalSize - $APIresponse[$tempFileID]->$fileType;
-                    $originalSpace += $APIresponse[$tempFileID]->OriginalSize;
-                    $optimizedSpace += $APIresponse[$tempFileID]->$fileType;
-                    $averageCompression += $fileData->PercentImprovement;
-                    
-                    //add the number of files with < 5% optimization
-                    if ( ( ( 1 - $APIresponse[$tempFileID]->$fileType/$APIresponse[$tempFileID]->OriginalSize ) * 100 ) < 5 )
-                        $this->_settings->under5Percent++; 
-                        
-                }
             }        
+            
+            if ( $writeFailed > 0 )//there was an error
+            {
+                ShortPixelAPI::SaveMessageinMetadata($ID, 'Error: optimized version of ' . $writeFailed . ' file(s) couldn\'t be updated.');
+                update_option('bulkProcessingStatus', "error");
+                return array("Status" => self::STATUS_FAIL, "Code" =>"write-fail", "Message" => 'Error: optimized version of ' . $writeFailed . ' file(s) couldn\'t be updated.');
+            }
+            else
+            {//all files were copied, optimization data regarding the savings locally in DB
+                $fileType = ( $this->_settings->compressionType ) ? "LossySize" : "LoselessSize";
+                $savedSpace += $APIresponse[$tempFileID]->OriginalSize - $APIresponse[$tempFileID]->$fileType;
+                $originalSpace += $APIresponse[$tempFileID]->OriginalSize;
+                $optimizedSpace += $APIresponse[$tempFileID]->$fileType;
+                $averageCompression += $fileData->PercentImprovement;
+                
+                //add the number of files with < 5% optimization
+                if ( ( ( 1 - $APIresponse[$tempFileID]->$fileType/$APIresponse[$tempFileID]->OriginalSize ) * 100 ) < 5 ) {
+                    $this->_settings->under5Percent++; 
+                }
+            }
+        } elseif( 0 + $fileData->PercentImprovement < 5) {
+            $this->_settings->under5Percent++; 
         }
         //old average counting
         $this->_settings->savedSpace += $savedSpace;
@@ -340,17 +376,62 @@ class ShortPixelAPI {
         //new average counting
         $this->_settings->totalOriginal += $originalSpace;
         $this->_settings->totalOptimized += $optimizedSpace;
+        
         //update metadata for this file
-        $meta = wp_get_attachment_metadata($ID);
-        $meta['ShortPixelImprovement'] = round($percentImprovement,2);
-        $meta['ShortPixel']['type'] = $this->_settings->compressionType == 1 ? 'lossy' : 'lossless';
-        $meta['ShortPixel']['thumbsOpt'] = $this->_settings->processThumbnails && isset($meta['sizes']) ? count($meta['sizes']) : 0;
-        wp_update_attachment_metadata($ID, $meta);
+        $duplicates = self::getWPMLDuplicates($ID);
+        foreach($duplicates as $_ID) {
+            $meta = wp_get_attachment_metadata($_ID);
+            $meta['ShortPixel']['type'] = self::getCompressionTypeName($compressionType);
+            $meta['ShortPixel']['exifKept'] = $this->_settings->keepExif;
+            $meta['ShortPixel']['date'] = date("Y-m-d");
+            //thumbs were processed if settings or if they were explicitely requested
+            $meta['ShortPixel']['thumbsOpt'] = (isset($meta['ShortPixel']['thumbsTodo']) || $this->_settings->processThumbnails) && isset($meta['sizes']) ? count($meta['sizes']) : 0;
+            //if thumbsTodo - this means there was an explicit request to process thumbs for an image that was previously processed without
+            // don't update the ShortPixelImprovement ratio as this is only calculated based on main image
+            if(isset($meta['ShortPixel']['thumbsTodo'])) {
+                unset($meta['ShortPixel']['thumbsTodo']);
+                $percentImprovement = $meta['ShortPixelImprovement'];
+            } else {
+                $meta['ShortPixelImprovement'] = "".round($percentImprovement,2);
+            }
+            if($NoBackup) {
+                $meta['ShortPixel']['NoBackup'] = true;
+            }
+            wp_update_attachment_metadata($_ID, $meta);
+        }
         //we reset the retry counter in case of success
         update_option('wp-short-pixel-api-retries', 0);
         
         return array("Status" => self::STATUS_SUCCESS, "Message" => 'Success: No pixels remained unsqueezed :-)', "PercentImprovement" => $percentImprovement);
     }//end handleSuccess
+    
+    static public function getWPMLDuplicates( $id ) {
+        global $wpdb;
+        
+        $parentId = get_post_meta ($id, '_icl_lang_duplicate_of', true );
+        if($parentId) $id = $parentId;
+
+        $duplicates = $wpdb->get_col( $wpdb->prepare( "
+            SELECT pm.post_id FROM {$wpdb->postmeta} pm
+            WHERE pm.meta_value = %s AND pm.meta_key = '_icl_lang_duplicate_of' 
+        ", $id ) );
+        
+        if(!in_array($id, $duplicates)) $duplicates[] = $id;
+
+        $transTable = $wpdb->get_results("SELECT COUNT(1) hasTransTable FROM information_schema.tables WHERE table_schema='{$wpdb->dbname}' AND table_name='{$wpdb->prefix}icl_translations'");
+        if(isset($transTable[0]->hasTransTable) && $transTable[0]->hasTransTable > 0) {
+            $transGroupId = $wpdb->get_results("SELECT trid FROM {$wpdb->prefix}icl_translations WHERE element_id = {$id}");
+            if(count($transGroupId)) {
+                $transGroup = $wpdb->get_results("SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid = " . $transGroupId[0]->trid);
+                foreach($transGroup as $trans) {
+                    $duplicates[] = $trans->element_id;
+                }
+            }
+        }
+
+        return array_unique($duplicates);
+    }
+
     
     static public function returnSubDir($file)//return subdir for that particular attached file
     {
@@ -398,7 +479,10 @@ class ShortPixelAPI {
             return $PATHs;
         
     }
-    
+
+    static public function getCompressionTypeName($compressionType) {
+        return $compressionType == 1 ? 'lossy' : 'lossless';
+    }
     
     static private function SaveMessageinMetadata($ID, $Message)
     {

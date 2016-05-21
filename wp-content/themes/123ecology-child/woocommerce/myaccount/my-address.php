@@ -14,15 +14,15 @@ global $woocommerce;
 $customer_id = get_current_user_id();
 
 if ( get_option( 'woocommerce_ship_to_billing_address_only' ) === 'no' && get_option( 'woocommerce_calc_shipping' ) !== 'no' ) {
-	$page_title = apply_filters( 'woocommerce_my_account_my_address_title', __( 'My Addresses', GETTEXT_DOMAIN ) );
+	$page_title = apply_filters( 'woocommerce_my_account_my_address_title', __( 'My Addresses', GETTEXT_DOMAIN_CHILD ) );
 	$get_addresses    = apply_filters( 'woocommerce_my_account_get_addresses', array(
-		'billing' => __( 'Billing Address', GETTEXT_DOMAIN ),
-		'shipping' => __( 'Shipping Address', GETTEXT_DOMAIN )
+		'billing' => __( 'Billing Address', GETTEXT_DOMAIN_CHILD ),
+		'shipping' => __( 'Shipping Address', GETTEXT_DOMAIN_CHILD )
 	), $customer_id );
 } else {
-	$page_title = apply_filters( 'woocommerce_my_account_my_address_title', __( 'My Address', GETTEXT_DOMAIN ) );
+	$page_title = apply_filters( 'woocommerce_my_account_my_address_title', __( 'My Address', GETTEXT_DOMAIN_CHILD ) );
 	$get_addresses    = apply_filters( 'woocommerce_my_account_get_addresses', array(
-		'billing' =>  __( 'Billing Address', GETTEXT_DOMAIN )
+		'billing' =>  __( 'Billing Address', GETTEXT_DOMAIN_CHILD )
 	), $customer_id );
 }
 
@@ -32,7 +32,7 @@ $col = 1;
 <h2 class="my-account-title"><?php echo $page_title; ?></h2>
 
 <p class="myaccount_address">
-	<?php echo apply_filters( 'woocommerce_my_account_my_address_description', __( 'The following addresses will be used on the checkout page by default.', GETTEXT_DOMAIN ) ); ?>
+	<?php echo apply_filters( 'woocommerce_my_account_my_address_description', __( 'The following addresses will be used on the checkout page by default.', GETTEXT_DOMAIN_CHILD ) ); ?> 
 </p>
 
 <?php if ( get_option( 'woocommerce_ship_to_billing_address_only' ) === 'no' && get_option( 'woocommerce_calc_shipping' ) !== 'no' ) echo '<div class="col2-set addresses">'; ?>
@@ -42,7 +42,7 @@ $col = 1;
 	<div class="col-<?php echo ( ( $col = $col * -1 ) < 0 ) ? 1 : 2; ?> address">
 		<header class="title">
 			<h3 class="my-account-title"><?php echo $title; ?></h3>
-			<a href="<?php echo wc_get_endpoint_url( 'edit-address', $name ); ?>" class="edit"><?php _e( 'Edit', GETTEXT_DOMAIN ); ?></a>
+			<a href="<?php echo wc_get_endpoint_url( 'edit-address', $name ); ?>" class="edit"><?php _e( 'Edit', GETTEXT_DOMAIN_CHILD ); ?></a>
 		</header>
 		<address>
 			<?php
@@ -61,7 +61,7 @@ $col = 1;
 				$formatted_address = WC()->countries->get_formatted_address( $address );
 
 				if ( ! $formatted_address )
-					_e( 'You have not set up this type of address yet.', GETTEXT_DOMAIN );
+					_e( 'You have not set up this type of address yet.', GETTEXT_DOMAIN_CHILD );
 				else
 					echo $formatted_address;
 			?>

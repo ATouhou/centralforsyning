@@ -24,10 +24,10 @@ do_action( 'woocommerce_before_cart' ); ?>
 		<tr>
 			<th class="product-remove">&nbsp;</th>
 			<th class="product-thumbnail">&nbsp;</th>
-			<th class="product-name"><?php _e( 'Product', GETTEXT_DOMAIN ); ?></th>
-			<th class="product-price"><?php _e( 'Pris', GETTEXT_DOMAIN ); ?></th>
-			<th class="product-quantity"><?php _e( 'Quantity', GETTEXT_DOMAIN ); ?></th>
-			<th class="product-subtotal"><?php _e( 'Total', GETTEXT_DOMAIN ); ?></th>
+			<th class="product-name"><?php _e( 'Product', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th class="product-price"><?php _e( 'Pris', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th class="product-quantity"><?php _e( 'Quantity', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th class="product-subtotal"><?php _e( 'Total', GETTEXT_DOMAIN_CHILD ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -44,7 +44,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 					<td class="product-remove">
 						<?php
-							echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf( '<a href="%s" class="remove" title="%s"><i class="halflings-icon trash"></i></a>', esc_url( WC()->cart->get_remove_url( $cart_item_key ) ), __( 'Fjern dette produkt', GETTEXT_DOMAIN ) ), $cart_item_key );
+							echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf( '<a href="%s" class="remove" title="%s"><i class="halflings-icon trash"></i></a>', esc_url( WC()->cart->get_remove_url( $cart_item_key ) ), __( 'Fjern dette produkt', GETTEXT_DOMAIN_CHILD ) ), $cart_item_key );
 						?>
 					</td>
 
@@ -71,7 +71,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
                				// Backorder notification
                				if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) )
-               					echo '<p class="backorder_notification">' . __( 'Available on backorder', GETTEXT_DOMAIN ) . '</p>';
+               					echo '<p class="backorder_notification">' . __( 'Available on backorder', GETTEXT_DOMAIN_CHILD ) . '</p>';
 						?>
 					</td>
 
@@ -115,7 +115,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<?php if ( WC()->cart->coupons_enabled() ) { ?>
 					<div class="coupon">
 
-						<label for="coupon_code"><?php _e( 'Coupon', GETTEXT_DOMAIN ); ?>:</label> <input name="coupon_code" class="form-control form-inline" id="coupon_code" value="" /> <input type="submit" class="button1 btn btn-normal" name="apply_coupon" value="<?php _e( 'Apply Coupon', GETTEXT_DOMAIN ); ?>" />
+						<label for="coupon_code"><?php _e( 'Coupon', GETTEXT_DOMAIN_CHILD ); ?>:</label> <input name="coupon_code" class="form-control form-inline" id="coupon_code" value="" /> <input type="submit" class="button1 btn btn-normal" name="apply_coupon" value="<?php _e( 'Apply Coupon', GETTEXT_DOMAIN_CHILD ); ?>" />
 
 						<?php do_action('woocommerce_cart_coupon'); ?>
 
@@ -123,7 +123,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<?php } ?>
 
 	
-				<input type="submit" class="button1 btn btn-normal" name="update_cart" value="<?php _e( 'Update Cart', GETTEXT_DOMAIN ); ?>" /> <input type="submit" class="checkout-button button1 btn btn-normal btn-primary alt" name="proceed" value="<?php _e( 'Proceed to Checkout &rarr;', GETTEXT_DOMAIN ); ?>" />
+				<input type="submit" class="button1 btn btn-normal" name="update_cart" value="<?php _e( 'Update Cart', GETTEXT_DOMAIN_CHILD ); ?>" /> <input type="submit" class="checkout-button button1 btn btn-normal btn-primary alt" name="proceed" value="<?php _e( 'Proceed to Checkout &rarr;', GETTEXT_DOMAIN_CHILD ); ?>" />
 
 				<?php //do_action( 'woocommerce_proceed_to_checkout' ); ?>
 

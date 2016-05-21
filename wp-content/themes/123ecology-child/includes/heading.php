@@ -79,7 +79,8 @@ if ( function_exists( 'get_option_tree') ) {
 						        endif;
                             
                             } else{
-	                            the_title();
+	                            //the_title();
+								_e( get_the_title(), GETTEXT_DOMAIN_CHILD);
                             }?>
 						</h2>
 						<?php if(is_singular('product')){?>
@@ -91,7 +92,7 @@ if ( function_exists( 'get_option_tree') ) {
 						<div class="Breadcrumb"><a class="heading-navi" href="<?php echo home_url(); ?>"><?php _e('&larr; Return To Home', GETTEXT_DOMAIN_CHILD)?></a></div>
 					<?php }?>
 						<?php }else{?>
-						<div class="Breadcrumb"><?php echo the_breadcrumb()?></div>
+						<div class="Breadcrumb"><?php echo the_breadcrumb_child()?></div>
 						<?php }?>
 					</div>
 				</div>

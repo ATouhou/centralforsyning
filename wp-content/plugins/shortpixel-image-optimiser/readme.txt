@@ -1,11 +1,11 @@
 === ShortPixel Image Optimizer ===
 
 Contributors: AlexSP
-Tags: picture,  optimization, image editor, pngout, upload speed, shortpixel, compression, jpegmini, webp, lossless, cwebp, media, jpegtran, image, image optimisation, image optimization, shrink, picture, photo, optimize photos, compress, performance, tinypng, crunch, pngquant, attachment, optimize, pictures, fast, images, image files, image quality, lossy, upload, kraken, resize, seo, smushit, optipng, kraken image optimizer, ewww, photo optimization, gifsicle, image optimizer, images, krakenio, png, gmagick, image optimize, pdf, pdf optimisation, pdf optimization, optimize pdf, optimise pdf, shrink pdf, jpg, jpeg, jpg optimisation, jpg optimization, optimize jpg, optimise jpg, shrink jpg, gif, animated gif, optimize gif, optimise gif, optimizer, optimiser, compresion, optimization, cruncher, image cruncher, compress png, compress jpg, compress jpeg, compress pdf, faster loading times, image optimiser, improve pagerank, optimise, optimize animated gif,  optimise jpeg, optimize jpeg, optimize png, optimise png, optimise pdf, optimize pdf, tinyjpg, short pixel, shortpixel, woocommerce compatible
+Tags: picture,  optimization, image editor, pngout, upload speed, shortpixel, compression, jpegmini, webp, lossless, cwebp, media, jpegtran, image, image optimisation, image optimization, shrink, picture, photo, optimize photos, compress, performance, tinypng, crunch, pngquant, attachment, optimize, pictures, fast, images, image files, image quality, lossy, upload, kraken, resize, seo, smushit, optipng, kraken image optimizer, ewww, photo optimization, gifsicle, image optimizer, images, krakenio, png, gmagick, image optimize, pdf, pdf optimisation, pdf optimization, optimize pdf, optimise pdf, shrink pdf, jpg, jpeg, jpg optimisation, jpg optimization, optimize jpg, optimise jpg, shrink jpg, gif, animated gif, optimize gif, optimise gif, optimizer, optimiser, compresion, optimization, cruncher, image cruncher, compress png, compress jpg, compress jpeg, compress pdf, faster loading times, image optimiser, improve pagerank, optimise, optimize animated gif,  optimise jpeg, optimize jpeg, optimize png, optimise png, optimise pdf, optimize pdf, tinyjpg, short pixel, shortpixel, woocommerce compatible, wpml compatible, smush, imsanity, resize, scale
 
 Requires at least: 3.2.0
-Tested up to: 4.4
-Stable tag: 3.1.9
+Tested up to: 4.5
+Stable tag: 3.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,43 +13,50 @@ Easy-to-use, lightweight plugin that optimizes images & PDFs. Make your website 
 
 == Description ==
 
-ShortPixel makes your website load faster by reducing the size of your images and helps you rank better in Google search. With both lossy and lossless <a rel="friend" href="https://shortpixel.com">image compression</a> available for all common image types (PNG, JPG, GIF), plus PDF files. The plugin is free to use for 100 images/month. 
-
+ShortPixel makes your website load faster by resizing/rescaling and then compressing the images. Optimized images mean better user experience, better Google search ranking (SEO) and more visitors. Both lossy and lossless <a rel="friend" href="https://shortpixel.com">image compression</a> available for all common image types (JPG, PNG and GIF), plus PDF files. 
 
 **How does it work?**
 
-Both new and old images can be optimized with ShortPixel. Once activated, the plugin instantly processes new images uploaded to your website. Bulk optimization will automatically process all your past image gallery with one click. Images and thumbnails are processed in the cloud, and replaced back into your website. It’s simple to use, yet incredibly powerful.
+Very easy:
+
+* choose your favourite settings like lossy/lossless, keep/remove EXIF, backup, optimize thumbs, etc.
+* all your current images can be easily scaled and optimized with a single click via our **bulk optimization** page.
+* new images are automatically resized and compressed in the cloud right after they are uploaded.
+
+It's that easy indeed.
 
 
-**Plugin features. What you see is what you get:**
+**Why use ShortPixel to optimize your images? Here are some of the features:**
 
-* all types of image formats PNG, JPG, GIF (still and animated) and PDF
+* **24h support** directly from the developers
+* supports JPG, PNG, GIF (still and animated) images and PDF documents
 * thumbnails and featured images are also optimized
+* featured images can be rescaled before being optimized. **No need for additional plugins** like Imsanity
 * CMYK to RGB conversion
-* free 100 image credits/month. Images that are optimized less that 5% are bonus
+* skip already optimized images
+* easily test lossy/lossless versions of the images
+* great for photographers: **keep or remove EXIF** data from your images
 * no file size limit
-* originals are saved in a backup folder and can be manually restored
-* 'Bulk' optimize past gallery with one click
+* works well with both HTTPS and HTTP websites
+* it is safe to test and use the plugin: all the original **images can be restored** with a click
+* 'Bulk' optimize existing images with one click
 * 40 days optimization report with all image details and overall statistics
 * works great for eCommerce websites using WooCommerce plugin
-* multisite support for a single API key
-* compatible with WP Engine hosted websites
-* 24h support from our fantastic team
+* Use the **same API Key** on many sites (including multisites)
+* compatible with WP Engine hosted websites and all the major hosting providers
+* compatible with WPML and WPML Media plugins
+* receive **100 free image optimization credits** each month.
+* images that are optimized less that 5% are bonus
 
-ShortPixel free and paid plans offer the same features and deliver the same optimization quality. The difference is made by the available image quota. 100 images/month are for free, additional image quota requires a small fee ($4,99 for 5,000 image credits).
+ShortPixel free and paid plans offer the same features and deliver the same optimization quality. The difference is made by the available image quota. Additional image quota can be bought for as little as $4,99 for 5,000 image optimization credits.
 
-Both monthly subscriptions and one-time plans are available. The same plan can be used for multiple websites. Check our <a rel="friend"  href="http://shortpixel.com/free-demo">free demo</a> and see the <a href="http://shortpixel.com/pricing">optimization plans</a> on our site.
+Both monthly subscriptions and one-time plans are available. The same plan can be used for multiple websites. Make an instant <a rel="friend" href="http://shortpixel.com/image-compression-test">image compression test</a> on your site or <a rel="friend" href="http://shortpixel.com/online-image-compression">compress some images</a> to make sure they are to your liking.
 
-We believe in a better society, so we support educational non-profits. <a href="http://shortpixel.com/contact">Contact us</a> and we’ll see how we can help!
+We believe in a better society, so we support non-profits. <a href="http://shortpixel.com/contact">Contact us</a> and we’ll see how we can help!
 
 Help us spread a the word by recommending ShortPixel to your friends and collect 100 additional image credits for each referred sign up.
 Make money by promoting a great plugin with our <a href="https://shortpixel.com/free-sign-up-affiliate">50/50 affiliate program</a>.
 
-**Why use ShortPixel to optimize you images?**
-
-Image size is crucial to your website’s speed, and website speed affects search ranking. With ShortPixel plugin you will downsize your images and improve your web performance on the spot.
-
-Read more about how <a href="http://googlewebmastercentral.blogspot.ro/2010/04/using-site-speed-in-web-search-ranking.html">Google ranks website speed</a>.
 
 > ★★★★★ **Increased Page Speed and Optimizes Properly**
 > "I noticed a huge difference on page speed after running the bulk compression. Does exactly as promised. An excellent plugin for those that care about page speed, SEO and optimizing their sites to the fullest potential." — [BrowCo](https://wordpress.org/support/topic/increased-page-speed-and-optimizes-properly#post-)
@@ -124,6 +131,8 @@ As an alternative, you can edit wp-config.php and add this line
 define('SHORTPIXEL_API_KEY', 'APIKEY')
 where 'APIKEY' is the API Key received upon sign up.
 
+If configured that way, the API key will be used for all the sites of the multisite but will only be visible on the main site's Settings page, being hidden for the rest of the sites.
+
 = How does Bulk Optimization work? = 
 
 The Bulk option makes ShortPixel optimize all your images at once (not one by one). You can do this in the Media > Bulk ShortPixel section by clicking on the **Compress all your images** button.
@@ -168,11 +177,40 @@ The ShortPixel team is here to help. <a href="https://shortpixel.com/contact">Co
 
 == Changelog ==
 
+= 3.3.3 =
+
+* Compatibility with WPML Media plugin
+* Fix ListView link on multisites
+* Fix for server configurations that have max_execution_time = 0
+
+= 3.3.2 =
+
+* fix for PHP installs that are missing the mcrypt functions
+
+= 3.3.1 =
+
+* small fix to the quota revalidation process
+
+= 3.3.0 =
+
+* reoptimize lossless/lossy
+* optimize thumbs for images already optimized
+* compatibility with WPML
+
+= 3.2.1 =
+
+* old PHP compatibility fix
+
+= 3.2.0 =
+
+* ICC color profile is always preserved.
+* possibility to hide the API key in a multisite install.
+* detection of best protocol to use: https / http.
+
 = 3.1.9 =
 
 * option to keep the EXIF data and ICC profile.
 * more explanations on settings.
-* 
 
 = 3.1.8 =
 

@@ -19,20 +19,20 @@ global $woocommerce, $post;
 
 	<?php	if( 'lost_password' == $args['form'] ) : ?>
 
-    <p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', GETTEXT_DOMAIN ) ); ?></p>
+    <p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', GETTEXT_DOMAIN_CHILD ) ); ?></p>
 
-    <p class="form-row form-row-first"><label for="user_login"><?php _e( 'Username or email', GETTEXT_DOMAIN ); ?></label> <input class="form-control" type="text" name="user_login" id="user_login" /></p>
+    <p class="form-row form-row-first"><label for="user_login"><?php _e( 'Username or email', GETTEXT_DOMAIN_CHILD ); ?></label> <input class="form-control" type="text" name="user_login" id="user_login" /></p>
 
 	<?php else : ?>
 
-    <p><?php echo apply_filters( 'woocommerce_reset_password_message', __( 'Enter a new password below.', GETTEXT_DOMAIN) ); ?></p>
+    <p><?php echo apply_filters( 'woocommerce_reset_password_message', __( 'Enter a new password below.', GETTEXT_DOMAIN_CHILD) ); ?></p>
 
     <p class="form-row form-row-first">
-        <label for="password_1"><?php _e( 'New password', GETTEXT_DOMAIN ); ?> <span class="required">*</span></label>
+        <label for="password_1"><?php _e( 'New password', GETTEXT_DOMAIN_CHILD ); ?> <span class="required">*</span></label>
         <input type="password" class="form-control" name="password_1" id="password_1" />
     </p>
     <p class="form-row form-row-last">
-        <label for="password_2"><?php _e( 'Re-enter new password', GETTEXT_DOMAIN ); ?> <span class="required">*</span></label>
+        <label for="password_2"><?php _e( 'Re-enter new password', GETTEXT_DOMAIN_CHILD ); ?> <span class="required">*</span></label>
         <input type="password" class="form-control" name="password_2" id="password_2" />
     </p>
 
@@ -42,7 +42,7 @@ global $woocommerce, $post;
 
     <div class="clear"></div>
 
-    <p class="form-row"><input type="submit" class="btn btn-normal btn-primary" name="reset" value="<?php echo 'lost_password' == $args['form'] ? __( 'Reset Password', GETTEXT_DOMAIN ) : __( 'Save', GETTEXT_DOMAIN ); ?>" /></p>
+    <p class="form-row"><input type="submit" class="btn btn-normal btn-primary" name="reset" value="<?php echo 'lost_password' == $args['form'] ? __( 'Reset Password', GETTEXT_DOMAIN_CHILD ) : __( 'Save', GETTEXT_DOMAIN_CHILD ); ?>" /></p>
 	<?php $woocommerce->nonce_field( $args['form'] ); ?>
 
 </form>

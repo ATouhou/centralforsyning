@@ -33,10 +33,9 @@ class WPShortPixelSettings {
         'totalOptimized' => 'wp-short-pixel-total-optimized',
         'totalOriginal' => 'wp-short-pixel-total-original',
         'quotaExceeded' => 'wp-short-pixel-quota-exceeded',
-        '' => '',
-        '' => '',
-        '' => '',
-        '' => '',
+        'httpProto' => 'wp-short-pixel-protocol',
+        'downloadProto' => 'wp-short-pixel-download-protocol',
+        'mediaAlert' => 'wp-short-pixel-media-alert',
         '' => '',
     );
     
@@ -137,7 +136,7 @@ class WPShortPixelSettings {
         }        
     }
 
-    public function getOpt($key, $default = null) {
+    public static function getOpt($key, $default = null) {
         if(get_option($key) === false) {
             add_option( $key, $default, '', 'yes' );
         }

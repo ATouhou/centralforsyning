@@ -29,10 +29,10 @@ foreach ( $items as $item ) :
 	echo $item_meta->meta ? "\n" . $item_meta->display( true, true ) : '';
 
 	// Quantity
-	echo "\n" . sprintf( __( 'Quantity: %s', GETTEXT_DOMAIN ), $item['qty'] );
+	echo "\n" . sprintf( __( 'Quantity: %s', GETTEXT_DOMAIN_CHILD ), $item['qty'] );
 
 	// Cost
-	echo "\n" . sprintf( __( 'Cost: %s', GETTEXT_DOMAIN ), $order->get_formatted_line_subtotal( $item ) );
+	echo "\n" . sprintf( __( 'Cost: %s', GETTEXT_DOMAIN_CHILD ), $order->get_formatted_line_subtotal( $item ) );
 
 	// Download URLs
 	if ( $show_download_links && $_product->exists() && $_product->is_downloadable() ) {
@@ -43,9 +43,9 @@ foreach ( $items as $item ) :
 			$i++;
 
 			if ( count( $download_files ) > 1 ) {
-				$prefix = sprintf( __( 'Download %d', GETTEXT_DOMAIN ), $i );
+				$prefix = sprintf( __( 'Download %d', GETTEXT_DOMAIN_CHILD ), $i );
 			} elseif ( $i == 1 ) {
-				$prefix = __( 'Download', GETTEXT_DOMAIN );
+				$prefix = __( 'Download', GETTEXT_DOMAIN_CHILD );
 			}
 
 			echo "\n" . $prefix . '(' . esc_html( $file['name'] ) . '): ' . esc_url( $file['download_url'] );

@@ -1,3 +1,34 @@
+div.shortpixel-rate-us {
+    display:inline-block;
+    margin-left: 20px;
+    vertical-align: top;
+    font-weight: bold;
+    padding-top: 5px;
+}
+div.shortpixel-rate-us > a {
+    vertical-align: middle;
+    padding: 16px 5px 0;
+}
+div.shortpixel-rate-us > a > div {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 14px;
+}
+div.shortpixel-rate-us > a > img {
+    padding-top: 7px;
+}
+div.shortpixel-rate-us > a:active,
+div.shortpixel-rate-us > a:hover,
+div.shortpixel-rate-us > a:focus {
+    outline:0;
+    border-style: none;
+}
+.sp-loading-small {
+    margin-top: 2px;
+    float: left;
+    margin-right: 5px;
+}
+
 li.shortpixel-toolbar-processing > a.ab-item > div,
 #wpadminbar li.shortpixel-toolbar-processing > a.ab-item > div{
     background-image: url("../img/loading-dark-big.gif");
@@ -107,9 +138,15 @@ li.shortpixel-hide {
     width: 290px;
     overflow: hidden;
 }
+.wp-core-ui .column-wp-shortPixel .sp-column-actions  {
+    max-width: 140px;
+    float:right;
+    text-align: right;
+}
 .wp-core-ui .column-wp-shortPixel .button.button-smaller {
     font-size: 13px;
     padding:0px 5px;
+    margin-bottom: 4px;
     height:20px;
     line-height:16px;
     float:right;

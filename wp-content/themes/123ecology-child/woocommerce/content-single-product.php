@@ -67,12 +67,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						$availability = $product->get_availability();
 					
 						if ($availability['availability']) :
-							echo apply_filters( 'woocommerce_stock_html', '<p class="stock '.$availability['class'].'"><span>'.__('Availability:', GETTEXT_DOMAIN).'</span> '.$availability['availability'].'</p>', $availability['availability'] );
+							echo apply_filters( 'woocommerce_stock_html', '<p class="stock '.$availability['class'].'"><span>'.__('Availability:', GETTEXT_DOMAIN_CHILD).'</span> '.$availability['availability'].'</p>', $availability['availability'] );
 					    endif;
 					?>
 					
 					<?php if ($product->get_sku() ) : ?>
-						<p itemprop="productID" class="sku"><span><?php _e('SKU:', GETTEXT_DOMAIN); ?></span> <?php echo $product->get_sku(); ?>.</p>
+						<p itemprop="productID" class="sku"><span><?php _e('SKU:', GETTEXT_DOMAIN_CHILD); ?></span> <?php echo $product->get_sku(); ?>.</p>
 					<?php endif; ?>
 				
 				</div>

@@ -18,11 +18,12 @@ if ( function_exists( 'get_option_tree') ) {
 	echo "</a>&nbsp;&rarr; ";
     if (is_home()){
         if($posts_page_id){
-            echo "<span class='current'>";
-            echo $posts_page->post_title;
+            echo "<span class='current 1'>";
+           // echo $posts_page->post_title;
+			   _e($posts_page->post_title, GETTEXT_DOMAIN_CHILD); 
             echo "</span>";
         }else{
-            echo "<span class='current'>";
+            echo "<span class='current 3'>";
             echo bloginfo( 'description' );
             echo "</span>";
         }
@@ -64,8 +65,8 @@ if ( function_exists( 'get_option_tree') ) {
                 echo "</a>&nbsp;&rarr; ";
             }
         }
-        echo "<span class='current'>";
-        the_title(); 
+        echo "<span class='current 2'>";
+        _e( get_the_title(), GETTEXT_DOMAIN_CHILD);
         echo "</span>";
 	} elseif (is_page()) {
         if (!is_front_page()){
@@ -80,16 +81,16 @@ if ( function_exists( 'get_option_tree') ) {
             echo($parent_title);
             echo "</a>&nbsp;&rarr; ";
             }
-            echo "<span class='current'>";
-            the_title();
+            echo "<span class='current 4'>";
+         _e( get_the_title(), GETTEXT_DOMAIN_CHILD);
             echo "</span>"; 
         }
     } elseif (is_404()) {
-        echo "<span class='current'>";
+        echo "<span class='current 5'>";
         _e('404 Error', GETTEXT_DOMAIN_CHILD); 
         echo "</span>";
     } elseif (is_archive()) {
-        echo "<span class='current'>";
+        echo "<span class='current 6'>";
         if ( is_day() ) :
             printf( get_the_date('j M Y'));
         elseif ( is_month() ) :
@@ -109,37 +110,37 @@ if ( function_exists( 'get_option_tree') ) {
         endif;
         echo "</span>";
         if(is_author()){
-            echo "&nbsp;&rarr; <span class='current'>";
+            echo "&nbsp;&rarr; <span class='current 7'>";
             $author = get_userdata( get_query_var('author') );
             echo $author->display_name;
             echo "</span>";
         }elseif(is_category()){
             _e( '&nbsp;&rarr; Category', GETTEXT_DOMAIN_CHILD);
-            echo "&nbsp;&rarr; <span class='current'>";
+            echo "&nbsp;&rarr; <span class='current 14'>";
             single_cat_title();
             echo "</span>";
         }elseif(is_tag()){
             _e( '&nbsp;&rarr; Tag', GETTEXT_DOMAIN_CHILD);
-            echo "&nbsp;&rarr; <span class='current'>";
+            echo "&nbsp;&rarr; <span class='current 8'>";
             single_tag_title();
             echo "</span>";
         }elseif (is_tax('portfolio_category')) {
-        	echo "&nbsp;&rarr; <span class='current'>";
+        	echo "&nbsp;&rarr; <span class='current 9'>";
             _e( 'Portfolio Category', GETTEXT_DOMAIN_CHILD);
             echo "</span>";
-            echo "&nbsp;&rarr; <span class='current'>";
+            echo "&nbsp;&rarr; <span class='current 10'>";
             echo get_queried_object()->name;
             echo "</span>";
         }elseif (is_tax('portfolio_tags')) {
-        	echo "&nbsp;&rarr; <span class='current'>";
+        	echo "&nbsp;&rarr; <span class='current 13'>";
             _e( 'Portfolio Tag', GETTEXT_DOMAIN_CHILD);
             echo "</span>";
-            echo "&nbsp;&rarr; <span class='current'>";
+            echo "&nbsp;&rarr; <span class='current 11'>";
             echo get_queried_object()->name;
             echo "</span>";
         } 
 	} elseif(is_search()){
-        echo " <span class='current'>";
+        echo " <span class='current 12'>";
         _e('Search for:', GETTEXT_DOMAIN_CHILD);                
         the_search_query();
         echo "</span>";

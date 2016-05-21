@@ -1613,3 +1613,5 @@ ul.products li.product a h3{
 #fancybox-title {
 	z-index: 111020 !important;
 }
+
+.woocommerce #payment .terms, .woocommerce #payment .wc-terms-and-conditions, .woocommerce-page #payment .terms, .woocommerce-page #payment .wc-terms-and-conditions{float:right;}

@@ -13,12 +13,12 @@ global $woocommerce;
 
 $order = new WC_Order( $order_id );
 ?>
-<h2><?php _e( 'Order Details', GETTEXT_DOMAIN ); ?></h2>
+<h2><?php _e( 'Order Details', GETTEXT_DOMAIN_CHILD ); ?></h2>
 <table class="shop_table order_details">
 	<thead>
 		<tr>
-			<th class="product-name"><?php _e( 'Product', GETTEXT_DOMAIN ); ?></th>
-			<th class="product-total"><?php _e( 'Total', GETTEXT_DOMAIN ); ?></th>
+			<th class="product-name"><?php _e( 'Product', GETTEXT_DOMAIN_CHILD ); ?></th>
+			<th class="product-total"><?php _e( 'Total', GETTEXT_DOMAIN_CHILD ); ?></th>
 		</tr>
 	</thead>
 	<tfoot>
@@ -63,7 +63,7 @@ $order = new WC_Order( $order_id );
 								foreach ( $download_files as $download_id => $file ) {
 									$i++;
 
-									$links[] = '<small><a href="' . esc_url( $file['download_url'] ) . '">' . sprintf( __( 'Download file%s', GETTEXT_DOMAIN ), ( count( $download_files ) > 1 ? ' ' . $i . ': ' : ': ' ) ) . esc_html( $file['name'] ) . '</a></small>';
+									$links[] = '<small><a href="' . esc_url( $file['download_url'] ) . '">' . sprintf( __( 'Download file%s', GETTEXT_DOMAIN_CHILD ), ( count( $download_files ) > 1 ? ' ' . $i . ': ' : ': ' ) ) . esc_html( $file['name'] ) . '</a></small>';
 								}
 
 								echo '<br/>' . implode( '<br/>', $links );
@@ -94,12 +94,12 @@ $order = new WC_Order( $order_id );
 <?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 
 <header>
-	<h2><?php _e( 'Customer details', GETTEXT_DOMAIN ); ?></h2>
+	<h2><?php _e( 'Customer details', GETTEXT_DOMAIN_CHILD ); ?></h2>
 </header>
 <dl class="customer_details">
 <?php
-	if ( $order->billing_email ) echo '<dt>' . __( 'Email:', GETTEXT_DOMAIN ) . '</dt><dd>' . $order->billing_email . '</dd>';
-	if ( $order->billing_phone ) echo '<dt>' . __( 'Telephone:', GETTEXT_DOMAIN ) . '</dt><dd>' . $order->billing_phone . '</dd>';
+	if ( $order->billing_email ) echo '<dt>' . __( 'Email:', GETTEXT_DOMAIN_CHILD ) . '</dt><dd>' . $order->billing_email . '</dd>';
+	if ( $order->billing_phone ) echo '<dt>' . __( 'Telephone:', GETTEXT_DOMAIN_CHILD ) . '</dt><dd>' . $order->billing_phone . '</dd>';
 
 	// Additional customer details hook
 	do_action( 'woocommerce_order_details_after_customer_details', $order );
@@ -115,11 +115,11 @@ $order = new WC_Order( $order_id );
 <?php endif; ?>
 
 		<header class="title">
-			<h3><?php _e( 'Billing Address', GETTEXT_DOMAIN ); ?></h3>
+			<h3><?php _e( 'Billing Address', GETTEXT_DOMAIN_CHILD ); ?></h3>
 		</header>
 		<address><p>
 			<?php
-				if ( ! $order->get_formatted_billing_address() ) _e( 'N/A', GETTEXT_DOMAIN ); else echo $order->get_formatted_billing_address();
+				if ( ! $order->get_formatted_billing_address() ) _e( 'N/A', GETTEXT_DOMAIN_CHILD ); else echo $order->get_formatted_billing_address();
 			?>
 		</p></address>
 
@@ -130,11 +130,11 @@ $order = new WC_Order( $order_id );
 	<div class="col-2">
 
 		<header class="title">
-			<h3><?php _e( 'Shipping Address', GETTEXT_DOMAIN ); ?></h3>
+			<h3><?php _e( 'Shipping Address', GETTEXT_DOMAIN_CHILD ); ?></h3>
 		</header>
 		<address><p>
 			<?php
-				if ( ! $order->get_formatted_shipping_address() ) _e( 'N/A', GETTEXT_DOMAIN ); else echo $order->get_formatted_shipping_address();
+				if ( ! $order->get_formatted_shipping_address() ) _e( 'N/A', GETTEXT_DOMAIN_CHILD ); else echo $order->get_formatted_shipping_address();
 			?>
 		</p></address>
 

@@ -8,6 +8,10 @@ jQuery(document).ready(function($){
         //register a bulk action
         jQuery('select[name^="action"] option:last-child').before('<option value="short-pixel-bulk">Optimize with ShortPixel</option>');
     }    
+    if( ShortPixel.MEDIA_ALERT == 'todo' && jQuery('div.media-frame.mode-grid').length > 0) {
+        //the media table is not in the list mode, alert the user
+        jQuery('div.media-frame.mode-grid').before('<div id="short-pixel-media-alert" class="notice notice-warning"><p>In order to access the ShortPixel Optimization actions and info, please change to <a href="upload.php?mode=list" class="view-list"><span class="screen-reader-text">List View</span>List View</a><a class="alignright" href="javascript:ShortPixel.dismissMediaAlert();">Dismiss</a></p></div>');
+    }
     //
     jQuery(window).unload(function(){
         if(ShortPixel.bulkProcessor == true) {        
@@ -41,11 +45,34 @@ var ShortPixel = function() {
             jQuery("section#" +target).addClass("sel-tab");        
         }
     }
+
+    function dismissMediaAlert() {
+        var data = { action  : 'shortpixel_dismiss_media_alert'};
+        jQuery.get(ajaxurl, data, function(response) {
+            data = JSON.parse(response);
+            if(data["Status"] == 'success') {
+                jQuery("#short-pixel-media-alert").hide();
+                console.log("dismissed");
+            }
+        });
+    }
+    
+    function onBulkThumbsCheck(check) {
+        if(check.checked) {
+            jQuery("#with-thumbs").css('display', 'inherit');
+            jQuery("#without-thumbs").css('display', 'none');
+        } else {
+            jQuery("#without-thumbs").css('display', 'inherit');
+            jQuery("#with-thumbs").css('display', 'none');
+        }
+    }
     
     return {
-        setOptions         : setOptions,
-        checkThumbsUpdTotal: checkThumbsUpdTotal,
-        switchSettingsTab  : switchSettingsTab
+        setOptions          : setOptions,
+        checkThumbsUpdTotal : checkThumbsUpdTotal,
+        switchSettingsTab   : switchSettingsTab,
+        onBulkThumbsCheck   : onBulkThumbsCheck,
+        dismissMediaAlert   : dismissMediaAlert
     }
 }();
 
@@ -66,6 +93,10 @@ function showToolBarAlert($status, $message) {
             //jQuery("a div", robo).attr("title", "ShortPixel quota exceeded. Click to top-up");
             jQuery("a div", robo).attr("title", "ShortPixel quota exceeded. Click for details.");
             break;
+        case ShortPixel.STATUS_SKIP:        
+            robo.addClass("shortpixel-alert shortpixel-processing"); 
+            jQuery("a div", robo).attr("title", $message);
+            break;
         case ShortPixel.STATUS_FAIL:        
             robo.addClass("shortpixel-alert shortpixel-processing"); 
             jQuery("a div", robo).attr("title", $message);
@@ -78,6 +109,7 @@ function showToolBarAlert($status, $message) {
             jQuery("a div", robo).attr("title", "Get API Key");
             break;
         case ShortPixel.STATUS_SUCCESS:
+        case ShortPixel.STATUS_RETRY:
             robo.removeClass("shortpixel-alert");
             jQuery("a", robo).removeAttr("target");
             jQuery("a", robo).attr("href", jQuery("a img", robo).attr("success-url"));
@@ -106,11 +138,11 @@ function checkQuotaExceededAlert() {
  * calls itself until receives an Empty queue message
  */
 function checkBulkProgress() {
-    if(   window.location.href.search("wp-admin/upload.php") < 0
-       && window.location.href.search("wp-admin/edit.php") < 0
-       && window.location.href.search("wp-admin/edit-tags.php") < 0
-       && window.location.href.search("wp-admin/post-new.php") < 0
-       && window.location.href.search("wp-admin/post.php") < 0) {
+    if(   window.location.href.search(ShortPixel.WP_ADMIN_URL + "upload.php") < 0
+       && window.location.href.search(ShortPixel.WP_ADMIN_URL + "edit.php") < 0
+       && window.location.href.search(ShortPixel.WP_ADMIN_URL + "edit-tags.php") < 0
+       && window.location.href.search(ShortPixel.WP_ADMIN_URL + "post-new.php") < 0
+       && window.location.href.search(ShortPixel.WP_ADMIN_URL + "post.php") < 0) {
         hideToolBarAlert();
         return;
     }
@@ -170,8 +202,10 @@ function checkBulkProcessingCallApi(){
                     showToolBarAlert(ShortPixel.STATUS_NO_KEY);
                     break;
                 case ShortPixel.STATUS_QUOTA_EXCEEDED:
-                    setCellMessage(id, data["Message"] + " <a class='button button-smaller button-primary' href=\"https://shortpixel.com/login/" 
-                                   + ShortPixel.API_KEY + "\" target=\"_blank\">Extend Quota</a>");
+                    setCellMessage(id, "<div class='sp-column-actions' style='width:110px;'><a class='button button-smaller button-primary' href=\"https://shortpixel.com/login/" 
+                                   + ShortPixel.API_KEY + "\" target=\"_blank\">Extend Quota</a>"
+                                   + "<a class='button button-smaller' href='admin.php?action=shortpixel_check_quota'>Check&nbsp;&nbsp;Quota</a></div>" 
+                                   + "<div class='sp-column-info'>" + data["Message"] + "</div>" );
                     showToolBarAlert(ShortPixel.STATUS_QUOTA_EXCEEDED);
                     break;
                 case ShortPixel.STATUS_FAIL:
@@ -200,11 +234,23 @@ function checkBulkProcessingCallApi(){
                     break;
                 case ShortPixel.STATUS_SUCCESS:
                     var percent = data["PercentImprovement"];
-                    var cellMsg = "Reduced by <span class='percent'>" + percent + "%</span> " 
-                          + (data["BackupEnabled"] == 1 ? "<a class='button button-smaller' href=\"admin.php?action=shortpixel_restore_backup&attachment_ID=" + id + ")\">Restore backup</a>" : "");
-                    if(0 + data['ThumbsCount'] > 0) {
-                        cellMsg += "<br>+" + data['ThumbsCount'] + " thumbnails optimized";
-                    }
+                    var otherType = data["Type"].length > 0 ? (data["Type"] == "lossy" ? "lossless" : "lossy") : "";
+                    
+                    var cellMsg = (percent > 0 ? "<div class='sp-column-info'>Reduced by <span class='percent'>" + percent + "%</span> " : "")
+                          + (percent > 0 && percent < 5 ? "<br>" : '')
+                          + (percent < 5 ? "Bonus processing" : '')
+                          + (data["Type"].length > 0 ? " ("+data["Type"]+")" : "")
+                          + (0 + data['ThumbsCount'] > 0 ? "<br>+" + data['ThumbsCount'] + " thumbnails optimized" :"")
+                          + "</div>";
+                    
+                    if(data["BackupEnabled"] == 1) {
+                        cellMsg = '<div class="sp-column-actions">' 
+                          + (data["ThumbsTotal"] > data["ThumbsCount"] ? "<a class='button button-smaller button-primary' href=\"javascript:optimizeThumbs(" + id + ");\">Optimize " + (data["ThumbsTotal"] - data["ThumbsCount"]) + " thumbnails</a>" : "")
+                          + (otherType.length ? "<a class='button button-smaller' href=\"javascript:reoptimize(" + id + ", '" + otherType + "');\">Re-optimize " + otherType + "</a>" : "")
+                          + "<a class='button button-smaller' href=\"admin.php?action=shortpixel_restore_backup&attachment_ID=" + id + ")\">Restore backup</a>"
+                          + "</div>" + cellMsg;
+                    }                          
+                    
                     showToolBarAlert(ShortPixel.STATUS_SUCCESS, "");
                     setCellMessage(id, cellMsg);
                     var animator = new PercentageAnimator("#sp-msg-" + id + " span.percent", percent);
@@ -215,11 +261,22 @@ function checkBulkProcessingCallApi(){
                             sliderUpdate(id, data["Thumb"], data["BkThumb"], data["PercentImprovement"]);
                         }
                     }                    
-                    //fall through
-                case ShortPixel.STATUS_RETRY:
+                    console.log('Server response: ' + response);
+                    if(isBulkPage && typeof data["BulkPercent"] !== 'undefined') {
+                        progressUpdate(data["BulkPercent"], data["BulkMsg"]);
+                    }
+                    setTimeout(checkBulkProgress, 5000);
+                    break;
+                    
                 case ShortPixel.STATUS_ERROR: //for error and skip also we retry
                 case ShortPixel.STATUS_SKIP:
+                    if(typeof data["Message"] !== 'undefined') {
+                        showToolBarAlert(ShortPixel.STATUS_SKIP, data["Message"] + ' Image ID: ' + id);
+                        setCellMessage(id, data["Message"]);
+                    }
+                case ShortPixel.STATUS_RETRY:
                     console.log('Server response: ' + response);
+                    showToolBarAlert(ShortPixel.STATUS_RETRY, "");
                     if(isBulkPage && typeof data["BulkPercent"] !== 'undefined') {
                         progressUpdate(data["BulkPercent"], data["BulkMsg"]);
                     }
@@ -246,7 +303,7 @@ function setCellMessage(id, message){
 }
 
 function manualOptimization(id) {
-    setCellMessage(id, "<img src='" + ShortPixel.WP_PLUGIN_URL + "/img/loading.gif'>Image waiting to be processed");
+    setCellMessage(id, "<img src='" + ShortPixel.WP_PLUGIN_URL + "/img/loading.gif' class='sp-loading-small'>Image waiting to be processed");
     jQuery("li.shortpixel-toolbar-processing").removeClass("shortpixel-hide");
     jQuery("li.shortpixel-toolbar-processing").addClass("shortpixel-processing");
     var data = { action  : 'shortpixel_manual_optimization',
@@ -256,9 +313,44 @@ function manualOptimization(id) {
         if(data["Status"] == ShortPixel.STATUS_SUCCESS) {
             setTimeout(checkBulkProgress, 2000);
         } else {
-            setCellMessage(id, "This content is not processable.");
+            setCellMessage(id, typeof data["Message"] !== "undefined" ? data["Message"] : "This content is not processable.");
         }
         //aici e aici
+    });
+}
+
+function reoptimize(id, type) {
+    setCellMessage(id, "<img src='" + ShortPixel.WP_PLUGIN_URL + "/img/loading.gif' class='sp-loading-small'>Image waiting to be reprocessed");
+    jQuery("li.shortpixel-toolbar-processing").removeClass("shortpixel-hide");
+    jQuery("li.shortpixel-toolbar-processing").addClass("shortpixel-processing");
+    var data = { action  : 'shortpixel_redo',
+                 attachment_ID: id,
+                 type: type};
+    jQuery.get(ajaxurl, data, function(response) {
+        data = JSON.parse(response);
+        if(data["Status"] == ShortPixel.STATUS_SUCCESS) {
+            setTimeout(checkBulkProgress, 2000);
+        } else {
+            $msg = typeof data["Message"] !== "undefined" ? data["Message"] : "This content is not processable.";
+            setCellMessage(id, $msg);
+            showToolBarAlert(ShortPixel.STATUS_FAIL, $msg);
+        }
+    });
+}
+
+function optimizeThumbs(id) {
+    setCellMessage(id, "<img src='" + ShortPixel.WP_PLUGIN_URL + "/img/loading.gif' class='sp-loading-small'>Image waiting to optimize thumbnails");
+    jQuery("li.shortpixel-toolbar-processing").removeClass("shortpixel-hide");
+    jQuery("li.shortpixel-toolbar-processing").addClass("shortpixel-processing");
+    var data = { action  : 'shortpixel_optimize_thumbs',
+                 attachment_ID: id};
+    jQuery.get(ajaxurl, data, function(response) {
+        data = JSON.parse(response);
+        if(data["Status"] == ShortPixel.STATUS_SUCCESS) {
+            setTimeout(checkBulkProgress, 2000);
+        } else {
+            setCellMessage(id, typeof data["Message"] !== "undefined" ? data["Message"] : "This content is not processable.");
+        }
     });
 }
 

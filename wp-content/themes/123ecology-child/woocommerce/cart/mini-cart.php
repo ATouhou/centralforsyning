@@ -48,7 +48,7 @@ global $woocommerce;
 
 	<?php else : ?>
 
-		<li class="empty"><?php _e( 'No products in the cart.', GETTEXT_DOMAIN ); ?></li>
+		<li class="empty"><?php _e( 'No products in the cart.', GETTEXT_DOMAIN_CHILD ); ?></li>
 
 	<?php endif; ?>
 
@@ -56,13 +56,13 @@ global $woocommerce;
 
 <?php if ( sizeof( WC()->cart->get_cart() ) > 0 ) : ?>
 
-	<p class="total"><strong><?php _e( 'Subtotal', GETTEXT_DOMAIN ); ?>:</strong> <?php echo WC()->cart->get_cart_subtotal(); ?></p>
+	<p class="total"><strong><?php _e( 'Subtotal', GETTEXT_DOMAIN_CHILD ); ?>:</strong> <?php echo WC()->cart->get_cart_subtotal(); ?></p>
 
 	<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
 
 	<p class="buttons">
-		<a href="<?php echo WC()->cart->get_cart_url(); ?>" class="btn btn-default btn-sm"><?php _e( 'View Cart &rarr;', GETTEXT_DOMAIN ); ?></a>
-		<a href="<?php echo WC()->cart->get_checkout_url(); ?>" class="btn btn-primary btn-sm"><?php _e( 'Checkout &rarr;', GETTEXT_DOMAIN ); ?></a>
+		<a href="<?php echo WC()->cart->get_cart_url(); ?>" class="btn btn-default btn-sm"><?php _e( 'View Cart &rarr;', GETTEXT_DOMAIN_CHILD ); ?></a>
+		<a href="<?php echo WC()->cart->get_checkout_url(); ?>" class="btn btn-primary btn-sm"><?php _e( 'Checkout &rarr;', GETTEXT_DOMAIN_CHILD ); ?></a>
 	</p>
 
 <?php endif; ?>

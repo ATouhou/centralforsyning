@@ -62,7 +62,7 @@ add_action('after_setup_theme', 'my_theme_setup_child');
 
 function my_theme_setup_child(){
 
-    load_child_theme_textdomain( GETTEXT_DOMAIN_CHILD,  get_stylesheet_directory_uri() . '/languages');
+   load_child_theme_textdomain( GETTEXT_DOMAIN_CHILD,  get_stylesheet_directory_uri() . '/languages');
 //load_child_theme_textdomain( '123ecology-child', get_stylesheet_directory_uri() . '/languages' );
 }
 
@@ -1351,4 +1351,69 @@ function oab_override_woo_frontend_scripts() {
 wp_deregister_script('wc-checkout'); 
 wp_enqueue_script('wc-checkout', get_stylesheet_directory_uri() . '/woocommerce/assets/js/frontend/checkout.js', array('jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n'), null, true); }
 
+
+
+/**
+ * Change custom text 
+ *
+ * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/gettext
+ */
+function my_text_strings( $translated_text, $text, $domain ) {
+	switch ( $translated_text ) {
+		case 'Checkout' :
+			$translated_text = __( 'Check ud', 'woocommerce' );
+			break;
+		case 'Cart' :
+			$translated_text = __( 'Kurv', 'woocommerce' );
+			break;
+		case 'Have a coupon?' :
+			$translated_text = __( 'har du en kupon?', 'woocommerce' );
+			break;
+		case 'Click here to enter your code' :
+			$translated_text = __( 'klik her for at indtaste koden', 'woocommerce' );
+			break;
+		case 'Returning customer?' :
+			$translated_text = __( 'Tidligere kunde?', 'woocommerce' );
+			break;
+		case 'Click here to login' :
+			$translated_text = __( 'Klik her for at logge ind', 'woocommerce' );
+			break;
+		case 'If you have shopped with us before, please enter your details in the boxes below. If you are a new customer, please proceed to the Billing &amp; Shipping section.' :
+			$translated_text = __( '
+Hvis du har handlet hos os før, skal du indtaste dine oplysninger i felterne nedenfor. Hvis du er en ny kunde, skal du gå videre til Fakturering & Shipping sektion.', 'woocommerce' );  
+			break;
+			case 'Remember me' :
+			$translated_text = __( 'Husk mig', 'woocommerce' );
+			break;
+			case 'Apply Coupon' :
+			$translated_text = __( 'Anvend kupon', 'woocommerce' );
+			break;
+			case 'Recent Orders' :
+			$translated_text = __( 'Seneste ordrer', 'woocommerce' );
+			break;
+			case 'My Address' :
+			$translated_text = __( 'Min adresse', 'woocommerce' );
+			break;
+			case 'My Addresses' :
+			$translated_text = __( 'Mine adresser', 'woocommerce' );
+			break;
+			case 'Order Details' :
+			$translated_text = __( 'Ordre detaljer', 'woocommerce' );
+			break;
+			case 'Customer details' :
+			$translated_text = __( 'Kundeoplysninger', 'woocommerce' );
+			break;
+			case 'Home' :
+			$translated_text = __( 'Hjem', 'woocommerce' );
+			break;
+			case 'Additional Information' :
+			$translated_text = __( 'Yderligere information', 'woocommerce' );
+			break;
+			case 'Description' :
+			$translated_text = __( 'Beskrivelse', 'woocommerce' );
+			break;
+	}
+	return $translated_text;
+}
+add_filter( 'gettext', 'my_text_strings', 20, 3 );
 ?>

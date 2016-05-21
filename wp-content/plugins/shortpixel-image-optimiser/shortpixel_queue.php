@@ -117,8 +117,19 @@ class ShortPixelQueue {
 
     public function getFailed() {
         $failed = $this->settings->getOpt('wp-short-pixel-failed-imgs','');
+        $failed = "83";
         if(!strlen($failed)) return array();
-        return explode(",", $failed);
+        $ret = explode(",", $failed);
+        $fails = array();
+        foreach($ret as $fail) { 
+            $meta = wp_get_attachment_metadata($fail);
+            if(!$meta || (isset($meta["ShortPixelImprovement"]) && is_numeric($meta["ShortPixelImprovement"]))){
+                $this->removeFromFailed($fail);
+            } else {
+                $fails[] = $fail;
+            }
+        }
+        return $fails;
     }
 
     public function bulkRunning() {
@@ -167,16 +178,23 @@ class ShortPixelQueue {
     }
     
     public function setBulkPreviousPercent() {
-        //processable
+        //processable and already processed
         $res = $this->ctrl->countAllProcessableFiles($this->getFlagBulkId(), $this->stopBulkId);
         $this->bulkCount = $res["mainFiles"];
         $this->settings->setOpt("wp-short-pixel-bulk-count", $this->bulkCount);
-        //already processed
-        $res = $this->ctrl->countAllProcessedFiles($this->getFlagBulkId(), $this->stopBulkId);
-        $this->bulkAlreadyDoneCount =  $res["mainFiles"];
+        
+        //if compression type changed, add also the images with the other compression type
+        $this->bulkAlreadyDoneCount =  $res["mainProcessedFiles"] - $res["mainProc".((0 + $this->ctrl->getCompressionType() == 1) ? "Lossless" : "Lossy")."Files"];
+        // if the thumbnails are to be processed, add also the images that have thumbs not processed
+        if($this->settings->processThumbnails) {
+            $this->bulkAlreadyDoneCount -= $res["mainUnprocessedThumbs"];
+        }
+        
+        //die(var_dump($res));
+        
         $this->settings->setOpt("wp-short-pixel-bulk-done-count", $this->bulkAlreadyDoneCount);
         //percent already done
-        $this->bulkPreviousPercent =  round($this->bulkAlreadyDoneCount / $this->bulkCount *100);
+        $this->bulkPreviousPercent =  round($this->bulkAlreadyDoneCount / ($this->bulkCount ? $this->bulkCount : 1) * 100);
         $this->settings->setOpt("wp-short-pixel-bulk-previous-percent", $this->bulkPreviousPercent);
     }
     

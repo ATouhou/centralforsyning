@@ -36,7 +36,7 @@ if ( $products->have_posts() ) : ?>
 
 	<div class="upsells1 products">
 
-		<h4><?php _e( 'You may also like&hellip;', GETTEXT_DOMAIN ) ?></h4>
+		<h4><?php _e( 'You may also like&hellip;', GETTEXT_DOMAIN_CHILD ) ?></h4>
 
 		<?php woocommerce_product_loop_start(); ?>
 
