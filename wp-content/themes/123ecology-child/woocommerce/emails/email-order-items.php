@@ -29,7 +29,7 @@ foreach ( $items as $item ) :
 			echo apply_filters( 'woocommerce_order_item_name', $item['name'], $item );
 
 			// SKU
-			if ( $show_sku && $_product->get_sku() ) {
+			if ( is_object( $_product ) && $_product->get_sku() ) {
 				echo ' (#' . $_product->get_sku() . ')';
 			}
 
