@@ -895,6 +895,8 @@
   .modal.fade.in {
     top: 20px;
   }
+    .footer-bottom .row-fluid  [class*="span"]{ float:left;}
+
 }
 
 @media (max-width: 480px) {

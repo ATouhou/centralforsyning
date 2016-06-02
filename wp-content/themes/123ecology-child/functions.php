@@ -732,6 +732,20 @@ if ( function_exists('register_sidebar') ) {
 		'after_title' => '</h4>',
 
 	));
+	
+	register_sidebar(array(
+
+		'name' => 'Footer Logos',
+
+		'before_widget' => '<div class="one-column footer-logos"><div id="%1$s" class="widget %2$s">',
+
+		'after_widget' => '</div></div>',
+
+		'before_title' => '<h4 class="title">',
+
+		'after_title' => '</h4>',
+
+	));
 
 }
 
@@ -1337,14 +1351,14 @@ require_once (dirname(__FILE__) . '/functions/dw-shortcodes-bootstrap/designwall
 
 include_once (dirname(__FILE__) . '/functions/woocommerce.php');
 
-//Change the symbol of an existing currency
-add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10, 2);
-function change_existing_currency_symbol( $currency_symbol, $currency ) {
-     switch( $currency ) {
-          case 'DKK': $currency_symbol = 'kr.'; break;
-     }
-     return $currency_symbol;
-}
+////Change the symbol of an existing currency
+//add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10, 2);
+//function change_existing_currency_symbol( $currency_symbol, $currency ) {
+//     switch( $currency ) {
+//          case 'DKK': $currency_symbol = 'kr.'; break;
+//     }
+//     return $currency_symbol;
+//}
 
 add_action('wp_enqueue_scripts', 'oab_override_woo_frontend_scripts'); 
 function oab_override_woo_frontend_scripts() { 
@@ -1411,6 +1425,9 @@ Hvis du har handlet hos os før, skal du indtaste dine oplysninger i felterne ne
 			break;
 			case 'Description' :
 			$translated_text = __( 'Beskrivelse', 'woocommerce' );
+			break;
+			case 'Place order' :
+			$translated_text = __( 'Bestil', 'woocommerce' );
 			break;
 	}
 	return $translated_text;

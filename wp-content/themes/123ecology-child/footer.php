@@ -141,6 +141,9 @@ if ( function_exists( 'get_option_tree') ) {
 				<div class="container">
 				  <div class="row-fluid">
 						<div class="span6 footer-bottom-left">
+                        
+                        <?php if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar('Footer Logos') ) ?>
+                        
 							<?php get_template_part('includes/footer-search-form' ) ?>
 							<?php if($footer_social_icons){?>
 							<?php if($_500px || $about_me || $add_this || $amazon || $aol || $app_store_alt || $app_store || $apple || $bebo || $behance || $bing || $blip || $blogger || $coroflot || $daytum || $delicious || $design_bump || $designfloat || $deviant_art || $digg_alt || $digg || $dribbble || $drupal || $ebay || $email || $ember_app || $etsy || $facebook || $feed_burner || $flickr || $foodspotting || $forrst || $foursquare || $friendsfeed || $friendstar || $gdgt || $github || $google_buzz || $google_talk || $gowalla_pin || $gowalla || $grooveshark || $heart || $hyves || $icondock || $icq || $identica || $imessage || $itune || $last_fm || $linkedin || $meetup || $metacafe || $mixx || $mobileme || $mr_wong || $msn || $myspace || $newsvine || $paypal || $photobucket || $picasa || $pinterest || $podcast || $posterous || $qik || $quora || $reddit || $retweet || $rss || $scribd || $share_this || $skype || $slashdot || $slideshare || $smugmug || $sound_cloud || $spotify || $squidoo || $stackoverflow || $star || $stumbleupon || $technorati || $tumblr || $twitter_bird || $twitter || $viddler || $vimeo || $virb || $w3 || $wikipedia || $windows || $wordpress || $xing || $yahoo_buzz || $yahoo || $yelp || $youtube){?>

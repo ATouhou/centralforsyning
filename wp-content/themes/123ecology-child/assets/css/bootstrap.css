@@ -6155,3 +6155,10 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+.footer-logos ul{ margin:0; padding:0;}
+.footer-logos ul li{ display:inline; float:left; list-style:none;   
+    margin-right: 18px; 
+    vertical-align: middle; margin-bottom:10px;}  
+.footer-logos #text-6 {
+    margin: 0; 
+} 
